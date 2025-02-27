@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>场所查询结果</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            text-align: center;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>查询结果</h1>
+    <ul>
+        {% for facility in facilities %}
+            <li>{{ facility[0] }}</li>
+        {% endfor %}
+    </ul>
+    <a href="{{ url_for('index') }}">返回首页</a>
+</body>
+</html>

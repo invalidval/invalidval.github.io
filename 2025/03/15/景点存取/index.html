@@ -1,0 +1,637 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-TW" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="zcy">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="存储方案研究本文档展示了如何使用 Python 类来表示旅游景点及其内部的建筑物和道路信息，并将这些数据存储到二进制文件中。 代码实现Spot 类Spot 类表示一个旅游景点，包含景点的基本信息以及其内部的建筑物和道路信息。 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ZCY.universe">
+<meta property="og:url" content="https://invalidval.github.io/2025/03/15/%E6%99%AF%E7%82%B9%E5%AD%98%E5%8F%96/index.html">
+<meta property="og:site_name" content="ZCY.universe">
+<meta property="og:description" content="存储方案研究本文档展示了如何使用 Python 类来表示旅游景点及其内部的建筑物和道路信息，并将这些数据存储到二进制文件中。 代码实现Spot 类Spot 类表示一个旅游景点，包含景点的基本信息以及其内部的建筑物和道路信息。 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2025-03-15T04:50:33.120Z">
+<meta property="article:modified_time" content="2025-03-15T04:48:58.588Z">
+<meta property="article:author" content="zcy">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>ZCY.universe</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"invalidval.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":20,"cursorChar":"*","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":"~"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":false,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Universe</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首頁</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>歸檔</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分類</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>標籤</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>關於</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/teleporter/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>teleporter</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text=""></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-03-15 12:50" pubdate>
+          2025年3月15日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.1k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          10 分鐘
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header"></h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="存储方案研究"><a href="#存储方案研究" class="headerlink" title="存储方案研究"></a>存储方案研究</h1><p>本文档展示了如何使用 Python 类来表示旅游景点及其内部的建筑物和道路信息，并将这些数据存储到二进制文件中。</p>
+<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><h3 id="Spot-类"><a href="#Spot-类" class="headerlink" title="Spot 类"></a>Spot 类</h3><p><code>Spot</code> 类表示一个旅游景点，包含景点的基本信息以及其内部的建筑物和道路信息。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> struct<br><span class="hljs-keyword">from</span> typing <span class="hljs-keyword">import</span> <span class="hljs-type">List</span><br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Spot</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, <span class="hljs-built_in">id</span>: <span class="hljs-built_in">int</span>, name: <span class="hljs-built_in">str</span>, <span class="hljs-built_in">type</span>: <span class="hljs-built_in">str</span>, heat: <span class="hljs-built_in">int</span>, rating: <span class="hljs-built_in">float</span></span>):<br>        <span class="hljs-variable language_">self</span>.<span class="hljs-built_in">id</span> = <span class="hljs-built_in">id</span>  <span class="hljs-comment"># 景点的唯一标识符</span><br>        <span class="hljs-variable language_">self</span>.name = name  <span class="hljs-comment"># 景点的名称</span><br>        <span class="hljs-variable language_">self</span>.<span class="hljs-built_in">type</span> = <span class="hljs-built_in">type</span>  <span class="hljs-comment"># 景点的类型（如使用A代表学校，B代表景区）</span><br>        <span class="hljs-variable language_">self</span>.heat = heat  <span class="hljs-comment"># 景点的热度（0-100）</span><br>        <span class="hljs-variable language_">self</span>.rating = rating  <span class="hljs-comment"># 景点的评分（0-5）</span><br>        <span class="hljs-variable language_">self</span>.buildings = []  <span class="hljs-comment"># 景点内部的建筑物列表</span><br>        <span class="hljs-variable language_">self</span>.roads = []  <span class="hljs-comment"># 景点内部的道路列表</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Building</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, <span class="hljs-built_in">id</span>: <span class="hljs-built_in">int</span>, name: <span class="hljs-built_in">str</span>, <span class="hljs-built_in">type</span>: <span class="hljs-built_in">str</span></span>):<br>        <span class="hljs-variable language_">self</span>.<span class="hljs-built_in">id</span> = <span class="hljs-built_in">id</span>  <span class="hljs-comment"># 建筑物的唯一标识符</span><br>        <span class="hljs-variable language_">self</span>.name = name  <span class="hljs-comment"># 建筑物的名称</span><br>        <span class="hljs-variable language_">self</span>.<span class="hljs-built_in">type</span> = <span class="hljs-built_in">type</span>  <span class="hljs-comment"># 建筑物的类型（如教学楼、宿舍楼、厕所等）</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Road</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, <span class="hljs-built_in">id</span>: <span class="hljs-built_in">int</span>, start_building_id: <span class="hljs-built_in">int</span>, end_building_id: <span class="hljs-built_in">int</span>, length: <span class="hljs-built_in">int</span>, access: <span class="hljs-built_in">str</span></span>):<br>        <span class="hljs-variable language_">self</span>.<span class="hljs-built_in">id</span> = <span class="hljs-built_in">id</span>  <span class="hljs-comment"># 道路的唯一标识符</span><br>        <span class="hljs-variable language_">self</span>.start_building_id = start_building_id  <span class="hljs-comment"># 道路起点建筑物的ID</span><br>        <span class="hljs-variable language_">self</span>.end_building_id = end_building_id  <span class="hljs-comment"># 道路终点建筑物的ID</span><br>        <span class="hljs-variable language_">self</span>.length = length  <span class="hljs-comment"># 道路的长度</span><br>        <span class="hljs-variable language_">self</span>.access = access  <span class="hljs-comment"># 道路的通行类型（&quot;A&quot; 表示只有人可以通行的路，&quot;B&quot; 表示人和车都可以通行的路）</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">save_to_binary_file</span>(<span class="hljs-params">spots: <span class="hljs-type">List</span>[Spot], filename: <span class="hljs-built_in">str</span></span>):<br>    <span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(filename, <span class="hljs-string">&#x27;wb&#x27;</span>) <span class="hljs-keyword">as</span> f:<br>        <span class="hljs-comment"># 写入景点数量</span><br>        f.write(struct.pack(<span class="hljs-string">&#x27;I&#x27;</span>, <span class="hljs-built_in">len</span>(spots)))<br>        <span class="hljs-keyword">for</span> spot <span class="hljs-keyword">in</span> spots:<br>            <span class="hljs-comment"># 写入景点信息</span><br>            f.write(struct.pack(<span class="hljs-string">&#x27;I&#x27;</span>, spot.<span class="hljs-built_in">id</span>))<br>            f.write(struct.pack(<span class="hljs-string">&#x27;I&#x27;</span>, <span class="hljs-built_in">len</span>(spot.name)))<br>            f.write(spot.name.encode(<span class="hljs-string">&#x27;utf-8&#x27;</span>))<br>            f.write(struct.pack(<span class="hljs-string">&#x27;c&#x27;</span>, spot.<span class="hljs-built_in">type</span>.encode(<span class="hljs-string">&#x27;utf-8&#x27;</span>)))<br>            f.write(struct.pack(<span class="hljs-string">&#x27;I&#x27;</span>, spot.heat))<br>            f.write(struct.pack(<span class="hljs-string">&#x27;f&#x27;</span>, spot.rating))<br>            <br>            <span class="hljs-comment"># 写入建筑物信息</span><br>            f.write(struct.pack(<span class="hljs-string">&#x27;I&#x27;</span>, <span class="hljs-built_in">len</span>(spot.buildings)))<br>            <span class="hljs-keyword">for</span> building <span class="hljs-keyword">in</span> spot.buildings:<br>                f.write(struct.pack(<span class="hljs-string">&#x27;I&#x27;</span>, building.<span class="hljs-built_in">id</span>))<br>                f.write(struct.pack(<span class="hljs-string">&#x27;I&#x27;</span>, <span class="hljs-built_in">len</span>(building.name)))<br>                f.write(building.name.encode(<span class="hljs-string">&#x27;utf-8&#x27;</span>))<br>                f.write(struct.pack(<span class="hljs-string">&#x27;I&#x27;</span>, <span class="hljs-built_in">len</span>(building.<span class="hljs-built_in">type</span>)))<br>                f.write(building.<span class="hljs-built_in">type</span>.encode(<span class="hljs-string">&#x27;utf-8&#x27;</span>))<br>            <br>            <span class="hljs-comment"># 写入道路信息</span><br>            f.write(struct.pack(<span class="hljs-string">&#x27;I&#x27;</span>, <span class="hljs-built_in">len</span>(spot.roads)))<br>            <span class="hljs-keyword">for</span> road <span class="hljs-keyword">in</span> spot.roads:<br>                f.write(struct.pack(<span class="hljs-string">&#x27;I&#x27;</span>, road.<span class="hljs-built_in">id</span>))<br>                f.write(struct.pack(<span class="hljs-string">&#x27;I&#x27;</span>, road.start_building_id))<br>                f.write(struct.pack(<span class="hljs-string">&#x27;I&#x27;</span>, road.end_building_id))<br>                f.write(struct.pack(<span class="hljs-string">&#x27;I&#x27;</span>, road.length))<br>                f.write(struct.pack(<span class="hljs-string">&#x27;c&#x27;</span>, road.access.encode(<span class="hljs-string">&#x27;utf-8&#x27;</span>)))<br><span class="hljs-keyword">def</span> <span class="hljs-title function_">load_from_binary_file</span>(<span class="hljs-params">filename: <span class="hljs-built_in">str</span></span>) -&gt; <span class="hljs-type">List</span>[Spot]:<br>    spots = []<br>    <span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(filename, <span class="hljs-string">&#x27;rb&#x27;</span>) <span class="hljs-keyword">as</span> f:<br>        <span class="hljs-comment"># 读取景点数量</span><br>        num_spots = struct.unpack(<span class="hljs-string">&#x27;I&#x27;</span>, f.read(<span class="hljs-number">4</span>))[<span class="hljs-number">0</span>]<br>        <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(num_spots):<br>            <span class="hljs-comment"># 读取景点信息</span><br>            <span class="hljs-built_in">id</span> = struct.unpack(<span class="hljs-string">&#x27;I&#x27;</span>, f.read(<span class="hljs-number">4</span>))[<span class="hljs-number">0</span>]<br>            name_len = struct.unpack(<span class="hljs-string">&#x27;I&#x27;</span>, f.read(<span class="hljs-number">4</span>))[<span class="hljs-number">0</span>]<br>            name = f.read(name_len).decode(<span class="hljs-string">&#x27;utf-8&#x27;</span>)<br>            <span class="hljs-built_in">type</span> = struct.unpack(<span class="hljs-string">&#x27;c&#x27;</span>, f.read(<span class="hljs-number">1</span>))[<span class="hljs-number">0</span>].decode(<span class="hljs-string">&#x27;utf-8&#x27;</span>)<br>            heat = struct.unpack(<span class="hljs-string">&#x27;I&#x27;</span>, f.read(<span class="hljs-number">4</span>))[<span class="hljs-number">0</span>]<br>            rating = struct.unpack(<span class="hljs-string">&#x27;f&#x27;</span>, f.read(<span class="hljs-number">4</span>))[<span class="hljs-number">0</span>]<br>            spot = Spot(<span class="hljs-built_in">id</span>, name, <span class="hljs-built_in">type</span>, heat, rating)<br>            <br>            <span class="hljs-comment"># 读取建筑物信息</span><br>            num_buildings = struct.unpack(<span class="hljs-string">&#x27;I&#x27;</span>, f.read(<span class="hljs-number">4</span>))[<span class="hljs-number">0</span>]<br>            <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(num_buildings):<br>                building_id = struct.unpack(<span class="hljs-string">&#x27;I&#x27;</span>, f.read(<span class="hljs-number">4</span>))[<span class="hljs-number">0</span>]<br>                building_name_len = struct.unpack(<span class="hljs-string">&#x27;I&#x27;</span>, f.read(<span class="hljs-number">4</span>))[<span class="hljs-number">0</span>]<br>                building_name = f.read(building_name_len).decode(<span class="hljs-string">&#x27;utf-8&#x27;</span>)<br>                building_type_len = struct.unpack(<span class="hljs-string">&#x27;I&#x27;</span>, f.read(<span class="hljs-number">4</span>))[<span class="hljs-number">0</span>]<br>                building_type = f.read(building_type_len).decode(<span class="hljs-string">&#x27;utf-8&#x27;</span>)<br>                building = Building(building_id, building_name, building_type)<br>                spot.buildings.append(building)<br>            <br>            <span class="hljs-comment"># 读取道路信息</span><br>            num_roads = struct.unpack(<span class="hljs-string">&#x27;I&#x27;</span>, f.read(<span class="hljs-number">4</span>))[<span class="hljs-number">0</span>]<br>            <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(num_roads):<br>                road_id = struct.unpack(<span class="hljs-string">&#x27;I&#x27;</span>, f.read(<span class="hljs-number">4</span>))[<span class="hljs-number">0</span>]<br>                start_building_id = struct.unpack(<span class="hljs-string">&#x27;I&#x27;</span>, f.read(<span class="hljs-number">4</span>))[<span class="hljs-number">0</span>]<br>                end_building_id = struct.unpack(<span class="hljs-string">&#x27;I&#x27;</span>, f.read(<span class="hljs-number">4</span>))[<span class="hljs-number">0</span>]<br>                length = struct.unpack(<span class="hljs-string">&#x27;I&#x27;</span>, f.read(<span class="hljs-number">4</span>))[<span class="hljs-number">0</span>]<br>                access = struct.unpack(<span class="hljs-string">&#x27;c&#x27;</span>, f.read(<span class="hljs-number">1</span>))[<span class="hljs-number">0</span>].decode(<span class="hljs-string">&#x27;utf-8&#x27;</span>)<br>                road = Road(road_id, start_building_id, end_building_id, length, access)<br>                spot.roads.append(road)<br>            <br>            spots.append(spot)<br>    <span class="hljs-keyword">return</span> spots<br><span class="hljs-comment"># 示例代码</span><br><span class="hljs-comment"># 初始化一些景点</span><br>spots = []<br><br><span class="hljs-comment"># 创建第一个景点</span><br>spot1 = Spot(<span class="hljs-built_in">id</span>=<span class="hljs-number">1</span>, name=<span class="hljs-string">&quot;1&quot;</span>, <span class="hljs-built_in">type</span>=<span class="hljs-string">&quot;A&quot;</span>, heat=<span class="hljs-number">90</span>, rating=<span class="hljs-number">4.5</span>)<br>spot1.buildings.append(Building(<span class="hljs-built_in">id</span>=<span class="hljs-number">1</span>, name=<span class="hljs-string">&quot;1&quot;</span>, <span class="hljs-built_in">type</span>=<span class="hljs-string">&quot;r&quot;</span>))<br>spot1.buildings.append(Building(<span class="hljs-built_in">id</span>=<span class="hljs-number">2</span>, name=<span class="hljs-string">&quot;2&quot;</span>, <span class="hljs-built_in">type</span>=<span class="hljs-string">&quot;g&quot;</span>))<br>spot1.roads.append(Road(<span class="hljs-built_in">id</span>=<span class="hljs-number">1</span>, start_building_id=<span class="hljs-number">1</span>, end_building_id=<span class="hljs-number">2</span>, length=<span class="hljs-number">100</span>, access=<span class="hljs-string">&quot;A&quot;</span>))<br><br><span class="hljs-comment"># 创建第二个景点</span><br>spot2 = Spot(<span class="hljs-built_in">id</span>=<span class="hljs-number">2</span>, name=<span class="hljs-string">&quot;2&quot;</span>, <span class="hljs-built_in">type</span>=<span class="hljs-string">&quot;B&quot;</span>, heat=<span class="hljs-number">80</span>, rating=<span class="hljs-number">4.0</span>)<br>spot2.buildings.append(Building(<span class="hljs-built_in">id</span>=<span class="hljs-number">3</span>, name=<span class="hljs-string">&quot;3&quot;</span>, <span class="hljs-built_in">type</span>=<span class="hljs-string">&quot;&quot;</span>))<br>spot2.buildings.append(Building(<span class="hljs-built_in">id</span>=<span class="hljs-number">4</span>, name=<span class="hljs-string">&quot;4&quot;</span>, <span class="hljs-built_in">type</span>=<span class="hljs-string">&quot;&quot;</span>))<br>spot2.roads.append(Road(<span class="hljs-built_in">id</span>=<span class="hljs-number">2</span>, start_building_id=<span class="hljs-number">3</span>, end_building_id=<span class="hljs-number">4</span>, length=<span class="hljs-number">150</span>, access=<span class="hljs-string">&quot;B&quot;</span>))<br><br><span class="hljs-comment"># 将景点添加到列表中</span><br>spots.append(spot1)<br>spots.append(spot2)<br><br><span class="hljs-comment"># 保存景点数据到二进制文件</span><br>save_to_binary_file(spots, <span class="hljs-string">&#x27;spots_data.bin&#x27;</span>)<br><br><span class="hljs-comment"># 从二进制文件读取景点数据</span><br>loaded_spots = load_from_binary_file(<span class="hljs-string">&#x27;spots_data.bin&#x27;</span>)<br><br><span class="hljs-comment"># 打印读取到的景点数据</span><br><span class="hljs-keyword">for</span> spot <span class="hljs-keyword">in</span> loaded_spots:<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;景点ID: <span class="hljs-subst">&#123;spot.<span class="hljs-built_in">id</span>&#125;</span>, 名称: <span class="hljs-subst">&#123;spot.name&#125;</span>, 类型: <span class="hljs-subst">&#123;spot.<span class="hljs-built_in">type</span>&#125;</span>, 热度: <span class="hljs-subst">&#123;spot.heat&#125;</span>, 评分: <span class="hljs-subst">&#123;spot.rating&#125;</span>&quot;</span>)<br>    <span class="hljs-keyword">for</span> building <span class="hljs-keyword">in</span> spot.buildings:<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;  建筑物ID: <span class="hljs-subst">&#123;building.<span class="hljs-built_in">id</span>&#125;</span>, 名称: <span class="hljs-subst">&#123;building.name&#125;</span>, 类型: <span class="hljs-subst">&#123;building.<span class="hljs-built_in">type</span>&#125;</span>&quot;</span>)<br>    <span class="hljs-keyword">for</span> road <span class="hljs-keyword">in</span> spot.roads:<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;  道路ID: <span class="hljs-subst">&#123;road.<span class="hljs-built_in">id</span>&#125;</span>, 起点建筑物ID: <span class="hljs-subst">&#123;road.start_building_id&#125;</span>, 终点建筑物ID: <span class="hljs-subst">&#123;road.end_building_id&#125;</span>, 长度: <span class="hljs-subst">&#123;road.length&#125;</span>, 通行类型: <span class="hljs-subst">&#123;road.access&#125;</span>&quot;</span>)<br></code></pre></td></tr></table></figure>
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div></div>
+      <div>https://invalidval.github.io/2025/03/15/景点存取/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>zcy</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>發布於</div>
+          <div>2025年3月15日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>許可協議</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/03/15/api%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3/" title="">
+                        <span class="hidden-mobile"></span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目錄</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜尋</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">關鍵字</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允許 JavaScript 運行的環境下瀏覽效果更佳</div>
+  </noscript>
+</body>
+</html>

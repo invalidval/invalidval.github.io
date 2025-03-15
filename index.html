@@ -250,6 +250,39 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
+        <a href="/2025/03/15/%E6%99%AF%E7%82%B9%E5%AD%98%E5%8F%96%E6%9C%80%E7%BB%88%E6%96%B9%E6%A1%88%E4%BB%A5%E5%8F%8A%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E8%AF%B4%E6%98%8E/" target="_self">
+          最终存取实现（bin格式の多文件存储）
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2025/03/15/%E6%99%AF%E7%82%B9%E5%AD%98%E5%8F%96%E6%9C%80%E7%BB%88%E6%96%B9%E6%A1%88%E4%BB%A5%E5%8F%8A%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E8%AF%B4%E6%98%8E/" target="_self">
+        <div>
+          存取思路 一个旅游景点是一个文件，使用f”{num}.bin”命名（如文件名为1.bin)，load函数的参数是旅游景点的总个数，根据个数使用循环依次读取该目录下的所有旅游景点bin文件，并将所有旅游景点存储到一个list中返回。 save函数一次只负责存储一个旅游景点，文件名就是f”{num}.bin”，num作为参数输入。  好处 大家在创建旅游景点数据的时候，只需要调用Storage.py，
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-03-15 16:50" pubdate>
+              2025-03-15
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
         <a href="/2025/03/15/%E9%A1%B9%E7%9B%AE%E8%AE%A1%E5%88%92%E4%B9%A6%EF%BC%9A%E4%B8%AA%E6%80%A7%E5%8C%96%E6%97%85%E6%B8%B8%E7%B3%BB%E7%BB%9F/" target="_self">
           项目计划书
         </a>
@@ -316,15 +349,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2025/03/15/%E6%99%AF%E7%82%B9%E5%AD%98%E5%8F%96/" target="_self">
-          景点存储方案研究
+        <a href="/2025/03/15/%E6%99%AF%E7%82%B9%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%AE%9E%E7%8E%B0/" target="_self">
+          景点数据结构实现
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2025/03/15/%E6%99%AF%E7%82%B9%E5%AD%98%E5%8F%96/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2025/03/15/%E6%99%AF%E7%82%B9%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%AE%9E%E7%8E%B0/" target="_self">
         <div>
-          存储方案研究本文档展示了如何使用 Python 类来表示旅游景点及其内部的建筑物和道路信息，并将这些数据存储到二进制文件中。 代码实现Spot 类Spot 类表示一个旅游景点，包含景点的基本信息以及其内部的建筑物和道路信息。 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748
+          景点数据结构实现代码实现Spot 类Spot 类表示一个旅游景点，包含景点的基本信息以及其内部的建筑物和道路信息。 123456789101112131415161718192021222324import structfrom typing import Listclass Spot:    def __init__(self, id: int, name: str, type: str, he
         </div>
       </a>
 

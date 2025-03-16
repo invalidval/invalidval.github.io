@@ -4,6 +4,27 @@
   
   
   <entry>
+    <title>开发日志（2025年3月16日17:08:02）</title>
+    <link href="/2025/03/16/%E6%97%A5%E5%BF%972025-3-16/"/>
+    <url>/2025/03/16/%E6%97%A5%E5%BF%972025-3-16/</url>
+    
+    <content type="html"><![CDATA[<h1 id="开发日志（2025年3月16日17-08-02）"><a href="#开发日志（2025年3月16日17-08-02）" class="headerlink" title="开发日志（2025年3月16日17:08:02）"></a>开发日志（2025年3月16日17:08:02）</h1><ul><li>完成10个api的前端封装</li><li>完成几个基本组件的前端封装</li><li>使用test.js和Recommendations_route.py验证了前后端交互的可行性</li></ul><h1 id="下一步工作"><a href="#下一步工作" class="headerlink" title="下一步工作"></a>下一步工作</h1><ul><li>等待地图数据和后端算法</li></ul><h1 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h1><ul><li>后端人员必须严格按照api文档编写后端路由</li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>项目文档</category>
+      
+      <category>第三周</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>软件发布：景点文件生成器</title>
     <link href="/2025/03/16/%E6%95%B0%E6%8D%AE%E5%B7%A5%E5%85%B7%E4%B9%8B%E6%99%AF%E7%82%B9%E6%96%87%E4%BB%B6%E5%8C%96/"/>
     <url>/2025/03/16/%E6%95%B0%E6%8D%AE%E5%B7%A5%E5%85%B7%E4%B9%8B%E6%99%AF%E7%82%B9%E6%96%87%E4%BB%B6%E5%8C%96/</url>

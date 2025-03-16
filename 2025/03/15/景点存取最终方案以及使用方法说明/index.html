@@ -23,7 +23,7 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="最终存取实现（bin格式の多文件存储）">
 <meta property="og:url" content="https://invalidval.github.io/2025/03/15/%E6%99%AF%E7%82%B9%E5%AD%98%E5%8F%96%E6%9C%80%E7%BB%88%E6%96%B9%E6%A1%88%E4%BB%A5%E5%8F%8A%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E8%AF%B4%E6%98%8E/index.html">
-<meta property="og:site_name" content="ZCYの小屋">
+<meta property="og:site_name" content="zcyのblog崩し">
 <meta property="og:description" content="存取思路 一个旅游景点是一个文件，使用f”{num}.bin”命名（如文件名为1.bin)，load函数的参数是旅游景点的总个数，根据个数使用循环依次读取该目录下的所有旅游景点bin文件，并将所有旅游景点存储到一个list中返回。 save函数一次只负责存储一个旅游景点，文件名就是f”{num}.bin”，num作为参数输入。  好处 大家在创建旅游景点数据的时候，只需要调用Storage.py，">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://invalidval.github.io/img/storage.png">
@@ -35,7 +35,7 @@
   
   
   
-  <title>最终存取实现（bin格式の多文件存储） - ZCYの小屋</title>
+  <title>最终存取实现（bin格式の多文件存储） - zcyのblog崩し</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -397,6 +397,12 @@
                 <div class="post-prevnext my-3">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2025/03/16/%E5%AD%98%E5%82%A8%E6%9B%B4%E6%96%B0/" title="景点存取更新：支持从指定文件读取单个景点并返回对象">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">景点存取更新：支持从指定文件读取单个景点并返回对象</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">

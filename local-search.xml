@@ -4,6 +4,48 @@
   
   
   <entry>
+    <title>软件发布：景点文件生成器</title>
+    <link href="/2025/03/16/%E6%95%B0%E6%8D%AE%E5%B7%A5%E5%85%B7%E4%B9%8B%E6%99%AF%E7%82%B9%E6%96%87%E4%BB%B6%E5%8C%96/"/>
+    <url>/2025/03/16/%E6%95%B0%E6%8D%AE%E5%B7%A5%E5%85%B7%E4%B9%8B%E6%99%AF%E7%82%B9%E6%96%87%E4%BB%B6%E5%8C%96/</url>
+    
+    <content type="html"><![CDATA[<h1 id="软件发布：景点文件生成器"><a href="#软件发布：景点文件生成器" class="headerlink" title="软件发布：景点文件生成器"></a>软件发布：景点文件生成器</h1><ul><li>软件功能：从txt中读取一个景点的内部数据，生成二进制文件</li></ul><h1 id="软件下载地址"><a href="#软件下载地址" class="headerlink" title="软件下载地址"></a>软件下载地址</h1><ul><li>企业微信的微盘</li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>项目文档</category>
+      
+      <category>第三周</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>景点存取更新：支持从指定文件读取单个景点并返回对象</title>
+    <link href="/2025/03/16/%E5%AD%98%E5%82%A8%E6%9B%B4%E6%96%B0/"/>
+    <url>/2025/03/16/%E5%AD%98%E5%82%A8%E6%9B%B4%E6%96%B0/</url>
+    
+    <content type="html"><![CDATA[<h1 id="景点存取更新：支持从指定文件读取单个景点并返回对象"><a href="#景点存取更新：支持从指定文件读取单个景点并返回对象" class="headerlink" title="景点存取更新：支持从指定文件读取单个景点并返回对象"></a>景点存取更新：支持从指定文件读取单个景点并返回对象</h1><h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><code class="hljs python"><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">load_spot_from_binary_file</span>(<span class="hljs-params">num: <span class="hljs-built_in">int</span></span>) -&gt; Spot:<br>    filename = <span class="hljs-string">f&quot;<span class="hljs-subst">&#123;num&#125;</span>.bin&quot;</span><br>    <span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(filename, <span class="hljs-string">&#x27;rb&#x27;</span>) <span class="hljs-keyword">as</span> f:<br>        <span class="hljs-comment"># 读取景点信息</span><br>        <span class="hljs-built_in">id</span> = struct.unpack(<span class="hljs-string">&#x27;I&#x27;</span>, f.read(<span class="hljs-number">4</span>))[<span class="hljs-number">0</span>]<br>        name_len = struct.unpack(<span class="hljs-string">&#x27;I&#x27;</span>, f.read(<span class="hljs-number">4</span>))[<span class="hljs-number">0</span>]<br>        name = f.read(name_len).decode(<span class="hljs-string">&#x27;utf-8&#x27;</span>)<br>        <span class="hljs-built_in">type</span> = struct.unpack(<span class="hljs-string">&#x27;c&#x27;</span>, f.read(<span class="hljs-number">1</span>))[<span class="hljs-number">0</span>].decode(<span class="hljs-string">&#x27;utf-8&#x27;</span>)<br>        heat = struct.unpack(<span class="hljs-string">&#x27;I&#x27;</span>, f.read(<span class="hljs-number">4</span>))[<span class="hljs-number">0</span>]<br>        rating = struct.unpack(<span class="hljs-string">&#x27;f&#x27;</span>, f.read(<span class="hljs-number">4</span>))[<span class="hljs-number">0</span>]<br>        spot = Spot(<span class="hljs-built_in">id</span>, name, <span class="hljs-built_in">type</span>, heat, rating)<br>        <br>        <span class="hljs-comment"># 读取建筑物信息</span><br>        num_buildings = struct.unpack(<span class="hljs-string">&#x27;I&#x27;</span>, f.read(<span class="hljs-number">4</span>))[<span class="hljs-number">0</span>]<br>        <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(num_buildings):<br>            building_id = struct.unpack(<span class="hljs-string">&#x27;I&#x27;</span>, f.read(<span class="hljs-number">4</span>))[<span class="hljs-number">0</span>]<br>            building_name_len = struct.unpack(<span class="hljs-string">&#x27;I&#x27;</span>, f.read(<span class="hljs-number">4</span>))[<span class="hljs-number">0</span>]<br>            building_name = f.read(building_name_len).decode(<span class="hljs-string">&#x27;utf-8&#x27;</span>)<br>            building_type_len = struct.unpack(<span class="hljs-string">&#x27;I&#x27;</span>, f.read(<span class="hljs-number">4</span>))[<span class="hljs-number">0</span>]<br>            building_type = f.read(building_type_len).decode(<span class="hljs-string">&#x27;utf-8&#x27;</span>)<br>            building = Building(building_id, building_name, building_type)<br>            spot.buildings.append(building)<br>        <br>        <span class="hljs-comment"># 读取道路信息</span><br>        num_roads = struct.unpack(<span class="hljs-string">&#x27;I&#x27;</span>, f.read(<span class="hljs-number">4</span>))[<span class="hljs-number">0</span>]<br>        <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(num_roads):<br>            road_id = struct.unpack(<span class="hljs-string">&#x27;I&#x27;</span>, f.read(<span class="hljs-number">4</span>))[<span class="hljs-number">0</span>]<br>            start_building_id = struct.unpack(<span class="hljs-string">&#x27;I&#x27;</span>, f.read(<span class="hljs-number">4</span>))[<span class="hljs-number">0</span>]<br>            end_building_id = struct.unpack(<span class="hljs-string">&#x27;I&#x27;</span>, f.read(<span class="hljs-number">4</span>))[<span class="hljs-number">0</span>]<br>            length = struct.unpack(<span class="hljs-string">&#x27;I&#x27;</span>, f.read(<span class="hljs-number">4</span>))[<span class="hljs-number">0</span>]<br>            access = struct.unpack(<span class="hljs-string">&#x27;c&#x27;</span>, f.read(<span class="hljs-number">1</span>))[<span class="hljs-number">0</span>].decode(<span class="hljs-string">&#x27;utf-8&#x27;</span>)<br>            road = Road(road_id, start_building_id, end_building_id, length, access)<br>            spot.roads.append(road)<br>        <br>    <span class="hljs-keyword">return</span> spot<br><br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>项目文档</category>
+      
+      <category>第三周</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>最终存取实现（bin格式の多文件存储）</title>
     <link href="/2025/03/15/%E6%99%AF%E7%82%B9%E5%AD%98%E5%8F%96%E6%9C%80%E7%BB%88%E6%96%B9%E6%A1%88%E4%BB%A5%E5%8F%8A%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E8%AF%B4%E6%98%8E/"/>
     <url>/2025/03/15/%E6%99%AF%E7%82%B9%E5%AD%98%E5%8F%96%E6%9C%80%E7%BB%88%E6%96%B9%E6%A1%88%E4%BB%A5%E5%8F%8A%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E8%AF%B4%E6%98%8E/</url>

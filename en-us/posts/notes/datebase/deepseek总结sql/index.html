@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content=" 一、 基础查询 (Basic Queries) 1. SELECT &amp; FROM SELECT * FROM employees; SELECT name, salary FROM employees; 2. WHERE 条件筛选 SELECT * FROM employees WHERE salary &gt; 5000; SELECT * FROM employees WHERE department = &#39;IT&#39; AND salary &gt; 6000; SELECT * FROM employees WHERE name LIKE &#39;A%&#39;; -- 名字以A开头 SELECT * FROM employees WHERE age BETWEEN 25 AND 35; SELECT * FROM employees WHERE department IN (&#39;IT&#39;, &#39;HR&#39;, &#39;Finance&#39;); 3. ORDER BY 排序 SELECT * FROM employees ORDER BY salary DESC; SELECT * FROM employees ORDER BY department ASC, salary DESC; 4. DISTINCT 去重 SELECT DISTINCT department FROM employees; 二、 聚合函数与分组 (Aggregation &amp; Grouping) 5. 聚合函数 SELECT COUNT(*) as total_employees, AVG(salary) as avg_salary, MAX(salary) as max_salary, MIN(salary) as min_salary, SUM(salary) as total_salary FROM employees; 6. GROUP BY 分组 SELECT department, COUNT(*) as emp_count, AVG(salary) as avg_salary FROM employees GROUP BY department; 7. HAVING 分组后筛选 SELECT department, COUNT(*) as emp_count FROM employees GROUP BY department HAVING COUNT(*) &gt; 5; 三、 多表连接 (Joins) 8. INNER JOIN SELECT e.name, d.department_name FROM employees e INNER JOIN departments d ON e.department_id = d.id; 9. LEFT/RIGHT JOIN SELECT e.name, d.department_name FROM employees e LEFT JOIN departments d ON e.department_id = d.id; 10. FULL OUTER JOIN SELECT e.name, d.department_name FROM employees e FULL OUTER JOIN departments d ON e.department_id = d.id; 11. 多表连接 SELECT e.name, d.department_name, p.project_name FROM employees e JOIN departments d ON e.department_id = d.id JOIN projects p ON e.id = p.leader_id; 四、 子查询 (Subqueries) 12. 标量子查询 SELECT name, salary, (SELECT AVG(salary) FROM employees) as company_avg FROM employees; 13. IN 子查询 SELECT name FROM employees WHERE department_id IN ( SELECT id FROM departments WHERE budget &gt; 100000 ); 14. EXISTS 子查询 SELECT name FROM employees e WHERE EXISTS ( SELECT 1 FROM projects p WHERE p.leader_id = e.id ); 15. 关联子查询 SELECT name, salary, department FROM employees e1 WHERE salary &gt; ( SELECT AVG(salary) FROM employees e2 WHERE e2.department = e1.department ); 五、 高级查询技术 (Advanced Techniques) 16. CTE (公用表表达式) WITH department_stats AS ( SELECT department, AVG(salary) as avg_salary FROM employees GROUP BY department ) SELECT * FROM department_stats WHERE avg_salary &gt; 6000; 17. 递归 CTE WITH RECURSIVE org_chart AS ( -- 基础情况 SELECT employee_id, name, manager_id, 1 as level FROM employees WHERE manager_id IS NULL UNION ALL -- 递归情况 SELECT e.employee_id, e.name, e.manager_id, oc.level + 1 FROM employees e JOIN org_chart oc ON e.manager_id = oc.employee_id ) SELECT * FROM org_chart; 18. 窗口函数 SELECT name, department, salary, RANK() OVER (PARTITION BY department ORDER BY salary DESC) as dept_rank, AVG(salary) OVER (PARTITION BY department) as dept_avg_salary, LAG(salary) OVER (ORDER BY salary) as prev_salary FROM employees; 19. PIVOT 行列转换 -- SQL Server SELECT * FROM ( SELECT department, salary FROM employees ) AS SourceTable PIVOT ( AVG(salary) FOR department IN ([IT], [HR], [Finance]) ) AS PivotTable; 六、 数据操作 (Data Manipulation) 20. INSERT INSERT INTO employees (name, salary, department) VALUES (&#39;John Doe&#39;, 5000, &#39;IT&#39;); -- 插入查询结果 INSERT INTO high_paid_employees (name, salary) SELECT name, salary FROM employees WHERE salary &gt; 8000; 21. UPDATE UPDATE employees SET salary = salary * 1.1 WHERE department = &#39;IT&#39;; -- 使用子查询更新 UPDATE employees SET salary = ( SELECT AVG(salary) FROM employees ) WHERE salary IS NULL; 22. DELETE DELETE FROM employees WHERE salary &lt; 3000; -- 使用子查询删除 DELETE FROM employees WHERE department_id IN ( SELECT id FROM departments WHERE active = 0 ); 23. MERGE/UPSERT -- PostgreSQL INSERT INTO employees (id, name, salary) VALUES (1, &#39;John&#39;, 5000) ON CONFLICT (id) DO UPDATE SET name = EXCLUDED.name, salary = EXCLUDED.salary; 七、 事务控制 (Transaction Control) 24. 事务处理 BEGIN TRANSACTION; UPDATE accounts SET balance = balance - 100 WHERE id = 1; UPDATE accounts SET balance = balance + 100 WHERE id = 2; -- 如果一切正常 COMMIT; -- 如果出现错误 ROLLBACK; 八、 性能优化相关 25. 索引使用 CREATE INDEX idx_employee_department ON employees(department); CREATE INDEX idx_employee_name_salary ON employees(name, salary); 26. 分页查询 -- MySQL SELECT * FROM employees ORDER BY id LIMIT 10 OFFSET 20; -- SQL Server SELECT * FROM employees ORDER BY id OFFSET 20 ROWS FETCH NEXT 10 ROWS ONLY; 27. 查询性能分析 -- 查看执行计划 EXPLAIN SELECT * FROM employees WHERE salary &gt; 5000; -- SQL Server SET STATISTICS TIME ON; SELECT * FROM employees WHERE salary &gt; 5000; 九、 实用函数 28. 字符串函数 SELECT UPPER(name) as upper_name, LOWER(name) as lower_name, LENGTH(name) as name_length, SUBSTRING(name, 1, 3) as name_prefix, CONCAT(first_name, &#39; &#39;, last_name) as full_name FROM employees; 29. 日期函数 SELECT CURRENT_DATE as today, EXTRACT(YEAR FROM hire_date) as hire_year, DATE_ADD(hire_date, INTERVAL 1 YEAR) as anniversary, DATEDIFF(CURRENT_DATE, hire_date) as days_employed FROM employees; 30. 条件表达式 SELECT name, salary, CASE WHEN salary &lt; 3000 THEN &#39;Low&#39; WHEN salary BETWEEN 3000 AND 7000 THEN &#39;Medium&#39; ELSE &#39;High&#39; END as salary_level, COALESCE(bonus, 0) as bonus_amount FROM employees; 这份指南涵盖了 SQL 从基础到高级的大部分常用语法。建议在实际工作中根据需要查阅相关部分，并通过练习来熟练掌握。\n">
+<title>Deepseek整理的SQL</title>
+
+<link rel='canonical' href='http://localhost:1313/en-us/posts/notes/datebase/deepseek%E6%80%BB%E7%BB%93sql/'>
+
+<link rel="stylesheet" href="/scss/style.min.87ca80477aa1448125ceb18fc23b426abe36aef3a929499010496741e153b66e.css"><meta property='og:title' content="Deepseek整理的SQL">
+<meta property='og:description' content=" 一、 基础查询 (Basic Queries) 1. SELECT &amp; FROM SELECT * FROM employees; SELECT name, salary FROM employees; 2. WHERE 条件筛选 SELECT * FROM employees WHERE salary &gt; 5000; SELECT * FROM employees WHERE department = &#39;IT&#39; AND salary &gt; 6000; SELECT * FROM employees WHERE name LIKE &#39;A%&#39;; -- 名字以A开头 SELECT * FROM employees WHERE age BETWEEN 25 AND 35; SELECT * FROM employees WHERE department IN (&#39;IT&#39;, &#39;HR&#39;, &#39;Finance&#39;); 3. ORDER BY 排序 SELECT * FROM employees ORDER BY salary DESC; SELECT * FROM employees ORDER BY department ASC, salary DESC; 4. DISTINCT 去重 SELECT DISTINCT department FROM employees; 二、 聚合函数与分组 (Aggregation &amp; Grouping) 5. 聚合函数 SELECT COUNT(*) as total_employees, AVG(salary) as avg_salary, MAX(salary) as max_salary, MIN(salary) as min_salary, SUM(salary) as total_salary FROM employees; 6. GROUP BY 分组 SELECT department, COUNT(*) as emp_count, AVG(salary) as avg_salary FROM employees GROUP BY department; 7. HAVING 分组后筛选 SELECT department, COUNT(*) as emp_count FROM employees GROUP BY department HAVING COUNT(*) &gt; 5; 三、 多表连接 (Joins) 8. INNER JOIN SELECT e.name, d.department_name FROM employees e INNER JOIN departments d ON e.department_id = d.id; 9. LEFT/RIGHT JOIN SELECT e.name, d.department_name FROM employees e LEFT JOIN departments d ON e.department_id = d.id; 10. FULL OUTER JOIN SELECT e.name, d.department_name FROM employees e FULL OUTER JOIN departments d ON e.department_id = d.id; 11. 多表连接 SELECT e.name, d.department_name, p.project_name FROM employees e JOIN departments d ON e.department_id = d.id JOIN projects p ON e.id = p.leader_id; 四、 子查询 (Subqueries) 12. 标量子查询 SELECT name, salary, (SELECT AVG(salary) FROM employees) as company_avg FROM employees; 13. IN 子查询 SELECT name FROM employees WHERE department_id IN ( SELECT id FROM departments WHERE budget &gt; 100000 ); 14. EXISTS 子查询 SELECT name FROM employees e WHERE EXISTS ( SELECT 1 FROM projects p WHERE p.leader_id = e.id ); 15. 关联子查询 SELECT name, salary, department FROM employees e1 WHERE salary &gt; ( SELECT AVG(salary) FROM employees e2 WHERE e2.department = e1.department ); 五、 高级查询技术 (Advanced Techniques) 16. CTE (公用表表达式) WITH department_stats AS ( SELECT department, AVG(salary) as avg_salary FROM employees GROUP BY department ) SELECT * FROM department_stats WHERE avg_salary &gt; 6000; 17. 递归 CTE WITH RECURSIVE org_chart AS ( -- 基础情况 SELECT employee_id, name, manager_id, 1 as level FROM employees WHERE manager_id IS NULL UNION ALL -- 递归情况 SELECT e.employee_id, e.name, e.manager_id, oc.level + 1 FROM employees e JOIN org_chart oc ON e.manager_id = oc.employee_id ) SELECT * FROM org_chart; 18. 窗口函数 SELECT name, department, salary, RANK() OVER (PARTITION BY department ORDER BY salary DESC) as dept_rank, AVG(salary) OVER (PARTITION BY department) as dept_avg_salary, LAG(salary) OVER (ORDER BY salary) as prev_salary FROM employees; 19. PIVOT 行列转换 -- SQL Server SELECT * FROM ( SELECT department, salary FROM employees ) AS SourceTable PIVOT ( AVG(salary) FOR department IN ([IT], [HR], [Finance]) ) AS PivotTable; 六、 数据操作 (Data Manipulation) 20. INSERT INSERT INTO employees (name, salary, department) VALUES (&#39;John Doe&#39;, 5000, &#39;IT&#39;); -- 插入查询结果 INSERT INTO high_paid_employees (name, salary) SELECT name, salary FROM employees WHERE salary &gt; 8000; 21. UPDATE UPDATE employees SET salary = salary * 1.1 WHERE department = &#39;IT&#39;; -- 使用子查询更新 UPDATE employees SET salary = ( SELECT AVG(salary) FROM employees ) WHERE salary IS NULL; 22. DELETE DELETE FROM employees WHERE salary &lt; 3000; -- 使用子查询删除 DELETE FROM employees WHERE department_id IN ( SELECT id FROM departments WHERE active = 0 ); 23. MERGE/UPSERT -- PostgreSQL INSERT INTO employees (id, name, salary) VALUES (1, &#39;John&#39;, 5000) ON CONFLICT (id) DO UPDATE SET name = EXCLUDED.name, salary = EXCLUDED.salary; 七、 事务控制 (Transaction Control) 24. 事务处理 BEGIN TRANSACTION; UPDATE accounts SET balance = balance - 100 WHERE id = 1; UPDATE accounts SET balance = balance + 100 WHERE id = 2; -- 如果一切正常 COMMIT; -- 如果出现错误 ROLLBACK; 八、 性能优化相关 25. 索引使用 CREATE INDEX idx_employee_department ON employees(department); CREATE INDEX idx_employee_name_salary ON employees(name, salary); 26. 分页查询 -- MySQL SELECT * FROM employees ORDER BY id LIMIT 10 OFFSET 20; -- SQL Server SELECT * FROM employees ORDER BY id OFFSET 20 ROWS FETCH NEXT 10 ROWS ONLY; 27. 查询性能分析 -- 查看执行计划 EXPLAIN SELECT * FROM employees WHERE salary &gt; 5000; -- SQL Server SET STATISTICS TIME ON; SELECT * FROM employees WHERE salary &gt; 5000; 九、 实用函数 28. 字符串函数 SELECT UPPER(name) as upper_name, LOWER(name) as lower_name, LENGTH(name) as name_length, SUBSTRING(name, 1, 3) as name_prefix, CONCAT(first_name, &#39; &#39;, last_name) as full_name FROM employees; 29. 日期函数 SELECT CURRENT_DATE as today, EXTRACT(YEAR FROM hire_date) as hire_year, DATE_ADD(hire_date, INTERVAL 1 YEAR) as anniversary, DATEDIFF(CURRENT_DATE, hire_date) as days_employed FROM employees; 30. 条件表达式 SELECT name, salary, CASE WHEN salary &lt; 3000 THEN &#39;Low&#39; WHEN salary BETWEEN 3000 AND 7000 THEN &#39;Medium&#39; ELSE &#39;High&#39; END as salary_level, COALESCE(bonus, 0) as bonus_amount FROM employees; 这份指南涵盖了 SQL 从基础到高级的大部分常用语法。建议在实际工作中根据需要查阅相关部分，并通过练习来熟练掌握。\n">
+<meta property='og:url' content='http://localhost:1313/en-us/posts/notes/datebase/deepseek%E6%80%BB%E7%BB%93sql/'>
+<meta property='og:site_name' content='zcys univ II Hugo ver'>
+<meta property='og:type' content='article'><meta property='article:section' content='En-Us' /><meta property='article:tag' content='ds' /><meta property='article:tag' content='SQL' /><meta property='article:published_time' content='2023-01-01T00:00:00&#43;08:00'/><meta property='article:modified_time' content='2023-01-01T00:00:00&#43;08:00'/>
+<meta name="twitter:title" content="Deepseek整理的SQL">
+<meta name="twitter:description" content=" 一、 基础查询 (Basic Queries) 1. SELECT &amp; FROM SELECT * FROM employees; SELECT name, salary FROM employees; 2. WHERE 条件筛选 SELECT * FROM employees WHERE salary &gt; 5000; SELECT * FROM employees WHERE department = &#39;IT&#39; AND salary &gt; 6000; SELECT * FROM employees WHERE name LIKE &#39;A%&#39;; -- 名字以A开头 SELECT * FROM employees WHERE age BETWEEN 25 AND 35; SELECT * FROM employees WHERE department IN (&#39;IT&#39;, &#39;HR&#39;, &#39;Finance&#39;); 3. ORDER BY 排序 SELECT * FROM employees ORDER BY salary DESC; SELECT * FROM employees ORDER BY department ASC, salary DESC; 4. DISTINCT 去重 SELECT DISTINCT department FROM employees; 二、 聚合函数与分组 (Aggregation &amp; Grouping) 5. 聚合函数 SELECT COUNT(*) as total_employees, AVG(salary) as avg_salary, MAX(salary) as max_salary, MIN(salary) as min_salary, SUM(salary) as total_salary FROM employees; 6. GROUP BY 分组 SELECT department, COUNT(*) as emp_count, AVG(salary) as avg_salary FROM employees GROUP BY department; 7. HAVING 分组后筛选 SELECT department, COUNT(*) as emp_count FROM employees GROUP BY department HAVING COUNT(*) &gt; 5; 三、 多表连接 (Joins) 8. INNER JOIN SELECT e.name, d.department_name FROM employees e INNER JOIN departments d ON e.department_id = d.id; 9. LEFT/RIGHT JOIN SELECT e.name, d.department_name FROM employees e LEFT JOIN departments d ON e.department_id = d.id; 10. FULL OUTER JOIN SELECT e.name, d.department_name FROM employees e FULL OUTER JOIN departments d ON e.department_id = d.id; 11. 多表连接 SELECT e.name, d.department_name, p.project_name FROM employees e JOIN departments d ON e.department_id = d.id JOIN projects p ON e.id = p.leader_id; 四、 子查询 (Subqueries) 12. 标量子查询 SELECT name, salary, (SELECT AVG(salary) FROM employees) as company_avg FROM employees; 13. IN 子查询 SELECT name FROM employees WHERE department_id IN ( SELECT id FROM departments WHERE budget &gt; 100000 ); 14. EXISTS 子查询 SELECT name FROM employees e WHERE EXISTS ( SELECT 1 FROM projects p WHERE p.leader_id = e.id ); 15. 关联子查询 SELECT name, salary, department FROM employees e1 WHERE salary &gt; ( SELECT AVG(salary) FROM employees e2 WHERE e2.department = e1.department ); 五、 高级查询技术 (Advanced Techniques) 16. CTE (公用表表达式) WITH department_stats AS ( SELECT department, AVG(salary) as avg_salary FROM employees GROUP BY department ) SELECT * FROM department_stats WHERE avg_salary &gt; 6000; 17. 递归 CTE WITH RECURSIVE org_chart AS ( -- 基础情况 SELECT employee_id, name, manager_id, 1 as level FROM employees WHERE manager_id IS NULL UNION ALL -- 递归情况 SELECT e.employee_id, e.name, e.manager_id, oc.level + 1 FROM employees e JOIN org_chart oc ON e.manager_id = oc.employee_id ) SELECT * FROM org_chart; 18. 窗口函数 SELECT name, department, salary, RANK() OVER (PARTITION BY department ORDER BY salary DESC) as dept_rank, AVG(salary) OVER (PARTITION BY department) as dept_avg_salary, LAG(salary) OVER (ORDER BY salary) as prev_salary FROM employees; 19. PIVOT 行列转换 -- SQL Server SELECT * FROM ( SELECT department, salary FROM employees ) AS SourceTable PIVOT ( AVG(salary) FOR department IN ([IT], [HR], [Finance]) ) AS PivotTable; 六、 数据操作 (Data Manipulation) 20. INSERT INSERT INTO employees (name, salary, department) VALUES (&#39;John Doe&#39;, 5000, &#39;IT&#39;); -- 插入查询结果 INSERT INTO high_paid_employees (name, salary) SELECT name, salary FROM employees WHERE salary &gt; 8000; 21. UPDATE UPDATE employees SET salary = salary * 1.1 WHERE department = &#39;IT&#39;; -- 使用子查询更新 UPDATE employees SET salary = ( SELECT AVG(salary) FROM employees ) WHERE salary IS NULL; 22. DELETE DELETE FROM employees WHERE salary &lt; 3000; -- 使用子查询删除 DELETE FROM employees WHERE department_id IN ( SELECT id FROM departments WHERE active = 0 ); 23. MERGE/UPSERT -- PostgreSQL INSERT INTO employees (id, name, salary) VALUES (1, &#39;John&#39;, 5000) ON CONFLICT (id) DO UPDATE SET name = EXCLUDED.name, salary = EXCLUDED.salary; 七、 事务控制 (Transaction Control) 24. 事务处理 BEGIN TRANSACTION; UPDATE accounts SET balance = balance - 100 WHERE id = 1; UPDATE accounts SET balance = balance + 100 WHERE id = 2; -- 如果一切正常 COMMIT; -- 如果出现错误 ROLLBACK; 八、 性能优化相关 25. 索引使用 CREATE INDEX idx_employee_department ON employees(department); CREATE INDEX idx_employee_name_salary ON employees(name, salary); 26. 分页查询 -- MySQL SELECT * FROM employees ORDER BY id LIMIT 10 OFFSET 20; -- SQL Server SELECT * FROM employees ORDER BY id OFFSET 20 ROWS FETCH NEXT 10 ROWS ONLY; 27. 查询性能分析 -- 查看执行计划 EXPLAIN SELECT * FROM employees WHERE salary &gt; 5000; -- SQL Server SET STATISTICS TIME ON; SELECT * FROM employees WHERE salary &gt; 5000; 九、 实用函数 28. 字符串函数 SELECT UPPER(name) as upper_name, LOWER(name) as lower_name, LENGTH(name) as name_length, SUBSTRING(name, 1, 3) as name_prefix, CONCAT(first_name, &#39; &#39;, last_name) as full_name FROM employees; 29. 日期函数 SELECT CURRENT_DATE as today, EXTRACT(YEAR FROM hire_date) as hire_year, DATE_ADD(hire_date, INTERVAL 1 YEAR) as anniversary, DATEDIFF(CURRENT_DATE, hire_date) as days_employed FROM employees; 30. 条件表达式 SELECT name, salary, CASE WHEN salary &lt; 3000 THEN &#39;Low&#39; WHEN salary BETWEEN 3000 AND 7000 THEN &#39;Medium&#39; ELSE &#39;High&#39; END as salary_level, COALESCE(bonus, 0) as bonus_amount FROM employees; 这份指南涵盖了 SQL 从基础到高级的大部分常用语法。建议在实际工作中根据需要查阅相关部分，并通过练习来熟练掌握。\n">
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu_c666be78737d2f33.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">zcys univ II Hugo ver</a></h1>
+            <h2 class="site-description">喵~</h2>
+        </div>
+    </header><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                <span>首页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/posts' >
+                
+                
+                
+                <span>文章</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/categories' >
+                
+                
+                
+                <span>分类</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/tags' >
+                
+                
+                
+                <span>标签</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about' >
+                
+                
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>Dark Mode</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ul>
+    <li><a href="#一-基础查询-basic-queries"><strong>一、 基础查询 (Basic Queries)</strong></a>
+      <ul>
+        <li><a href="#1-select--from">1. SELECT &amp; FROM</a></li>
+        <li><a href="#2-where-条件筛选">2. WHERE 条件筛选</a></li>
+        <li><a href="#3-order-by-排序">3. ORDER BY 排序</a></li>
+        <li><a href="#4-distinct-去重">4. DISTINCT 去重</a></li>
+      </ul>
+    </li>
+    <li><a href="#二-聚合函数与分组-aggregation--grouping"><strong>二、 聚合函数与分组 (Aggregation &amp; Grouping)</strong></a>
+      <ul>
+        <li><a href="#5-聚合函数">5. 聚合函数</a></li>
+        <li><a href="#6-group-by-分组">6. GROUP BY 分组</a></li>
+        <li><a href="#7-having-分组后筛选">7. HAVING 分组后筛选</a></li>
+      </ul>
+    </li>
+    <li><a href="#三-多表连接-joins"><strong>三、 多表连接 (Joins)</strong></a>
+      <ul>
+        <li><a href="#8-inner-join">8. INNER JOIN</a></li>
+        <li><a href="#9-leftright-join">9. LEFT/RIGHT JOIN</a></li>
+        <li><a href="#10-full-outer-join">10. FULL OUTER JOIN</a></li>
+        <li><a href="#11-多表连接">11. 多表连接</a></li>
+      </ul>
+    </li>
+    <li><a href="#四-子查询-subqueries"><strong>四、 子查询 (Subqueries)</strong></a>
+      <ul>
+        <li><a href="#12-标量子查询">12. 标量子查询</a></li>
+        <li><a href="#13-in-子查询">13. IN 子查询</a></li>
+        <li><a href="#14-exists-子查询">14. EXISTS 子查询</a></li>
+        <li><a href="#15-关联子查询">15. 关联子查询</a></li>
+      </ul>
+    </li>
+    <li><a href="#五-高级查询技术-advanced-techniques"><strong>五、 高级查询技术 (Advanced Techniques)</strong></a>
+      <ul>
+        <li><a href="#16-cte-公用表表达式">16. CTE (公用表表达式)</a></li>
+        <li><a href="#17-递归-cte">17. 递归 CTE</a></li>
+        <li><a href="#18-窗口函数">18. 窗口函数</a></li>
+        <li><a href="#19-pivot-行列转换">19. PIVOT 行列转换</a></li>
+      </ul>
+    </li>
+    <li><a href="#六-数据操作-data-manipulation"><strong>六、 数据操作 (Data Manipulation)</strong></a>
+      <ul>
+        <li><a href="#20-insert">20. INSERT</a></li>
+        <li><a href="#21-update">21. UPDATE</a></li>
+        <li><a href="#22-delete">22. DELETE</a></li>
+        <li><a href="#23-mergeupsert">23. MERGE/UPSERT</a></li>
+      </ul>
+    </li>
+    <li><a href="#七-事务控制-transaction-control"><strong>七、 事务控制 (Transaction Control)</strong></a>
+      <ul>
+        <li><a href="#24-事务处理">24. 事务处理</a></li>
+      </ul>
+    </li>
+    <li><a href="#八-性能优化相关"><strong>八、 性能优化相关</strong></a>
+      <ul>
+        <li><a href="#25-索引使用">25. 索引使用</a></li>
+        <li><a href="#26-分页查询">26. 分页查询</a></li>
+        <li><a href="#27-查询性能分析">27. 查询性能分析</a></li>
+      </ul>
+    </li>
+    <li><a href="#九-实用函数"><strong>九、 实用函数</strong></a>
+      <ul>
+        <li><a href="#28-字符串函数">28. 字符串函数</a></li>
+        <li><a href="#29-日期函数">29. 日期函数</a></li>
+        <li><a href="#30-条件表达式">30. 条件表达式</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+
+    
+    
+<nav class="post-navigation">
+    <div class="nav-links">
+        
+        <div class="nav-next">
+            <a href="/en-us/posts/notes/datebase/%E7%AC%AC%E4%B8%89%E7%AB%A0sql%E9%9B%86%E5%90%88%E6%93%8D%E4%BD%9C/" rel="next">
+                <div class="nav-content">
+                    <span class="nav-label">上一篇文章</span>
+                    <span class="nav-title">Chapter3 SQL集合操作</span>
+                </div>
+                <span class="nav-arrow">←</span>
+            </a>
+        </div>
+        
+	
+
+    </div>
+</nav>
+
+<style>
+.post-navigation {
+    margin: 3rem 0;
+    border-top: 1px solid #eaeaea;
+    padding-top: 2rem;
+}
+
+.nav-links {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.nav-previous, .nav-next {
+    display: flex;
+}
+
+.nav-previous a, .nav-next a {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    border: 1px solid #eaeaea;
+    border-radius: 8px;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.2s ease;
+    flex: 1;
+}
+
+.nav-previous a:hover, .nav-next a:hover {
+    border-color: #007acc;
+    background-color: #f8f9fa;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.nav-previous a {
+    text-align: left;
+}
+
+.nav-next a {
+    text-align: right;
+    flex-direction: row-reverse;
+}
+
+.nav-arrow {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #007acc;
+    margin: 0 0.5rem;
+}
+
+.nav-content {
+    flex: 1;
+}
+
+.nav-label {
+    display: block;
+    font-size: 0.875rem;
+    color: #666;
+    margin-bottom: 0.25rem;
+}
+
+.nav-title {
+    display: block;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+ 
+@media (max-width: 768px) {
+    .nav-links {
+        grid-template-columns: 1fr;
+    }
+    
+    .nav-title {
+        font-size: 0.9rem;
+    }
+}
+</style>
+
+    
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/database/" >
+                DataBase
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/en-us/posts/notes/datebase/deepseek%E6%80%BB%E7%BB%93sql/">Deepseek整理的SQL</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Jan 01, 2023</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    4 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <hr>
+<h2 id="一-基础查询-basic-queries"><strong>一、 基础查询 (Basic Queries)</strong>
+</h2><h3 id="1-select--from">1. SELECT &amp; FROM
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#ff79c6">SELECT</span> <span style="color:#ff79c6">*</span> <span style="color:#ff79c6">FROM</span> employees;
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">SELECT</span> name, salary <span style="color:#ff79c6">FROM</span> employees;
+</span></span></code></pre></div><h3 id="2-where-条件筛选">2. WHERE 条件筛选
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#ff79c6">SELECT</span> <span style="color:#ff79c6">*</span> <span style="color:#ff79c6">FROM</span> employees <span style="color:#ff79c6">WHERE</span> salary <span style="color:#ff79c6">&gt;</span> <span style="color:#bd93f9">5000</span>;
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">SELECT</span> <span style="color:#ff79c6">*</span> <span style="color:#ff79c6">FROM</span> employees <span style="color:#ff79c6">WHERE</span> department <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#39;IT&#39;</span> <span style="color:#ff79c6">AND</span> salary <span style="color:#ff79c6">&gt;</span> <span style="color:#bd93f9">6000</span>;
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">SELECT</span> <span style="color:#ff79c6">*</span> <span style="color:#ff79c6">FROM</span> employees <span style="color:#ff79c6">WHERE</span> name <span style="color:#ff79c6">LIKE</span> <span style="color:#f1fa8c">&#39;A%&#39;</span>;  <span style="color:#6272a4">-- 名字以A开头
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span><span style="color:#ff79c6">SELECT</span> <span style="color:#ff79c6">*</span> <span style="color:#ff79c6">FROM</span> employees <span style="color:#ff79c6">WHERE</span> age <span style="color:#ff79c6">BETWEEN</span> <span style="color:#bd93f9">25</span> <span style="color:#ff79c6">AND</span> <span style="color:#bd93f9">35</span>;
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">SELECT</span> <span style="color:#ff79c6">*</span> <span style="color:#ff79c6">FROM</span> employees <span style="color:#ff79c6">WHERE</span> department <span style="color:#ff79c6">IN</span> (<span style="color:#f1fa8c">&#39;IT&#39;</span>, <span style="color:#f1fa8c">&#39;HR&#39;</span>, <span style="color:#f1fa8c">&#39;Finance&#39;</span>);
+</span></span></code></pre></div><h3 id="3-order-by-排序">3. ORDER BY 排序
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#ff79c6">SELECT</span> <span style="color:#ff79c6">*</span> <span style="color:#ff79c6">FROM</span> employees <span style="color:#ff79c6">ORDER</span> <span style="color:#ff79c6">BY</span> salary <span style="color:#ff79c6">DESC</span>;
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">SELECT</span> <span style="color:#ff79c6">*</span> <span style="color:#ff79c6">FROM</span> employees <span style="color:#ff79c6">ORDER</span> <span style="color:#ff79c6">BY</span> department <span style="color:#ff79c6">ASC</span>, salary <span style="color:#ff79c6">DESC</span>;
+</span></span></code></pre></div><h3 id="4-distinct-去重">4. DISTINCT 去重
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#ff79c6">SELECT</span> <span style="color:#ff79c6">DISTINCT</span> department <span style="color:#ff79c6">FROM</span> employees;
+</span></span></code></pre></div><hr>
+<h2 id="二-聚合函数与分组-aggregation--grouping"><strong>二、 聚合函数与分组 (Aggregation &amp; Grouping)</strong>
+</h2><h3 id="5-聚合函数">5. 聚合函数
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#ff79c6">SELECT</span> 
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">COUNT</span>(<span style="color:#ff79c6">*</span>) <span style="color:#ff79c6">as</span> total_employees,
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">AVG</span>(salary) <span style="color:#ff79c6">as</span> avg_salary,
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">MAX</span>(salary) <span style="color:#ff79c6">as</span> max_salary,
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">MIN</span>(salary) <span style="color:#ff79c6">as</span> min_salary,
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">SUM</span>(salary) <span style="color:#ff79c6">as</span> total_salary
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">FROM</span> employees;
+</span></span></code></pre></div><h3 id="6-group-by-分组">6. GROUP BY 分组
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#ff79c6">SELECT</span> 
+</span></span><span style="display:flex;"><span>    department,
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">COUNT</span>(<span style="color:#ff79c6">*</span>) <span style="color:#ff79c6">as</span> emp_count,
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">AVG</span>(salary) <span style="color:#ff79c6">as</span> avg_salary
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">FROM</span> employees
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">GROUP</span> <span style="color:#ff79c6">BY</span> department;
+</span></span></code></pre></div><h3 id="7-having-分组后筛选">7. HAVING 分组后筛选
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#ff79c6">SELECT</span> 
+</span></span><span style="display:flex;"><span>    department,
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">COUNT</span>(<span style="color:#ff79c6">*</span>) <span style="color:#ff79c6">as</span> emp_count
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">FROM</span> employees
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">GROUP</span> <span style="color:#ff79c6">BY</span> department
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">HAVING</span> <span style="color:#ff79c6">COUNT</span>(<span style="color:#ff79c6">*</span>) <span style="color:#ff79c6">&gt;</span> <span style="color:#bd93f9">5</span>;
+</span></span></code></pre></div><hr>
+<h2 id="三-多表连接-joins"><strong>三、 多表连接 (Joins)</strong>
+</h2><h3 id="8-inner-join">8. INNER JOIN
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#ff79c6">SELECT</span> e.name, d.department_name
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">FROM</span> employees e
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">INNER</span> <span style="color:#ff79c6">JOIN</span> departments d <span style="color:#ff79c6">ON</span> e.department_id <span style="color:#ff79c6">=</span> d.id;
+</span></span></code></pre></div><h3 id="9-leftright-join">9. LEFT/RIGHT JOIN
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#ff79c6">SELECT</span> e.name, d.department_name
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">FROM</span> employees e
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">LEFT</span> <span style="color:#ff79c6">JOIN</span> departments d <span style="color:#ff79c6">ON</span> e.department_id <span style="color:#ff79c6">=</span> d.id;
+</span></span></code></pre></div><h3 id="10-full-outer-join">10. FULL OUTER JOIN
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#ff79c6">SELECT</span> e.name, d.department_name
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">FROM</span> employees e
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">FULL</span> <span style="color:#ff79c6">OUTER</span> <span style="color:#ff79c6">JOIN</span> departments d <span style="color:#ff79c6">ON</span> e.department_id <span style="color:#ff79c6">=</span> d.id;
+</span></span></code></pre></div><h3 id="11-多表连接">11. 多表连接
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#ff79c6">SELECT</span> e.name, d.department_name, p.project_name
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">FROM</span> employees e
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">JOIN</span> departments d <span style="color:#ff79c6">ON</span> e.department_id <span style="color:#ff79c6">=</span> d.id
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">JOIN</span> projects p <span style="color:#ff79c6">ON</span> e.id <span style="color:#ff79c6">=</span> p.leader_id;
+</span></span></code></pre></div><hr>
+<h2 id="四-子查询-subqueries"><strong>四、 子查询 (Subqueries)</strong>
+</h2><h3 id="12-标量子查询">12. 标量子查询
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#ff79c6">SELECT</span> name, salary,
+</span></span><span style="display:flex;"><span>    (<span style="color:#ff79c6">SELECT</span> <span style="color:#ff79c6">AVG</span>(salary) <span style="color:#ff79c6">FROM</span> employees) <span style="color:#ff79c6">as</span> company_avg
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">FROM</span> employees;
+</span></span></code></pre></div><h3 id="13-in-子查询">13. IN 子查询
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#ff79c6">SELECT</span> name
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">FROM</span> employees
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">WHERE</span> department_id <span style="color:#ff79c6">IN</span> (
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">SELECT</span> id <span style="color:#ff79c6">FROM</span> departments <span style="color:#ff79c6">WHERE</span> budget <span style="color:#ff79c6">&gt;</span> <span style="color:#bd93f9">100000</span>
+</span></span><span style="display:flex;"><span>);
+</span></span></code></pre></div><h3 id="14-exists-子查询">14. EXISTS 子查询
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#ff79c6">SELECT</span> name
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">FROM</span> employees e
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">WHERE</span> <span style="color:#ff79c6">EXISTS</span> (
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">SELECT</span> <span style="color:#bd93f9">1</span> <span style="color:#ff79c6">FROM</span> projects p 
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">WHERE</span> p.leader_id <span style="color:#ff79c6">=</span> e.id
+</span></span><span style="display:flex;"><span>);
+</span></span></code></pre></div><h3 id="15-关联子查询">15. 关联子查询
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#ff79c6">SELECT</span> name, salary, department
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">FROM</span> employees e1
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">WHERE</span> salary <span style="color:#ff79c6">&gt;</span> (
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">SELECT</span> <span style="color:#ff79c6">AVG</span>(salary) 
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">FROM</span> employees e2 
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">WHERE</span> e2.department <span style="color:#ff79c6">=</span> e1.department
+</span></span><span style="display:flex;"><span>);
+</span></span></code></pre></div><hr>
+<h2 id="五-高级查询技术-advanced-techniques"><strong>五、 高级查询技术 (Advanced Techniques)</strong>
+</h2><h3 id="16-cte-公用表表达式">16. CTE (公用表表达式)
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#ff79c6">WITH</span> department_stats <span style="color:#ff79c6">AS</span> (
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">SELECT</span> 
+</span></span><span style="display:flex;"><span>        department,
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">AVG</span>(salary) <span style="color:#ff79c6">as</span> avg_salary
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">FROM</span> employees
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">GROUP</span> <span style="color:#ff79c6">BY</span> department
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">SELECT</span> <span style="color:#ff79c6">*</span> <span style="color:#ff79c6">FROM</span> department_stats <span style="color:#ff79c6">WHERE</span> avg_salary <span style="color:#ff79c6">&gt;</span> <span style="color:#bd93f9">6000</span>;
+</span></span></code></pre></div><h3 id="17-递归-cte">17. 递归 CTE
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#ff79c6">WITH</span> <span style="color:#ff79c6">RECURSIVE</span> org_chart <span style="color:#ff79c6">AS</span> (
+</span></span><span style="display:flex;"><span>    <span style="color:#6272a4">-- 基础情况
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>    <span style="color:#ff79c6">SELECT</span> employee_id, name, manager_id, <span style="color:#bd93f9">1</span> <span style="color:#ff79c6">as</span> <span style="color:#ff79c6">level</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">FROM</span> employees
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">WHERE</span> manager_id <span style="color:#ff79c6">IS</span> <span style="color:#ff79c6">NULL</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">UNION</span> <span style="color:#ff79c6">ALL</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#6272a4">-- 递归情况
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>    <span style="color:#ff79c6">SELECT</span> e.employee_id, e.name, e.manager_id, oc.<span style="color:#ff79c6">level</span> <span style="color:#ff79c6">+</span> <span style="color:#bd93f9">1</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">FROM</span> employees e
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">JOIN</span> org_chart oc <span style="color:#ff79c6">ON</span> e.manager_id <span style="color:#ff79c6">=</span> oc.employee_id
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">SELECT</span> <span style="color:#ff79c6">*</span> <span style="color:#ff79c6">FROM</span> org_chart;
+</span></span></code></pre></div><h3 id="18-窗口函数">18. 窗口函数
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#ff79c6">SELECT</span> 
+</span></span><span style="display:flex;"><span>    name,
+</span></span><span style="display:flex;"><span>    department,
+</span></span><span style="display:flex;"><span>    salary,
+</span></span><span style="display:flex;"><span>    RANK() OVER (PARTITION <span style="color:#ff79c6">BY</span> department <span style="color:#ff79c6">ORDER</span> <span style="color:#ff79c6">BY</span> salary <span style="color:#ff79c6">DESC</span>) <span style="color:#ff79c6">as</span> dept_rank,
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">AVG</span>(salary) OVER (PARTITION <span style="color:#ff79c6">BY</span> department) <span style="color:#ff79c6">as</span> dept_avg_salary,
+</span></span><span style="display:flex;"><span>    LAG(salary) OVER (<span style="color:#ff79c6">ORDER</span> <span style="color:#ff79c6">BY</span> salary) <span style="color:#ff79c6">as</span> prev_salary
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">FROM</span> employees;
+</span></span></code></pre></div><h3 id="19-pivot-行列转换">19. PIVOT 行列转换
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#6272a4">-- SQL Server
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span><span style="color:#ff79c6">SELECT</span> <span style="color:#ff79c6">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">FROM</span> (
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">SELECT</span> department, salary
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">FROM</span> employees
+</span></span><span style="display:flex;"><span>) <span style="color:#ff79c6">AS</span> SourceTable
+</span></span><span style="display:flex;"><span>PIVOT (
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">AVG</span>(salary)
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">FOR</span> department <span style="color:#ff79c6">IN</span> ([IT], [HR], [Finance])
+</span></span><span style="display:flex;"><span>) <span style="color:#ff79c6">AS</span> PivotTable;
+</span></span></code></pre></div><hr>
+<h2 id="六-数据操作-data-manipulation"><strong>六、 数据操作 (Data Manipulation)</strong>
+</h2><h3 id="20-insert">20. INSERT
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#ff79c6">INSERT</span> <span style="color:#ff79c6">INTO</span> employees (name, salary, department) 
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">VALUES</span> (<span style="color:#f1fa8c">&#39;John Doe&#39;</span>, <span style="color:#bd93f9">5000</span>, <span style="color:#f1fa8c">&#39;IT&#39;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4">-- 插入查询结果
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span><span style="color:#ff79c6">INSERT</span> <span style="color:#ff79c6">INTO</span> high_paid_employees (name, salary)
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">SELECT</span> name, salary <span style="color:#ff79c6">FROM</span> employees <span style="color:#ff79c6">WHERE</span> salary <span style="color:#ff79c6">&gt;</span> <span style="color:#bd93f9">8000</span>;
+</span></span></code></pre></div><h3 id="21-update">21. UPDATE
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#ff79c6">UPDATE</span> employees 
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">SET</span> salary <span style="color:#ff79c6">=</span> salary <span style="color:#ff79c6">*</span> <span style="color:#bd93f9">1</span>.<span style="color:#bd93f9">1</span> 
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">WHERE</span> department <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#39;IT&#39;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4">-- 使用子查询更新
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span><span style="color:#ff79c6">UPDATE</span> employees 
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">SET</span> salary <span style="color:#ff79c6">=</span> (
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">SELECT</span> <span style="color:#ff79c6">AVG</span>(salary) <span style="color:#ff79c6">FROM</span> employees
+</span></span><span style="display:flex;"><span>) 
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">WHERE</span> salary <span style="color:#ff79c6">IS</span> <span style="color:#ff79c6">NULL</span>;
+</span></span></code></pre></div><h3 id="22-delete">22. DELETE
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#ff79c6">DELETE</span> <span style="color:#ff79c6">FROM</span> employees <span style="color:#ff79c6">WHERE</span> salary <span style="color:#ff79c6">&lt;</span> <span style="color:#bd93f9">3000</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4">-- 使用子查询删除
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span><span style="color:#ff79c6">DELETE</span> <span style="color:#ff79c6">FROM</span> employees 
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">WHERE</span> department_id <span style="color:#ff79c6">IN</span> (
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">SELECT</span> id <span style="color:#ff79c6">FROM</span> departments <span style="color:#ff79c6">WHERE</span> active <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">0</span>
+</span></span><span style="display:flex;"><span>);
+</span></span></code></pre></div><h3 id="23-mergeupsert">23. MERGE/UPSERT
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#6272a4">-- PostgreSQL
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span><span style="color:#ff79c6">INSERT</span> <span style="color:#ff79c6">INTO</span> employees (id, name, salary)
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">VALUES</span> (<span style="color:#bd93f9">1</span>, <span style="color:#f1fa8c">&#39;John&#39;</span>, <span style="color:#bd93f9">5000</span>)
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">ON</span> CONFLICT (id) 
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">DO</span> <span style="color:#ff79c6">UPDATE</span> <span style="color:#ff79c6">SET</span> name <span style="color:#ff79c6">=</span> EXCLUDED.name, salary <span style="color:#ff79c6">=</span> EXCLUDED.salary;
+</span></span></code></pre></div><hr>
+<h2 id="七-事务控制-transaction-control"><strong>七、 事务控制 (Transaction Control)</strong>
+</h2><h3 id="24-事务处理">24. 事务处理
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#ff79c6">BEGIN</span> <span style="color:#ff79c6">TRANSACTION</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">UPDATE</span> accounts <span style="color:#ff79c6">SET</span> balance <span style="color:#ff79c6">=</span> balance <span style="color:#ff79c6">-</span> <span style="color:#bd93f9">100</span> <span style="color:#ff79c6">WHERE</span> id <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">1</span>;
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">UPDATE</span> accounts <span style="color:#ff79c6">SET</span> balance <span style="color:#ff79c6">=</span> balance <span style="color:#ff79c6">+</span> <span style="color:#bd93f9">100</span> <span style="color:#ff79c6">WHERE</span> id <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">2</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4">-- 如果一切正常
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span><span style="color:#ff79c6">COMMIT</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4">-- 如果出现错误
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span><span style="color:#ff79c6">ROLLBACK</span>;
+</span></span></code></pre></div><hr>
+<h2 id="八-性能优化相关"><strong>八、 性能优化相关</strong>
+</h2><h3 id="25-索引使用">25. 索引使用
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#ff79c6">CREATE</span> <span style="color:#ff79c6">INDEX</span> idx_employee_department <span style="color:#ff79c6">ON</span> employees(department);
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">CREATE</span> <span style="color:#ff79c6">INDEX</span> idx_employee_name_salary <span style="color:#ff79c6">ON</span> employees(name, salary);
+</span></span></code></pre></div><h3 id="26-分页查询">26. 分页查询
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#6272a4">-- MySQL
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span><span style="color:#ff79c6">SELECT</span> <span style="color:#ff79c6">*</span> <span style="color:#ff79c6">FROM</span> employees <span style="color:#ff79c6">ORDER</span> <span style="color:#ff79c6">BY</span> id <span style="color:#ff79c6">LIMIT</span> <span style="color:#bd93f9">10</span> <span style="color:#ff79c6">OFFSET</span> <span style="color:#bd93f9">20</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4">-- SQL Server
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span><span style="color:#ff79c6">SELECT</span> <span style="color:#ff79c6">*</span> <span style="color:#ff79c6">FROM</span> employees <span style="color:#ff79c6">ORDER</span> <span style="color:#ff79c6">BY</span> id <span style="color:#ff79c6">OFFSET</span> <span style="color:#bd93f9">20</span> <span style="color:#ff79c6">ROWS</span> <span style="color:#ff79c6">FETCH</span> <span style="color:#ff79c6">NEXT</span> <span style="color:#bd93f9">10</span> <span style="color:#ff79c6">ROWS</span> <span style="color:#ff79c6">ONLY</span>;
+</span></span></code></pre></div><h3 id="27-查询性能分析">27. 查询性能分析
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#6272a4">-- 查看执行计划
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span><span style="color:#ff79c6">EXPLAIN</span> <span style="color:#ff79c6">SELECT</span> <span style="color:#ff79c6">*</span> <span style="color:#ff79c6">FROM</span> employees <span style="color:#ff79c6">WHERE</span> salary <span style="color:#ff79c6">&gt;</span> <span style="color:#bd93f9">5000</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4">-- SQL Server
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span><span style="color:#ff79c6">SET</span> <span style="color:#ff79c6">STATISTICS</span> TIME <span style="color:#ff79c6">ON</span>;
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">SELECT</span> <span style="color:#ff79c6">*</span> <span style="color:#ff79c6">FROM</span> employees <span style="color:#ff79c6">WHERE</span> salary <span style="color:#ff79c6">&gt;</span> <span style="color:#bd93f9">5000</span>;
+</span></span></code></pre></div><hr>
+<h2 id="九-实用函数"><strong>九、 实用函数</strong>
+</h2><h3 id="28-字符串函数">28. 字符串函数
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#ff79c6">SELECT</span> 
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">UPPER</span>(name) <span style="color:#ff79c6">as</span> upper_name,
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">LOWER</span>(name) <span style="color:#ff79c6">as</span> lower_name,
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">LENGTH</span>(name) <span style="color:#ff79c6">as</span> name_length,
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">SUBSTRING</span>(name, <span style="color:#bd93f9">1</span>, <span style="color:#bd93f9">3</span>) <span style="color:#ff79c6">as</span> name_prefix,
+</span></span><span style="display:flex;"><span>    CONCAT(first_name, <span style="color:#f1fa8c">&#39; &#39;</span>, last_name) <span style="color:#ff79c6">as</span> full_name
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">FROM</span> employees;
+</span></span></code></pre></div><h3 id="29-日期函数">29. 日期函数
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#ff79c6">SELECT</span> 
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">CURRENT_DATE</span> <span style="color:#ff79c6">as</span> today,
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">EXTRACT</span>(<span style="color:#ff79c6">YEAR</span> <span style="color:#ff79c6">FROM</span> hire_date) <span style="color:#ff79c6">as</span> hire_year,
+</span></span><span style="display:flex;"><span>    DATE_ADD(hire_date, <span style="color:#8be9fd;font-style:italic">INTERVAL</span> <span style="color:#bd93f9">1</span> <span style="color:#ff79c6">YEAR</span>) <span style="color:#ff79c6">as</span> anniversary,
+</span></span><span style="display:flex;"><span>    DATEDIFF(<span style="color:#ff79c6">CURRENT_DATE</span>, hire_date) <span style="color:#ff79c6">as</span> days_employed
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">FROM</span> employees;
+</span></span></code></pre></div><h3 id="30-条件表达式">30. 条件表达式
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#ff79c6">SELECT</span> 
+</span></span><span style="display:flex;"><span>    name,
+</span></span><span style="display:flex;"><span>    salary,
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">CASE</span> 
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">WHEN</span> salary <span style="color:#ff79c6">&lt;</span> <span style="color:#bd93f9">3000</span> <span style="color:#ff79c6">THEN</span> <span style="color:#f1fa8c">&#39;Low&#39;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">WHEN</span> salary <span style="color:#ff79c6">BETWEEN</span> <span style="color:#bd93f9">3000</span> <span style="color:#ff79c6">AND</span> <span style="color:#bd93f9">7000</span> <span style="color:#ff79c6">THEN</span> <span style="color:#f1fa8c">&#39;Medium&#39;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">ELSE</span> <span style="color:#f1fa8c">&#39;High&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">END</span> <span style="color:#ff79c6">as</span> salary_level,
+</span></span><span style="display:flex;"><span>    COALESCE(bonus, <span style="color:#bd93f9">0</span>) <span style="color:#ff79c6">as</span> bonus_amount
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">FROM</span> employees;
+</span></span></code></pre></div><hr>
+<p>这份指南涵盖了 SQL 从基础到高级的大部分常用语法。建议在实际工作中根据需要查阅相关部分，并通过练习来熟练掌握。</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/ds/">Ds</a>
+        
+            <a href="/tags/sql/">SQL</a>
+        
+    </section>
+
+
+    </footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI&#43;WdtXRGWt2kTvGFasHpSy3SV"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG&#43;vnGctmUb0ZY0l8"crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"integrity="sha384-&#43;VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4&#43;/RRE05"crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+	const mainArticleElement = document.querySelector(".main-article");
+        renderMathInElement(mainArticleElement, {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Related content</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/en-us/posts/notes/datebase/%E7%AC%AC%E4%B8%89%E7%AB%A0sql%E9%9B%86%E5%90%88%E6%93%8D%E4%BD%9C/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Chapter3 SQL集合操作</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/en-us/posts/notes/datebase/%E7%AC%AC%E4%BA%8C%E7%AB%A0%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Chapter2 关系数据库基础</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/en-us/posts/notes/datebase/%E7%AC%AC%E4%B8%89%E7%AB%A0/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Chapter3 SQL ppt</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2025 zcys univ II Hugo ver
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.31.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+    
+
+            </main>
+        </div>
+        
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.14dc9b5c686098a717b375e00cd3cdb7ec726b71f8639c33ed21f0736fce2bc8.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

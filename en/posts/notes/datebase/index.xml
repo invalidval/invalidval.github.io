@@ -1,0 +1,1383 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>数据库 on zcys univ II Hugo ver</title>
+        <link>http://localhost:1313/en/posts/notes/datebase/</link>
+        <description>Recent content in 数据库 on zcys univ II Hugo ver</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-US</language>
+        <lastBuildDate>Thu, 23 Oct 2025 00:00:00 +0800</lastBuildDate><atom:link href="http://localhost:1313/en/posts/notes/datebase/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Chapter6 ER模型</title>
+        <link>http://localhost:1313/en/posts/notes/datebase/%E7%AC%AC%E5%85%AD%E7%AB%A0er%E6%A8%A1%E5%9E%8B/</link>
+        <pubDate>Thu, 23 Oct 2025 00:00:00 +0800</pubDate>
+        
+        <guid>http://localhost:1313/en/posts/notes/datebase/%E7%AC%AC%E5%85%AD%E7%AB%A0er%E6%A8%A1%E5%9E%8B/</guid>
+        <description>&lt;h1 id=&#34;chapter-6-the-entity-relationship-model&#34;&gt;Chapter 6 The Entity-Relationship Model
+&lt;/h1&gt;&lt;p&gt;&lt;img src=&#34;http://localhost:1313/en/posts/notes/datebase/%E7%AC%AC%E5%85%AD%E7%AB%A0er%E6%A8%A1%E5%9E%8B/erd.png&#34;
+	width=&#34;1171&#34;
+	height=&#34;1073&#34;
+	srcset=&#34;http://localhost:1313/en/posts/notes/datebase/%E7%AC%AC%E5%85%AD%E7%AB%A0er%E6%A8%A1%E5%9E%8B/erd_hu_7397ce272e3e7e02.png 480w, http://localhost:1313/en/posts/notes/datebase/%E7%AC%AC%E5%85%AD%E7%AB%A0er%E6%A8%A1%E5%9E%8B/erd_hu_f0fd75825304ea4b.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;ER diagram&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;109&#34;
+		data-flex-basis=&#34;261px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;entity-sets实体集实体型&#34;&gt;Entity Sets（实体集，实体型）
+&lt;/h2&gt;&lt;p&gt;一张学生表是一个实体集，一个学生是一个实体（一行记录）&lt;/p&gt;
+&lt;h2 id=&#34;relationship-sets关系集&#34;&gt;Relationship Sets(关系集)
+&lt;/h2&gt;&lt;p&gt;&lt;code&gt;选课表&lt;/code&gt;就是一个&lt;code&gt;关系集&lt;/code&gt;。它定义了“学生”和“课程”之间的“选修”这种关系。&lt;code&gt;关系&lt;/code&gt;表示特定实体之间的一次具体关联。它对应的是联系表中的一行&lt;code&gt;记录&lt;/code&gt;。
+关系集也可以拥有自己的&lt;code&gt;属性&lt;/code&gt;（&lt;strong&gt;关系集属性&lt;/strong&gt;），用于描述关系的特征。它同样对应联系表中的列。选课表这个关系集可以有&lt;code&gt;成绩、选修日期&lt;/code&gt;等属性，这些属性不属于学生，也不属于课程，而是属于“选修”这个行为本身。&lt;/p&gt;
+&lt;h2 id=&#34;choice-of-primary-key-for-binary-relationship&#34;&gt;Choice of Primary key for Binary Relationship
+&lt;/h2&gt;&lt;p&gt;在多的那一端把一的主键拿过来当外键&lt;/p&gt;
+&lt;h2 id=&#34;多元联系non-binary&#34;&gt;多元联系(non-binary)
+&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;http://localhost:1313/en/posts/notes/datebase/%E7%AC%AC%E5%85%AD%E7%AB%A0er%E6%A8%A1%E5%9E%8B/nonebinary.png&#34;
+	width=&#34;933&#34;
+	height=&#34;359&#34;
+	srcset=&#34;http://localhost:1313/en/posts/notes/datebase/%E7%AC%AC%E5%85%AD%E7%AB%A0er%E6%A8%A1%E5%9E%8B/nonebinary_hu_90ed7bc08ea5076e.png 480w, http://localhost:1313/en/posts/notes/datebase/%E7%AC%AC%E5%85%AD%E7%AB%A0er%E6%A8%A1%E5%9E%8B/nonebinary_hu_8a18ac6277bc90b4.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;三元Ternary Relationship&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;259&#34;
+		data-flex-basis=&#34;623px&#34;
+	
+&gt;
+先转成多个二元联系再转表：将其他实体集的主键和关系自身属性建成表，各实体集不存放多余属性。&lt;/p&gt;
+&lt;h2 id=&#34;e-r图概念设计结果&#34;&gt;E-R图（概念设计结果）
+&lt;/h2&gt;&lt;h3 id=&#34;representing-cardinality-constraints-in-er-diagram&#34;&gt;Representing Cardinality Constraints in ER Diagram
+&lt;/h3&gt;&lt;p&gt;→：一
+—：多
+(one,many) x (one,many) = 4 种&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/en/posts/notes/datebase/%E7%AC%AC%E5%85%AD%E7%AB%A0er%E6%A8%A1%E5%9E%8B/onetoone.png&#34;
+	width=&#34;1077&#34;
+	height=&#34;283&#34;
+	srcset=&#34;http://localhost:1313/en/posts/notes/datebase/%E7%AC%AC%E5%85%AD%E7%AB%A0er%E6%A8%A1%E5%9E%8B/onetoone_hu_4b3b28947f5fe4df.png 480w, http://localhost:1313/en/posts/notes/datebase/%E7%AC%AC%E5%85%AD%E7%AB%A0er%E6%A8%A1%E5%9E%8B/onetoone_hu_b4e9fa82a8ffafb9.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;一对一&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;380&#34;
+		data-flex-basis=&#34;913px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;参与约束participant-constraints&#34;&gt;参与约束(Participant Constraints)
+&lt;/h3&gt;&lt;p&gt;完全参与、部分参与&lt;/p&gt;
+&lt;h2 id=&#34;逻辑设计阶段&#34;&gt;逻辑设计阶段
+&lt;/h2&gt;&lt;p&gt;E-R图转关系模式
+实体、联系、属性（单值属性、多值属性、复合属性）如何转表？
+多值属性单独转表
+复合属性拆开（如时间、地址）&lt;/p&gt;
+&lt;p&gt;弱实体集、强实体集；
+用实体还是属性？
+Not to use the &lt;code&gt;primary-key&lt;/code&gt; of an entity set as an attributes of another entity set (to represent implicitly association between these two entity sets), it is better to use an relationship set  to explicitly show this association
+e.g.  for the entity student, do not use instructor.id as its attribute, in stead of,  representing association among student and instructor using &lt;code&gt;relationship&lt;/code&gt; advisor.&lt;/p&gt;
+&lt;p&gt;用实体还是关系？“动作”对应“联系”&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/en/posts/notes/datebase/%E7%AC%AC%E5%85%AD%E7%AB%A0er%E6%A8%A1%E5%9E%8B/weake.png&#34;
+	width=&#34;1811&#34;
+	height=&#34;1026&#34;
+	srcset=&#34;http://localhost:1313/en/posts/notes/datebase/%E7%AC%AC%E5%85%AD%E7%AB%A0er%E6%A8%A1%E5%9E%8B/weake_hu_75aeef19b0c5a435.png 480w, http://localhost:1313/en/posts/notes/datebase/%E7%AC%AC%E5%85%AD%E7%AB%A0er%E6%A8%A1%E5%9E%8B/weake_hu_8882bfca8686d0a2.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;弱实体集&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;176&#34;
+		data-flex-basis=&#34;423px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;扩展er-详情看isa那篇&#34;&gt;扩展ER （详情看ISA那篇）
+&lt;/h2&gt;&lt;h3 id=&#34;面向对象erobject-oriented-oo-e-r&#34;&gt;面向对象ER：Object-oriented (OO) E-R
+&lt;/h3&gt;&lt;p&gt;specialization （特化，特殊化，例化）
+自上而下，底层实体集是高层实体集的真子集
+高层：超类；底层：子类&lt;/p&gt;
+&lt;p&gt;generalization (概括化，泛化，普遍化)
+自底向上&lt;/p&gt;
+&lt;p&gt;attributes inheritance （属性继承）
+联系也可以继承&lt;/p&gt;
+&lt;h3 id=&#34;aggregation&#34;&gt;Aggregation
+&lt;/h3&gt;&lt;p&gt;relationship on relationship（联系的联系）&lt;/p&gt;
+&lt;h2 id=&#34;er图记号总结&#34;&gt;ER图记号总结
+&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;http://localhost:1313/en/posts/notes/datebase/%E7%AC%AC%E5%85%AD%E7%AB%A0er%E6%A8%A1%E5%9E%8B/notation.png&#34;
+	width=&#34;1448&#34;
+	height=&#34;830&#34;
+	srcset=&#34;http://localhost:1313/en/posts/notes/datebase/%E7%AC%AC%E5%85%AD%E7%AB%A0er%E6%A8%A1%E5%9E%8B/notation_hu_2e71417dac28c066.png 480w, http://localhost:1313/en/posts/notes/datebase/%E7%AC%AC%E5%85%AD%E7%AB%A0er%E6%A8%A1%E5%9E%8B/notation_hu_eae70deb99dd7e5b.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;记号&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;174&#34;
+		data-flex-basis=&#34;418px&#34;
+	
+&gt;
+&lt;img src=&#34;http://localhost:1313/en/posts/notes/datebase/%E7%AC%AC%E5%85%AD%E7%AB%A0er%E6%A8%A1%E5%9E%8B/image-1.png&#34;
+	width=&#34;1340&#34;
+	height=&#34;910&#34;
+	srcset=&#34;http://localhost:1313/en/posts/notes/datebase/%E7%AC%AC%E5%85%AD%E7%AB%A0er%E6%A8%A1%E5%9E%8B/image-1_hu_2eca5d22e9091c97.png 480w, http://localhost:1313/en/posts/notes/datebase/%E7%AC%AC%E5%85%AD%E7%AB%A0er%E6%A8%A1%E5%9E%8B/image-1_hu_148bcaec67969326.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;记号（续）&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;147&#34;
+		data-flex-basis=&#34;353px&#34;
+	
+&gt;
+&lt;img src=&#34;http://localhost:1313/en/posts/notes/datebase/%E7%AC%AC%E5%85%AD%E7%AB%A0er%E6%A8%A1%E5%9E%8B/image-2.png&#34;
+	width=&#34;1765&#34;
+	height=&#34;988&#34;
+	srcset=&#34;http://localhost:1313/en/posts/notes/datebase/%E7%AC%AC%E5%85%AD%E7%AB%A0er%E6%A8%A1%E5%9E%8B/image-2_hu_d48f4362889822da.png 480w, http://localhost:1313/en/posts/notes/datebase/%E7%AC%AC%E5%85%AD%E7%AB%A0er%E6%A8%A1%E5%9E%8B/image-2_hu_75aeac4bc8f0ad8c.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;替代记号&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;178&#34;
+		data-flex-basis=&#34;428px&#34;
+	
+&gt;
+&lt;img src=&#34;http://localhost:1313/en/posts/notes/datebase/%E7%AC%AC%E5%85%AD%E7%AB%A0er%E6%A8%A1%E5%9E%8B/image-3.png&#34;
+	width=&#34;1839&#34;
+	height=&#34;1011&#34;
+	srcset=&#34;http://localhost:1313/en/posts/notes/datebase/%E7%AC%AC%E5%85%AD%E7%AB%A0er%E6%A8%A1%E5%9E%8B/image-3_hu_f9791aa57282eeee.png 480w, http://localhost:1313/en/posts/notes/datebase/%E7%AC%AC%E5%85%AD%E7%AB%A0er%E6%A8%A1%E5%9E%8B/image-3_hu_b8fd75e1fb94a904.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;替代记号（续）&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;181&#34;
+		data-flex-basis=&#34;436px&#34;
+	
+&gt;&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>Chapter7 关系规范化</title>
+        <link>http://localhost:1313/en/posts/notes/datebase/%E7%AC%AC%E4%B8%83%E7%AB%A0%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%96/</link>
+        <pubDate>Thu, 23 Oct 2025 00:00:00 +0800</pubDate>
+        
+        <guid>http://localhost:1313/en/posts/notes/datebase/%E7%AC%AC%E4%B8%83%E7%AB%A0%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%96/</guid>
+        <description>&lt;h1 id=&#34;无损连接&#34;&gt;无损连接
+&lt;/h1&gt;&lt;p&gt;有损连接：拆分再恢复时出现多余错误记录
+&lt;img src=&#34;http://localhost:1313/en/posts/notes/datebase/%E7%AC%AC%E4%B8%83%E7%AB%A0%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%96/image.png&#34;
+	width=&#34;2027&#34;
+	height=&#34;791&#34;
+	srcset=&#34;http://localhost:1313/en/posts/notes/datebase/%E7%AC%AC%E4%B8%83%E7%AB%A0%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%96/image_hu_2f631c6edbbdc315.png 480w, http://localhost:1313/en/posts/notes/datebase/%E7%AC%AC%E4%B8%83%E7%AB%A0%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%96/image_hu_45837c32a7517d6f.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;无损连接&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;256&#34;
+		data-flex-basis=&#34;615px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h1 id=&#34;数据依赖&#34;&gt;数据依赖
+&lt;/h1&gt;&lt;p&gt;在逻辑DBS设计过程中，将E-R图转换，得到面向特定应用领域的初始关系模式集。这些初始关系模式集中可能存在多种（作为完整性约束的）关系模式属性间的数据依赖 (Data Dependencies) 关系
+函数依赖 (Functional Dependencies, FD, §7.2)
+多值依赖 (Mutivalued Dependencies, MVD, §7.4, 7.6)
+连接依赖 (Join Dependencies, JD) （略）
+函数依赖是特殊的多值依赖
+&lt;img src=&#34;http://localhost:1313/en/posts/notes/datebase/%E7%AC%AC%E4%B8%83%E7%AB%A0%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%96/image-1.png&#34;
+	width=&#34;2037&#34;
+	height=&#34;1140&#34;
+	srcset=&#34;http://localhost:1313/en/posts/notes/datebase/%E7%AC%AC%E4%B8%83%E7%AB%A0%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%96/image-1_hu_72fea522126e530a.png 480w, http://localhost:1313/en/posts/notes/datebase/%E7%AC%AC%E4%B8%83%E7%AB%A0%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%96/image-1_hu_76ae8d1399a3e256.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;范式定义&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;178&#34;
+		data-flex-basis=&#34;428px&#34;
+	
+&gt;&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>Chapter7 函数依赖</title>
+        <link>http://localhost:1313/en/posts/notes/datebase/%E7%AC%AC%E4%B8%83%E7%AB%A0%E5%87%BD%E6%95%B0%E4%BE%9D%E8%B5%96/</link>
+        <pubDate>Thu, 23 Oct 2025 00:00:00 +0800</pubDate>
+        
+        <guid>http://localhost:1313/en/posts/notes/datebase/%E7%AC%AC%E4%B8%83%E7%AB%A0%E5%87%BD%E6%95%B0%E4%BE%9D%E8%B5%96/</guid>
+        <description>&lt;p&gt;&lt;strong&gt;函数依赖（Functional Dependencies，简称FD）&lt;/strong&gt; 是关系数据库理论中的一个核心概念，它描述了关系中属性之间的&lt;strong&gt;依赖关系&lt;/strong&gt;。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;一-基本定义&#34;&gt;&lt;strong&gt;一、 基本定义&lt;/strong&gt;
+&lt;/h2&gt;&lt;h3 id=&#34;正式定义&#34;&gt;&lt;strong&gt;正式定义&lt;/strong&gt;
+&lt;/h3&gt;&lt;p&gt;在关系R中，如果属性集X的取值&lt;strong&gt;唯一确定&lt;/strong&gt;属性集Y的取值，则称 &lt;strong&gt;X函数决定Y&lt;/strong&gt;，或 &lt;strong&gt;Y函数依赖于X&lt;/strong&gt;，记作：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;X → Y
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;通俗理解&#34;&gt;&lt;strong&gt;通俗理解&lt;/strong&gt;
+&lt;/h3&gt;&lt;p&gt;&amp;ldquo;知道了X的值，就能唯一确定Y的值&amp;rdquo;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;二-具体例子&#34;&gt;&lt;strong&gt;二、 具体例子&lt;/strong&gt;
+&lt;/h2&gt;&lt;h3 id=&#34;例1学生表&#34;&gt;&lt;strong&gt;例1：学生表&lt;/strong&gt;
+&lt;/h3&gt;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;学生表(学号, 姓名, 院系, 院系地址)
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;函数依赖&lt;/strong&gt;：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;学号 → 姓名        &lt;span style=&#34;color:#6272a4&#34;&gt;-- 知道学号，就能确定姓名
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;&lt;/span&gt;学号 → 院系        &lt;span style=&#34;color:#6272a4&#34;&gt;-- 知道学号，就能确定院系  
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;&lt;/span&gt;学号 → 院系地址    &lt;span style=&#34;color:#6272a4&#34;&gt;-- 知道学号，就能确定院系地址
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;&lt;/span&gt;院系 → 院系地址    &lt;span style=&#34;color:#6272a4&#34;&gt;-- 知道院系，就能确定院系地址
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;例2订单明细表&#34;&gt;&lt;strong&gt;例2：订单明细表&lt;/strong&gt;
+&lt;/h3&gt;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;订单明细(订单号, 产品号, 数量, 产品名称, 单价)
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;函数依赖&lt;/strong&gt;：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;(订单号, 产品号) → 数量    &lt;span style=&#34;color:#6272a4&#34;&gt;-- 主键决定数量
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;&lt;/span&gt;产品号 → 产品名称         &lt;span style=&#34;color:#6272a4&#34;&gt;-- 产品号决定产品名称
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;&lt;/span&gt;产品号 → 单价            &lt;span style=&#34;color:#6272a4&#34;&gt;-- 产品号决定单价
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h2 id=&#34;三-函数依赖的类型&#34;&gt;&lt;strong&gt;三、 函数依赖的类型&lt;/strong&gt;
+&lt;/h2&gt;&lt;h3 id=&#34;1-完全函数依赖&#34;&gt;&lt;strong&gt;1. 完全函数依赖&lt;/strong&gt;
+&lt;/h3&gt;&lt;p&gt;Y完全依赖于X，且X的&lt;strong&gt;任何真子集&lt;/strong&gt;都不能决定Y。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;-- 例子：选课表(学号, 课程号, 成绩)
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;&lt;/span&gt;(学号, 课程号) → 成绩    &lt;span style=&#34;color:#6272a4&#34;&gt;-- 成绩完全依赖于(学号,课程号)
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;&lt;/span&gt;学号 ↛ 成绩            &lt;span style=&#34;color:#6272a4&#34;&gt;-- 学号单独不能决定成绩
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;&lt;/span&gt;课程号 ↛ 成绩          &lt;span style=&#34;color:#6272a4&#34;&gt;-- 课程号单独不能决定成绩
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;2-部分函数依赖&#34;&gt;&lt;strong&gt;2. 部分函数依赖&lt;/strong&gt;
+&lt;/h3&gt;&lt;p&gt;Y依赖于X，但Y也依赖于X的某个真子集。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;-- 反例：选课表(学号, 课程号, 学生姓名, 成绩)
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;&lt;/span&gt;(学号, 课程号) → 学生姓名  &lt;span style=&#34;color:#6272a4&#34;&gt;-- 但 学号 → 学生姓名 已经成立
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;-- 学生姓名部分依赖于(学号,课程号)
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;3-传递函数依赖&#34;&gt;&lt;strong&gt;3. 传递函数依赖&lt;/strong&gt;
+&lt;/h3&gt;&lt;p&gt;通过中间属性间接依赖。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;-- 例子：学生表(学号, 院系, 院系地址)
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;&lt;/span&gt;学号 → 院系        &lt;span style=&#34;color:#6272a4&#34;&gt;-- 直接依赖
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;&lt;/span&gt;院系 → 院系地址    &lt;span style=&#34;color:#6272a4&#34;&gt;-- 直接依赖  
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;&lt;/span&gt;学号 → 院系地址    &lt;span style=&#34;color:#6272a4&#34;&gt;-- 传递依赖（通过院系）
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h2 id=&#34;四-函数依赖与键的关系&#34;&gt;&lt;strong&gt;四、 函数依赖与键的关系&lt;/strong&gt;
+&lt;/h2&gt;&lt;h3 id=&#34;超键&#34;&gt;&lt;strong&gt;超键&lt;/strong&gt;
+&lt;/h3&gt;&lt;p&gt;能唯一标识元组的属性集。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;-- 学生表(学号, 姓名, 院系)
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;&lt;/span&gt;{学号} 是超键
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{学号, 姓名} 也是超键（但包含冗余）
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;候选键&#34;&gt;&lt;strong&gt;候选键&lt;/strong&gt;
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;最小超键&lt;/strong&gt;（不含多余属性）。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;-- {学号} 是候选键
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;-- {学号, 姓名} 不是候选键（因为学号单独就是超键）
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;主键&#34;&gt;&lt;strong&gt;主键&lt;/strong&gt;
+&lt;/h3&gt;&lt;p&gt;从候选键中选择的一个。&lt;/p&gt;
+&lt;h3 id=&#34;函数依赖视角&#34;&gt;&lt;strong&gt;函数依赖视角&lt;/strong&gt;
+&lt;/h3&gt;&lt;p&gt;候选键是能函数决定所有其他属性的&lt;strong&gt;最小属性集&lt;/strong&gt;。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;五-函数依赖的推理规则armstrong公理&#34;&gt;&lt;strong&gt;五、 函数依赖的推理规则（Armstrong公理）&lt;/strong&gt;
+&lt;/h2&gt;&lt;h3 id=&#34;1-自反律&#34;&gt;&lt;strong&gt;1. 自反律&lt;/strong&gt;
+&lt;/h3&gt;&lt;p&gt;如果 Y ⊆ X，则 X → Y&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;(学号, 姓名) → 学号
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;2-增广律&#34;&gt;&lt;strong&gt;2. 增广律&lt;/strong&gt;
+&lt;/h3&gt;&lt;p&gt;如果 X → Y，则 XZ → YZ&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;学号 → 姓名，则 (学号, 院系) → (姓名, 院系)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;3-传递律&#34;&gt;&lt;strong&gt;3. 传递律&lt;/strong&gt;
+&lt;/h3&gt;&lt;p&gt;如果 X → Y 且 Y → Z，则 X → Z&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;学号 → 院系，院系 → 院系地址，则 学号 → 院系地址
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;推导规则&#34;&gt;&lt;strong&gt;推导规则&lt;/strong&gt;
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;合并律&lt;/strong&gt;：如果 X → Y 且 X → Z，则 X → YZ&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;分解律&lt;/strong&gt;：如果 X → YZ，则 X → Y 且 X → Z&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;伪传递律&lt;/strong&gt;：如果 X → Y 且 WY → Z，则 WX → Z&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;六-函数依赖的应用&#34;&gt;&lt;strong&gt;六、 函数依赖的应用&lt;/strong&gt;
+&lt;/h2&gt;&lt;h3 id=&#34;1-数据库规范化&#34;&gt;&lt;strong&gt;1. 数据库规范化&lt;/strong&gt;
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;-- 未规范化的表：存在部分依赖
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;&lt;/span&gt;学生选课(学号, 姓名, 课程号, 课程名, 成绩)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;-- 函数依赖分析：
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;&lt;/span&gt;学号 → 姓名                    &lt;span style=&#34;color:#6272a4&#34;&gt;-- 违反2NF
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;&lt;/span&gt;课程号 → 课程名                &lt;span style=&#34;color:#6272a4&#34;&gt;-- 违反2NF  
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;&lt;/span&gt;(学号, 课程号) → 成绩          &lt;span style=&#34;color:#6272a4&#34;&gt;-- 完全依赖
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;-- 规范化后：
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;&lt;/span&gt;学生表(学号, 姓名)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;课程表(课程号, 课程名)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;选课表(学号, 课程号, 成绩)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;2-找出所有的函数依赖&#34;&gt;&lt;strong&gt;2. 找出所有的函数依赖&lt;/strong&gt;
+&lt;/h3&gt;&lt;p&gt;给定关系 R(A,B,C,D) 和 FD：{A→B, B→C}&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;推导所有FD&lt;/strong&gt;：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;A → B (已知)
+B → C (已知)
+A → C (传递律：A→B, B→C)
+A → BC (合并律：A→B, A→C)
+AB → B (增广律)
+...等等
+&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
+&lt;h2 id=&#34;七-闭包计算&#34;&gt;&lt;strong&gt;七、 闭包计算&lt;/strong&gt;
+&lt;/h2&gt;&lt;h3 id=&#34;属性闭包-x&#34;&gt;&lt;strong&gt;属性闭包 X⁺&lt;/strong&gt;
+&lt;/h3&gt;&lt;p&gt;在函数依赖集F下，能被X函数决定的所有属性的集合。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;算法&lt;/strong&gt;：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;结果 = X&lt;/li&gt;
+&lt;li&gt;重复查找能由当前结果决定的属性，加入结果&lt;/li&gt;
+&lt;li&gt;直到结果不再变化&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;例子&#34;&gt;&lt;strong&gt;例子&lt;/strong&gt;
+&lt;/h3&gt;&lt;p&gt;已知 F = {A→B, B→C, C→D}
+求 A⁺：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;A⁺ = {A}
+A⁺ = {A,B}    (因为 A→B)
+A⁺ = {A,B,C}  (因为 B→C)  
+A⁺ = {A,B,C,D} (因为 C→D)
+&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
+&lt;h2 id=&#34;八-实际数据库设计中的应用&#34;&gt;&lt;strong&gt;八、 实际数据库设计中的应用&lt;/strong&gt;
+&lt;/h2&gt;&lt;h3 id=&#34;识别不良设计&#34;&gt;&lt;strong&gt;识别不良设计&lt;/strong&gt;
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;-- 不良设计：存在传递依赖
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;&lt;/span&gt;员工表(员工号, 姓名, 部门编号, 部门名称, 部门经理)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;-- 函数依赖：
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;&lt;/span&gt;员工号 → 姓名, 部门编号, 部门名称, 部门经理
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;部门编号 → 部门名称, 部门经理  &lt;span style=&#34;color:#6272a4&#34;&gt;-- 传递依赖！
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;-- 好的设计：
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;&lt;/span&gt;员工表(员工号, 姓名, 部门编号)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;部门表(部门编号, 部门名称, 部门经理)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;验证设计合理性&#34;&gt;&lt;strong&gt;验证设计合理性&lt;/strong&gt;
+&lt;/h3&gt;&lt;p&gt;通过函数依赖分析，确保设计符合：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;2NF&lt;/strong&gt;：消除非主属性对主键的部分依赖&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;3NF&lt;/strong&gt;：消除非主属性对主键的传递依赖&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;BCNF&lt;/strong&gt;：消除主属性对主键的部分和传递依赖&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;总结&#34;&gt;&lt;strong&gt;总结&lt;/strong&gt;
+&lt;/h2&gt;&lt;p&gt;函数依赖是数据库理论的&lt;strong&gt;基石&lt;/strong&gt;：&lt;/p&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;概念&lt;/th&gt;
+          &lt;th&gt;意义&lt;/th&gt;
+          &lt;th&gt;应用&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;X → Y&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;X决定Y&lt;/td&gt;
+          &lt;td&gt;描述数据关系&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;完全依赖&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;最小决定集&lt;/td&gt;
+          &lt;td&gt;2NF规范化&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;部分依赖&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;冗余依赖&lt;/td&gt;
+          &lt;td&gt;需要消除&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;传递依赖&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;间接依赖&lt;/td&gt;
+          &lt;td&gt;3NF规范化&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;理解函数依赖能帮助你：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;✅ 设计出结构良好的数据库&lt;/li&gt;
+&lt;li&gt;✅ 避免数据冗余和更新异常&lt;/li&gt;
+&lt;li&gt;✅ 进行有效的数据库规范化&lt;/li&gt;
+&lt;li&gt;✅ 保证数据的一致性&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;sql-statements-for-fd-judgement&#34;&gt;&lt;strong&gt;SQL statements for FD judgement&lt;/strong&gt;
+&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;http://localhost:1313/en/posts/notes/datebase/%E7%AC%AC%E4%B8%83%E7%AB%A0%E5%87%BD%E6%95%B0%E4%BE%9D%E8%B5%96/FDj1.png&#34;
+	width=&#34;1965&#34;
+	height=&#34;1128&#34;
+	srcset=&#34;http://localhost:1313/en/posts/notes/datebase/%E7%AC%AC%E4%B8%83%E7%AB%A0%E5%87%BD%E6%95%B0%E4%BE%9D%E8%B5%96/FDj1_hu_833f8de044c35c31.png 480w, http://localhost:1313/en/posts/notes/datebase/%E7%AC%AC%E4%B8%83%E7%AB%A0%E5%87%BD%E6%95%B0%E4%BE%9D%E8%B5%96/FDj1_hu_89687ac18b9adbb2.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;alt text&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;174&#34;
+		data-flex-basis=&#34;418px&#34;
+	
+&gt;
+注意，左侧方框内的嵌套查询不可用，必须使用子查询：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;SELECT&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;MAX&lt;/span&gt;(price_count) 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;FROM&lt;/span&gt; (
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;SELECT&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;COUNT&lt;/span&gt;(&lt;span style=&#34;color:#ff79c6&#34;&gt;DISTINCT&lt;/span&gt; price) &lt;span style=&#34;color:#ff79c6&#34;&gt;as&lt;/span&gt; price_count
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;FROM&lt;/span&gt; part
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;WHERE&lt;/span&gt; pname &lt;span style=&#34;color:#ff79c6&#34;&gt;IS&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;NOT&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;NULL&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;GROUP&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;BY&lt;/span&gt; pname
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;) &lt;span style=&#34;color:#ff79c6&#34;&gt;AS&lt;/span&gt; counts;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;http://localhost:1313/en/posts/notes/datebase/%E7%AC%AC%E4%B8%83%E7%AB%A0%E5%87%BD%E6%95%B0%E4%BE%9D%E8%B5%96/FDj2.png&#34;
+	width=&#34;2028&#34;
+	height=&#34;1122&#34;
+	srcset=&#34;http://localhost:1313/en/posts/notes/datebase/%E7%AC%AC%E4%B8%83%E7%AB%A0%E5%87%BD%E6%95%B0%E4%BE%9D%E8%B5%96/FDj2_hu_b15bdca033654086.png 480w, http://localhost:1313/en/posts/notes/datebase/%E7%AC%AC%E4%B8%83%E7%AB%A0%E5%87%BD%E6%95%B0%E4%BE%9D%E8%B5%96/FDj2_hu_32c30112ac4d7470.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;alt text&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;180&#34;
+		data-flex-basis=&#34;433px&#34;
+	
+&gt;&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>Chapter7 分解算法（考试重点）</title>
+        <link>http://localhost:1313/en/posts/notes/datebase/%E7%AC%AC%E4%B8%83%E7%AB%A0%E8%8C%83%E5%BC%8F%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95/</link>
+        <pubDate>Thu, 23 Oct 2025 00:00:00 +0800</pubDate>
+        
+        <guid>http://localhost:1313/en/posts/notes/datebase/%E7%AC%AC%E4%B8%83%E7%AB%A0%E8%8C%83%E5%BC%8F%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Deepseek总结的关系规范化</title>
+        <link>http://localhost:1313/en/posts/notes/datebase/deepseek%E6%80%BB%E7%BB%93%E7%9A%84%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%96/</link>
+        <pubDate>Thu, 23 Oct 2025 00:00:00 +0800</pubDate>
+        
+        <guid>http://localhost:1313/en/posts/notes/datebase/deepseek%E6%80%BB%E7%BB%93%E7%9A%84%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%96/</guid>
+        <description>&lt;p&gt;&lt;strong&gt;关系规范化/Schema Normalization&lt;/strong&gt;是一种数据库设计技术，旨在通过消除数据冗余和更新异常来组织关系数据库中的属性（列）和关系（表）。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;一-规范化的核心目标&#34;&gt;&lt;strong&gt;一、 规范化的核心目标&lt;/strong&gt;
+&lt;/h2&gt;&lt;h3 id=&#34;1-消除数据冗余&#34;&gt;1. &lt;strong&gt;消除数据冗余&lt;/strong&gt;
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;-- 非规范化设计（冗余）
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;&lt;/span&gt;学生表(学号, 姓名, 课程号, 课程名, 教师, 教师办公室)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;-- 规范化设计（无冗余）
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;&lt;/span&gt;学生表(学号, 姓名)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;课程表(课程号, 课程名, 教师编号)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;教师表(教师编号, 教师姓名, 办公室)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;选课表(学号, 课程号, 成绩)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;2-避免更新异常&#34;&gt;2. &lt;strong&gt;避免更新异常&lt;/strong&gt;
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;插入异常&lt;/strong&gt;：无法插入某些信息&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;删除异常&lt;/strong&gt;：删除信息时丢失其他重要数据&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;修改异常&lt;/strong&gt;：修改数据时出现不一致&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;二-规范化范式normal-forms&#34;&gt;&lt;strong&gt;二、 规范化范式（Normal Forms）&lt;/strong&gt;
+&lt;/h2&gt;&lt;p&gt;关系规范化分为多个层级，称为&amp;quot;范式&amp;quot;：
+&lt;img src=&#34;http://localhost:1313/en/posts/notes/datebase/deepseek%E6%80%BB%E7%BB%93%E7%9A%84%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%96/image.png&#34;
+	width=&#34;1383&#34;
+	height=&#34;355&#34;
+	srcset=&#34;http://localhost:1313/en/posts/notes/datebase/deepseek%E6%80%BB%E7%BB%93%E7%9A%84%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%96/image_hu_c1c0ded694fa508a.png 480w, http://localhost:1313/en/posts/notes/datebase/deepseek%E6%80%BB%E7%BB%93%E7%9A%84%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%96/image_hu_5fa213c649ab6922.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;alt text&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;389&#34;
+		data-flex-basis=&#34;934px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;1-第一范式1nf&#34;&gt;&lt;strong&gt;1. 第一范式（1NF）&lt;/strong&gt;
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;要求&lt;/strong&gt;：每个列都是原子的（不可再分）&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;-- 违反1NF的例子
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;&lt;/span&gt;学生表(学号, 姓名, 选修课程) 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;-- 数据：(&amp;#39;001&amp;#39;, &amp;#39;张三&amp;#39;, &amp;#39;数学,英语,物理&amp;#39;)
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;-- 符合1NF的设计
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;&lt;/span&gt;学生表(学号, 姓名)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;选课表(学号, 课程名)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;-- 数据：多条记录分别存储每门课程
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;2-第二范式2nf&#34;&gt;&lt;strong&gt;2. 第二范式（2NF）&lt;/strong&gt;
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;要求&lt;/strong&gt;：满足1NF，且非主属性完全依赖于主键&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;-- 违反2NF的例子
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;&lt;/span&gt;选课表(学号, 课程号, 课程名, 成绩, 学分)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;-- 主键：(学号, 课程号)
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;-- 问题：课程名、学分只依赖于课程号，不完全依赖于主键
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;-- 符合2NF的设计
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;&lt;/span&gt;选课表(学号, 课程号, 成绩)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;课程表(课程号, 课程名, 学分)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;3-第三范式3nf&#34;&gt;&lt;strong&gt;3. 第三范式（3NF）&lt;/strong&gt;
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;要求&lt;/strong&gt;：满足2NF，且消除传递依赖&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;-- 违反3NF的例子
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;&lt;/span&gt;学生表(学号, 姓名, 院系编号, 院系名称, 院系地址)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;-- 问题：院系名称、院系地址依赖于院系编号，院系编号依赖于学号
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;-- 符合3NF的设计
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;&lt;/span&gt;学生表(学号, 姓名, 院系编号)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;院系表(院系编号, 院系名称, 院系地址)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h2 id=&#34;三-实际案例演示&#34;&gt;&lt;strong&gt;三、 实际案例演示&lt;/strong&gt;
+&lt;/h2&gt;&lt;h3 id=&#34;非规范化设计问题很多&#34;&gt;&lt;strong&gt;非规范化设计（问题很多）&lt;/strong&gt;
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;销售记录表(
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    订单号, 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    客户编号, 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    客户姓名, 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    客户电话, 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    产品编号, 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    产品名称, 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    产品类别, 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    单价, 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    数量, 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    总金额,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    销售员编号,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    销售员姓名,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    销售员部门
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;存在的问题&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;数据冗余：客户信息、产品信息重复存储&lt;/li&gt;
+&lt;li&gt;更新异常：修改产品名称时需更新所有相关记录&lt;/li&gt;
+&lt;li&gt;插入异常：无法添加新客户如果没有订单&lt;/li&gt;
+&lt;li&gt;删除异常：删除订单会丢失客户信息&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;规范化后的设计&#34;&gt;&lt;strong&gt;规范化后的设计&lt;/strong&gt;
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;-- 第三范式设计
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;&lt;/span&gt;客户表(客户编号, 客户姓名, 客户电话)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;产品表(产品编号, 产品名称, 产品类别, 单价)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;销售员表(销售员编号, 销售员姓名, 部门编号)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;部门表(部门编号, 部门名称)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;订单表(订单号, 客户编号, 销售员编号, 订单日期)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;订单明细表(订单号, 产品编号, 数量, 总金额)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h2 id=&#34;四-更高阶的范式&#34;&gt;&lt;strong&gt;四、 更高阶的范式&lt;/strong&gt;
+&lt;/h2&gt;&lt;h3 id=&#34;4-boyce-codd范式bcnf&#34;&gt;&lt;strong&gt;4. Boyce-Codd范式（BCNF）&lt;/strong&gt;
+&lt;/h3&gt;&lt;p&gt;比3NF更严格，消除所有函数依赖中的决定因素不是候选键的情况。&lt;/p&gt;
+&lt;h3 id=&#34;5-第四范式4nf&#34;&gt;&lt;strong&gt;5. 第四范式（4NF）&lt;/strong&gt;
+&lt;/h3&gt;&lt;p&gt;消除多值依赖。&lt;/p&gt;
+&lt;h3 id=&#34;6-第五范式5nf&#34;&gt;&lt;strong&gt;6. 第五范式（5NF）&lt;/strong&gt;
+&lt;/h3&gt;&lt;p&gt;消除连接依赖。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;五-规范化的优缺点&#34;&gt;&lt;strong&gt;五、 规范化的优缺点&lt;/strong&gt;
+&lt;/h2&gt;&lt;h3 id=&#34;优点&#34;&gt;&lt;strong&gt;优点&lt;/strong&gt;
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;✅ 减少数据冗余
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;✅ 避免更新异常
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;✅ 提高数据一致性
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;✅ 简化数据结构
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;✅ 便于维护和扩展
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;缺点&#34;&gt;&lt;strong&gt;缺点&lt;/strong&gt;
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;❌ 查询可能变复杂（需要更多&lt;span style=&#34;color:#ff79c6&#34;&gt;JOIN&lt;/span&gt;）
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;❌ 可能影响性能
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;❌ 设计过程复杂
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h2 id=&#34;六-实际应用建议&#34;&gt;&lt;strong&gt;六、 实际应用建议&lt;/strong&gt;
+&lt;/h2&gt;&lt;h3 id=&#34;平衡原则&#34;&gt;&lt;strong&gt;平衡原则&lt;/strong&gt;
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;-- 有时需要反规范化以提高性能
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;-- 例如：在数据仓库中保留一些冗余数据
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;-- 规范化设计（3NF）
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;&lt;/span&gt;订单表(订单号, 客户编号)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;客户表(客户编号, 客户姓名)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;订单明细表(订单号, 产品编号, 数量)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;产品表(产品编号, 产品名称, 单价)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;-- 反规范化设计（为了报表性能）
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;&lt;/span&gt;订单汇总表(订单号, 客户姓名, 产品名称, 数量, 单价, 总金额)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;实际设计流程&#34;&gt;&lt;strong&gt;实际设计流程&lt;/strong&gt;
+&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;需求分析&lt;/strong&gt; → 收集所有数据项&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;1NF设计&lt;/strong&gt; → 确保原子性&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;2NF设计&lt;/strong&gt; → 消除部分依赖&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;3NF设计&lt;/strong&gt; → 消除传递依赖&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;性能优化&lt;/strong&gt; → 根据需要适当反规范化&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;总结&#34;&gt;&lt;strong&gt;总结&lt;/strong&gt;
+&lt;/h2&gt;&lt;p&gt;关系规范化是数据库设计的&lt;strong&gt;理论基础&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;1NF&lt;/strong&gt;：列不可再分&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;2NF&lt;/strong&gt;：消除部分依赖&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;3NF&lt;/strong&gt;：消除传递依赖&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;目标&lt;/strong&gt;：结构清晰、数据一致、维护方便&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;在实际项目中，通常设计到&lt;strong&gt;第三范式（3NF）&lt;/strong&gt;，然后根据性能需求进行适当的反规范化调整。&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>Deepseek整理的ISA</title>
+        <link>http://localhost:1313/en/posts/notes/datebase/deepseek%E6%80%BB%E7%BB%93%E7%9A%84isa/</link>
+        <pubDate>Thu, 23 Oct 2025 00:00:00 +0800</pubDate>
+        
+        <guid>http://localhost:1313/en/posts/notes/datebase/deepseek%E6%80%BB%E7%BB%93%E7%9A%84isa/</guid>
+        <description>&lt;h1 id=&#34;isa关系68&#34;&gt;ISA关系（6.8）
+&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;ISA Relationship&lt;/strong&gt; 指的是一种特定的&lt;strong&gt;数据建模&lt;/strong&gt;技术，用于在概念模型（如ER图）中表示实体之间的继承关系。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;ISA&lt;/strong&gt; 是 &lt;strong&gt;“IS-A”&lt;/strong&gt; 的缩写，例如 “&lt;strong&gt;A Manager IS-AN Employee&lt;/strong&gt;”（一个经理 &lt;strong&gt;是&lt;/strong&gt; 一个员工）。它描述了一种&lt;strong&gt;父类型（超类型）&lt;/strong&gt; 和&lt;strong&gt;子类型&lt;/strong&gt; 之间的层次关系。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;核心概念&#34;&gt;核心概念
+&lt;/h3&gt;&lt;p&gt;在数据库设计中，ISA关系用于捕捉现实世界中存在的&lt;strong&gt;分类结构&lt;/strong&gt;。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;超类型 / 父类：&lt;/strong&gt; 一个更一般化、更抽象的实体。
+&lt;ul&gt;
+&lt;li&gt;例如：&lt;code&gt;人(Person)&lt;/code&gt;、&lt;code&gt;账户(Account)&lt;/code&gt;、&lt;code&gt;车辆(Vehicle)&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;子类型 / 子类：&lt;/strong&gt; 一个更具体、更特化的实体，它是超类型的一种。
+&lt;ul&gt;
+&lt;li&gt;例如：&lt;code&gt;员工(Employee)&lt;/code&gt; 和 &lt;code&gt;学生(Student)&lt;/code&gt; 是 &lt;code&gt;人(Person)&lt;/code&gt; 的子类型。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;储蓄账户(SavingsAccount)&lt;/code&gt; 和 &lt;code&gt;支票账户(CheckingAccount)&lt;/code&gt; 是 &lt;code&gt;账户(Account)&lt;/code&gt; 的子类型。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;isa关系的两个关键约束&#34;&gt;ISA关系的两个关键约束
+&lt;/h3&gt;&lt;p&gt;当你在设计中使用ISA关系时，必须定义两个重要的约束：&lt;/p&gt;
+&lt;h4 id=&#34;1-重叠约束disjointoverlapping-constraint&#34;&gt;1. 重叠约束（Disjoint/Overlapping Constraint）
+&lt;/h4&gt;&lt;p&gt;规定一个超类型的实例是否可以同时属于多个子类型。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;不允许重叠：&lt;/strong&gt; 一个超类实例只能属于&lt;strong&gt;一个&lt;/strong&gt;子类型。
+&lt;ul&gt;
+&lt;li&gt;例如：一个 &lt;code&gt;账户(Account)&lt;/code&gt; 要么是 &lt;code&gt;储蓄账户(SavingsAccount)&lt;/code&gt;，要么是 &lt;code&gt;支票账户(CheckingAccount)&lt;/code&gt;，但不能同时是两者。用 &lt;strong&gt;“OR”&lt;/strong&gt; 表示。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;允许重叠：&lt;/strong&gt; 一个超类实例可以同时属于&lt;strong&gt;多个&lt;/strong&gt;子类型。
+&lt;ul&gt;
+&lt;li&gt;例如：一个 &lt;code&gt;人(Person)&lt;/code&gt; 可以同时是 &lt;code&gt;员工(Employee)&lt;/code&gt; 和 &lt;code&gt;学生(Student)&lt;/code&gt;。用 &lt;strong&gt;“AND”&lt;/strong&gt; 表示。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;2-完备性约束completeness-constraint&#34;&gt;2. 完备性约束（Completeness constraint）
+&lt;/h4&gt;&lt;p&gt;规定超类型中的每一个实例是否都&lt;strong&gt;必须&lt;/strong&gt;至少属于一个子类型。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;全完备性（total）：&lt;/strong&gt; 超类型的&lt;strong&gt;每一个&lt;/strong&gt;实例都&lt;strong&gt;必须&lt;/strong&gt;是某个子类型的实例。
+&lt;ul&gt;
+&lt;li&gt;例如：公司规定，每一个 &lt;code&gt;员工(Employee)&lt;/code&gt; 都必须是 &lt;code&gt;小时工(HourlyEmployee)&lt;/code&gt; 或 &lt;code&gt;月薪工(SalariedEmployee)&lt;/code&gt; 中的一种。超类型 &lt;code&gt;员工(Employee)&lt;/code&gt; 不会存在不属于任何子类的“孤例”。在ER图中，用&lt;strong&gt;双线&lt;/strong&gt;表示。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;部分完备性（partial）：&lt;/strong&gt; 超类型的实例&lt;strong&gt;可以&lt;/strong&gt;不属于任何子类型。
+&lt;ul&gt;
+&lt;li&gt;例如：一个 &lt;code&gt;人(Person)&lt;/code&gt; 可以只是普通人，既不是 &lt;code&gt;员工(Employee)&lt;/code&gt;，也不是 &lt;code&gt;学生(Student)&lt;/code&gt;。在ER图中，用&lt;strong&gt;单线&lt;/strong&gt;表示。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;在数据库中的实现方式&#34;&gt;在数据库中的实现方式
+&lt;/h3&gt;&lt;!-- raw HTML omitted --&gt;
+&lt;h4 id=&#34;1-每个具体类一张表&#34;&gt;1. 每个具体类一张表
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;方法：&lt;/strong&gt; 忽略超类型，只为&lt;strong&gt;每个子类型&lt;/strong&gt;创建一张表。这张表包含该子类型特有的属性，以及从超类型继承来的所有属性。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;举例：&lt;/strong&gt; 创建 &lt;code&gt;学生表(Students)&lt;/code&gt; 和 &lt;code&gt;员工表(Employees)&lt;/code&gt;，没有 &lt;code&gt;人表(Persons)&lt;/code&gt;。&lt;code&gt;Students&lt;/code&gt;表中有 &lt;code&gt;student_id, name, age, major&lt;/code&gt; 等字段。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;优点：&lt;/strong&gt; 查询特定子类型的数据时速度快。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;缺点：&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;数据冗余（如果一个人既是学生又是员工，他的&lt;code&gt;name&lt;/code&gt;和&lt;code&gt;age&lt;/code&gt;信息会在两张表中重复存储）。&lt;/li&gt;
+&lt;li&gt;难以对所有人进行统一查询（需要&lt;code&gt;UNION&lt;/code&gt;操作）。&lt;/li&gt;
+&lt;li&gt;无法表示不属于任何子类的人。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;2-单张表&#34;&gt;2. 单张表
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;方法：&lt;/strong&gt; 将整个层次结构“扁平化”为&lt;strong&gt;一张表&lt;/strong&gt;。这张表包含超类型和所有子类型的所有属性。同时，增加一个“类型鉴别”字段来标识每一行属于哪个子类型。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;举例：&lt;/strong&gt; 创建一张 &lt;code&gt;人表(Persons)&lt;/code&gt;，包含字段：&lt;code&gt;person_id, name, age, person_type, major, salary, department&lt;/code&gt;。
+&lt;ul&gt;
+&lt;li&gt;如果 &lt;code&gt;person_type = ‘Student’&lt;/code&gt;，那么 &lt;code&gt;major&lt;/code&gt; 字段有意义，&lt;code&gt;salary&lt;/code&gt; 字段为NULL。&lt;/li&gt;
+&lt;li&gt;如果 &lt;code&gt;person_type = ‘Employee’&lt;/code&gt;，那么 &lt;code&gt;salary&lt;/code&gt; 字段有意义，&lt;code&gt;major&lt;/code&gt; 字段为NULL。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;优点：&lt;/strong&gt; 统一查询非常简单，不需要&lt;code&gt;JOIN&lt;/code&gt;操作。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;缺点：&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;表中存在大量&lt;code&gt;NULL&lt;/code&gt;值，浪费存储空间。&lt;/li&gt;
+&lt;li&gt;表结构会随着子类型的增加而变得非常庞大和复杂。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;3-超类型和子类型分别建表&#34;&gt;3. 超类型和子类型分别建表
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;方法：&lt;/strong&gt; 为&lt;strong&gt;超类型&lt;/strong&gt;和&lt;strong&gt;每一个子类型&lt;/strong&gt;都创建一张表。
+&lt;ul&gt;
+&lt;li&gt;超类型表包含所有实例共享的公共属性（和一个主键）。&lt;/li&gt;
+&lt;li&gt;子类型表只包含其特有的属性，并&lt;strong&gt;共享超类型表的主键&lt;/strong&gt;（即子类型表的主键同时也是引用超类型表的外键）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;举例：&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;人表(Persons)&lt;/code&gt;：&lt;code&gt;person_id (PK), name, age&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;学生表(Students)&lt;/code&gt;：&lt;code&gt;person_id (PK, FK references Persons), major&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;员工表(Employees)&lt;/code&gt;：&lt;code&gt;person_id (PK, FK references Persons), salary, department&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;优点：&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;设计规范，消除了数据冗余。&lt;/li&gt;
+&lt;li&gt;易于添加新的子类型。&lt;/li&gt;
+&lt;li&gt;能很好地支持重叠约束（一个人可以同时在&lt;code&gt;Students&lt;/code&gt;和&lt;code&gt;Employees&lt;/code&gt;表中有记录）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;缺点：&lt;/strong&gt; 查询数据时需要频繁使用&lt;code&gt;JOIN&lt;/code&gt;操作，性能可能成为瓶颈。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;总结&#34;&gt;总结
+&lt;/h3&gt;&lt;p&gt;在数据库领域中，&lt;strong&gt;ISA Relationship&lt;/strong&gt; 是一个强大的概念建模工具，它清晰地表达了 &lt;strong&gt;“是一个”&lt;/strong&gt; 的继承关系。理解并正确定义其&lt;strong&gt;重叠约束&lt;/strong&gt;和&lt;strong&gt;完备性约束&lt;/strong&gt;至关重要，因为它直接影响到最终数据库表结构的设计选择（每种实现方式都有其优缺点，需要根据具体应用场景进行权衡）。&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>Chapter2 关系数据库基础</title>
+        <link>http://localhost:1313/en/posts/notes/datebase/%E7%AC%AC%E4%BA%8C%E7%AB%A0%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80/</link>
+        <pubDate>Sun, 01 Jan 2023 00:00:00 +0800</pubDate>
+        
+        <guid>http://localhost:1313/en/posts/notes/datebase/%E7%AC%AC%E4%BA%8C%E7%AB%A0%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80/</guid>
+        <description>&lt;h1 id=&#34;关系数据库结构&#34;&gt;关系数据库结构
+&lt;/h1&gt;&lt;p&gt;table、relation、attributes&lt;/p&gt;
+&lt;h1 id=&#34;key&#34;&gt;key
+&lt;/h1&gt;&lt;p&gt;A &lt;code&gt;superkey&lt;/code&gt; (超键) is a set of one or more attributes that, taken collectively, can be used to identify uniquely a tuple in the relation.&lt;/p&gt;
+&lt;p&gt;K is a &lt;code&gt;candidate key&lt;/code&gt; (候选键) if K is minimal super key. e.g.{ID} is a candidate key for instructor, assuming no two instructors can possibly have the same identifiers.
+A &lt;code&gt;relation&lt;/code&gt; may have several &lt;code&gt;candidate keys&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;Primary key&lt;/code&gt; (主键) is a candidate key chosen by the database designer as principal means to identify tuples within a relation&lt;/p&gt;
+&lt;p&gt;Def. &lt;code&gt;Primary attributes&lt;/code&gt; (主属性!)
+taking the key as a attribute set,  the attributes in the candidate keys, i.e. the element of the primary key is called the primary attributes
+&lt;code&gt;non-primary attributes&lt;/code&gt; (非主属性)&lt;/p&gt;
+&lt;p&gt;Super key &amp;gt;= candidate key &amp;gt;= primary key&lt;/p&gt;
+&lt;h1 id=&#34;relational-algebra-关系代数&#34;&gt;relational algebra (关系代数)
+&lt;/h1&gt;&lt;h2 id=&#34;six-basic-operators&#34;&gt;Six basic operators
+&lt;/h2&gt;&lt;p&gt;(选择) select: $\sigma$
+(投影) project:
+(笛卡尔积) Cartesian product: x
+(集合并) union:
+(集合差) set difference: –
+(重命名) rename:
+&lt;img src=&#34;http://localhost:1313/en/posts/notes/datebase/%E7%AC%AC%E4%BA%8C%E7%AB%A0%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80/alg.png&#34;
+	width=&#34;1155&#34;
+	height=&#34;858&#34;
+	srcset=&#34;http://localhost:1313/en/posts/notes/datebase/%E7%AC%AC%E4%BA%8C%E7%AB%A0%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80/alg_hu_437309c250861868.png 480w, http://localhost:1313/en/posts/notes/datebase/%E7%AC%AC%E4%BA%8C%E7%AB%A0%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80/alg_hu_de816a7d8886c9b.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;alt text&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;134&#34;
+		data-flex-basis=&#34;323px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;复合关系运算&#34;&gt;复合关系运算
+&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;http://localhost:1313/en/posts/notes/datebase/%E7%AC%AC%E4%BA%8C%E7%AB%A0%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80/join.png&#34;
+	width=&#34;1761&#34;
+	height=&#34;657&#34;
+	srcset=&#34;http://localhost:1313/en/posts/notes/datebase/%E7%AC%AC%E4%BA%8C%E7%AB%A0%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80/join_hu_81b7bbe814a81538.png 480w, http://localhost:1313/en/posts/notes/datebase/%E7%AC%AC%E4%BA%8C%E7%AB%A0%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80/join_hu_9972cf8518627a6a.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;alt text&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;268&#34;
+		data-flex-basis=&#34;643px&#34;
+	
+&gt;
+暂时值（Assignment）
+&lt;img src=&#34;http://localhost:1313/en/posts/notes/datebase/%E7%AC%AC%E4%BA%8C%E7%AB%A0%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80/as.png&#34;
+	width=&#34;1800&#34;
+	height=&#34;549&#34;
+	srcset=&#34;http://localhost:1313/en/posts/notes/datebase/%E7%AC%AC%E4%BA%8C%E7%AB%A0%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80/as_hu_cff2afed3258b1f9.png 480w, http://localhost:1313/en/posts/notes/datebase/%E7%AC%AC%E4%BA%8C%E7%AB%A0%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80/as_hu_7b878884a20c71ee.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;alt text&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;327&#34;
+		data-flex-basis=&#34;786px&#34;
+	
+&gt;&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>Chapter3 SQL ppt</title>
+        <link>http://localhost:1313/en/posts/notes/datebase/%E7%AC%AC%E4%B8%89%E7%AB%A0/</link>
+        <pubDate>Sun, 01 Jan 2023 00:00:00 +0800</pubDate>
+        
+        <guid>http://localhost:1313/en/posts/notes/datebase/%E7%AC%AC%E4%B8%89%E7%AB%A0/</guid>
+        <description>&lt;h1 id=&#34;sql&#34;&gt;SQL
+&lt;/h1&gt;&lt;h2 id=&#34;语法&#34;&gt;语法
+&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;http://localhost:1313/en/posts/notes/datebase/%E7%AC%AC%E4%B8%89%E7%AB%A0/syntax.png&#34;
+	width=&#34;1674&#34;
+	height=&#34;948&#34;
+	srcset=&#34;http://localhost:1313/en/posts/notes/datebase/%E7%AC%AC%E4%B8%89%E7%AB%A0/syntax_hu_5deb6cede58b4266.png 480w, http://localhost:1313/en/posts/notes/datebase/%E7%AC%AC%E4%B8%89%E7%AB%A0/syntax_hu_f7b2ba22d94ae1ca.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;alt text&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;176&#34;
+		data-flex-basis=&#34;423px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;select&#34;&gt;SELECT
+&lt;/h2&gt;&lt;h3 id=&#34;distinct-去重&#34;&gt;distinct 去重
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-SQL&#34; data-lang=&#34;SQL&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;select&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;`&lt;/span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;distinct&lt;/span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;/&lt;/span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;all&lt;/span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;`&lt;/span&gt; dept_name 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;from&lt;/span&gt; instructor
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;四则运算和重命名&#34;&gt;四则运算和重命名
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-SQL&#34; data-lang=&#34;SQL&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;select&lt;/span&gt; ID, name, salary&lt;span style=&#34;color:#ff79c6&#34;&gt;/&lt;/span&gt;&lt;span style=&#34;color:#bd93f9&#34;&gt;12&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;as&lt;/span&gt; monthly_salary
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;from&#34;&gt;FROM
+&lt;/h2&gt;&lt;h3 id=&#34;natural-join-自然连接&#34;&gt;natural join 自然连接
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-SQL&#34; data-lang=&#34;SQL&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;select&lt;/span&gt; name, course_id 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;from&lt;/span&gt; instructor &lt;span style=&#34;color:#ff79c6&#34;&gt;natural&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;join&lt;/span&gt; teaches 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;where&lt;/span&gt; instructor. dept_name &lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt; ‘Art’
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;//&lt;/span&gt; 等价于加上 &lt;span style=&#34;color:#ff79c6&#34;&gt;where&lt;/span&gt; instructor.ID &lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt; teaches.ID &lt;span style=&#34;color:#ff79c6&#34;&gt;and&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;where&#34;&gt;WHERE
+&lt;/h2&gt;&lt;p&gt;SQL allows the use of the logical connectives  and, or, and not
+The operands of the logical connectives can be expressions involving the comparison operators &amp;lt;, &amp;lt;=, &amp;gt;, &amp;gt;=, =, and &amp;lt;&amp;gt;.（以及between A and B 用法）&lt;/p&gt;
+&lt;h3 id=&#34;tuple-comparison&#34;&gt;Tuple comparison
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;select&lt;/span&gt; name, course_id 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;from&lt;/span&gt; instructor, teaches 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;where&lt;/span&gt; (instructor.ID, dept_name) &lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt; (teaches.ID, &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#39;Biology&amp;#39;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;tuple-variables&#34;&gt;Tuple Variables
+&lt;/h3&gt;&lt;p&gt;涉及到对instructor关系中属性salary的不同值的比较&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;select&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;distinct&lt;/span&gt; T.name 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;from&lt;/span&gt; instructor &lt;span style=&#34;color:#ff79c6&#34;&gt;as&lt;/span&gt; T, instructor &lt;span style=&#34;color:#ff79c6&#34;&gt;as&lt;/span&gt; S
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;where&lt;/span&gt; T.salary &lt;span style=&#34;color:#ff79c6&#34;&gt;&amp;gt;&lt;/span&gt; S.salary &lt;span style=&#34;color:#ff79c6&#34;&gt;and&lt;/span&gt; S.dept_name &lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt; ‘Comp. Sci.’
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;执行顺序&#34;&gt;执行顺序
+&lt;/h2&gt;&lt;p&gt;FROM - 从表中获取数据&lt;/p&gt;
+&lt;p&gt;WHERE - 对原始行数据进行筛选&lt;/p&gt;
+&lt;p&gt;GROUP BY - 对筛选后的数据进行分组&lt;/p&gt;
+&lt;p&gt;HAVING - 对分组后的聚合结果进行筛选&lt;/p&gt;
+&lt;p&gt;SELECT - 选择要显示的列&lt;/p&gt;
+&lt;p&gt;在 WHERE 子句中不能直接使用 COUNT 等聚合函数，因为执行顺序的问题。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-SQL&#34; data-lang=&#34;SQL&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;-- ✅ 正确：使用HAVING对分组结果进行筛选
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;SELECT&lt;/span&gt; department, &lt;span style=&#34;color:#ff79c6&#34;&gt;COUNT&lt;/span&gt;(&lt;span style=&#34;color:#ff79c6&#34;&gt;*&lt;/span&gt;) &lt;span style=&#34;color:#ff79c6&#34;&gt;as&lt;/span&gt; emp_count
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;FROM&lt;/span&gt; employees
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;GROUP&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;BY&lt;/span&gt; department
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;HAVING&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;COUNT&lt;/span&gt;(&lt;span style=&#34;color:#ff79c6&#34;&gt;*&lt;/span&gt;) &lt;span style=&#34;color:#ff79c6&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#bd93f9&#34;&gt;5&lt;/span&gt;;  &lt;span style=&#34;color:#6272a4&#34;&gt;-- 这里COUNT()在每组内计算
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;cte&#34;&gt;CTE
+&lt;/h2&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;WITH&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;department_stats &lt;span style=&#34;color:#ff79c6&#34;&gt;AS&lt;/span&gt; (
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;SELECT&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        department,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#ff79c6&#34;&gt;AVG&lt;/span&gt;(salary) &lt;span style=&#34;color:#ff79c6&#34;&gt;as&lt;/span&gt; avg_salary,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#ff79c6&#34;&gt;COUNT&lt;/span&gt;(&lt;span style=&#34;color:#ff79c6&#34;&gt;*&lt;/span&gt;) &lt;span style=&#34;color:#ff79c6&#34;&gt;as&lt;/span&gt; employee_count
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;FROM&lt;/span&gt; employees
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;GROUP&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;BY&lt;/span&gt; department
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;),
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;high_avg_departments &lt;span style=&#34;color:#ff79c6&#34;&gt;AS&lt;/span&gt; (
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#6272a4&#34;&gt;-- 这个CTE引用了前一个CTE
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;SELECT&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        department,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        avg_salary
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;FROM&lt;/span&gt; department_stats
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;WHERE&lt;/span&gt; avg_salary &lt;span style=&#34;color:#ff79c6&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#bd93f9&#34;&gt;6000&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;-- 主查询
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;SELECT&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    e.name,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    e.salary,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    h.avg_salary &lt;span style=&#34;color:#ff79c6&#34;&gt;as&lt;/span&gt; department_avg
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;FROM&lt;/span&gt; employees e
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;JOIN&lt;/span&gt; high_avg_departments h &lt;span style=&#34;color:#ff79c6&#34;&gt;ON&lt;/span&gt; e.department &lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt; h.department
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;WHERE&lt;/span&gt; e.salary &lt;span style=&#34;color:#ff79c6&#34;&gt;&amp;gt;&lt;/span&gt; h.avg_salary;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;group-by&#34;&gt;GROUP BY
+&lt;/h2&gt;&lt;p&gt;Attributes in select clause outside of aggregate functions must appear in group by list（必须要有聚合运算）
+错误示例：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;/* erroneous query */&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;select&lt;/span&gt; dept_name, ID, &lt;span style=&#34;color:#ff79c6&#34;&gt;avg&lt;/span&gt; (salary) &lt;span style=&#34;color:#6272a4&#34;&gt;-- ID 不在聚合属性中
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;from&lt;/span&gt; instructor
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;group&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;by&lt;/span&gt; dept_name
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;正确用法：（可以有多个聚合运算）&lt;/p&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;product&lt;/th&gt;
+          &lt;th&gt;category&lt;/th&gt;
+          &lt;th&gt;sales_amount&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;A&lt;/td&gt;
+          &lt;td&gt;Electronics&lt;/td&gt;
+          &lt;td&gt;100&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;B&lt;/td&gt;
+          &lt;td&gt;Electronics&lt;/td&gt;
+          &lt;td&gt;150&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;A&lt;/td&gt;
+          &lt;td&gt;Electronics&lt;/td&gt;
+          &lt;td&gt;200&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;C&lt;/td&gt;
+          &lt;td&gt;Clothing&lt;/td&gt;
+          &lt;td&gt;80&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;B&lt;/td&gt;
+          &lt;td&gt;Electronics&lt;/td&gt;
+          &lt;td&gt;120&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;SELECT&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    category,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;COUNT&lt;/span&gt;(&lt;span style=&#34;color:#ff79c6&#34;&gt;*&lt;/span&gt;) &lt;span style=&#34;color:#ff79c6&#34;&gt;as&lt;/span&gt; transaction_count,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;SUM&lt;/span&gt;(sales_amount) &lt;span style=&#34;color:#ff79c6&#34;&gt;as&lt;/span&gt; total_sales
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;FROM&lt;/span&gt; sales
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;GROUP&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;BY&lt;/span&gt; category;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;category&lt;/th&gt;
+          &lt;th&gt;transaction_count&lt;/th&gt;
+          &lt;th&gt;total_sales&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Electronics&lt;/td&gt;
+          &lt;td&gt;4&lt;/td&gt;
+          &lt;td&gt;570&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Clothing&lt;/td&gt;
+          &lt;td&gt;1&lt;/td&gt;
+          &lt;td&gt;80&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;常用聚合函数&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;SELECT&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    department,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;COUNT&lt;/span&gt;(&lt;span style=&#34;color:#ff79c6&#34;&gt;*&lt;/span&gt;) &lt;span style=&#34;color:#ff79c6&#34;&gt;as&lt;/span&gt; employee_count,      &lt;span style=&#34;color:#6272a4&#34;&gt;-- 计数
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;AVG&lt;/span&gt;(salary) &lt;span style=&#34;color:#ff79c6&#34;&gt;as&lt;/span&gt; avg_salary,       &lt;span style=&#34;color:#6272a4&#34;&gt;-- 平均值
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;SUM&lt;/span&gt;(salary) &lt;span style=&#34;color:#ff79c6&#34;&gt;as&lt;/span&gt; total_salary,     &lt;span style=&#34;color:#6272a4&#34;&gt;-- 求和
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;MAX&lt;/span&gt;(salary) &lt;span style=&#34;color:#ff79c6&#34;&gt;as&lt;/span&gt; max_salary,       &lt;span style=&#34;color:#6272a4&#34;&gt;-- 最大值
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;MIN&lt;/span&gt;(salary) &lt;span style=&#34;color:#ff79c6&#34;&gt;as&lt;/span&gt; min_salary        &lt;span style=&#34;color:#6272a4&#34;&gt;-- 最小值
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;FROM&lt;/span&gt; employees
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;GROUP&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;BY&lt;/span&gt; department;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;order-by&#34;&gt;ORDER BY
+&lt;/h2&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;SELECT&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;FROM&lt;/span&gt; employees &lt;span style=&#34;color:#ff79c6&#34;&gt;ORDER&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;BY&lt;/span&gt; salary &lt;span style=&#34;color:#ff79c6&#34;&gt;DESC&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;SELECT&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;FROM&lt;/span&gt; employees &lt;span style=&#34;color:#ff79c6&#34;&gt;ORDER&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;BY&lt;/span&gt; department &lt;span style=&#34;color:#ff79c6&#34;&gt;ASC&lt;/span&gt;, salary &lt;span style=&#34;color:#ff79c6&#34;&gt;DESC&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+        </item>
+        <item>
+        <title>Chapter3 SQL集合操作</title>
+        <link>http://localhost:1313/en/posts/notes/datebase/%E7%AC%AC%E4%B8%89%E7%AB%A0sql%E9%9B%86%E5%90%88%E6%93%8D%E4%BD%9C/</link>
+        <pubDate>Sun, 01 Jan 2023 00:00:00 +0800</pubDate>
+        
+        <guid>http://localhost:1313/en/posts/notes/datebase/%E7%AC%AC%E4%B8%89%E7%AB%A0sql%E9%9B%86%E5%90%88%E6%93%8D%E4%BD%9C/</guid>
+        <description>&lt;p&gt;&lt;code&gt;NOT EXISTS&lt;/code&gt; 和 &lt;code&gt;EXCEPT&lt;/code&gt; 是 SQL 中用于处理集合差集的高级操作，它们在不同场景下非常有用。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;一-not-exists-用法&#34;&gt;&lt;strong&gt;一、 NOT EXISTS 用法&lt;/strong&gt;
+&lt;/h2&gt;&lt;h3 id=&#34;1-基本语法&#34;&gt;1. 基本语法
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;SELECT&lt;/span&gt; columns
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;FROM&lt;/span&gt; table1 t1
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;WHERE&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;NOT&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;EXISTS&lt;/span&gt; (
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;SELECT&lt;/span&gt; &lt;span style=&#34;color:#bd93f9&#34;&gt;1&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;FROM&lt;/span&gt; table2 t2 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;WHERE&lt;/span&gt; t1.related_column &lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt; t2.related_column
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;2-实际例子&#34;&gt;2. 实际例子
+&lt;/h3&gt;&lt;h4 id=&#34;例1找出没有项目的员工&#34;&gt;例1：找出没有项目的员工
+&lt;/h4&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;SELECT&lt;/span&gt; e.employee_id, e.name
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;FROM&lt;/span&gt; employees e
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;WHERE&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;NOT&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;EXISTS&lt;/span&gt; (
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;SELECT&lt;/span&gt; &lt;span style=&#34;color:#bd93f9&#34;&gt;1&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;FROM&lt;/span&gt; projects p 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;WHERE&lt;/span&gt; p.leader_id &lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt; e.employee_id
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;例2找出没有订单的客户&#34;&gt;例2：找出没有订单的客户
+&lt;/h4&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;SELECT&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;c&lt;/span&gt;.customer_id, &lt;span style=&#34;color:#ff79c6&#34;&gt;c&lt;/span&gt;.customer_name
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;FROM&lt;/span&gt; customers &lt;span style=&#34;color:#ff79c6&#34;&gt;c&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;WHERE&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;NOT&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;EXISTS&lt;/span&gt; (
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;SELECT&lt;/span&gt; &lt;span style=&#34;color:#bd93f9&#34;&gt;1&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;FROM&lt;/span&gt; orders o 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;WHERE&lt;/span&gt; o.customer_id &lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;c&lt;/span&gt;.customer_id
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;例3找出从未被订购的产品&#34;&gt;例3：找出从未被订购的产品
+&lt;/h4&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;SELECT&lt;/span&gt; p.product_id, p.product_name
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;FROM&lt;/span&gt; products p
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;WHERE&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;NOT&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;EXISTS&lt;/span&gt; (
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;SELECT&lt;/span&gt; &lt;span style=&#34;color:#bd93f9&#34;&gt;1&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;FROM&lt;/span&gt; order_items oi 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;WHERE&lt;/span&gt; oi.product_id &lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt; p.product_id
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;3-复杂例子找出没有下属的管理者&#34;&gt;3. 复杂例子：找出没有下属的管理者
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;SELECT&lt;/span&gt; e1.employee_id, e1.name
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;FROM&lt;/span&gt; employees e1
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;WHERE&lt;/span&gt; e1.is_manager &lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#bd93f9&#34;&gt;1&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#ff79c6&#34;&gt;AND&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;NOT&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;EXISTS&lt;/span&gt; (
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;SELECT&lt;/span&gt; &lt;span style=&#34;color:#bd93f9&#34;&gt;1&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;FROM&lt;/span&gt; employees e2 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;WHERE&lt;/span&gt; e2.manager_id &lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt; e1.employee_id
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h2 id=&#34;二-except-用法&#34;&gt;&lt;strong&gt;二、 EXCEPT 用法&lt;/strong&gt;
+&lt;/h2&gt;&lt;h3 id=&#34;1-基本语法-1&#34;&gt;1. 基本语法
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;SELECT&lt;/span&gt; column1, column2 &lt;span style=&#34;color:#ff79c6&#34;&gt;FROM&lt;/span&gt; table1
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;EXCEPT&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;SELECT&lt;/span&gt; column1, column2 &lt;span style=&#34;color:#ff79c6&#34;&gt;FROM&lt;/span&gt; table2;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;2-实际例子-1&#34;&gt;2. 实际例子
+&lt;/h3&gt;&lt;h4 id=&#34;例1找出只在a表不在b表的记录&#34;&gt;例1：找出只在A表不在B表的记录
+&lt;/h4&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;-- 找出在employees表但不在former_employees表的员工
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;SELECT&lt;/span&gt; employee_id, name &lt;span style=&#34;color:#ff79c6&#34;&gt;FROM&lt;/span&gt; employees
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;EXCEPT&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;SELECT&lt;/span&gt; employee_id, name &lt;span style=&#34;color:#ff79c6&#34;&gt;FROM&lt;/span&gt; former_employees;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;例2找出有库存但从未被订购的产品&#34;&gt;例2：找出有库存但从未被订购的产品
+&lt;/h4&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;SELECT&lt;/span&gt; product_id &lt;span style=&#34;color:#ff79c6&#34;&gt;FROM&lt;/span&gt; inventory
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;EXCEPT&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;SELECT&lt;/span&gt; product_id &lt;span style=&#34;color:#ff79c6&#34;&gt;FROM&lt;/span&gt; order_items;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;例3多列比较&#34;&gt;例3：多列比较
+&lt;/h4&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;-- 找出在2023年有销售但2024年没有的客户
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;SELECT&lt;/span&gt; customer_id, product_id &lt;span style=&#34;color:#ff79c6&#34;&gt;FROM&lt;/span&gt; sales_2023
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;EXCEPT&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;SELECT&lt;/span&gt; customer_id, product_id &lt;span style=&#34;color:#ff79c6&#34;&gt;FROM&lt;/span&gt; sales_2024;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h2 id=&#34;三-not-exists-vs-except-对比&#34;&gt;&lt;strong&gt;三、 NOT EXISTS vs EXCEPT 对比&lt;/strong&gt;
+&lt;/h2&gt;&lt;h3 id=&#34;相同需求的不同实现&#34;&gt;相同需求的不同实现
+&lt;/h3&gt;&lt;h4 id=&#34;需求找出没有项目的部门&#34;&gt;需求：找出没有项目的部门
+&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;使用 NOT EXISTS:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;SELECT&lt;/span&gt; d.department_id, d.department_name
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;FROM&lt;/span&gt; departments d
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;WHERE&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;NOT&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;EXISTS&lt;/span&gt; (
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;SELECT&lt;/span&gt; &lt;span style=&#34;color:#bd93f9&#34;&gt;1&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;FROM&lt;/span&gt; projects p 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;WHERE&lt;/span&gt; p.department_id &lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt; d.department_id
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;使用 EXCEPT:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;SELECT&lt;/span&gt; department_id, department_name 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;FROM&lt;/span&gt; departments
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;EXCEPT&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;SELECT&lt;/span&gt; d.department_id, d.department_name
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;FROM&lt;/span&gt; departments d
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;JOIN&lt;/span&gt; projects p &lt;span style=&#34;color:#ff79c6&#34;&gt;ON&lt;/span&gt; d.department_id &lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt; p.department_id;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h2 id=&#34;四-高级应用场景&#34;&gt;&lt;strong&gt;四、 高级应用场景&lt;/strong&gt;
+&lt;/h2&gt;&lt;h3 id=&#34;1-多层-not-exists复杂逻辑&#34;&gt;1. 多层 NOT EXISTS（复杂逻辑）
+&lt;/h3&gt;&lt;h4 id=&#34;找出所有产品都库存充足的产品类别&#34;&gt;找出所有产品都库存充足的产品类别
+&lt;/h4&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;SELECT&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;c&lt;/span&gt;.category_id, &lt;span style=&#34;color:#ff79c6&#34;&gt;c&lt;/span&gt;.category_name
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;FROM&lt;/span&gt; categories &lt;span style=&#34;color:#ff79c6&#34;&gt;c&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;WHERE&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;NOT&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;EXISTS&lt;/span&gt; (
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#6272a4&#34;&gt;-- 找出该类别中库存不足的产品
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;SELECT&lt;/span&gt; &lt;span style=&#34;color:#bd93f9&#34;&gt;1&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;FROM&lt;/span&gt; products p
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;WHERE&lt;/span&gt; p.category_id &lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;c&lt;/span&gt;.category_id
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#ff79c6&#34;&gt;AND&lt;/span&gt; p.current_stock &lt;span style=&#34;color:#ff79c6&#34;&gt;&amp;lt;&lt;/span&gt; p.minimum_stock
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;2-except-用于数据验证&#34;&gt;2. EXCEPT 用于数据验证
+&lt;/h3&gt;&lt;h4 id=&#34;验证两个表的结构一致性&#34;&gt;验证两个表的结构一致性
+&lt;/h4&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;-- 找出在source_table中存在但在target_table中不存在的记录
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;SELECT&lt;/span&gt; id, name, value &lt;span style=&#34;color:#ff79c6&#34;&gt;FROM&lt;/span&gt; source_table
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;EXCEPT&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;SELECT&lt;/span&gt; id, name, value &lt;span style=&#34;color:#ff79c6&#34;&gt;FROM&lt;/span&gt; target_table;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;3-组合使用-not-exists-和-exists&#34;&gt;3. 组合使用 NOT EXISTS 和 EXISTS
+&lt;/h3&gt;&lt;h4 id=&#34;找出只订购过一次的客户&#34;&gt;找出只订购过一次的客户
+&lt;/h4&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;SELECT&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;c&lt;/span&gt;.customer_id, &lt;span style=&#34;color:#ff79c6&#34;&gt;c&lt;/span&gt;.customer_name
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;FROM&lt;/span&gt; customers &lt;span style=&#34;color:#ff79c6&#34;&gt;c&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;WHERE&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;EXISTS&lt;/span&gt; (
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#6272a4&#34;&gt;-- 至少有一个订单
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;SELECT&lt;/span&gt; &lt;span style=&#34;color:#bd93f9&#34;&gt;1&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;FROM&lt;/span&gt; orders o 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;WHERE&lt;/span&gt; o.customer_id &lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;c&lt;/span&gt;.customer_id
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;AND&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;NOT&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;EXISTS&lt;/span&gt; (
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#6272a4&#34;&gt;-- 没有第二个订单
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;SELECT&lt;/span&gt; &lt;span style=&#34;color:#bd93f9&#34;&gt;1&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;FROM&lt;/span&gt; orders o1, orders o2
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;WHERE&lt;/span&gt; o1.customer_id &lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;c&lt;/span&gt;.customer_id
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#ff79c6&#34;&gt;AND&lt;/span&gt; o2.customer_id &lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;c&lt;/span&gt;.customer_id
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#ff79c6&#34;&gt;AND&lt;/span&gt; o1.order_id &lt;span style=&#34;color:#ff79c6&#34;&gt;&amp;lt;&amp;gt;&lt;/span&gt; o2.order_id
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h2 id=&#34;五-性能考虑和最佳实践&#34;&gt;&lt;strong&gt;五、 性能考虑和最佳实践&lt;/strong&gt;
+&lt;/h2&gt;&lt;h3 id=&#34;1-not-exists-通常性能更好&#34;&gt;1. NOT EXISTS 通常性能更好
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;-- 推荐：使用NOT EXISTS
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;SELECT&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;FROM&lt;/span&gt; table1 t1
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;WHERE&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;NOT&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;EXISTS&lt;/span&gt; (&lt;span style=&#34;color:#ff79c6&#34;&gt;SELECT&lt;/span&gt; &lt;span style=&#34;color:#bd93f9&#34;&gt;1&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;FROM&lt;/span&gt; table2 t2 &lt;span style=&#34;color:#ff79c6&#34;&gt;WHERE&lt;/span&gt; t2.id &lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt; t1.id);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;-- 不推荐：使用NOT IN（对NULL值处理有问题）
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;SELECT&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;FROM&lt;/span&gt; table1 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;WHERE&lt;/span&gt; id &lt;span style=&#34;color:#ff79c6&#34;&gt;NOT&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;IN&lt;/span&gt; (&lt;span style=&#34;color:#ff79c6&#34;&gt;SELECT&lt;/span&gt; id &lt;span style=&#34;color:#ff79c6&#34;&gt;FROM&lt;/span&gt; table2 &lt;span style=&#34;color:#ff79c6&#34;&gt;WHERE&lt;/span&gt; id &lt;span style=&#34;color:#ff79c6&#34;&gt;IS&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;NOT&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;NULL&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;2-except-自动去重&#34;&gt;2. EXCEPT 自动去重
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;-- EXCEPT 会自动去除重复记录
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;SELECT&lt;/span&gt; department &lt;span style=&#34;color:#ff79c6&#34;&gt;FROM&lt;/span&gt; employees
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;EXCEPT&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;SELECT&lt;/span&gt; department &lt;span style=&#34;color:#ff79c6&#34;&gt;FROM&lt;/span&gt; former_employees;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;3-处理null值&#34;&gt;3. 处理NULL值
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;-- NOT EXISTS 能正确处理NULL值
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;SELECT&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;FROM&lt;/span&gt; products p
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;WHERE&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;NOT&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;EXISTS&lt;/span&gt; (
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;SELECT&lt;/span&gt; &lt;span style=&#34;color:#bd93f9&#34;&gt;1&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;FROM&lt;/span&gt; discontinued_products dp 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;WHERE&lt;/span&gt; dp.product_id &lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt; p.product_id
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h2 id=&#34;六-实际业务场景&#34;&gt;&lt;strong&gt;六、 实际业务场景&lt;/strong&gt;
+&lt;/h2&gt;&lt;h3 id=&#34;场景1电商平台---找出从未被浏览的商品&#34;&gt;场景1：电商平台 - 找出从未被浏览的商品
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;SELECT&lt;/span&gt; product_id, product_name
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;FROM&lt;/span&gt; products
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;WHERE&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;NOT&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;EXISTS&lt;/span&gt; (
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;SELECT&lt;/span&gt; &lt;span style=&#34;color:#bd93f9&#34;&gt;1&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;FROM&lt;/span&gt; user_browsing_history 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;WHERE&lt;/span&gt; product_id &lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt; products.product_id
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;场景2学校系统---找出没有选课的学生&#34;&gt;场景2：学校系统 - 找出没有选课的学生
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;SELECT&lt;/span&gt; student_id, student_name
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;FROM&lt;/span&gt; students
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;EXCEPT&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;SELECT&lt;/span&gt; s.student_id, s.student_name
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;FROM&lt;/span&gt; students s
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;JOIN&lt;/span&gt; enrollments e &lt;span style=&#34;color:#ff79c6&#34;&gt;ON&lt;/span&gt; s.student_id &lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt; e.student_id;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;场景3银行系统---找出有账户但从未交易的客户&#34;&gt;场景3：银行系统 - 找出有账户但从未交易的客户
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;SELECT&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;c&lt;/span&gt;.customer_id, &lt;span style=&#34;color:#ff79c6&#34;&gt;c&lt;/span&gt;.customer_name
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;FROM&lt;/span&gt; customers &lt;span style=&#34;color:#ff79c6&#34;&gt;c&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;JOIN&lt;/span&gt; accounts a &lt;span style=&#34;color:#ff79c6&#34;&gt;ON&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;c&lt;/span&gt;.customer_id &lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt; a.customer_id
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;WHERE&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;NOT&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;EXISTS&lt;/span&gt; (
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;SELECT&lt;/span&gt; &lt;span style=&#34;color:#bd93f9&#34;&gt;1&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;FROM&lt;/span&gt; transactions t 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;WHERE&lt;/span&gt; t.account_id &lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt; a.account_id
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h2 id=&#34;总结&#34;&gt;&lt;strong&gt;总结&lt;/strong&gt;
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;NOT EXISTS&lt;/strong&gt;: 更适合关联查询，性能通常较好，能正确处理NULL值&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;EXCEPT&lt;/strong&gt;: 更适合比较两个结果集的差异，语法更直观，自动去重&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;选择依据&lt;/strong&gt;:
+&lt;ul&gt;
+&lt;li&gt;需要关联条件时用 &lt;code&gt;NOT EXISTS&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;直接比较两个查询结果时用 &lt;code&gt;EXCEPT&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;考虑数据库优化器和具体数据量进行测试&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;两者都是处理&amp;quot;在A中但不在B中&amp;quot;这类需求的强大工具！&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>Deepseek整理的SQL</title>
+        <link>http://localhost:1313/en/posts/notes/datebase/deepseek%E6%80%BB%E7%BB%93sql/</link>
+        <pubDate>Sun, 01 Jan 2023 00:00:00 +0800</pubDate>
+        
+        <guid>http://localhost:1313/en/posts/notes/datebase/deepseek%E6%80%BB%E7%BB%93sql/</guid>
+        <description>&lt;hr&gt;
+&lt;h2 id=&#34;一-基础查询-basic-queries&#34;&gt;&lt;strong&gt;一、 基础查询 (Basic Queries)&lt;/strong&gt;
+&lt;/h2&gt;&lt;h3 id=&#34;1-select--from&#34;&gt;1. SELECT &amp;amp; FROM
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;SELECT&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;FROM&lt;/span&gt; employees;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;SELECT&lt;/span&gt; name, salary &lt;span style=&#34;color:#ff79c6&#34;&gt;FROM&lt;/span&gt; employees;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;2-where-条件筛选&#34;&gt;2. WHERE 条件筛选
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;SELECT&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;FROM&lt;/span&gt; employees &lt;span style=&#34;color:#ff79c6&#34;&gt;WHERE&lt;/span&gt; salary &lt;span style=&#34;color:#ff79c6&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#bd93f9&#34;&gt;5000&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;SELECT&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;FROM&lt;/span&gt; employees &lt;span style=&#34;color:#ff79c6&#34;&gt;WHERE&lt;/span&gt; department &lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#39;IT&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;AND&lt;/span&gt; salary &lt;span style=&#34;color:#ff79c6&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#bd93f9&#34;&gt;6000&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;SELECT&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;FROM&lt;/span&gt; employees &lt;span style=&#34;color:#ff79c6&#34;&gt;WHERE&lt;/span&gt; name &lt;span style=&#34;color:#ff79c6&#34;&gt;LIKE&lt;/span&gt; &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#39;A%&amp;#39;&lt;/span&gt;;  &lt;span style=&#34;color:#6272a4&#34;&gt;-- 名字以A开头
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;SELECT&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;FROM&lt;/span&gt; employees &lt;span style=&#34;color:#ff79c6&#34;&gt;WHERE&lt;/span&gt; age &lt;span style=&#34;color:#ff79c6&#34;&gt;BETWEEN&lt;/span&gt; &lt;span style=&#34;color:#bd93f9&#34;&gt;25&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;AND&lt;/span&gt; &lt;span style=&#34;color:#bd93f9&#34;&gt;35&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;SELECT&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;FROM&lt;/span&gt; employees &lt;span style=&#34;color:#ff79c6&#34;&gt;WHERE&lt;/span&gt; department &lt;span style=&#34;color:#ff79c6&#34;&gt;IN&lt;/span&gt; (&lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#39;IT&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#39;HR&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#39;Finance&amp;#39;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;3-order-by-排序&#34;&gt;3. ORDER BY 排序
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;SELECT&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;FROM&lt;/span&gt; employees &lt;span style=&#34;color:#ff79c6&#34;&gt;ORDER&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;BY&lt;/span&gt; salary &lt;span style=&#34;color:#ff79c6&#34;&gt;DESC&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;SELECT&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;FROM&lt;/span&gt; employees &lt;span style=&#34;color:#ff79c6&#34;&gt;ORDER&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;BY&lt;/span&gt; department &lt;span style=&#34;color:#ff79c6&#34;&gt;ASC&lt;/span&gt;, salary &lt;span style=&#34;color:#ff79c6&#34;&gt;DESC&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;4-distinct-去重&#34;&gt;4. DISTINCT 去重
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;SELECT&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;DISTINCT&lt;/span&gt; department &lt;span style=&#34;color:#ff79c6&#34;&gt;FROM&lt;/span&gt; employees;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h2 id=&#34;二-聚合函数与分组-aggregation--grouping&#34;&gt;&lt;strong&gt;二、 聚合函数与分组 (Aggregation &amp;amp; Grouping)&lt;/strong&gt;
+&lt;/h2&gt;&lt;h3 id=&#34;5-聚合函数&#34;&gt;5. 聚合函数
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;SELECT&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;COUNT&lt;/span&gt;(&lt;span style=&#34;color:#ff79c6&#34;&gt;*&lt;/span&gt;) &lt;span style=&#34;color:#ff79c6&#34;&gt;as&lt;/span&gt; total_employees,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;AVG&lt;/span&gt;(salary) &lt;span style=&#34;color:#ff79c6&#34;&gt;as&lt;/span&gt; avg_salary,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;MAX&lt;/span&gt;(salary) &lt;span style=&#34;color:#ff79c6&#34;&gt;as&lt;/span&gt; max_salary,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;MIN&lt;/span&gt;(salary) &lt;span style=&#34;color:#ff79c6&#34;&gt;as&lt;/span&gt; min_salary,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;SUM&lt;/span&gt;(salary) &lt;span style=&#34;color:#ff79c6&#34;&gt;as&lt;/span&gt; total_salary
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;FROM&lt;/span&gt; employees;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;6-group-by-分组&#34;&gt;6. GROUP BY 分组
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;SELECT&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    department,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;COUNT&lt;/span&gt;(&lt;span style=&#34;color:#ff79c6&#34;&gt;*&lt;/span&gt;) &lt;span style=&#34;color:#ff79c6&#34;&gt;as&lt;/span&gt; emp_count,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;AVG&lt;/span&gt;(salary) &lt;span style=&#34;color:#ff79c6&#34;&gt;as&lt;/span&gt; avg_salary
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;FROM&lt;/span&gt; employees
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;GROUP&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;BY&lt;/span&gt; department;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;7-having-分组后筛选&#34;&gt;7. HAVING 分组后筛选
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;SELECT&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    department,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;COUNT&lt;/span&gt;(&lt;span style=&#34;color:#ff79c6&#34;&gt;*&lt;/span&gt;) &lt;span style=&#34;color:#ff79c6&#34;&gt;as&lt;/span&gt; emp_count
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;FROM&lt;/span&gt; employees
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;GROUP&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;BY&lt;/span&gt; department
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;HAVING&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;COUNT&lt;/span&gt;(&lt;span style=&#34;color:#ff79c6&#34;&gt;*&lt;/span&gt;) &lt;span style=&#34;color:#ff79c6&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#bd93f9&#34;&gt;5&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h2 id=&#34;三-多表连接-joins&#34;&gt;&lt;strong&gt;三、 多表连接 (Joins)&lt;/strong&gt;
+&lt;/h2&gt;&lt;h3 id=&#34;8-inner-join&#34;&gt;8. INNER JOIN
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;SELECT&lt;/span&gt; e.name, d.department_name
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;FROM&lt;/span&gt; employees e
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;INNER&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;JOIN&lt;/span&gt; departments d &lt;span style=&#34;color:#ff79c6&#34;&gt;ON&lt;/span&gt; e.department_id &lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt; d.id;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;9-leftright-join&#34;&gt;9. LEFT/RIGHT JOIN
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;SELECT&lt;/span&gt; e.name, d.department_name
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;FROM&lt;/span&gt; employees e
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;LEFT&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;JOIN&lt;/span&gt; departments d &lt;span style=&#34;color:#ff79c6&#34;&gt;ON&lt;/span&gt; e.department_id &lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt; d.id;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;10-full-outer-join&#34;&gt;10. FULL OUTER JOIN
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;SELECT&lt;/span&gt; e.name, d.department_name
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;FROM&lt;/span&gt; employees e
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;FULL&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;OUTER&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;JOIN&lt;/span&gt; departments d &lt;span style=&#34;color:#ff79c6&#34;&gt;ON&lt;/span&gt; e.department_id &lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt; d.id;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;11-多表连接&#34;&gt;11. 多表连接
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;SELECT&lt;/span&gt; e.name, d.department_name, p.project_name
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;FROM&lt;/span&gt; employees e
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;JOIN&lt;/span&gt; departments d &lt;span style=&#34;color:#ff79c6&#34;&gt;ON&lt;/span&gt; e.department_id &lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt; d.id
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;JOIN&lt;/span&gt; projects p &lt;span style=&#34;color:#ff79c6&#34;&gt;ON&lt;/span&gt; e.id &lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt; p.leader_id;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h2 id=&#34;四-子查询-subqueries&#34;&gt;&lt;strong&gt;四、 子查询 (Subqueries)&lt;/strong&gt;
+&lt;/h2&gt;&lt;h3 id=&#34;12-标量子查询&#34;&gt;12. 标量子查询
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;SELECT&lt;/span&gt; name, salary,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    (&lt;span style=&#34;color:#ff79c6&#34;&gt;SELECT&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;AVG&lt;/span&gt;(salary) &lt;span style=&#34;color:#ff79c6&#34;&gt;FROM&lt;/span&gt; employees) &lt;span style=&#34;color:#ff79c6&#34;&gt;as&lt;/span&gt; company_avg
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;FROM&lt;/span&gt; employees;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;13-in-子查询&#34;&gt;13. IN 子查询
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;SELECT&lt;/span&gt; name
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;FROM&lt;/span&gt; employees
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;WHERE&lt;/span&gt; department_id &lt;span style=&#34;color:#ff79c6&#34;&gt;IN&lt;/span&gt; (
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;SELECT&lt;/span&gt; id &lt;span style=&#34;color:#ff79c6&#34;&gt;FROM&lt;/span&gt; departments &lt;span style=&#34;color:#ff79c6&#34;&gt;WHERE&lt;/span&gt; budget &lt;span style=&#34;color:#ff79c6&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#bd93f9&#34;&gt;100000&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;14-exists-子查询&#34;&gt;14. EXISTS 子查询
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;SELECT&lt;/span&gt; name
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;FROM&lt;/span&gt; employees e
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;WHERE&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;EXISTS&lt;/span&gt; (
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;SELECT&lt;/span&gt; &lt;span style=&#34;color:#bd93f9&#34;&gt;1&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;FROM&lt;/span&gt; projects p 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;WHERE&lt;/span&gt; p.leader_id &lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt; e.id
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;15-关联子查询&#34;&gt;15. 关联子查询
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;SELECT&lt;/span&gt; name, salary, department
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;FROM&lt;/span&gt; employees e1
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;WHERE&lt;/span&gt; salary &lt;span style=&#34;color:#ff79c6&#34;&gt;&amp;gt;&lt;/span&gt; (
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;SELECT&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;AVG&lt;/span&gt;(salary) 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;FROM&lt;/span&gt; employees e2 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;WHERE&lt;/span&gt; e2.department &lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt; e1.department
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h2 id=&#34;五-高级查询技术-advanced-techniques&#34;&gt;&lt;strong&gt;五、 高级查询技术 (Advanced Techniques)&lt;/strong&gt;
+&lt;/h2&gt;&lt;h3 id=&#34;16-cte-公用表表达式&#34;&gt;16. CTE (公用表表达式)
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;WITH&lt;/span&gt; department_stats &lt;span style=&#34;color:#ff79c6&#34;&gt;AS&lt;/span&gt; (
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;SELECT&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        department,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#ff79c6&#34;&gt;AVG&lt;/span&gt;(salary) &lt;span style=&#34;color:#ff79c6&#34;&gt;as&lt;/span&gt; avg_salary
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;FROM&lt;/span&gt; employees
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;GROUP&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;BY&lt;/span&gt; department
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;SELECT&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;FROM&lt;/span&gt; department_stats &lt;span style=&#34;color:#ff79c6&#34;&gt;WHERE&lt;/span&gt; avg_salary &lt;span style=&#34;color:#ff79c6&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#bd93f9&#34;&gt;6000&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;17-递归-cte&#34;&gt;17. 递归 CTE
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;WITH&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;RECURSIVE&lt;/span&gt; org_chart &lt;span style=&#34;color:#ff79c6&#34;&gt;AS&lt;/span&gt; (
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#6272a4&#34;&gt;-- 基础情况
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;SELECT&lt;/span&gt; employee_id, name, manager_id, &lt;span style=&#34;color:#bd93f9&#34;&gt;1&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;as&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;level&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;FROM&lt;/span&gt; employees
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;WHERE&lt;/span&gt; manager_id &lt;span style=&#34;color:#ff79c6&#34;&gt;IS&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;NULL&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;UNION&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;ALL&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#6272a4&#34;&gt;-- 递归情况
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;SELECT&lt;/span&gt; e.employee_id, e.name, e.manager_id, oc.&lt;span style=&#34;color:#ff79c6&#34;&gt;level&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#bd93f9&#34;&gt;1&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;FROM&lt;/span&gt; employees e
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;JOIN&lt;/span&gt; org_chart oc &lt;span style=&#34;color:#ff79c6&#34;&gt;ON&lt;/span&gt; e.manager_id &lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt; oc.employee_id
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;SELECT&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;FROM&lt;/span&gt; org_chart;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;18-窗口函数&#34;&gt;18. 窗口函数
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;SELECT&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    name,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    department,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    salary,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    RANK() OVER (PARTITION &lt;span style=&#34;color:#ff79c6&#34;&gt;BY&lt;/span&gt; department &lt;span style=&#34;color:#ff79c6&#34;&gt;ORDER&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;BY&lt;/span&gt; salary &lt;span style=&#34;color:#ff79c6&#34;&gt;DESC&lt;/span&gt;) &lt;span style=&#34;color:#ff79c6&#34;&gt;as&lt;/span&gt; dept_rank,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;AVG&lt;/span&gt;(salary) OVER (PARTITION &lt;span style=&#34;color:#ff79c6&#34;&gt;BY&lt;/span&gt; department) &lt;span style=&#34;color:#ff79c6&#34;&gt;as&lt;/span&gt; dept_avg_salary,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    LAG(salary) OVER (&lt;span style=&#34;color:#ff79c6&#34;&gt;ORDER&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;BY&lt;/span&gt; salary) &lt;span style=&#34;color:#ff79c6&#34;&gt;as&lt;/span&gt; prev_salary
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;FROM&lt;/span&gt; employees;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;19-pivot-行列转换&#34;&gt;19. PIVOT 行列转换
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;-- SQL Server
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;SELECT&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;*&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;FROM&lt;/span&gt; (
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;SELECT&lt;/span&gt; department, salary
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;FROM&lt;/span&gt; employees
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;) &lt;span style=&#34;color:#ff79c6&#34;&gt;AS&lt;/span&gt; SourceTable
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;PIVOT (
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;AVG&lt;/span&gt;(salary)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;FOR&lt;/span&gt; department &lt;span style=&#34;color:#ff79c6&#34;&gt;IN&lt;/span&gt; ([IT], [HR], [Finance])
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;) &lt;span style=&#34;color:#ff79c6&#34;&gt;AS&lt;/span&gt; PivotTable;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h2 id=&#34;六-数据操作-data-manipulation&#34;&gt;&lt;strong&gt;六、 数据操作 (Data Manipulation)&lt;/strong&gt;
+&lt;/h2&gt;&lt;h3 id=&#34;20-insert&#34;&gt;20. INSERT
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;INSERT&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;INTO&lt;/span&gt; employees (name, salary, department) 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;VALUES&lt;/span&gt; (&lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#39;John Doe&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#bd93f9&#34;&gt;5000&lt;/span&gt;, &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#39;IT&amp;#39;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;-- 插入查询结果
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;INSERT&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;INTO&lt;/span&gt; high_paid_employees (name, salary)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;SELECT&lt;/span&gt; name, salary &lt;span style=&#34;color:#ff79c6&#34;&gt;FROM&lt;/span&gt; employees &lt;span style=&#34;color:#ff79c6&#34;&gt;WHERE&lt;/span&gt; salary &lt;span style=&#34;color:#ff79c6&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#bd93f9&#34;&gt;8000&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;21-update&#34;&gt;21. UPDATE
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;UPDATE&lt;/span&gt; employees 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;SET&lt;/span&gt; salary &lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt; salary &lt;span style=&#34;color:#ff79c6&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#bd93f9&#34;&gt;1&lt;/span&gt;.&lt;span style=&#34;color:#bd93f9&#34;&gt;1&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;WHERE&lt;/span&gt; department &lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#39;IT&amp;#39;&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;-- 使用子查询更新
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;UPDATE&lt;/span&gt; employees 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;SET&lt;/span&gt; salary &lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt; (
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;SELECT&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;AVG&lt;/span&gt;(salary) &lt;span style=&#34;color:#ff79c6&#34;&gt;FROM&lt;/span&gt; employees
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;) 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;WHERE&lt;/span&gt; salary &lt;span style=&#34;color:#ff79c6&#34;&gt;IS&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;NULL&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;22-delete&#34;&gt;22. DELETE
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;DELETE&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;FROM&lt;/span&gt; employees &lt;span style=&#34;color:#ff79c6&#34;&gt;WHERE&lt;/span&gt; salary &lt;span style=&#34;color:#ff79c6&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color:#bd93f9&#34;&gt;3000&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;-- 使用子查询删除
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;DELETE&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;FROM&lt;/span&gt; employees 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;WHERE&lt;/span&gt; department_id &lt;span style=&#34;color:#ff79c6&#34;&gt;IN&lt;/span&gt; (
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;SELECT&lt;/span&gt; id &lt;span style=&#34;color:#ff79c6&#34;&gt;FROM&lt;/span&gt; departments &lt;span style=&#34;color:#ff79c6&#34;&gt;WHERE&lt;/span&gt; active &lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#bd93f9&#34;&gt;0&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;23-mergeupsert&#34;&gt;23. MERGE/UPSERT
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;-- PostgreSQL
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;INSERT&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;INTO&lt;/span&gt; employees (id, name, salary)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;VALUES&lt;/span&gt; (&lt;span style=&#34;color:#bd93f9&#34;&gt;1&lt;/span&gt;, &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#39;John&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#bd93f9&#34;&gt;5000&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;ON&lt;/span&gt; CONFLICT (id) 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;DO&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;UPDATE&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;SET&lt;/span&gt; name &lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt; EXCLUDED.name, salary &lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt; EXCLUDED.salary;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h2 id=&#34;七-事务控制-transaction-control&#34;&gt;&lt;strong&gt;七、 事务控制 (Transaction Control)&lt;/strong&gt;
+&lt;/h2&gt;&lt;h3 id=&#34;24-事务处理&#34;&gt;24. 事务处理
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;BEGIN&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;TRANSACTION&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;UPDATE&lt;/span&gt; accounts &lt;span style=&#34;color:#ff79c6&#34;&gt;SET&lt;/span&gt; balance &lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt; balance &lt;span style=&#34;color:#ff79c6&#34;&gt;-&lt;/span&gt; &lt;span style=&#34;color:#bd93f9&#34;&gt;100&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;WHERE&lt;/span&gt; id &lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#bd93f9&#34;&gt;1&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;UPDATE&lt;/span&gt; accounts &lt;span style=&#34;color:#ff79c6&#34;&gt;SET&lt;/span&gt; balance &lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt; balance &lt;span style=&#34;color:#ff79c6&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#bd93f9&#34;&gt;100&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;WHERE&lt;/span&gt; id &lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#bd93f9&#34;&gt;2&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;-- 如果一切正常
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;COMMIT&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;-- 如果出现错误
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;ROLLBACK&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h2 id=&#34;八-性能优化相关&#34;&gt;&lt;strong&gt;八、 性能优化相关&lt;/strong&gt;
+&lt;/h2&gt;&lt;h3 id=&#34;25-索引使用&#34;&gt;25. 索引使用
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;CREATE&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;INDEX&lt;/span&gt; idx_employee_department &lt;span style=&#34;color:#ff79c6&#34;&gt;ON&lt;/span&gt; employees(department);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;CREATE&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;INDEX&lt;/span&gt; idx_employee_name_salary &lt;span style=&#34;color:#ff79c6&#34;&gt;ON&lt;/span&gt; employees(name, salary);
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;26-分页查询&#34;&gt;26. 分页查询
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;-- MySQL
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;SELECT&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;FROM&lt;/span&gt; employees &lt;span style=&#34;color:#ff79c6&#34;&gt;ORDER&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;BY&lt;/span&gt; id &lt;span style=&#34;color:#ff79c6&#34;&gt;LIMIT&lt;/span&gt; &lt;span style=&#34;color:#bd93f9&#34;&gt;10&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;OFFSET&lt;/span&gt; &lt;span style=&#34;color:#bd93f9&#34;&gt;20&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;-- SQL Server
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;SELECT&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;FROM&lt;/span&gt; employees &lt;span style=&#34;color:#ff79c6&#34;&gt;ORDER&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;BY&lt;/span&gt; id &lt;span style=&#34;color:#ff79c6&#34;&gt;OFFSET&lt;/span&gt; &lt;span style=&#34;color:#bd93f9&#34;&gt;20&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;ROWS&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;FETCH&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;NEXT&lt;/span&gt; &lt;span style=&#34;color:#bd93f9&#34;&gt;10&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;ROWS&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;ONLY&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;27-查询性能分析&#34;&gt;27. 查询性能分析
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;-- 查看执行计划
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;EXPLAIN&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;SELECT&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;FROM&lt;/span&gt; employees &lt;span style=&#34;color:#ff79c6&#34;&gt;WHERE&lt;/span&gt; salary &lt;span style=&#34;color:#ff79c6&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#bd93f9&#34;&gt;5000&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;-- SQL Server
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;SET&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;STATISTICS&lt;/span&gt; TIME &lt;span style=&#34;color:#ff79c6&#34;&gt;ON&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;SELECT&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;FROM&lt;/span&gt; employees &lt;span style=&#34;color:#ff79c6&#34;&gt;WHERE&lt;/span&gt; salary &lt;span style=&#34;color:#ff79c6&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#bd93f9&#34;&gt;5000&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h2 id=&#34;九-实用函数&#34;&gt;&lt;strong&gt;九、 实用函数&lt;/strong&gt;
+&lt;/h2&gt;&lt;h3 id=&#34;28-字符串函数&#34;&gt;28. 字符串函数
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;SELECT&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;UPPER&lt;/span&gt;(name) &lt;span style=&#34;color:#ff79c6&#34;&gt;as&lt;/span&gt; upper_name,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;LOWER&lt;/span&gt;(name) &lt;span style=&#34;color:#ff79c6&#34;&gt;as&lt;/span&gt; lower_name,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;LENGTH&lt;/span&gt;(name) &lt;span style=&#34;color:#ff79c6&#34;&gt;as&lt;/span&gt; name_length,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;SUBSTRING&lt;/span&gt;(name, &lt;span style=&#34;color:#bd93f9&#34;&gt;1&lt;/span&gt;, &lt;span style=&#34;color:#bd93f9&#34;&gt;3&lt;/span&gt;) &lt;span style=&#34;color:#ff79c6&#34;&gt;as&lt;/span&gt; name_prefix,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    CONCAT(first_name, &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#39; &amp;#39;&lt;/span&gt;, last_name) &lt;span style=&#34;color:#ff79c6&#34;&gt;as&lt;/span&gt; full_name
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;FROM&lt;/span&gt; employees;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;29-日期函数&#34;&gt;29. 日期函数
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;SELECT&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;CURRENT_DATE&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;as&lt;/span&gt; today,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;EXTRACT&lt;/span&gt;(&lt;span style=&#34;color:#ff79c6&#34;&gt;YEAR&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;FROM&lt;/span&gt; hire_date) &lt;span style=&#34;color:#ff79c6&#34;&gt;as&lt;/span&gt; hire_year,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    DATE_ADD(hire_date, &lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;INTERVAL&lt;/span&gt; &lt;span style=&#34;color:#bd93f9&#34;&gt;1&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;YEAR&lt;/span&gt;) &lt;span style=&#34;color:#ff79c6&#34;&gt;as&lt;/span&gt; anniversary,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    DATEDIFF(&lt;span style=&#34;color:#ff79c6&#34;&gt;CURRENT_DATE&lt;/span&gt;, hire_date) &lt;span style=&#34;color:#ff79c6&#34;&gt;as&lt;/span&gt; days_employed
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;FROM&lt;/span&gt; employees;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;30-条件表达式&#34;&gt;30. 条件表达式
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;SELECT&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    name,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    salary,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;CASE&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#ff79c6&#34;&gt;WHEN&lt;/span&gt; salary &lt;span style=&#34;color:#ff79c6&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color:#bd93f9&#34;&gt;3000&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;THEN&lt;/span&gt; &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#39;Low&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#ff79c6&#34;&gt;WHEN&lt;/span&gt; salary &lt;span style=&#34;color:#ff79c6&#34;&gt;BETWEEN&lt;/span&gt; &lt;span style=&#34;color:#bd93f9&#34;&gt;3000&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;AND&lt;/span&gt; &lt;span style=&#34;color:#bd93f9&#34;&gt;7000&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;THEN&lt;/span&gt; &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#39;Medium&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#ff79c6&#34;&gt;ELSE&lt;/span&gt; &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#39;High&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;END&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;as&lt;/span&gt; salary_level,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    COALESCE(bonus, &lt;span style=&#34;color:#bd93f9&#34;&gt;0&lt;/span&gt;) &lt;span style=&#34;color:#ff79c6&#34;&gt;as&lt;/span&gt; bonus_amount
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;FROM&lt;/span&gt; employees;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;p&gt;这份指南涵盖了 SQL 从基础到高级的大部分常用语法。建议在实际工作中根据需要查阅相关部分，并通过练习来熟练掌握。&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-us" dir="ltr">
+<html lang="en" dir="ltr">
     <head><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="ISA关系（6.8） ISA Relationship 指的是一种特定的数据建模技术，用于在概念模型（如ER图）中表示实体之间的继承关系。\nISA 是 “IS-A” 的缩写，例如 “A Manager IS-AN Employee”（一个经理 是 一个员工）。它描述了一种父类型（超类型） 和子类型 之间的层次关系。\n核心概念 在数据库设计中，ISA关系用于捕捉现实世界中存在的分类结构。\n超类型 / 父类： 一个更一般化、更抽象的实体。 例如：人(Person)、账户(Account)、车辆(Vehicle) 子类型 / 子类： 一个更具体、更特化的实体，它是超类型的一种。 例如：员工(Employee) 和 学生(Student) 是 人(Person) 的子类型。 储蓄账户(SavingsAccount) 和 支票账户(CheckingAccount) 是 账户(Account) 的子类型。 ISA关系的两个关键约束 当你在设计中使用ISA关系时，必须定义两个重要的约束：\n1. 重叠约束（Disjoint/Overlapping Constraint） 规定一个超类型的实例是否可以同时属于多个子类型。\n不允许重叠： 一个超类实例只能属于一个子类型。 例如：一个 账户(Account) 要么是 储蓄账户(SavingsAccount)，要么是 支票账户(CheckingAccount)，但不能同时是两者。用 “OR” 表示。 允许重叠： 一个超类实例可以同时属于多个子类型。 例如：一个 人(Person) 可以同时是 员工(Employee) 和 学生(Student)。用 “AND” 表示。 2. 完备性约束（Completeness constraint） 规定超类型中的每一个实例是否都必须至少属于一个子类型。\n全完备性（total）： 超类型的每一个实例都必须是某个子类型的实例。 例如：公司规定，每一个 员工(Employee) 都必须是 小时工(HourlyEmployee) 或 月薪工(SalariedEmployee) 中的一种。超类型 员工(Employee) 不会存在不属于任何子类的“孤例”。在ER图中，用双线表示。 部分完备性（partial）： 超类型的实例可以不属于任何子类型。 例如：一个 人(Person) 可以只是普通人，既不是 员工(Employee)，也不是 学生(Student)。在ER图中，用单线表示。 在数据库中的实现方式 1. 每个具体类一张表 方法： 忽略超类型，只为每个子类型创建一张表。这张表包含该子类型特有的属性，以及从超类型继承来的所有属性。 举例： 创建 学生表(Students) 和 员工表(Employees)，没有 人表(Persons)。Students表中有 student_id, name, age, major 等字段。 优点： 查询特定子类型的数据时速度快。 缺点： 数据冗余（如果一个人既是学生又是员工，他的name和age信息会在两张表中重复存储）。 难以对所有人进行统一查询（需要UNION操作）。 无法表示不属于任何子类的人。 2. 单张表 方法： 将整个层次结构“扁平化”为一张表。这张表包含超类型和所有子类型的所有属性。同时，增加一个“类型鉴别”字段来标识每一行属于哪个子类型。 举例： 创建一张 人表(Persons)，包含字段：person_id, name, age, person_type, major, salary, department。 如果 person_type = ‘Student’，那么 major 字段有意义，salary 字段为NULL。 如果 person_type = ‘Employee’，那么 salary 字段有意义，major 字段为NULL。 优点： 统一查询非常简单，不需要JOIN操作。 缺点： 表中存在大量NULL值，浪费存储空间。 表结构会随着子类型的增加而变得非常庞大和复杂。 3. 超类型和子类型分别建表 方法： 为超类型和每一个子类型都创建一张表。 超类型表包含所有实例共享的公共属性（和一个主键）。 子类型表只包含其特有的属性，并共享超类型表的主键（即子类型表的主键同时也是引用超类型表的外键）。 举例： 人表(Persons)：person_id (PK), name, age 学生表(Students)：person_id (PK, FK references Persons), major 员工表(Employees)：person_id (PK, FK references Persons), salary, department 优点： 设计规范，消除了数据冗余。 易于添加新的子类型。 能很好地支持重叠约束（一个人可以同时在Students和Employees表中有记录）。 缺点： 查询数据时需要频繁使用JOIN操作，性能可能成为瓶颈。 总结 在数据库领域中，ISA Relationship 是一个强大的概念建模工具，它清晰地表达了 “是一个” 的继承关系。理解并正确定义其重叠约束和完备性约束至关重要，因为它直接影响到最终数据库表结构的设计选择（每种实现方式都有其优缺点，需要根据具体应用场景进行权衡）。\n">
 <title>Deepseek整理的ISA</title>
@@ -39,7 +39,7 @@
         }
     })();
 </script>
-<div class="container main-container flex on-phone--column compact"><aside class="sidebar left-sidebar sticky ">
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
     <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
         <span class="hamburger-box">
             <span class="hamburger-inner"></span>
@@ -62,13 +62,15 @@
                 
                 </a>
                 
+                    <span class="emoji">🍥</span>
+                
             </figure>
             
         
         
         <div class="site-meta">
             <h1 class="site-name"><a href="/">zcys univ II Hugo ver</a></h1>
-            <h2 class="site-description"></h2>
+            <h2 class="site-description">喵~</h2>
         </div>
     </header><ol class="menu" id="main-menu">
         
@@ -152,7 +154,45 @@
     </ol>
 </aside>
 
-    
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#核心概念">核心概念</a></li>
+        <li><a href="#isa关系的两个关键约束">ISA关系的两个关键约束</a></li>
+        <li><a href="#在数据库中的实现方式">在数据库中的实现方式</a></li>
+        <li><a href="#总结">总结</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
 
             <main class="main full-width">
 
@@ -464,6 +504,32 @@
 
     </footer>
 
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI&#43;WdtXRGWt2kTvGFasHpSy3SV"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG&#43;vnGctmUb0ZY0l8"crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"integrity="sha384-&#43;VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4&#43;/RRE05"crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+	const mainArticleElement = document.querySelector(".main-article");
+        renderMathInElement(mainArticleElement, {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
 
     
 </article>

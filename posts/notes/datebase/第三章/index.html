@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-us" dir="ltr">
+<html lang="en" dir="ltr">
     <head><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="SQL 语法 SELECT distinct 去重 select `distinct/all` dept_name from instructor 四则运算和重命名 select ID, name, salary/12 as monthly_salary FROM natural join 自然连接 select name, course_id from instructor natural join teaches where instructor. dept_name = ‘Art’ // 等价于加上 where instructor.ID = teaches.ID and WHERE SQL allows the use of the logical connectives and, or, and not The operands of the logical connectives can be expressions involving the comparison operators &lt;, &lt;=, &gt;, &gt;=, =, and &lt;&gt;.（以及between A and B 用法）\n">
 <title>Chapter3 SQL ppt</title>
@@ -39,7 +39,7 @@
         }
     })();
 </script>
-<div class="container main-container flex on-phone--column compact"><aside class="sidebar left-sidebar sticky ">
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
     <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
         <span class="hamburger-box">
             <span class="hamburger-inner"></span>
@@ -62,13 +62,15 @@
                 
                 </a>
                 
+                    <span class="emoji">🍥</span>
+                
             </figure>
             
         
         
         <div class="site-meta">
             <h1 class="site-name"><a href="/">zcys univ II Hugo ver</a></h1>
-            <h2 class="site-description"></h2>
+            <h2 class="site-description">喵~</h2>
         </div>
     </header><ol class="menu" id="main-menu">
         
@@ -152,7 +154,59 @@
     </ol>
 </aside>
 
-    
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ul>
+    <li><a href="#语法">语法</a></li>
+    <li><a href="#select">SELECT</a>
+      <ul>
+        <li><a href="#distinct-去重">distinct 去重</a></li>
+        <li><a href="#四则运算和重命名">四则运算和重命名</a></li>
+      </ul>
+    </li>
+    <li><a href="#from">FROM</a>
+      <ul>
+        <li><a href="#natural-join-自然连接">natural join 自然连接</a></li>
+      </ul>
+    </li>
+    <li><a href="#where">WHERE</a>
+      <ul>
+        <li><a href="#tuple-comparison">Tuple comparison</a></li>
+        <li><a href="#tuple-variables">Tuple Variables</a></li>
+      </ul>
+    </li>
+    <li><a href="#执行顺序">执行顺序</a></li>
+    <li><a href="#cte">CTE</a></li>
+    <li><a href="#group-by">GROUP BY</a></li>
+    <li><a href="#order-by">ORDER BY</a></li>
+  </ul>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
 
             <main class="main full-width">
 
@@ -515,6 +569,32 @@ The operands of the logical connectives can be expressions involving the compari
 
     </footer>
 
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI&#43;WdtXRGWt2kTvGFasHpSy3SV"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG&#43;vnGctmUb0ZY0l8"crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"integrity="sha384-&#43;VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4&#43;/RRE05"crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+	const mainArticleElement = document.querySelector(".main-article");
+        renderMathInElement(mainArticleElement, {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
 
     
 </article>

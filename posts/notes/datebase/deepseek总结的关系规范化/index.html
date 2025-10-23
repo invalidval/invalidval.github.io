@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-us" dir="ltr">
+<html lang="en" dir="ltr">
     <head><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="关系规范化/Schema Normalization是一种数据库设计技术，旨在通过消除数据冗余和更新异常来组织关系数据库中的属性（列）和关系（表）。\n一、 规范化的核心目标 1. 消除数据冗余 -- 非规范化设计（冗余） 学生表(学号, 姓名, 课程号, 课程名, 教师, 教师办公室) -- 规范化设计（无冗余） 学生表(学号, 姓名) 课程表(课程号, 课程名, 教师编号) 教师表(教师编号, 教师姓名, 办公室) 选课表(学号, 课程号, 成绩) 2. 避免更新异常 插入异常：无法插入某些信息 删除异常：删除信息时丢失其他重要数据 修改异常：修改数据时出现不一致 二、 规范化范式（Normal Forms） 关系规范化分为多个层级，称为&quot;范式&quot;： 1. 第一范式（1NF） 要求：每个列都是原子的（不可再分）\n-- 违反1NF的例子 学生表(学号, 姓名, 选修课程) -- 数据：(&#39;001&#39;, &#39;张三&#39;, &#39;数学,英语,物理&#39;) -- 符合1NF的设计 学生表(学号, 姓名) 选课表(学号, 课程名) -- 数据：多条记录分别存储每门课程 2. 第二范式（2NF） 要求：满足1NF，且非主属性完全依赖于主键\n-- 违反2NF的例子 选课表(学号, 课程号, 课程名, 成绩, 学分) -- 主键：(学号, 课程号) -- 问题：课程名、学分只依赖于课程号，不完全依赖于主键 -- 符合2NF的设计 选课表(学号, 课程号, 成绩) 课程表(课程号, 课程名, 学分) 3. 第三范式（3NF） 要求：满足2NF，且消除传递依赖\n">
 <title>Deepseek总结的关系规范化</title>
@@ -39,7 +39,7 @@
         }
     })();
 </script>
-<div class="container main-container flex on-phone--column compact"><aside class="sidebar left-sidebar sticky ">
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
     <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
         <span class="hamburger-box">
             <span class="hamburger-inner"></span>
@@ -62,13 +62,15 @@
                 
                 </a>
                 
+                    <span class="emoji">🍥</span>
+                
             </figure>
             
         
         
         <div class="site-meta">
             <h1 class="site-name"><a href="/">zcys univ II Hugo ver</a></h1>
-            <h2 class="site-description"></h2>
+            <h2 class="site-description">喵~</h2>
         </div>
     </header><ol class="menu" id="main-menu">
         
@@ -152,7 +154,76 @@
     </ol>
 </aside>
 
-    
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ul>
+    <li><a href="#一-规范化的核心目标"><strong>一、 规范化的核心目标</strong></a>
+      <ul>
+        <li><a href="#1-消除数据冗余">1. <strong>消除数据冗余</strong></a></li>
+        <li><a href="#2-避免更新异常">2. <strong>避免更新异常</strong></a></li>
+      </ul>
+    </li>
+    <li><a href="#二-规范化范式normal-forms"><strong>二、 规范化范式（Normal Forms）</strong></a>
+      <ul>
+        <li><a href="#1-第一范式1nf"><strong>1. 第一范式（1NF）</strong></a></li>
+        <li><a href="#2-第二范式2nf"><strong>2. 第二范式（2NF）</strong></a></li>
+        <li><a href="#3-第三范式3nf"><strong>3. 第三范式（3NF）</strong></a></li>
+      </ul>
+    </li>
+    <li><a href="#三-实际案例演示"><strong>三、 实际案例演示</strong></a>
+      <ul>
+        <li><a href="#非规范化设计问题很多"><strong>非规范化设计（问题很多）</strong></a></li>
+        <li><a href="#规范化后的设计"><strong>规范化后的设计</strong></a></li>
+      </ul>
+    </li>
+    <li><a href="#四-更高阶的范式"><strong>四、 更高阶的范式</strong></a>
+      <ul>
+        <li><a href="#4-boyce-codd范式bcnf"><strong>4. Boyce-Codd范式（BCNF）</strong></a></li>
+        <li><a href="#5-第四范式4nf"><strong>5. 第四范式（4NF）</strong></a></li>
+        <li><a href="#6-第五范式5nf"><strong>6. 第五范式（5NF）</strong></a></li>
+      </ul>
+    </li>
+    <li><a href="#五-规范化的优缺点"><strong>五、 规范化的优缺点</strong></a>
+      <ul>
+        <li><a href="#优点"><strong>优点</strong></a></li>
+        <li><a href="#缺点"><strong>缺点</strong></a></li>
+      </ul>
+    </li>
+    <li><a href="#六-实际应用建议"><strong>六、 实际应用建议</strong></a>
+      <ul>
+        <li><a href="#平衡原则"><strong>平衡原则</strong></a></li>
+        <li><a href="#实际设计流程"><strong>实际设计流程</strong></a></li>
+      </ul>
+    </li>
+    <li><a href="#总结"><strong>总结</strong></a></li>
+  </ul>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
 
             <main class="main full-width">
 
@@ -502,6 +573,32 @@
 
     </footer>
 
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI&#43;WdtXRGWt2kTvGFasHpSy3SV"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG&#43;vnGctmUb0ZY0l8"crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"integrity="sha384-&#43;VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4&#43;/RRE05"crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+	const mainArticleElement = document.querySelector(".main-article");
+        renderMathInElement(mainArticleElement, {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
 
     
 </article>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-us" dir="ltr">
+<html lang="en" dir="ltr">
     <head><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content=" 一、 基础查询 (Basic Queries) 1. SELECT &amp; FROM SELECT * FROM employees; SELECT name, salary FROM employees; 2. WHERE 条件筛选 SELECT * FROM employees WHERE salary &gt; 5000; SELECT * FROM employees WHERE department = &#39;IT&#39; AND salary &gt; 6000; SELECT * FROM employees WHERE name LIKE &#39;A%&#39;; -- 名字以A开头 SELECT * FROM employees WHERE age BETWEEN 25 AND 35; SELECT * FROM employees WHERE department IN (&#39;IT&#39;, &#39;HR&#39;, &#39;Finance&#39;); 3. ORDER BY 排序 SELECT * FROM employees ORDER BY salary DESC; SELECT * FROM employees ORDER BY department ASC, salary DESC; 4. DISTINCT 去重 SELECT DISTINCT department FROM employees; 二、 聚合函数与分组 (Aggregation &amp; Grouping) 5. 聚合函数 SELECT COUNT(*) as total_employees, AVG(salary) as avg_salary, MAX(salary) as max_salary, MIN(salary) as min_salary, SUM(salary) as total_salary FROM employees; 6. GROUP BY 分组 SELECT department, COUNT(*) as emp_count, AVG(salary) as avg_salary FROM employees GROUP BY department; 7. HAVING 分组后筛选 SELECT department, COUNT(*) as emp_count FROM employees GROUP BY department HAVING COUNT(*) &gt; 5; 三、 多表连接 (Joins) 8. INNER JOIN SELECT e.name, d.department_name FROM employees e INNER JOIN departments d ON e.department_id = d.id; 9. LEFT/RIGHT JOIN SELECT e.name, d.department_name FROM employees e LEFT JOIN departments d ON e.department_id = d.id; 10. FULL OUTER JOIN SELECT e.name, d.department_name FROM employees e FULL OUTER JOIN departments d ON e.department_id = d.id; 11. 多表连接 SELECT e.name, d.department_name, p.project_name FROM employees e JOIN departments d ON e.department_id = d.id JOIN projects p ON e.id = p.leader_id; 四、 子查询 (Subqueries) 12. 标量子查询 SELECT name, salary, (SELECT AVG(salary) FROM employees) as company_avg FROM employees; 13. IN 子查询 SELECT name FROM employees WHERE department_id IN ( SELECT id FROM departments WHERE budget &gt; 100000 ); 14. EXISTS 子查询 SELECT name FROM employees e WHERE EXISTS ( SELECT 1 FROM projects p WHERE p.leader_id = e.id ); 15. 关联子查询 SELECT name, salary, department FROM employees e1 WHERE salary &gt; ( SELECT AVG(salary) FROM employees e2 WHERE e2.department = e1.department ); 五、 高级查询技术 (Advanced Techniques) 16. CTE (公用表表达式) WITH department_stats AS ( SELECT department, AVG(salary) as avg_salary FROM employees GROUP BY department ) SELECT * FROM department_stats WHERE avg_salary &gt; 6000; 17. 递归 CTE WITH RECURSIVE org_chart AS ( -- 基础情况 SELECT employee_id, name, manager_id, 1 as level FROM employees WHERE manager_id IS NULL UNION ALL -- 递归情况 SELECT e.employee_id, e.name, e.manager_id, oc.level + 1 FROM employees e JOIN org_chart oc ON e.manager_id = oc.employee_id ) SELECT * FROM org_chart; 18. 窗口函数 SELECT name, department, salary, RANK() OVER (PARTITION BY department ORDER BY salary DESC) as dept_rank, AVG(salary) OVER (PARTITION BY department) as dept_avg_salary, LAG(salary) OVER (ORDER BY salary) as prev_salary FROM employees; 19. PIVOT 行列转换 -- SQL Server SELECT * FROM ( SELECT department, salary FROM employees ) AS SourceTable PIVOT ( AVG(salary) FOR department IN ([IT], [HR], [Finance]) ) AS PivotTable; 六、 数据操作 (Data Manipulation) 20. INSERT INSERT INTO employees (name, salary, department) VALUES (&#39;John Doe&#39;, 5000, &#39;IT&#39;); -- 插入查询结果 INSERT INTO high_paid_employees (name, salary) SELECT name, salary FROM employees WHERE salary &gt; 8000; 21. UPDATE UPDATE employees SET salary = salary * 1.1 WHERE department = &#39;IT&#39;; -- 使用子查询更新 UPDATE employees SET salary = ( SELECT AVG(salary) FROM employees ) WHERE salary IS NULL; 22. DELETE DELETE FROM employees WHERE salary &lt; 3000; -- 使用子查询删除 DELETE FROM employees WHERE department_id IN ( SELECT id FROM departments WHERE active = 0 ); 23. MERGE/UPSERT -- PostgreSQL INSERT INTO employees (id, name, salary) VALUES (1, &#39;John&#39;, 5000) ON CONFLICT (id) DO UPDATE SET name = EXCLUDED.name, salary = EXCLUDED.salary; 七、 事务控制 (Transaction Control) 24. 事务处理 BEGIN TRANSACTION; UPDATE accounts SET balance = balance - 100 WHERE id = 1; UPDATE accounts SET balance = balance + 100 WHERE id = 2; -- 如果一切正常 COMMIT; -- 如果出现错误 ROLLBACK; 八、 性能优化相关 25. 索引使用 CREATE INDEX idx_employee_department ON employees(department); CREATE INDEX idx_employee_name_salary ON employees(name, salary); 26. 分页查询 -- MySQL SELECT * FROM employees ORDER BY id LIMIT 10 OFFSET 20; -- SQL Server SELECT * FROM employees ORDER BY id OFFSET 20 ROWS FETCH NEXT 10 ROWS ONLY; 27. 查询性能分析 -- 查看执行计划 EXPLAIN SELECT * FROM employees WHERE salary &gt; 5000; -- SQL Server SET STATISTICS TIME ON; SELECT * FROM employees WHERE salary &gt; 5000; 九、 实用函数 28. 字符串函数 SELECT UPPER(name) as upper_name, LOWER(name) as lower_name, LENGTH(name) as name_length, SUBSTRING(name, 1, 3) as name_prefix, CONCAT(first_name, &#39; &#39;, last_name) as full_name FROM employees; 29. 日期函数 SELECT CURRENT_DATE as today, EXTRACT(YEAR FROM hire_date) as hire_year, DATE_ADD(hire_date, INTERVAL 1 YEAR) as anniversary, DATEDIFF(CURRENT_DATE, hire_date) as days_employed FROM employees; 30. 条件表达式 SELECT name, salary, CASE WHEN salary &lt; 3000 THEN &#39;Low&#39; WHEN salary BETWEEN 3000 AND 7000 THEN &#39;Medium&#39; ELSE &#39;High&#39; END as salary_level, COALESCE(bonus, 0) as bonus_amount FROM employees; 这份指南涵盖了 SQL 从基础到高级的大部分常用语法。建议在实际工作中根据需要查阅相关部分，并通过练习来熟练掌握。\n">
 <title>Deepseek整理的SQL</title>
@@ -39,7 +39,7 @@
         }
     })();
 </script>
-<div class="container main-container flex on-phone--column compact"><aside class="sidebar left-sidebar sticky ">
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
     <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
         <span class="hamburger-box">
             <span class="hamburger-inner"></span>
@@ -62,13 +62,15 @@
                 
                 </a>
                 
+                    <span class="emoji">🍥</span>
+                
             </figure>
             
         
         
         <div class="site-meta">
             <h1 class="site-name"><a href="/">zcys univ II Hugo ver</a></h1>
-            <h2 class="site-description"></h2>
+            <h2 class="site-description">喵~</h2>
         </div>
     </header><ol class="menu" id="main-menu">
         
@@ -152,7 +154,103 @@
     </ol>
 </aside>
 
-    
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ul>
+    <li><a href="#一-基础查询-basic-queries"><strong>一、 基础查询 (Basic Queries)</strong></a>
+      <ul>
+        <li><a href="#1-select--from">1. SELECT &amp; FROM</a></li>
+        <li><a href="#2-where-条件筛选">2. WHERE 条件筛选</a></li>
+        <li><a href="#3-order-by-排序">3. ORDER BY 排序</a></li>
+        <li><a href="#4-distinct-去重">4. DISTINCT 去重</a></li>
+      </ul>
+    </li>
+    <li><a href="#二-聚合函数与分组-aggregation--grouping"><strong>二、 聚合函数与分组 (Aggregation &amp; Grouping)</strong></a>
+      <ul>
+        <li><a href="#5-聚合函数">5. 聚合函数</a></li>
+        <li><a href="#6-group-by-分组">6. GROUP BY 分组</a></li>
+        <li><a href="#7-having-分组后筛选">7. HAVING 分组后筛选</a></li>
+      </ul>
+    </li>
+    <li><a href="#三-多表连接-joins"><strong>三、 多表连接 (Joins)</strong></a>
+      <ul>
+        <li><a href="#8-inner-join">8. INNER JOIN</a></li>
+        <li><a href="#9-leftright-join">9. LEFT/RIGHT JOIN</a></li>
+        <li><a href="#10-full-outer-join">10. FULL OUTER JOIN</a></li>
+        <li><a href="#11-多表连接">11. 多表连接</a></li>
+      </ul>
+    </li>
+    <li><a href="#四-子查询-subqueries"><strong>四、 子查询 (Subqueries)</strong></a>
+      <ul>
+        <li><a href="#12-标量子查询">12. 标量子查询</a></li>
+        <li><a href="#13-in-子查询">13. IN 子查询</a></li>
+        <li><a href="#14-exists-子查询">14. EXISTS 子查询</a></li>
+        <li><a href="#15-关联子查询">15. 关联子查询</a></li>
+      </ul>
+    </li>
+    <li><a href="#五-高级查询技术-advanced-techniques"><strong>五、 高级查询技术 (Advanced Techniques)</strong></a>
+      <ul>
+        <li><a href="#16-cte-公用表表达式">16. CTE (公用表表达式)</a></li>
+        <li><a href="#17-递归-cte">17. 递归 CTE</a></li>
+        <li><a href="#18-窗口函数">18. 窗口函数</a></li>
+        <li><a href="#19-pivot-行列转换">19. PIVOT 行列转换</a></li>
+      </ul>
+    </li>
+    <li><a href="#六-数据操作-data-manipulation"><strong>六、 数据操作 (Data Manipulation)</strong></a>
+      <ul>
+        <li><a href="#20-insert">20. INSERT</a></li>
+        <li><a href="#21-update">21. UPDATE</a></li>
+        <li><a href="#22-delete">22. DELETE</a></li>
+        <li><a href="#23-mergeupsert">23. MERGE/UPSERT</a></li>
+      </ul>
+    </li>
+    <li><a href="#七-事务控制-transaction-control"><strong>七、 事务控制 (Transaction Control)</strong></a>
+      <ul>
+        <li><a href="#24-事务处理">24. 事务处理</a></li>
+      </ul>
+    </li>
+    <li><a href="#八-性能优化相关"><strong>八、 性能优化相关</strong></a>
+      <ul>
+        <li><a href="#25-索引使用">25. 索引使用</a></li>
+        <li><a href="#26-分页查询">26. 分页查询</a></li>
+        <li><a href="#27-查询性能分析">27. 查询性能分析</a></li>
+      </ul>
+    </li>
+    <li><a href="#九-实用函数"><strong>九、 实用函数</strong></a>
+      <ul>
+        <li><a href="#28-字符串函数">28. 字符串函数</a></li>
+        <li><a href="#29-日期函数">29. 日期函数</a></li>
+        <li><a href="#30-条件表达式">30. 条件表达式</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
 
             <main class="main full-width">
 
@@ -570,6 +668,32 @@
 
     </footer>
 
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI&#43;WdtXRGWt2kTvGFasHpSy3SV"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG&#43;vnGctmUb0ZY0l8"crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"integrity="sha384-&#43;VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4&#43;/RRE05"crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+	const mainArticleElement = document.querySelector(".main-article");
+        renderMathInElement(mainArticleElement, {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
 
     
 </article>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Abouts on zcys univ II Hugo ver</title>
+        <link>http://localhost:1313/en/about/</link>
+        <description>Recent content in Abouts on zcys univ II Hugo ver</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-US</language>
+        <lastBuildDate>Wed, 01 Jan 2025 00:00:00 +0800</lastBuildDate><atom:link href="http://localhost:1313/en/about/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>关于我</title>
+        <link>http://localhost:1313/en/about/about/</link>
+        <pubDate>Wed, 01 Jan 2025 00:00:00 +0800</pubDate>
+        
+        <guid>http://localhost:1313/en/about/about/</guid>
+        <description>&lt;h2 id=&#34;个人简介&#34;&gt;个人简介
+&lt;/h2&gt;&lt;h3 id=&#34;性别&#34;&gt;性别
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Raise GenderError: Null&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;其他&#34;&gt;其他
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;计算机科学与技术&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;我的技能&#34;&gt;我的技能
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;使用大模型写代码&lt;/li&gt;
+&lt;li&gt;使用小男娘写代码&lt;/li&gt;
+&lt;li&gt;看小男娘&lt;/li&gt;
+&lt;li&gt;看小男娘&lt;/li&gt;
+&lt;li&gt;看小男娘&lt;/li&gt;
+&lt;li&gt;用……&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;联系我&#34;&gt;联系我
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;Email: &lt;a class=&#34;link&#34; href=&#34;mailto:your@email.com&#34; &gt;your@email.com&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;GitHub: &lt;a class=&#34;link&#34; href=&#34;https://github.com/invalidval&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;invalidval&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        <item>
+        <title>给爱键政的小朋友们看的好东西</title>
+        <link>http://localhost:1313/en/about/dec/</link>
+        <pubDate>Wed, 01 Jan 2025 00:00:00 +0800</pubDate>
+        
+        <guid>http://localhost:1313/en/about/dec/</guid>
+        <description>&lt;h1 id=&#34;你想找什么&#34;&gt;你想找什么？
+&lt;/h1&gt;&lt;p&gt;&lt;img src=&#34;http://localhost:1313/en/about/dec/b806070e848f91816f3a2f499df34fb9.jpg&#34;
+	width=&#34;1621&#34;
+	height=&#34;1080&#34;
+	srcset=&#34;http://localhost:1313/en/about/dec/b806070e848f91816f3a2f499df34fb9_hu_46143b85c145faf5.jpg 480w, http://localhost:1313/en/about/dec/b806070e848f91816f3a2f499df34fb9_hu_9bd06231e20fa92b.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;国徽&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;150&#34;
+		data-flex-basis=&#34;360px&#34;
+	
+&gt;&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

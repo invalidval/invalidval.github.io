@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-us" dir="ltr">
+<html lang="en" dir="ltr">
     <head><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="思想 递归\n分治的条件 规模缩小到一定程度可以容易解决 具有最优子结构性质 子问题的解可以合并为该问题的解（与动态规划的区别）（不能：贪心、DP） 不包含公共子问题（各个子问题相互独立，否则使用DP） 快速排序：原地排序、$nlogn$ 2.3 二分搜索 2.4 大整数乘法 2.5 Strassen矩阵乘法 2.7 合并排序 2.8 快速排序 2.9 选择问题 长度为$n$线性有序集合，找出第$k$小 分治，$pivot$ 线性时间选择问题，问题规模 $0&lt;\\epsilon&lt;1$\n步骤 划分成$\\frac{n}{5}$个组 各组内任意排序 每组中，$pivot_{i}$ = 中位数 一共$\\frac{n}{5}$个$pivot$，再找出中位数 只有75个元素以上才能缩小$\\frac{1}{4}$ 补充 划分因子选择3、7：7可以，3不行\n2.10 最近点对问题 直线 暴力$O(n^{2})$ 一次排序、一维扫描，$O(nlogn)$\n二维 蛮力；分治（平衡子问题） 如何分治？能在线性时间内完成？\n">
 <title>第二章 分治</title>
@@ -39,7 +39,7 @@
         }
     })();
 </script>
-<div class="container main-container flex on-phone--column compact"><aside class="sidebar left-sidebar sticky ">
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
     <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
         <span class="hamburger-box">
             <span class="hamburger-inner"></span>
@@ -62,13 +62,15 @@
                 
                 </a>
                 
+                    <span class="emoji">🍥</span>
+                
             </figure>
             
         
         
         <div class="site-meta">
             <h1 class="site-name"><a href="/">zcys univ II Hugo ver</a></h1>
-            <h2 class="site-description"></h2>
+            <h2 class="site-description">喵~</h2>
         </div>
     </header><ol class="menu" id="main-menu">
         
@@ -152,7 +154,44 @@
     </ol>
 </aside>
 
-    
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ul>
+    <li><a href="#步骤">步骤</a></li>
+    <li><a href="#补充">补充</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#直线">直线</a></li>
+    <li><a href="#二维">二维</a></li>
+  </ul>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
 
             <main class="main full-width">
 

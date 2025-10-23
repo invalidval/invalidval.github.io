@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-us" dir="ltr">
+<html lang="en" dir="ltr">
     <head><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="NOT EXISTS 和 EXCEPT 是 SQL 中用于处理集合差集的高级操作，它们在不同场景下非常有用。\n一、 NOT EXISTS 用法 1. 基本语法 SELECT columns FROM table1 t1 WHERE NOT EXISTS ( SELECT 1 FROM table2 t2 WHERE t1.related_column = t2.related_column ); 2. 实际例子 例1：找出没有项目的员工 SELECT e.employee_id, e.name FROM employees e WHERE NOT EXISTS ( SELECT 1 FROM projects p WHERE p.leader_id = e.employee_id ); 例2：找出没有订单的客户 SELECT c.customer_id, c.customer_name FROM customers c WHERE NOT EXISTS ( SELECT 1 FROM orders o WHERE o.customer_id = c.customer_id ); 例3：找出从未被订购的产品 SELECT p.product_id, p.product_name FROM products p WHERE NOT EXISTS ( SELECT 1 FROM order_items oi WHERE oi.product_id = p.product_id ); 3. 复杂例子：找出没有下属的管理者 SELECT e1.employee_id, e1.name FROM employees e1 WHERE e1.is_manager = 1 AND NOT EXISTS ( SELECT 1 FROM employees e2 WHERE e2.manager_id = e1.employee_id ); 二、 EXCEPT 用法 1. 基本语法 SELECT column1, column2 FROM table1 EXCEPT SELECT column1, column2 FROM table2; 2. 实际例子 例1：找出只在A表不在B表的记录 -- 找出在employees表但不在former_employees表的员工 SELECT employee_id, name FROM employees EXCEPT SELECT employee_id, name FROM former_employees; 例2：找出有库存但从未被订购的产品 SELECT product_id FROM inventory EXCEPT SELECT product_id FROM order_items; 例3：多列比较 -- 找出在2023年有销售但2024年没有的客户 SELECT customer_id, product_id FROM sales_2023 EXCEPT SELECT customer_id, product_id FROM sales_2024; 三、 NOT EXISTS vs EXCEPT 对比 相同需求的不同实现 需求：找出没有项目的部门 使用 NOT EXISTS:\n">
 <title>Chapter3 SQL集合操作</title>
@@ -39,7 +39,7 @@
         }
     })();
 </script>
-<div class="container main-container flex on-phone--column compact"><aside class="sidebar left-sidebar sticky ">
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
     <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
         <span class="hamburger-box">
             <span class="hamburger-inner"></span>
@@ -62,13 +62,15 @@
                 
                 </a>
                 
+                    <span class="emoji">🍥</span>
+                
             </figure>
             
         
         
         <div class="site-meta">
             <h1 class="site-name"><a href="/">zcys univ II Hugo ver</a></h1>
-            <h2 class="site-description"></h2>
+            <h2 class="site-description">喵~</h2>
         </div>
     </header><ol class="menu" id="main-menu">
         
@@ -152,7 +154,77 @@
     </ol>
 </aside>
 
-    
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ul>
+    <li><a href="#一-not-exists-用法"><strong>一、 NOT EXISTS 用法</strong></a>
+      <ul>
+        <li><a href="#1-基本语法">1. 基本语法</a></li>
+        <li><a href="#2-实际例子">2. 实际例子</a></li>
+        <li><a href="#3-复杂例子找出没有下属的管理者">3. 复杂例子：找出没有下属的管理者</a></li>
+      </ul>
+    </li>
+    <li><a href="#二-except-用法"><strong>二、 EXCEPT 用法</strong></a>
+      <ul>
+        <li><a href="#1-基本语法-1">1. 基本语法</a></li>
+        <li><a href="#2-实际例子-1">2. 实际例子</a></li>
+      </ul>
+    </li>
+    <li><a href="#三-not-exists-vs-except-对比"><strong>三、 NOT EXISTS vs EXCEPT 对比</strong></a>
+      <ul>
+        <li><a href="#相同需求的不同实现">相同需求的不同实现</a></li>
+      </ul>
+    </li>
+    <li><a href="#四-高级应用场景"><strong>四、 高级应用场景</strong></a>
+      <ul>
+        <li><a href="#1-多层-not-exists复杂逻辑">1. 多层 NOT EXISTS（复杂逻辑）</a></li>
+        <li><a href="#2-except-用于数据验证">2. EXCEPT 用于数据验证</a></li>
+        <li><a href="#3-组合使用-not-exists-和-exists">3. 组合使用 NOT EXISTS 和 EXISTS</a></li>
+      </ul>
+    </li>
+    <li><a href="#五-性能考虑和最佳实践"><strong>五、 性能考虑和最佳实践</strong></a>
+      <ul>
+        <li><a href="#1-not-exists-通常性能更好">1. NOT EXISTS 通常性能更好</a></li>
+        <li><a href="#2-except-自动去重">2. EXCEPT 自动去重</a></li>
+        <li><a href="#3-处理null值">3. 处理NULL值</a></li>
+      </ul>
+    </li>
+    <li><a href="#六-实际业务场景"><strong>六、 实际业务场景</strong></a>
+      <ul>
+        <li><a href="#场景1电商平台---找出从未被浏览的商品">场景1：电商平台 - 找出从未被浏览的商品</a></li>
+        <li><a href="#场景2学校系统---找出没有选课的学生">场景2：学校系统 - 找出没有选课的学生</a></li>
+        <li><a href="#场景3银行系统---找出有账户但从未交易的客户">场景3：银行系统 - 找出有账户但从未交易的客户</a></li>
+      </ul>
+    </li>
+    <li><a href="#总结"><strong>总结</strong></a></li>
+  </ul>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
 
             <main class="main full-width">
 
@@ -535,6 +607,32 @@
 
     </footer>
 
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI&#43;WdtXRGWt2kTvGFasHpSy3SV"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG&#43;vnGctmUb0ZY0l8"crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"integrity="sha384-&#43;VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4&#43;/RRE05"crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+	const mainArticleElement = document.querySelector(".main-article");
+        renderMathInElement(mainArticleElement, {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
 
     
 </article>

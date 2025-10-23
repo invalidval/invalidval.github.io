@@ -5,7 +5,7 @@
         <link>https://invalidval.github.io/</link>
         <description>Recent content on zcys univ II Hugo ver</description>
         <generator>Hugo -- gohugo.io</generator>
-        <language>en-us</language>
+        <language>en</language>
         <lastBuildDate>Thu, 23 Oct 2025 00:00:00 +0800</lastBuildDate><atom:link href="https://invalidval.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Chapter6 ER模型</title>
         <link>https://invalidval.github.io/posts/notes/datebase/%E7%AC%AC%E5%85%AD%E7%AB%A0er%E6%A8%A1%E5%9E%8B/</link>
@@ -730,9 +730,11 @@ A⁺ = {A,B,C,D} (因为 C→D)
 &lt;h2 id=&#34;我的技能&#34;&gt;我的技能
 &lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;使用大模型写代码&lt;/li&gt;
+&lt;li&gt;使用小男娘写代码&lt;/li&gt;
 &lt;li&gt;看小男娘&lt;/li&gt;
 &lt;li&gt;看小男娘&lt;/li&gt;
 &lt;li&gt;看小男娘&lt;/li&gt;
+&lt;li&gt;用……&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;联系我&#34;&gt;联系我
 &lt;/h2&gt;&lt;ul&gt;
@@ -740,6 +742,29 @@ A⁺ = {A,B,C,D} (因为 C→D)
 &lt;li&gt;GitHub: &lt;a class=&#34;link&#34; href=&#34;https://github.com/invalidval&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;invalidval&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
+</description>
+        </item>
+        <item>
+        <title>给爱键政的小朋友们看的好东西</title>
+        <link>https://invalidval.github.io/about/dec/</link>
+        <pubDate>Wed, 01 Jan 2025 00:00:00 +0800</pubDate>
+        
+        <guid>https://invalidval.github.io/about/dec/</guid>
+        <description>&lt;h1 id=&#34;你想找什么&#34;&gt;你想找什么？
+&lt;/h1&gt;&lt;p&gt;&lt;img src=&#34;https://invalidval.github.io/about/dec/b806070e848f91816f3a2f499df34fb9.jpg&#34;
+	width=&#34;1621&#34;
+	height=&#34;1080&#34;
+	srcset=&#34;https://invalidval.github.io/about/dec/b806070e848f91816f3a2f499df34fb9_hu_46143b85c145faf5.jpg 480w, https://invalidval.github.io/about/dec/b806070e848f91816f3a2f499df34fb9_hu_9bd06231e20fa92b.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;国徽&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;150&#34;
+		data-flex-basis=&#34;360px&#34;
+	
+&gt;&lt;/p&gt;
 </description>
         </item>
         <item>

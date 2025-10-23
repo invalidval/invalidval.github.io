@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-us" dir="ltr">
+<html lang="en" dir="ltr">
     <head><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Chapter 6 The Entity-Relationship Model Entity Sets（实体集，实体型） 一张学生表是一个实体集，一个学生是一个实体（一行记录）\nRelationship Sets(关系集) 选课表就是一个关系集。它定义了“学生”和“课程”之间的“选修”这种关系。关系表示特定实体之间的一次具体关联。它对应的是联系表中的一行记录。 关系集也可以拥有自己的属性（关系集属性），用于描述关系的特征。它同样对应联系表中的列。选课表这个关系集可以有成绩、选修日期等属性，这些属性不属于学生，也不属于课程，而是属于“选修”这个行为本身。\nChoice of Primary key for Binary Relationship 在多的那一端把一的主键拿过来当外键\n多元联系(non-binary) 先转成多个二元联系再转表：将其他实体集的主键和关系自身属性建成表，各实体集不存放多余属性。\nE-R图（概念设计结果） Representing Cardinality Constraints in ER Diagram →：一 —：多 (one,many) x (one,many) = 4 种\n参与约束(Participant Constraints) 完全参与、部分参与\n逻辑设计阶段 E-R图转关系模式 实体、联系、属性（单值属性、多值属性、复合属性）如何转表？ 多值属性单独转表 复合属性拆开（如时间、地址）\n弱实体集、强实体集； 用实体还是属性？ Not to use the primary-key of an entity set as an attributes of another entity set (to represent implicitly association between these two entity sets), it is better to use an relationship set to explicitly show this association e.g. for the entity student, do not use instructor.id as its attribute, in stead of, representing association among student and instructor using relationship advisor.\n">
 <title>Chapter6 ER模型</title>
@@ -39,7 +39,7 @@
         }
     })();
 </script>
-<div class="container main-container flex on-phone--column compact"><aside class="sidebar left-sidebar sticky ">
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
     <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
         <span class="hamburger-box">
             <span class="hamburger-inner"></span>
@@ -62,13 +62,15 @@
                 
                 </a>
                 
+                    <span class="emoji">🍥</span>
+                
             </figure>
             
         
         
         <div class="site-meta">
             <h1 class="site-name"><a href="/">zcys univ II Hugo ver</a></h1>
-            <h2 class="site-description"></h2>
+            <h2 class="site-description">喵~</h2>
         </div>
     </header><ol class="menu" id="main-menu">
         
@@ -152,7 +154,55 @@
     </ol>
 </aside>
 
-    
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ul>
+    <li><a href="#entity-sets实体集实体型">Entity Sets（实体集，实体型）</a></li>
+    <li><a href="#relationship-sets关系集">Relationship Sets(关系集)</a></li>
+    <li><a href="#choice-of-primary-key-for-binary-relationship">Choice of Primary key for Binary Relationship</a></li>
+    <li><a href="#多元联系non-binary">多元联系(non-binary)</a></li>
+    <li><a href="#e-r图概念设计结果">E-R图（概念设计结果）</a>
+      <ul>
+        <li><a href="#representing-cardinality-constraints-in-er-diagram">Representing Cardinality Constraints in ER Diagram</a></li>
+        <li><a href="#参与约束participant-constraints">参与约束(Participant Constraints)</a></li>
+      </ul>
+    </li>
+    <li><a href="#逻辑设计阶段">逻辑设计阶段</a></li>
+    <li><a href="#扩展er-详情看isa那篇">扩展ER （详情看ISA那篇）</a>
+      <ul>
+        <li><a href="#面向对象erobject-oriented-oo-e-r">面向对象ER：Object-oriented (OO) E-R</a></li>
+        <li><a href="#aggregation">Aggregation</a></li>
+      </ul>
+    </li>
+    <li><a href="#er图记号总结">ER图记号总结</a></li>
+  </ul>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
 
             <main class="main full-width">
 
@@ -494,6 +544,32 @@ e.g.  for the entity student, do not use instructor.id as its attribute, in stea
 
     </footer>
 
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI&#43;WdtXRGWt2kTvGFasHpSy3SV"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG&#43;vnGctmUb0ZY0l8"crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"integrity="sha384-&#43;VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4&#43;/RRE05"crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+	const mainArticleElement = document.querySelector(".main-article");
+        renderMathInElement(mainArticleElement, {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
 
     
 </article>

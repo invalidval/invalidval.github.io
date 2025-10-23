@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
-    <head><meta charset='utf-8'>
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="SQL 语法 SELECT distinct 去重 select `distinct/all` dept_name from instructor 四则运算和重命名 select ID, name, salary/12 as monthly_salary FROM natural join 自然连接 select name, course_id from instructor natural join teaches where instructor. dept_name = ‘Art’ // 等价于加上 where instructor.ID = teaches.ID and WHERE SQL allows the use of the logical connectives and, or, and not The operands of the logical connectives can be expressions involving the comparison operators &lt;, &lt;=, &gt;, &gt;=, =, and &lt;&gt;.（以及between A and B 用法）\n">
 <title>SQL ppt</title>
 
-<link rel='canonical' href='https://invalidval.github.io/posts/notes/datebase/ppt%E6%80%BB%E7%BB%93sql/'>
+<link rel='canonical' href='http://localhost:1313/posts/notes/datebase/ppt%E6%80%BB%E7%BB%93sql/'>
 
 <link rel="stylesheet" href="/scss/style.min.6a692fd055deae459f2a9767f57f3855ba80cafd5041317f24f7360f6ca47cdf.css"><meta property='og:title' content="SQL ppt">
 <meta property='og:description' content="SQL 语法 SELECT distinct 去重 select `distinct/all` dept_name from instructor 四则运算和重命名 select ID, name, salary/12 as monthly_salary FROM natural join 自然连接 select name, course_id from instructor natural join teaches where instructor. dept_name = ‘Art’ // 等价于加上 where instructor.ID = teaches.ID and WHERE SQL allows the use of the logical connectives and, or, and not The operands of the logical connectives can be expressions involving the comparison operators &lt;, &lt;=, &gt;, &gt;=, =, and &lt;&gt;.（以及between A and B 用法）\n">
-<meta property='og:url' content='https://invalidval.github.io/posts/notes/datebase/ppt%E6%80%BB%E7%BB%93sql/'>
+<meta property='og:url' content='http://localhost:1313/posts/notes/datebase/ppt%E6%80%BB%E7%BB%93sql/'>
 <meta property='og:site_name' content='zcys univ II Hugo ver'>
 <meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='SQL' /><meta property='article:tag' content='ppt' /><meta property='article:published_time' content='2023-01-01T00:00:00&#43;08:00'/><meta property='article:modified_time' content='2023-01-01T00:00:00&#43;08:00'/>
 <meta name="twitter:title" content="SQL ppt">
@@ -404,7 +404,13 @@ The operands of the logical connectives can be expressions involving the compari
 </span></span><span style="display:flex;"><span><span style="color:#ff79c6">JOIN</span> high_avg_departments h <span style="color:#ff79c6">ON</span> e.department <span style="color:#ff79c6">=</span> h.department
 </span></span><span style="display:flex;"><span><span style="color:#ff79c6">WHERE</span> e.salary <span style="color:#ff79c6">&gt;</span> h.avg_salary;
 </span></span></code></pre></div><h2 id="group-by">GROUP BY
-</h2><p>必须要有聚合运算</p>
+</h2><p>Attributes in select clause outside of aggregate functions must appear in group by list（必须要有聚合运算）
+错误示例：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#6272a4">/* erroneous query */</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">select</span> dept_name, ID, <span style="color:#ff79c6">avg</span> (salary) <span style="color:#6272a4">-- ID 不在聚合属性中
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span><span style="color:#ff79c6">from</span> instructor
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">group</span> <span style="color:#ff79c6">by</span> dept_name
+</span></span></code></pre></div><p>正确用法：（可以有多个聚合运算）</p>
 <div class="table-wrapper"><table>
   <thead>
       <tr>
@@ -545,32 +551,6 @@ The operands of the logical connectives can be expressions involving the compari
 
         <div class="article-details">
             <h2 class="article-title">关系数据库基础</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="">
-    <a href="/posts/notes/datebase/%E5%85%B3%E7%B3%BB%E8%8C%83%E5%BC%8F/">
-        
-        
-
-        <div class="article-details">
-            <h2 class="article-title">关系规范化</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="">
-    <a href="/posts/notes/datebase/fd/">
-        
-        
-
-        <div class="article-details">
-            <h2 class="article-title">函数依赖</h2>
         </div>
     </a>
 </article>
@@ -724,16 +704,16 @@ The operands of the logical connectives can be expressions involving the compari
             <div class="sections-content">
                 
                 
-                <a href="/about/" 
-                   class="section-link ">
-                    Abouts
-                    <span class="page-count">1</span>
-                </a>
-                
                 <a href="/posts/" 
                    class="section-link ">
                     Posts
                     <span class="page-count">3</span>
+                </a>
+                
+                <a href="/about/" 
+                   class="section-link ">
+                    Abouts
+                    <span class="page-count">1</span>
                 </a>
                 
             </div>
@@ -887,7 +867,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
                 
                 >
-            </script><script type="text/javascript" src="/ts/main.1e9a3bafd846ced4c345d084b355fb8c7bae75701c338f8a1f8a82c780137826.js" defer></script>
+            </script><script type="text/javascript" src="/ts/main.14dc9b5c686098a717b375e00cd3cdb7ec726b71f8639c33ed21f0736fce2bc8.js" defer></script>
 <script>
     (function () {
         const customFont = document.createElement('link');

@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>ER模型 on zcys univ II Hugo ver</title>
+        <link>https://invalidval.github.io/tags/er%E6%A8%A1%E5%9E%8B/</link>
+        <description>Recent content in ER模型 on zcys univ II Hugo ver</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Thu, 23 Oct 2025 00:00:00 +0800</lastBuildDate><atom:link href="https://invalidval.github.io/tags/er%E6%A8%A1%E5%9E%8B/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Chapter6 ER模型</title>
+        <link>https://invalidval.github.io/posts/notes/datebase/%E7%AC%AC%E5%85%AD%E7%AB%A0er%E6%A8%A1%E5%9E%8B/</link>
+        <pubDate>Thu, 23 Oct 2025 00:00:00 +0800</pubDate>
+        
+        <guid>https://invalidval.github.io/posts/notes/datebase/%E7%AC%AC%E5%85%AD%E7%AB%A0er%E6%A8%A1%E5%9E%8B/</guid>
+        <description>&lt;h1 id=&#34;chapter-6-the-entity-relationship-model&#34;&gt;Chapter 6 The Entity-Relationship Model
+&lt;/h1&gt;&lt;p&gt;&lt;img src=&#34;https://invalidval.github.io/posts/notes/datebase/%E7%AC%AC%E5%85%AD%E7%AB%A0er%E6%A8%A1%E5%9E%8B/erd.png&#34;
+	width=&#34;1171&#34;
+	height=&#34;1073&#34;
+	srcset=&#34;https://invalidval.github.io/posts/notes/datebase/%E7%AC%AC%E5%85%AD%E7%AB%A0er%E6%A8%A1%E5%9E%8B/erd_hu_7397ce272e3e7e02.png 480w, https://invalidval.github.io/posts/notes/datebase/%E7%AC%AC%E5%85%AD%E7%AB%A0er%E6%A8%A1%E5%9E%8B/erd_hu_f0fd75825304ea4b.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;ER diagram&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;109&#34;
+		data-flex-basis=&#34;261px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;entity-sets实体集实体型&#34;&gt;Entity Sets（实体集，实体型）
+&lt;/h2&gt;&lt;p&gt;一张学生表是一个实体集，一个学生是一个实体（一行记录）&lt;/p&gt;
+&lt;h2 id=&#34;relationship-sets关系集&#34;&gt;Relationship Sets(关系集)
+&lt;/h2&gt;&lt;p&gt;&lt;code&gt;选课表&lt;/code&gt;就是一个&lt;code&gt;关系集&lt;/code&gt;。它定义了“学生”和“课程”之间的“选修”这种关系。&lt;code&gt;关系&lt;/code&gt;表示特定实体之间的一次具体关联。它对应的是联系表中的一行&lt;code&gt;记录&lt;/code&gt;。
+关系集也可以拥有自己的&lt;code&gt;属性&lt;/code&gt;（&lt;strong&gt;关系集属性&lt;/strong&gt;），用于描述关系的特征。它同样对应联系表中的列。选课表这个关系集可以有&lt;code&gt;成绩、选修日期&lt;/code&gt;等属性，这些属性不属于学生，也不属于课程，而是属于“选修”这个行为本身。&lt;/p&gt;
+&lt;h2 id=&#34;choice-of-primary-key-for-binary-relationship&#34;&gt;Choice of Primary key for Binary Relationship
+&lt;/h2&gt;&lt;p&gt;在多的那一端把一的主键拿过来当外键&lt;/p&gt;
+&lt;h2 id=&#34;多元联系non-binary&#34;&gt;多元联系(non-binary)
+&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://invalidval.github.io/posts/notes/datebase/%E7%AC%AC%E5%85%AD%E7%AB%A0er%E6%A8%A1%E5%9E%8B/nonebinary.png&#34;
+	width=&#34;933&#34;
+	height=&#34;359&#34;
+	srcset=&#34;https://invalidval.github.io/posts/notes/datebase/%E7%AC%AC%E5%85%AD%E7%AB%A0er%E6%A8%A1%E5%9E%8B/nonebinary_hu_90ed7bc08ea5076e.png 480w, https://invalidval.github.io/posts/notes/datebase/%E7%AC%AC%E5%85%AD%E7%AB%A0er%E6%A8%A1%E5%9E%8B/nonebinary_hu_8a18ac6277bc90b4.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;三元Ternary Relationship&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;259&#34;
+		data-flex-basis=&#34;623px&#34;
+	
+&gt;
+先转成多个二元联系再转表：将其他实体集的主键和关系自身属性建成表，各实体集不存放多余属性。&lt;/p&gt;
+&lt;h2 id=&#34;e-r图概念设计结果&#34;&gt;E-R图（概念设计结果）
+&lt;/h2&gt;&lt;h3 id=&#34;representing-cardinality-constraints-in-er-diagram&#34;&gt;Representing Cardinality Constraints in ER Diagram
+&lt;/h3&gt;&lt;p&gt;→：一
+—：多
+(one,many) x (one,many) = 4 种&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://invalidval.github.io/posts/notes/datebase/%E7%AC%AC%E5%85%AD%E7%AB%A0er%E6%A8%A1%E5%9E%8B/onetoone.png&#34;
+	width=&#34;1077&#34;
+	height=&#34;283&#34;
+	srcset=&#34;https://invalidval.github.io/posts/notes/datebase/%E7%AC%AC%E5%85%AD%E7%AB%A0er%E6%A8%A1%E5%9E%8B/onetoone_hu_4b3b28947f5fe4df.png 480w, https://invalidval.github.io/posts/notes/datebase/%E7%AC%AC%E5%85%AD%E7%AB%A0er%E6%A8%A1%E5%9E%8B/onetoone_hu_b4e9fa82a8ffafb9.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;一对一&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;380&#34;
+		data-flex-basis=&#34;913px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;参与约束participant-constraints&#34;&gt;参与约束(Participant Constraints)
+&lt;/h3&gt;&lt;p&gt;完全参与、部分参与&lt;/p&gt;
+&lt;h2 id=&#34;逻辑设计阶段&#34;&gt;逻辑设计阶段
+&lt;/h2&gt;&lt;p&gt;E-R图转关系模式
+实体、联系、属性（单值属性、多值属性、复合属性）如何转表？
+多值属性单独转表
+复合属性拆开（如时间、地址）&lt;/p&gt;
+&lt;p&gt;弱实体集、强实体集；
+用实体还是属性？
+Not to use the &lt;code&gt;primary-key&lt;/code&gt; of an entity set as an attributes of another entity set (to represent implicitly association between these two entity sets), it is better to use an relationship set  to explicitly show this association
+e.g.  for the entity student, do not use instructor.id as its attribute, in stead of,  representing association among student and instructor using &lt;code&gt;relationship&lt;/code&gt; advisor.&lt;/p&gt;
+&lt;p&gt;用实体还是关系？“动作”对应“联系”&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://invalidval.github.io/posts/notes/datebase/%E7%AC%AC%E5%85%AD%E7%AB%A0er%E6%A8%A1%E5%9E%8B/weake.png&#34;
+	width=&#34;1811&#34;
+	height=&#34;1026&#34;
+	srcset=&#34;https://invalidval.github.io/posts/notes/datebase/%E7%AC%AC%E5%85%AD%E7%AB%A0er%E6%A8%A1%E5%9E%8B/weake_hu_75aeef19b0c5a435.png 480w, https://invalidval.github.io/posts/notes/datebase/%E7%AC%AC%E5%85%AD%E7%AB%A0er%E6%A8%A1%E5%9E%8B/weake_hu_8882bfca8686d0a2.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;弱实体集&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;176&#34;
+		data-flex-basis=&#34;423px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;扩展er-详情看isa那篇&#34;&gt;扩展ER （详情看ISA那篇）
+&lt;/h2&gt;&lt;h3 id=&#34;面向对象erobject-oriented-oo-e-r&#34;&gt;面向对象ER：Object-oriented (OO) E-R
+&lt;/h3&gt;&lt;p&gt;specialization （特化，特殊化，例化）
+自上而下，底层实体集是高层实体集的真子集
+高层：超类；底层：子类&lt;/p&gt;
+&lt;p&gt;generalization (概括化，泛化，普遍化)
+自底向上&lt;/p&gt;
+&lt;p&gt;attributes inheritance （属性继承）
+联系也可以继承&lt;/p&gt;
+&lt;h3 id=&#34;aggregation&#34;&gt;Aggregation
+&lt;/h3&gt;&lt;p&gt;relationship on relationship（联系的联系）&lt;/p&gt;
+&lt;h2 id=&#34;er图记号总结&#34;&gt;ER图记号总结
+&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://invalidval.github.io/posts/notes/datebase/%E7%AC%AC%E5%85%AD%E7%AB%A0er%E6%A8%A1%E5%9E%8B/notation.png&#34;
+	width=&#34;1448&#34;
+	height=&#34;830&#34;
+	srcset=&#34;https://invalidval.github.io/posts/notes/datebase/%E7%AC%AC%E5%85%AD%E7%AB%A0er%E6%A8%A1%E5%9E%8B/notation_hu_2e71417dac28c066.png 480w, https://invalidval.github.io/posts/notes/datebase/%E7%AC%AC%E5%85%AD%E7%AB%A0er%E6%A8%A1%E5%9E%8B/notation_hu_eae70deb99dd7e5b.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;记号&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;174&#34;
+		data-flex-basis=&#34;418px&#34;
+	
+&gt;
+&lt;img src=&#34;https://invalidval.github.io/posts/notes/datebase/%E7%AC%AC%E5%85%AD%E7%AB%A0er%E6%A8%A1%E5%9E%8B/image-1.png&#34;
+	width=&#34;1340&#34;
+	height=&#34;910&#34;
+	srcset=&#34;https://invalidval.github.io/posts/notes/datebase/%E7%AC%AC%E5%85%AD%E7%AB%A0er%E6%A8%A1%E5%9E%8B/image-1_hu_2eca5d22e9091c97.png 480w, https://invalidval.github.io/posts/notes/datebase/%E7%AC%AC%E5%85%AD%E7%AB%A0er%E6%A8%A1%E5%9E%8B/image-1_hu_148bcaec67969326.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;记号（续）&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;147&#34;
+		data-flex-basis=&#34;353px&#34;
+	
+&gt;
+&lt;img src=&#34;https://invalidval.github.io/posts/notes/datebase/%E7%AC%AC%E5%85%AD%E7%AB%A0er%E6%A8%A1%E5%9E%8B/image-2.png&#34;
+	width=&#34;1765&#34;
+	height=&#34;988&#34;
+	srcset=&#34;https://invalidval.github.io/posts/notes/datebase/%E7%AC%AC%E5%85%AD%E7%AB%A0er%E6%A8%A1%E5%9E%8B/image-2_hu_d48f4362889822da.png 480w, https://invalidval.github.io/posts/notes/datebase/%E7%AC%AC%E5%85%AD%E7%AB%A0er%E6%A8%A1%E5%9E%8B/image-2_hu_75aeac4bc8f0ad8c.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;替代记号&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;178&#34;
+		data-flex-basis=&#34;428px&#34;
+	
+&gt;
+&lt;img src=&#34;https://invalidval.github.io/posts/notes/datebase/%E7%AC%AC%E5%85%AD%E7%AB%A0er%E6%A8%A1%E5%9E%8B/image-3.png&#34;
+	width=&#34;1839&#34;
+	height=&#34;1011&#34;
+	srcset=&#34;https://invalidval.github.io/posts/notes/datebase/%E7%AC%AC%E5%85%AD%E7%AB%A0er%E6%A8%A1%E5%9E%8B/image-3_hu_f9791aa57282eeee.png 480w, https://invalidval.github.io/posts/notes/datebase/%E7%AC%AC%E5%85%AD%E7%AB%A0er%E6%A8%A1%E5%9E%8B/image-3_hu_b8fd75e1fb94a904.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;替代记号（续）&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;181&#34;
+		data-flex-basis=&#34;436px&#34;
+	
+&gt;&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>Deepseek整理的ISA</title>
+        <link>https://invalidval.github.io/posts/notes/datebase/deepseek%E6%80%BB%E7%BB%93%E7%9A%84isa/</link>
+        <pubDate>Thu, 23 Oct 2025 00:00:00 +0800</pubDate>
+        
+        <guid>https://invalidval.github.io/posts/notes/datebase/deepseek%E6%80%BB%E7%BB%93%E7%9A%84isa/</guid>
+        <description>&lt;h1 id=&#34;isa关系68&#34;&gt;ISA关系（6.8）
+&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;ISA Relationship&lt;/strong&gt; 指的是一种特定的&lt;strong&gt;数据建模&lt;/strong&gt;技术，用于在概念模型（如ER图）中表示实体之间的继承关系。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;ISA&lt;/strong&gt; 是 &lt;strong&gt;“IS-A”&lt;/strong&gt; 的缩写，例如 “&lt;strong&gt;A Manager IS-AN Employee&lt;/strong&gt;”（一个经理 &lt;strong&gt;是&lt;/strong&gt; 一个员工）。它描述了一种&lt;strong&gt;父类型（超类型）&lt;/strong&gt; 和&lt;strong&gt;子类型&lt;/strong&gt; 之间的层次关系。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;核心概念&#34;&gt;核心概念
+&lt;/h3&gt;&lt;p&gt;在数据库设计中，ISA关系用于捕捉现实世界中存在的&lt;strong&gt;分类结构&lt;/strong&gt;。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;超类型 / 父类：&lt;/strong&gt; 一个更一般化、更抽象的实体。
+&lt;ul&gt;
+&lt;li&gt;例如：&lt;code&gt;人(Person)&lt;/code&gt;、&lt;code&gt;账户(Account)&lt;/code&gt;、&lt;code&gt;车辆(Vehicle)&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;子类型 / 子类：&lt;/strong&gt; 一个更具体、更特化的实体，它是超类型的一种。
+&lt;ul&gt;
+&lt;li&gt;例如：&lt;code&gt;员工(Employee)&lt;/code&gt; 和 &lt;code&gt;学生(Student)&lt;/code&gt; 是 &lt;code&gt;人(Person)&lt;/code&gt; 的子类型。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;储蓄账户(SavingsAccount)&lt;/code&gt; 和 &lt;code&gt;支票账户(CheckingAccount)&lt;/code&gt; 是 &lt;code&gt;账户(Account)&lt;/code&gt; 的子类型。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;isa关系的两个关键约束&#34;&gt;ISA关系的两个关键约束
+&lt;/h3&gt;&lt;p&gt;当你在设计中使用ISA关系时，必须定义两个重要的约束：&lt;/p&gt;
+&lt;h4 id=&#34;1-重叠约束disjointoverlapping-constraint&#34;&gt;1. 重叠约束（Disjoint/Overlapping Constraint）
+&lt;/h4&gt;&lt;p&gt;规定一个超类型的实例是否可以同时属于多个子类型。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;不允许重叠：&lt;/strong&gt; 一个超类实例只能属于&lt;strong&gt;一个&lt;/strong&gt;子类型。
+&lt;ul&gt;
+&lt;li&gt;例如：一个 &lt;code&gt;账户(Account)&lt;/code&gt; 要么是 &lt;code&gt;储蓄账户(SavingsAccount)&lt;/code&gt;，要么是 &lt;code&gt;支票账户(CheckingAccount)&lt;/code&gt;，但不能同时是两者。用 &lt;strong&gt;“OR”&lt;/strong&gt; 表示。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;允许重叠：&lt;/strong&gt; 一个超类实例可以同时属于&lt;strong&gt;多个&lt;/strong&gt;子类型。
+&lt;ul&gt;
+&lt;li&gt;例如：一个 &lt;code&gt;人(Person)&lt;/code&gt; 可以同时是 &lt;code&gt;员工(Employee)&lt;/code&gt; 和 &lt;code&gt;学生(Student)&lt;/code&gt;。用 &lt;strong&gt;“AND”&lt;/strong&gt; 表示。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;2-完备性约束completeness-constraint&#34;&gt;2. 完备性约束（Completeness constraint）
+&lt;/h4&gt;&lt;p&gt;规定超类型中的每一个实例是否都&lt;strong&gt;必须&lt;/strong&gt;至少属于一个子类型。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;全完备性（total）：&lt;/strong&gt; 超类型的&lt;strong&gt;每一个&lt;/strong&gt;实例都&lt;strong&gt;必须&lt;/strong&gt;是某个子类型的实例。
+&lt;ul&gt;
+&lt;li&gt;例如：公司规定，每一个 &lt;code&gt;员工(Employee)&lt;/code&gt; 都必须是 &lt;code&gt;小时工(HourlyEmployee)&lt;/code&gt; 或 &lt;code&gt;月薪工(SalariedEmployee)&lt;/code&gt; 中的一种。超类型 &lt;code&gt;员工(Employee)&lt;/code&gt; 不会存在不属于任何子类的“孤例”。在ER图中，用&lt;strong&gt;双线&lt;/strong&gt;表示。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;部分完备性（partial）：&lt;/strong&gt; 超类型的实例&lt;strong&gt;可以&lt;/strong&gt;不属于任何子类型。
+&lt;ul&gt;
+&lt;li&gt;例如：一个 &lt;code&gt;人(Person)&lt;/code&gt; 可以只是普通人，既不是 &lt;code&gt;员工(Employee)&lt;/code&gt;，也不是 &lt;code&gt;学生(Student)&lt;/code&gt;。在ER图中，用&lt;strong&gt;单线&lt;/strong&gt;表示。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;在数据库中的实现方式&#34;&gt;在数据库中的实现方式
+&lt;/h3&gt;&lt;!-- raw HTML omitted --&gt;
+&lt;h4 id=&#34;1-每个具体类一张表&#34;&gt;1. 每个具体类一张表
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;方法：&lt;/strong&gt; 忽略超类型，只为&lt;strong&gt;每个子类型&lt;/strong&gt;创建一张表。这张表包含该子类型特有的属性，以及从超类型继承来的所有属性。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;举例：&lt;/strong&gt; 创建 &lt;code&gt;学生表(Students)&lt;/code&gt; 和 &lt;code&gt;员工表(Employees)&lt;/code&gt;，没有 &lt;code&gt;人表(Persons)&lt;/code&gt;。&lt;code&gt;Students&lt;/code&gt;表中有 &lt;code&gt;student_id, name, age, major&lt;/code&gt; 等字段。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;优点：&lt;/strong&gt; 查询特定子类型的数据时速度快。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;缺点：&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;数据冗余（如果一个人既是学生又是员工，他的&lt;code&gt;name&lt;/code&gt;和&lt;code&gt;age&lt;/code&gt;信息会在两张表中重复存储）。&lt;/li&gt;
+&lt;li&gt;难以对所有人进行统一查询（需要&lt;code&gt;UNION&lt;/code&gt;操作）。&lt;/li&gt;
+&lt;li&gt;无法表示不属于任何子类的人。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;2-单张表&#34;&gt;2. 单张表
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;方法：&lt;/strong&gt; 将整个层次结构“扁平化”为&lt;strong&gt;一张表&lt;/strong&gt;。这张表包含超类型和所有子类型的所有属性。同时，增加一个“类型鉴别”字段来标识每一行属于哪个子类型。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;举例：&lt;/strong&gt; 创建一张 &lt;code&gt;人表(Persons)&lt;/code&gt;，包含字段：&lt;code&gt;person_id, name, age, person_type, major, salary, department&lt;/code&gt;。
+&lt;ul&gt;
+&lt;li&gt;如果 &lt;code&gt;person_type = ‘Student’&lt;/code&gt;，那么 &lt;code&gt;major&lt;/code&gt; 字段有意义，&lt;code&gt;salary&lt;/code&gt; 字段为NULL。&lt;/li&gt;
+&lt;li&gt;如果 &lt;code&gt;person_type = ‘Employee’&lt;/code&gt;，那么 &lt;code&gt;salary&lt;/code&gt; 字段有意义，&lt;code&gt;major&lt;/code&gt; 字段为NULL。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;优点：&lt;/strong&gt; 统一查询非常简单，不需要&lt;code&gt;JOIN&lt;/code&gt;操作。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;缺点：&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;表中存在大量&lt;code&gt;NULL&lt;/code&gt;值，浪费存储空间。&lt;/li&gt;
+&lt;li&gt;表结构会随着子类型的增加而变得非常庞大和复杂。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;3-超类型和子类型分别建表&#34;&gt;3. 超类型和子类型分别建表
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;方法：&lt;/strong&gt; 为&lt;strong&gt;超类型&lt;/strong&gt;和&lt;strong&gt;每一个子类型&lt;/strong&gt;都创建一张表。
+&lt;ul&gt;
+&lt;li&gt;超类型表包含所有实例共享的公共属性（和一个主键）。&lt;/li&gt;
+&lt;li&gt;子类型表只包含其特有的属性，并&lt;strong&gt;共享超类型表的主键&lt;/strong&gt;（即子类型表的主键同时也是引用超类型表的外键）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;举例：&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;人表(Persons)&lt;/code&gt;：&lt;code&gt;person_id (PK), name, age&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;学生表(Students)&lt;/code&gt;：&lt;code&gt;person_id (PK, FK references Persons), major&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;员工表(Employees)&lt;/code&gt;：&lt;code&gt;person_id (PK, FK references Persons), salary, department&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;优点：&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;设计规范，消除了数据冗余。&lt;/li&gt;
+&lt;li&gt;易于添加新的子类型。&lt;/li&gt;
+&lt;li&gt;能很好地支持重叠约束（一个人可以同时在&lt;code&gt;Students&lt;/code&gt;和&lt;code&gt;Employees&lt;/code&gt;表中有记录）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;缺点：&lt;/strong&gt; 查询数据时需要频繁使用&lt;code&gt;JOIN&lt;/code&gt;操作，性能可能成为瓶颈。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;总结&#34;&gt;总结
+&lt;/h3&gt;&lt;p&gt;在数据库领域中，&lt;strong&gt;ISA Relationship&lt;/strong&gt; 是一个强大的概念建模工具，它清晰地表达了 &lt;strong&gt;“是一个”&lt;/strong&gt; 的继承关系。理解并正确定义其&lt;strong&gt;重叠约束&lt;/strong&gt;和&lt;strong&gt;完备性约束&lt;/strong&gt;至关重要，因为它直接影响到最终数据库表结构的设计选择（每种实现方式都有其优缺点，需要根据具体应用场景进行权衡）。&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

@@ -6,11 +6,11 @@
 
 <link rel='canonical' href='https://invalidval.github.io/posts/tech/'>
 
-<link rel="stylesheet" href="/scss/style.min.6a692fd055deae459f2a9767f57f3855ba80cafd5041317f24f7360f6ca47cdf.css"><meta property='og:title' content="技术文章">
+<link rel="stylesheet" href="/scss/style.min.87ca80477aa1448125ceb18fc23b426abe36aef3a929499010496741e153b66e.css"><meta property='og:title' content="技术文章">
 <meta property='og:description' content="技术相关文章合集">
 <meta property='og:url' content='https://invalidval.github.io/posts/tech/'>
 <meta property='og:site_name' content='zcys univ II Hugo ver'>
-<meta property='og:type' content='website'><meta property='og:updated_time' content=' 2025-01-01T00:00:00&#43;08:00 '/>
+<meta property='og:type' content='website'><meta property='og:updated_time' content=' 2025-10-23T00:00:00&#43;08:00 '/>
 <meta name="twitter:title" content="技术文章">
 <meta name="twitter:description" content="技术相关文章合集"><link rel="alternate" type="application/rss&#43;xml" href="https://invalidval.github.io/posts/tech/index.xml">
     </head>
@@ -88,6 +88,16 @@
                 
                 
                 <span>文章</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/categories' >
+                
+                
+                
+                <span>分类</span>
             </a>
         </li>
         
@@ -191,184 +201,7 @@
 
             </main>
         </div>
-
-        <aside class="right-sidebar" id="rightSidebar">
-    <button class="sidebar-toggle" onclick="toggleSidebar()">☰</button>
-    
-    <div class="sidebar-content">
         
-        <div class="toc-section">
-            <h4>文章目录</h4>
-            <div class="toc-content">
-                <nav id="TableOfContents"></nav>
-            </div>
-        </div>
-
-        
-        <div class="sections-section">
-            <h4>章节导航</h4>
-            <div class="sections-content">
-                
-                
-                <a href="/about/" 
-                   class="section-link ">
-                    Abouts
-                    <span class="page-count">1</span>
-                </a>
-                
-                <a href="/posts/" 
-                   class="section-link ">
-                    Posts
-                    <span class="page-count">3</span>
-                </a>
-                
-            </div>
-        </div>
-    </div>
-</aside>
-
-<script>
-function toggleSidebar() {
-    const sidebar = document.getElementById('rightSidebar');
-    sidebar.classList.toggle('collapsed');
-}
-
-
-document.addEventListener('DOMContentLoaded', function() {
-    const links = document.querySelectorAll('.toc-content a');
-    links.forEach(link => {
-        link.addEventListener('click', (e) => {
-            e.preventDefault();
-            const targetId = link.getAttribute('href').substring(1);
-            const targetElement = document.getElementById(targetId);
-            if (targetElement) {
-                targetElement.scrollIntoView({ behavior: 'smooth' });
-            }
-        });
-    });
-});
-</script>
-
-<style>
-.right-sidebar {
-    position: fixed;
-    right: 0;
-    top: 0;
-    height: 100vh;
-    width: 280px;
-    background: #f8f9fa;
-    border-left: 1px solid #dee2e6;
-    transition: transform 0.3s ease;
-    z-index: 1000;
-    overflow-y: auto;
-}
-
-.right-sidebar.collapsed {
-    transform: translateX(100%);
-}
-
-.sidebar-toggle {
-    position: absolute;
-    left: -40px;
-    top: 20px;
-    background: #007acc;
-    color: white;
-    border: none;
-    border-radius: 4px 0 0 4px;
-    padding: 8px 12px;
-    cursor: pointer;
-    font-size: 16px;
-}
-
-.sidebar-content {
-    padding: 20px;
-}
-
-.toc-section, .sections-section {
-    margin-bottom: 2rem;
-}
-
-.toc-section h4, .sections-section h4 {
-    margin: 0 0 1rem 0;
-    color: #495057;
-    font-size: 0.9rem;
-    font-weight: 600;
-}
-
-.toc-content ul {
-    list-style: none;
-    padding-left: 0;
-    margin: 0;
-}
-
-.toc-content li {
-    margin: 0.3rem 0;
-}
-
-.toc-content a {
-    display: block;
-    padding: 0.4rem 0.8rem;
-    text-decoration: none;
-    color: #6c757d;
-    font-size: 0.85rem;
-    border-radius: 4px;
-    transition: all 0.2s ease;
-    border-left: 3px solid transparent;
-}
-
-.toc-content a:hover,
-.toc-content a.active {
-    background: #e9ecef;
-    color: #495057;
-    border-left-color: #007acc;
-}
-
-.section-link {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.6rem 0.8rem;
-    margin: 0.3rem 0;
-    text-decoration: none;
-    color: #495057;
-    border-radius: 6px;
-    transition: all 0.2s ease;
-    font-size: 0.9rem;
-}
-
-.section-link:hover {
-    background: #e9ecef;
-}
-
-.section-link.active {
-    background: #007acc;
-    color: white;
-}
-
-.page-count {
-    background: #6c757d;
-    color: white;
-    padding: 0.1rem 0.4rem;
-    border-radius: 12px;
-    font-size: 0.7rem;
-    min-width: 20px;
-    text-align: center;
-}
-
-.section-link.active .page-count {
-    background: rgba(255,255,255,0.3);
-}
-
- 
-.main-content {
-    margin-right: 280px;
-    transition: margin-right 0.3s ease;
-}
-
-.right-sidebar.collapsed ~ .main-content {
-    margin-right: 0;
-}
-</style>
         <script 
                 src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
                 

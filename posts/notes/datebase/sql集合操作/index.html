@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
-    <head><meta charset='utf-8'>
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="NOT EXISTS 和 EXCEPT 是 SQL 中用于处理集合差集的高级操作，它们在不同场景下非常有用。\n一、 NOT EXISTS 用法 1. 基本语法 SELECT columns FROM table1 t1 WHERE NOT EXISTS ( SELECT 1 FROM table2 t2 WHERE t1.related_column = t2.related_column ); 2. 实际例子 例1：找出没有项目的员工 SELECT e.employee_id, e.name FROM employees e WHERE NOT EXISTS ( SELECT 1 FROM projects p WHERE p.leader_id = e.employee_id ); 例2：找出没有订单的客户 SELECT c.customer_id, c.customer_name FROM customers c WHERE NOT EXISTS ( SELECT 1 FROM orders o WHERE o.customer_id = c.customer_id ); 例3：找出从未被订购的产品 SELECT p.product_id, p.product_name FROM products p WHERE NOT EXISTS ( SELECT 1 FROM order_items oi WHERE oi.product_id = p.product_id ); 3. 复杂例子：找出没有下属的管理者 SELECT e1.employee_id, e1.name FROM employees e1 WHERE e1.is_manager = 1 AND NOT EXISTS ( SELECT 1 FROM employees e2 WHERE e2.manager_id = e1.employee_id ); 二、 EXCEPT 用法 1. 基本语法 SELECT column1, column2 FROM table1 EXCEPT SELECT column1, column2 FROM table2; 2. 实际例子 例1：找出只在A表不在B表的记录 -- 找出在employees表但不在former_employees表的员工 SELECT employee_id, name FROM employees EXCEPT SELECT employee_id, name FROM former_employees; 例2：找出有库存但从未被订购的产品 SELECT product_id FROM inventory EXCEPT SELECT product_id FROM order_items; 例3：多列比较 -- 找出在2023年有销售但2024年没有的客户 SELECT customer_id, product_id FROM sales_2023 EXCEPT SELECT customer_id, product_id FROM sales_2024; 三、 NOT EXISTS vs EXCEPT 对比 相同需求的不同实现 需求：找出没有项目的部门 使用 NOT EXISTS:\n">
 <title>SQL集合操作</title>
 
-<link rel='canonical' href='https://invalidval.github.io/posts/notes/datebase/sql%E9%9B%86%E5%90%88%E6%93%8D%E4%BD%9C/'>
+<link rel='canonical' href='http://localhost:1313/posts/notes/datebase/sql%E9%9B%86%E5%90%88%E6%93%8D%E4%BD%9C/'>
 
 <link rel="stylesheet" href="/scss/style.min.6a692fd055deae459f2a9767f57f3855ba80cafd5041317f24f7360f6ca47cdf.css"><meta property='og:title' content="SQL集合操作">
 <meta property='og:description' content="NOT EXISTS 和 EXCEPT 是 SQL 中用于处理集合差集的高级操作，它们在不同场景下非常有用。\n一、 NOT EXISTS 用法 1. 基本语法 SELECT columns FROM table1 t1 WHERE NOT EXISTS ( SELECT 1 FROM table2 t2 WHERE t1.related_column = t2.related_column ); 2. 实际例子 例1：找出没有项目的员工 SELECT e.employee_id, e.name FROM employees e WHERE NOT EXISTS ( SELECT 1 FROM projects p WHERE p.leader_id = e.employee_id ); 例2：找出没有订单的客户 SELECT c.customer_id, c.customer_name FROM customers c WHERE NOT EXISTS ( SELECT 1 FROM orders o WHERE o.customer_id = c.customer_id ); 例3：找出从未被订购的产品 SELECT p.product_id, p.product_name FROM products p WHERE NOT EXISTS ( SELECT 1 FROM order_items oi WHERE oi.product_id = p.product_id ); 3. 复杂例子：找出没有下属的管理者 SELECT e1.employee_id, e1.name FROM employees e1 WHERE e1.is_manager = 1 AND NOT EXISTS ( SELECT 1 FROM employees e2 WHERE e2.manager_id = e1.employee_id ); 二、 EXCEPT 用法 1. 基本语法 SELECT column1, column2 FROM table1 EXCEPT SELECT column1, column2 FROM table2; 2. 实际例子 例1：找出只在A表不在B表的记录 -- 找出在employees表但不在former_employees表的员工 SELECT employee_id, name FROM employees EXCEPT SELECT employee_id, name FROM former_employees; 例2：找出有库存但从未被订购的产品 SELECT product_id FROM inventory EXCEPT SELECT product_id FROM order_items; 例3：多列比较 -- 找出在2023年有销售但2024年没有的客户 SELECT customer_id, product_id FROM sales_2023 EXCEPT SELECT customer_id, product_id FROM sales_2024; 三、 NOT EXISTS vs EXCEPT 对比 相同需求的不同实现 需求：找出没有项目的部门 使用 NOT EXISTS:\n">
-<meta property='og:url' content='https://invalidval.github.io/posts/notes/datebase/sql%E9%9B%86%E5%90%88%E6%93%8D%E4%BD%9C/'>
+<meta property='og:url' content='http://localhost:1313/posts/notes/datebase/sql%E9%9B%86%E5%90%88%E6%93%8D%E4%BD%9C/'>
 <meta property='og:site_name' content='zcys univ II Hugo ver'>
 <meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='ds' /><meta property='article:tag' content='SQL' /><meta property='article:published_time' content='2023-01-01T00:00:00&#43;08:00'/><meta property='article:modified_time' content='2023-01-01T00:00:00&#43;08:00'/>
 <meta name="twitter:title" content="SQL集合操作">
@@ -151,10 +151,10 @@
     <div class="nav-links">
         
         <div class="nav-next">
-            <a href="/posts/notes/datebase/ppt%E6%80%BB%E7%BB%93sql/" rel="next">
+            <a href="/posts/notes/datebase/deepseek%E6%80%BB%E7%BB%93sql/" rel="next">
                 <div class="nav-content">
                     <span class="nav-label">上一篇文章</span>
-                    <span class="nav-title">SQL ppt</span>
+                    <span class="nav-title">Deepseek整理的SQL</span>
                 </div>
                 <span class="nav-arrow">←</span>
             </a>
@@ -552,51 +552,12 @@
             
                 
 <article class="">
-    <a href="/posts/notes/datebase/ppt%E6%80%BB%E7%BB%93sql/">
-        
-        
-
-        <div class="article-details">
-            <h2 class="article-title">SQL ppt</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="">
     <a href="/posts/notes/datebase/%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80/">
         
         
 
         <div class="article-details">
             <h2 class="article-title">关系数据库基础</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="">
-    <a href="/posts/notes/datebase/%E5%85%B3%E7%B3%BB%E8%8C%83%E5%BC%8F/">
-        
-        
-
-        <div class="article-details">
-            <h2 class="article-title">关系规范化</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="">
-    <a href="/posts/notes/datebase/fd/">
-        
-        
-
-        <div class="article-details">
-            <h2 class="article-title">函数依赖</h2>
         </div>
     </a>
 </article>
@@ -768,16 +729,16 @@
             <div class="sections-content">
                 
                 
-                <a href="/about/" 
-                   class="section-link ">
-                    Abouts
-                    <span class="page-count">1</span>
-                </a>
-                
                 <a href="/posts/" 
                    class="section-link ">
                     Posts
                     <span class="page-count">3</span>
+                </a>
+                
+                <a href="/about/" 
+                   class="section-link ">
+                    Abouts
+                    <span class="page-count">1</span>
                 </a>
                 
             </div>
@@ -931,7 +892,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
                 
                 >
-            </script><script type="text/javascript" src="/ts/main.1e9a3bafd846ced4c345d084b355fb8c7bae75701c338f8a1f8a82c780137826.js" defer></script>
+            </script><script type="text/javascript" src="/ts/main.14dc9b5c686098a717b375e00cd3cdb7ec726b71f8639c33ed21f0736fce2bc8.js" defer></script>
 <script>
     (function () {
         const customFont = document.createElement('link');

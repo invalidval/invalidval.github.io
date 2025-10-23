@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="ISA关系（6.8） ISA Relationship 指的是一种特定的数据建模技术，用于在概念模型（如ER图）中表示实体之间的继承关系。\nISA 是 “IS-A” 的缩写，例如 “A Manager IS-AN Employee”（一个经理 是 一个员工）。它描述了一种父类型（超类型） 和子类型 之间的层次关系。\n核心概念 在数据库设计中，ISA关系用于捕捉现实世界中存在的分类结构。\n超类型 / 父类： 一个更一般化、更抽象的实体。 例如：人(Person)、账户(Account)、车辆(Vehicle) 子类型 / 子类： 一个更具体、更特化的实体，它是超类型的一种。 例如：员工(Employee) 和 学生(Student) 是 人(Person) 的子类型。 储蓄账户(SavingsAccount) 和 支票账户(CheckingAccount) 是 账户(Account) 的子类型。 ISA关系的两个关键约束 当你在设计中使用ISA关系时，必须定义两个重要的约束：\n1. 重叠约束（Disjoint/Overlapping Constraint） 规定一个超类型的实例是否可以同时属于多个子类型。\n不允许重叠： 一个超类实例只能属于一个子类型。 例如：一个 账户(Account) 要么是 储蓄账户(SavingsAccount)，要么是 支票账户(CheckingAccount)，但不能同时是两者。用 “OR” 表示。 允许重叠： 一个超类实例可以同时属于多个子类型。 例如：一个 人(Person) 可以同时是 员工(Employee) 和 学生(Student)。用 “AND” 表示。 2. 完备性约束（Completeness constraint） 规定超类型中的每一个实例是否都必须至少属于一个子类型。\n全完备性（total）： 超类型的每一个实例都必须是某个子类型的实例。 例如：公司规定，每一个 员工(Employee) 都必须是 小时工(HourlyEmployee) 或 月薪工(SalariedEmployee) 中的一种。超类型 员工(Employee) 不会存在不属于任何子类的“孤例”。在ER图中，用双线表示。 部分完备性（partial）： 超类型的实例可以不属于任何子类型。 例如：一个 人(Person) 可以只是普通人，既不是 员工(Employee)，也不是 学生(Student)。在ER图中，用单线表示。 在数据库中的实现方式 1. 每个具体类一张表 方法： 忽略超类型，只为每个子类型创建一张表。这张表包含该子类型特有的属性，以及从超类型继承来的所有属性。 举例： 创建 学生表(Students) 和 员工表(Employees)，没有 人表(Persons)。Students表中有 student_id, name, age, major 等字段。 优点： 查询特定子类型的数据时速度快。 缺点： 数据冗余（如果一个人既是学生又是员工，他的name和age信息会在两张表中重复存储）。 难以对所有人进行统一查询（需要UNION操作）。 无法表示不属于任何子类的人。 2. 单张表 方法： 将整个层次结构“扁平化”为一张表。这张表包含超类型和所有子类型的所有属性。同时，增加一个“类型鉴别”字段来标识每一行属于哪个子类型。 举例： 创建一张 人表(Persons)，包含字段：person_id, name, age, person_type, major, salary, department。 如果 person_type = ‘Student’，那么 major 字段有意义，salary 字段为NULL。 如果 person_type = ‘Employee’，那么 salary 字段有意义，major 字段为NULL。 优点： 统一查询非常简单，不需要JOIN操作。 缺点： 表中存在大量NULL值，浪费存储空间。 表结构会随着子类型的增加而变得非常庞大和复杂。 3. 超类型和子类型分别建表 方法： 为超类型和每一个子类型都创建一张表。 超类型表包含所有实例共享的公共属性（和一个主键）。 子类型表只包含其特有的属性，并共享超类型表的主键（即子类型表的主键同时也是引用超类型表的外键）。 举例： 人表(Persons)：person_id (PK), name, age 学生表(Students)：person_id (PK, FK references Persons), major 员工表(Employees)：person_id (PK, FK references Persons), salary, department 优点： 设计规范，消除了数据冗余。 易于添加新的子类型。 能很好地支持重叠约束（一个人可以同时在Students和Employees表中有记录）。 缺点： 查询数据时需要频繁使用JOIN操作，性能可能成为瓶颈。 总结 在数据库领域中，ISA Relationship 是一个强大的概念建模工具，它清晰地表达了 “是一个” 的继承关系。理解并正确定义其重叠约束和完备性约束至关重要，因为它直接影响到最终数据库表结构的设计选择（每种实现方式都有其优缺点，需要根据具体应用场景进行权衡）。\n">
+<title>Deepseek整理的ISA</title>
+
+<link rel='canonical' href='https://invalidval.github.io/posts/notes/datebase/deepseek%E6%80%BB%E7%BB%93%E7%9A%84isa/'>
+
+<link rel="stylesheet" href="/scss/style.min.87ca80477aa1448125ceb18fc23b426abe36aef3a929499010496741e153b66e.css"><meta property='og:title' content="Deepseek整理的ISA">
+<meta property='og:description' content="ISA关系（6.8） ISA Relationship 指的是一种特定的数据建模技术，用于在概念模型（如ER图）中表示实体之间的继承关系。\nISA 是 “IS-A” 的缩写，例如 “A Manager IS-AN Employee”（一个经理 是 一个员工）。它描述了一种父类型（超类型） 和子类型 之间的层次关系。\n核心概念 在数据库设计中，ISA关系用于捕捉现实世界中存在的分类结构。\n超类型 / 父类： 一个更一般化、更抽象的实体。 例如：人(Person)、账户(Account)、车辆(Vehicle) 子类型 / 子类： 一个更具体、更特化的实体，它是超类型的一种。 例如：员工(Employee) 和 学生(Student) 是 人(Person) 的子类型。 储蓄账户(SavingsAccount) 和 支票账户(CheckingAccount) 是 账户(Account) 的子类型。 ISA关系的两个关键约束 当你在设计中使用ISA关系时，必须定义两个重要的约束：\n1. 重叠约束（Disjoint/Overlapping Constraint） 规定一个超类型的实例是否可以同时属于多个子类型。\n不允许重叠： 一个超类实例只能属于一个子类型。 例如：一个 账户(Account) 要么是 储蓄账户(SavingsAccount)，要么是 支票账户(CheckingAccount)，但不能同时是两者。用 “OR” 表示。 允许重叠： 一个超类实例可以同时属于多个子类型。 例如：一个 人(Person) 可以同时是 员工(Employee) 和 学生(Student)。用 “AND” 表示。 2. 完备性约束（Completeness constraint） 规定超类型中的每一个实例是否都必须至少属于一个子类型。\n全完备性（total）： 超类型的每一个实例都必须是某个子类型的实例。 例如：公司规定，每一个 员工(Employee) 都必须是 小时工(HourlyEmployee) 或 月薪工(SalariedEmployee) 中的一种。超类型 员工(Employee) 不会存在不属于任何子类的“孤例”。在ER图中，用双线表示。 部分完备性（partial）： 超类型的实例可以不属于任何子类型。 例如：一个 人(Person) 可以只是普通人，既不是 员工(Employee)，也不是 学生(Student)。在ER图中，用单线表示。 在数据库中的实现方式 1. 每个具体类一张表 方法： 忽略超类型，只为每个子类型创建一张表。这张表包含该子类型特有的属性，以及从超类型继承来的所有属性。 举例： 创建 学生表(Students) 和 员工表(Employees)，没有 人表(Persons)。Students表中有 student_id, name, age, major 等字段。 优点： 查询特定子类型的数据时速度快。 缺点： 数据冗余（如果一个人既是学生又是员工，他的name和age信息会在两张表中重复存储）。 难以对所有人进行统一查询（需要UNION操作）。 无法表示不属于任何子类的人。 2. 单张表 方法： 将整个层次结构“扁平化”为一张表。这张表包含超类型和所有子类型的所有属性。同时，增加一个“类型鉴别”字段来标识每一行属于哪个子类型。 举例： 创建一张 人表(Persons)，包含字段：person_id, name, age, person_type, major, salary, department。 如果 person_type = ‘Student’，那么 major 字段有意义，salary 字段为NULL。 如果 person_type = ‘Employee’，那么 salary 字段有意义，major 字段为NULL。 优点： 统一查询非常简单，不需要JOIN操作。 缺点： 表中存在大量NULL值，浪费存储空间。 表结构会随着子类型的增加而变得非常庞大和复杂。 3. 超类型和子类型分别建表 方法： 为超类型和每一个子类型都创建一张表。 超类型表包含所有实例共享的公共属性（和一个主键）。 子类型表只包含其特有的属性，并共享超类型表的主键（即子类型表的主键同时也是引用超类型表的外键）。 举例： 人表(Persons)：person_id (PK), name, age 学生表(Students)：person_id (PK, FK references Persons), major 员工表(Employees)：person_id (PK, FK references Persons), salary, department 优点： 设计规范，消除了数据冗余。 易于添加新的子类型。 能很好地支持重叠约束（一个人可以同时在Students和Employees表中有记录）。 缺点： 查询数据时需要频繁使用JOIN操作，性能可能成为瓶颈。 总结 在数据库领域中，ISA Relationship 是一个强大的概念建模工具，它清晰地表达了 “是一个” 的继承关系。理解并正确定义其重叠约束和完备性约束至关重要，因为它直接影响到最终数据库表结构的设计选择（每种实现方式都有其优缺点，需要根据具体应用场景进行权衡）。\n">
+<meta property='og:url' content='https://invalidval.github.io/posts/notes/datebase/deepseek%E6%80%BB%E7%BB%93%E7%9A%84isa/'>
+<meta property='og:site_name' content='zcys univ II Hugo ver'>
+<meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='ER模型' /><meta property='article:tag' content='ds' /><meta property='article:tag' content='关系数据库' /><meta property='article:published_time' content='2025-10-23T00:00:00&#43;08:00'/><meta property='article:modified_time' content='2025-10-23T00:00:00&#43;08:00'/>
+<meta name="twitter:title" content="Deepseek整理的ISA">
+<meta name="twitter:description" content="ISA关系（6.8） ISA Relationship 指的是一种特定的数据建模技术，用于在概念模型（如ER图）中表示实体之间的继承关系。\nISA 是 “IS-A” 的缩写，例如 “A Manager IS-AN Employee”（一个经理 是 一个员工）。它描述了一种父类型（超类型） 和子类型 之间的层次关系。\n核心概念 在数据库设计中，ISA关系用于捕捉现实世界中存在的分类结构。\n超类型 / 父类： 一个更一般化、更抽象的实体。 例如：人(Person)、账户(Account)、车辆(Vehicle) 子类型 / 子类： 一个更具体、更特化的实体，它是超类型的一种。 例如：员工(Employee) 和 学生(Student) 是 人(Person) 的子类型。 储蓄账户(SavingsAccount) 和 支票账户(CheckingAccount) 是 账户(Account) 的子类型。 ISA关系的两个关键约束 当你在设计中使用ISA关系时，必须定义两个重要的约束：\n1. 重叠约束（Disjoint/Overlapping Constraint） 规定一个超类型的实例是否可以同时属于多个子类型。\n不允许重叠： 一个超类实例只能属于一个子类型。 例如：一个 账户(Account) 要么是 储蓄账户(SavingsAccount)，要么是 支票账户(CheckingAccount)，但不能同时是两者。用 “OR” 表示。 允许重叠： 一个超类实例可以同时属于多个子类型。 例如：一个 人(Person) 可以同时是 员工(Employee) 和 学生(Student)。用 “AND” 表示。 2. 完备性约束（Completeness constraint） 规定超类型中的每一个实例是否都必须至少属于一个子类型。\n全完备性（total）： 超类型的每一个实例都必须是某个子类型的实例。 例如：公司规定，每一个 员工(Employee) 都必须是 小时工(HourlyEmployee) 或 月薪工(SalariedEmployee) 中的一种。超类型 员工(Employee) 不会存在不属于任何子类的“孤例”。在ER图中，用双线表示。 部分完备性（partial）： 超类型的实例可以不属于任何子类型。 例如：一个 人(Person) 可以只是普通人，既不是 员工(Employee)，也不是 学生(Student)。在ER图中，用单线表示。 在数据库中的实现方式 1. 每个具体类一张表 方法： 忽略超类型，只为每个子类型创建一张表。这张表包含该子类型特有的属性，以及从超类型继承来的所有属性。 举例： 创建 学生表(Students) 和 员工表(Employees)，没有 人表(Persons)。Students表中有 student_id, name, age, major 等字段。 优点： 查询特定子类型的数据时速度快。 缺点： 数据冗余（如果一个人既是学生又是员工，他的name和age信息会在两张表中重复存储）。 难以对所有人进行统一查询（需要UNION操作）。 无法表示不属于任何子类的人。 2. 单张表 方法： 将整个层次结构“扁平化”为一张表。这张表包含超类型和所有子类型的所有属性。同时，增加一个“类型鉴别”字段来标识每一行属于哪个子类型。 举例： 创建一张 人表(Persons)，包含字段：person_id, name, age, person_type, major, salary, department。 如果 person_type = ‘Student’，那么 major 字段有意义，salary 字段为NULL。 如果 person_type = ‘Employee’，那么 salary 字段有意义，major 字段为NULL。 优点： 统一查询非常简单，不需要JOIN操作。 缺点： 表中存在大量NULL值，浪费存储空间。 表结构会随着子类型的增加而变得非常庞大和复杂。 3. 超类型和子类型分别建表 方法： 为超类型和每一个子类型都创建一张表。 超类型表包含所有实例共享的公共属性（和一个主键）。 子类型表只包含其特有的属性，并共享超类型表的主键（即子类型表的主键同时也是引用超类型表的外键）。 举例： 人表(Persons)：person_id (PK), name, age 学生表(Students)：person_id (PK, FK references Persons), major 员工表(Employees)：person_id (PK, FK references Persons), salary, department 优点： 设计规范，消除了数据冗余。 易于添加新的子类型。 能很好地支持重叠约束（一个人可以同时在Students和Employees表中有记录）。 缺点： 查询数据时需要频繁使用JOIN操作，性能可能成为瓶颈。 总结 在数据库领域中，ISA Relationship 是一个强大的概念建模工具，它清晰地表达了 “是一个” 的继承关系。理解并正确定义其重叠约束和完备性约束至关重要，因为它直接影响到最终数据库表结构的设计选择（每种实现方式都有其优缺点，需要根据具体应用场景进行权衡）。\n">
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column compact"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu_c666be78737d2f33.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">zcys univ II Hugo ver</a></h1>
+            <h2 class="site-description"></h2>
+        </div>
+    </header><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                <span>首页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/posts' >
+                
+                
+                
+                <span>文章</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/categories' >
+                
+                
+                
+                <span>分类</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/tags' >
+                
+                
+                
+                <span>标签</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about' >
+                
+                
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>Dark Mode</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    
+
+            <main class="main full-width">
+
+    
+    
+<nav class="post-navigation">
+    <div class="nav-links">
+        
+        <div class="nav-next">
+            <a href="/posts/notes/datebase/deepseek%E6%80%BB%E7%BB%93%E7%9A%84%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%96/" rel="next">
+                <div class="nav-content">
+                    <span class="nav-label">上一篇文章</span>
+                    <span class="nav-title">Deepseek总结的关系规范化</span>
+                </div>
+                <span class="nav-arrow">←</span>
+            </a>
+        </div>
+        
+	
+        <div class="nav-previous">
+            <a href="/posts/notes/datebase/%E7%AC%AC%E4%BA%8C%E7%AB%A0%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80/" rel="prev">
+                <span class="nav-arrow">→</span>
+                <div class="nav-content">
+                    <span class="nav-label">下一篇文章</span>
+                    <span class="nav-title">Chapter2 关系数据库基础</span>
+                </div>
+            </a>
+        </div>
+        
+
+    </div>
+</nav>
+
+<style>
+.post-navigation {
+    margin: 3rem 0;
+    border-top: 1px solid #eaeaea;
+    padding-top: 2rem;
+}
+
+.nav-links {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.nav-previous, .nav-next {
+    display: flex;
+}
+
+.nav-previous a, .nav-next a {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    border: 1px solid #eaeaea;
+    border-radius: 8px;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.2s ease;
+    flex: 1;
+}
+
+.nav-previous a:hover, .nav-next a:hover {
+    border-color: #007acc;
+    background-color: #f8f9fa;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.nav-previous a {
+    text-align: left;
+}
+
+.nav-next a {
+    text-align: right;
+    flex-direction: row-reverse;
+}
+
+.nav-arrow {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #007acc;
+    margin: 0 0.5rem;
+}
+
+.nav-content {
+    flex: 1;
+}
+
+.nav-label {
+    display: block;
+    font-size: 0.875rem;
+    color: #666;
+    margin-bottom: 0.25rem;
+}
+
+.nav-title {
+    display: block;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+ 
+@media (max-width: 768px) {
+    .nav-links {
+        grid-template-columns: 1fr;
+    }
+    
+    .nav-title {
+        font-size: 0.9rem;
+    }
+}
+</style>
+
+    
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/database/" >
+                DataBase
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/posts/notes/datebase/deepseek%E6%80%BB%E7%BB%93%E7%9A%84isa/">Deepseek整理的ISA</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Oct 23, 2025</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    1 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h1 id="isa关系68">ISA关系（6.8）
+</h1><p><strong>ISA Relationship</strong> 指的是一种特定的<strong>数据建模</strong>技术，用于在概念模型（如ER图）中表示实体之间的继承关系。</p>
+<p><strong>ISA</strong> 是 <strong>“IS-A”</strong> 的缩写，例如 “<strong>A Manager IS-AN Employee</strong>”（一个经理 <strong>是</strong> 一个员工）。它描述了一种<strong>父类型（超类型）</strong> 和<strong>子类型</strong> 之间的层次关系。</p>
+<hr>
+<h3 id="核心概念">核心概念
+</h3><p>在数据库设计中，ISA关系用于捕捉现实世界中存在的<strong>分类结构</strong>。</p>
+<ul>
+<li><strong>超类型 / 父类：</strong> 一个更一般化、更抽象的实体。
+<ul>
+<li>例如：<code>人(Person)</code>、<code>账户(Account)</code>、<code>车辆(Vehicle)</code></li>
+</ul>
+</li>
+<li><strong>子类型 / 子类：</strong> 一个更具体、更特化的实体，它是超类型的一种。
+<ul>
+<li>例如：<code>员工(Employee)</code> 和 <code>学生(Student)</code> 是 <code>人(Person)</code> 的子类型。</li>
+<li><code>储蓄账户(SavingsAccount)</code> 和 <code>支票账户(CheckingAccount)</code> 是 <code>账户(Account)</code> 的子类型。</li>
+</ul>
+</li>
+</ul>
+<h3 id="isa关系的两个关键约束">ISA关系的两个关键约束
+</h3><p>当你在设计中使用ISA关系时，必须定义两个重要的约束：</p>
+<h4 id="1-重叠约束disjointoverlapping-constraint">1. 重叠约束（Disjoint/Overlapping Constraint）
+</h4><p>规定一个超类型的实例是否可以同时属于多个子类型。</p>
+<ul>
+<li><strong>不允许重叠：</strong> 一个超类实例只能属于<strong>一个</strong>子类型。
+<ul>
+<li>例如：一个 <code>账户(Account)</code> 要么是 <code>储蓄账户(SavingsAccount)</code>，要么是 <code>支票账户(CheckingAccount)</code>，但不能同时是两者。用 <strong>“OR”</strong> 表示。</li>
+</ul>
+</li>
+<li><strong>允许重叠：</strong> 一个超类实例可以同时属于<strong>多个</strong>子类型。
+<ul>
+<li>例如：一个 <code>人(Person)</code> 可以同时是 <code>员工(Employee)</code> 和 <code>学生(Student)</code>。用 <strong>“AND”</strong> 表示。</li>
+</ul>
+</li>
+</ul>
+<h4 id="2-完备性约束completeness-constraint">2. 完备性约束（Completeness constraint）
+</h4><p>规定超类型中的每一个实例是否都<strong>必须</strong>至少属于一个子类型。</p>
+<ul>
+<li><strong>全完备性（total）：</strong> 超类型的<strong>每一个</strong>实例都<strong>必须</strong>是某个子类型的实例。
+<ul>
+<li>例如：公司规定，每一个 <code>员工(Employee)</code> 都必须是 <code>小时工(HourlyEmployee)</code> 或 <code>月薪工(SalariedEmployee)</code> 中的一种。超类型 <code>员工(Employee)</code> 不会存在不属于任何子类的“孤例”。在ER图中，用<strong>双线</strong>表示。</li>
+</ul>
+</li>
+<li><strong>部分完备性（partial）：</strong> 超类型的实例<strong>可以</strong>不属于任何子类型。
+<ul>
+<li>例如：一个 <code>人(Person)</code> 可以只是普通人，既不是 <code>员工(Employee)</code>，也不是 <code>学生(Student)</code>。在ER图中，用<strong>单线</strong>表示。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="在数据库中的实现方式">在数据库中的实现方式
+</h3><!-- raw HTML omitted -->
+<h4 id="1-每个具体类一张表">1. 每个具体类一张表
+</h4><ul>
+<li><strong>方法：</strong> 忽略超类型，只为<strong>每个子类型</strong>创建一张表。这张表包含该子类型特有的属性，以及从超类型继承来的所有属性。</li>
+<li><strong>举例：</strong> 创建 <code>学生表(Students)</code> 和 <code>员工表(Employees)</code>，没有 <code>人表(Persons)</code>。<code>Students</code>表中有 <code>student_id, name, age, major</code> 等字段。</li>
+<li><strong>优点：</strong> 查询特定子类型的数据时速度快。</li>
+<li><strong>缺点：</strong>
+<ul>
+<li>数据冗余（如果一个人既是学生又是员工，他的<code>name</code>和<code>age</code>信息会在两张表中重复存储）。</li>
+<li>难以对所有人进行统一查询（需要<code>UNION</code>操作）。</li>
+<li>无法表示不属于任何子类的人。</li>
+</ul>
+</li>
+</ul>
+<h4 id="2-单张表">2. 单张表
+</h4><ul>
+<li><strong>方法：</strong> 将整个层次结构“扁平化”为<strong>一张表</strong>。这张表包含超类型和所有子类型的所有属性。同时，增加一个“类型鉴别”字段来标识每一行属于哪个子类型。</li>
+<li><strong>举例：</strong> 创建一张 <code>人表(Persons)</code>，包含字段：<code>person_id, name, age, person_type, major, salary, department</code>。
+<ul>
+<li>如果 <code>person_type = ‘Student’</code>，那么 <code>major</code> 字段有意义，<code>salary</code> 字段为NULL。</li>
+<li>如果 <code>person_type = ‘Employee’</code>，那么 <code>salary</code> 字段有意义，<code>major</code> 字段为NULL。</li>
+</ul>
+</li>
+<li><strong>优点：</strong> 统一查询非常简单，不需要<code>JOIN</code>操作。</li>
+<li><strong>缺点：</strong>
+<ul>
+<li>表中存在大量<code>NULL</code>值，浪费存储空间。</li>
+<li>表结构会随着子类型的增加而变得非常庞大和复杂。</li>
+</ul>
+</li>
+</ul>
+<h4 id="3-超类型和子类型分别建表">3. 超类型和子类型分别建表
+</h4><ul>
+<li><strong>方法：</strong> 为<strong>超类型</strong>和<strong>每一个子类型</strong>都创建一张表。
+<ul>
+<li>超类型表包含所有实例共享的公共属性（和一个主键）。</li>
+<li>子类型表只包含其特有的属性，并<strong>共享超类型表的主键</strong>（即子类型表的主键同时也是引用超类型表的外键）。</li>
+</ul>
+</li>
+<li><strong>举例：</strong>
+<ul>
+<li><code>人表(Persons)</code>：<code>person_id (PK), name, age</code></li>
+<li><code>学生表(Students)</code>：<code>person_id (PK, FK references Persons), major</code></li>
+<li><code>员工表(Employees)</code>：<code>person_id (PK, FK references Persons), salary, department</code></li>
+</ul>
+</li>
+<li><strong>优点：</strong>
+<ul>
+<li>设计规范，消除了数据冗余。</li>
+<li>易于添加新的子类型。</li>
+<li>能很好地支持重叠约束（一个人可以同时在<code>Students</code>和<code>Employees</code>表中有记录）。</li>
+</ul>
+</li>
+<li><strong>缺点：</strong> 查询数据时需要频繁使用<code>JOIN</code>操作，性能可能成为瓶颈。</li>
+</ul>
+<hr>
+<h3 id="总结">总结
+</h3><p>在数据库领域中，<strong>ISA Relationship</strong> 是一个强大的概念建模工具，它清晰地表达了 <strong>“是一个”</strong> 的继承关系。理解并正确定义其<strong>重叠约束</strong>和<strong>完备性约束</strong>至关重要，因为它直接影响到最终数据库表结构的设计选择（每种实现方式都有其优缺点，需要根据具体应用场景进行权衡）。</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/er%E6%A8%A1%E5%9E%8B/">ER模型</a>
+        
+            <a href="/tags/ds/">Ds</a>
+        
+            <a href="/tags/%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93/">关系数据库</a>
+        
+    </section>
+
+
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Related content</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/posts/notes/datebase/%E7%AC%AC%E5%85%AD%E7%AB%A0er%E6%A8%A1%E5%9E%8B/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Chapter6 ER模型</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/posts/notes/datebase/%E7%AC%AC%E4%B8%83%E7%AB%A0%E5%87%BD%E6%95%B0%E4%BE%9D%E8%B5%96/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Chapter7 函数依赖</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/posts/notes/datebase/deepseek%E6%80%BB%E7%BB%93%E7%9A%84%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%96/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Deepseek总结的关系规范化</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/posts/notes/datebase/%E7%AC%AC%E4%B8%83%E7%AB%A0%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%96/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Chapter7 关系规范化</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/posts/notes/datebase/%E7%AC%AC%E4%B8%83%E7%AB%A0%E8%8C%83%E5%BC%8F%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Chapter7 分解算法（考试重点）</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2025 zcys univ II Hugo ver
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.31.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+    
+
+            </main>
+        </div>
+        
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.1e9a3bafd846ced4c345d084b355fb8c7bae75701c338f8a1f8a82c780137826.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

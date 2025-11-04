@@ -11,7 +11,7 @@
 <meta property='og:description' content="喵~">
 <meta property='og:url' content='https://invalidval.github.io/'>
 <meta property='og:site_name' content='zcys univ II Hugo ver'>
-<meta property='og:type' content='website'><meta property='og:updated_time' content=' 2025-10-23T00:00:00&#43;08:00 '/>
+<meta property='og:type' content='website'><meta property='og:updated_time' content=' 2025-11-04T00:00:00&#43;08:00 '/>
 <meta name="twitter:title" content="zcys univ II Hugo ver">
 <meta name="twitter:description" content="喵~"><link rel="alternate" type="application/rss&#43;xml" href="https://invalidval.github.io/index.xml">
     </head>
@@ -240,6 +240,32 @@
             <article class="post-card">
                 <div class="post-header">
                     <h3 class="post-title">
+                        <a href="/posts/notes/os/%E7%AC%AC%E5%85%AD%E7%AB%A0-%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5/">第六章 进程同步</a>
+                    </h3>
+                    <div class="post-meta">
+                        <time datetime="2025-11-04">11-04</time>
+                        <span class="reading-time">📖 1 min read</span>
+                    </div>
+                </div>
+                
+                <p class="post-excerpt"><h1 id="信号量有关的同步问题">信号量有关的同步问题
+</h1><h2 id="有限缓冲">有限缓冲
+</h2><p>1、分析需要的信号量个数</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>Binary semaphore mutex <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">1</span>；<span style="color:#6272a4">//互斥信号量，实现对缓冲区的互斥访问
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>semaphore empty <span style="color:#ff79c6">=</span> n；<span style="color:#6272a4">//同步信号量，表示空闲缓冲区的数量 …</span></span></span></span></span></code></pre></div></p>
+                
+                
+                <div class="post-tags">
+                    
+                    <span class="tag">#Semaphore</span>
+                    
+                </div>
+                
+            </article>
+            
+            <article class="post-card">
+                <div class="post-header">
+                    <h3 class="post-title">
                         <a href="/posts/notes/datebase/%E7%AC%AC%E5%85%AD%E7%AB%A0er%E6%A8%A1%E5%9E%8B/">Chapter6 ER模型</a>
                     </h3>
                     <div class="post-meta">
@@ -365,34 +391,6 @@
                 
             </article>
             
-            <article class="post-card">
-                <div class="post-header">
-                    <h3 class="post-title">
-                        <a href="/posts/notes/datebase/deepseek%E6%80%BB%E7%BB%93%E7%9A%84isa/">Deepseek整理的ISA</a>
-                    </h3>
-                    <div class="post-meta">
-                        <time datetime="2025-10-23">10-23</time>
-                        <span class="reading-time">📖 1 min read</span>
-                    </div>
-                </div>
-                
-                <p class="post-excerpt"><h1 id="isa关系68">ISA关系（6.8）
-</h1><p><strong>ISA Relationship</strong> 指的是一种特定的<strong>数据建模</strong>技术，用于在概念模型（如ER图）中表示实体之间的继承关系。</p>
-<p><strong>ISA</strong> 是 <strong>“IS-A”</strong> 的缩写，例如 “<strong>A Manager IS-AN Employee</strong>”（一个经 …</p></p>
-                
-                
-                <div class="post-tags">
-                    
-                    <span class="tag">#ER模型</span>
-                    
-                    <span class="tag">#ds</span>
-                    
-                    <span class="tag">#关系数据库</span>
-                    
-                </div>
-                
-            </article>
-            
         </div>
     </section>
 
@@ -400,15 +398,15 @@
     <section class="stats-section">
         <div class="stats-grid">
             <div class="stat-item">
-                <div class="stat-number">13</div>
+                <div class="stat-number">15</div>
                 <div class="stat-label">总文章数</div>
             </div>
             <div class="stat-item">
-                <div class="stat-number">10</div>
+                <div class="stat-number">12</div>
                 <div class="stat-label">标签数量</div>
             </div>
             <div class="stat-item">
-                <div class="stat-number">3</div>
+                <div class="stat-number">5</div>
                 <div class="stat-label">分类数量</div>
             </div>
         </div>

@@ -6,66 +6,6 @@
         <description>Recent content in 算法设计与分析 on zcys univ II Hugo ver</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en</language>
-        <lastBuildDate>Sun, 01 Jan 2023 00:00:00 +0800</lastBuildDate><atom:link href="https://invalidval.github.io/posts/notes/algorithm/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>第三章 动态规划</title>
-        <link>https://invalidval.github.io/posts/notes/algorithm/%E5%86%BB%E6%9F%9C/</link>
-        <pubDate>Sun, 01 Jan 2023 00:00:00 +0800</pubDate>
-        
-        <guid>https://invalidval.github.io/posts/notes/algorithm/%E5%86%BB%E6%9F%9C/</guid>
-        <description>&lt;h1 id=&#34;基本要素&#34;&gt;基本要素
-&lt;/h1&gt;&lt;ul&gt;
-&lt;li&gt;最优子结构性质
-重叠子问题性质
-(期末一章一个大题，就这么问)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;矩阵连乘、最长公共子序列、最大子段和、背包
-最优质、极大极小、全局最优&lt;/p&gt;
-</description>
-        </item>
-        <item>
-        <title>第二章 分治</title>
-        <link>https://invalidval.github.io/posts/notes/algorithm/%E5%88%86%E6%B2%BB%E7%96%97/</link>
-        <pubDate>Sun, 01 Jan 2023 00:00:00 +0800</pubDate>
-        
-        <guid>https://invalidval.github.io/posts/notes/algorithm/%E5%88%86%E6%B2%BB%E7%96%97/</guid>
-        <description>&lt;h1 id=&#34;思想&#34;&gt;思想
-&lt;/h1&gt;&lt;p&gt;递归&lt;/p&gt;
-&lt;h1 id=&#34;分治的条件&#34;&gt;分治的条件
-&lt;/h1&gt;&lt;ol&gt;
-&lt;li&gt;规模缩小到一定程度可以容易解决&lt;/li&gt;
-&lt;li&gt;具有最优子结构性质&lt;/li&gt;
-&lt;li&gt;子问题的解可以合并为该问题的解（与动态规划的区别）（不能：贪心、DP）&lt;/li&gt;
-&lt;li&gt;不包含公共子问题（各个子问题相互独立，否则使用DP）
-快速排序：原地排序、$nlogn$&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h1 id=&#34;23-二分搜索&#34;&gt;2.3 二分搜索
-&lt;/h1&gt;&lt;h1 id=&#34;24-大整数乘法&#34;&gt;2.4 大整数乘法
-&lt;/h1&gt;&lt;h1 id=&#34;25-strassen矩阵乘法&#34;&gt;2.5 Strassen矩阵乘法
-&lt;/h1&gt;&lt;h1 id=&#34;27-合并排序&#34;&gt;2.7 合并排序
-&lt;/h1&gt;&lt;h1 id=&#34;28-快速排序&#34;&gt;2.8 快速排序
-&lt;/h1&gt;&lt;h1 id=&#34;29-选择问题&#34;&gt;2.9 选择问题
-&lt;/h1&gt;&lt;p&gt;长度为$n$线性有序集合，找出第$k$小
-分治，$pivot$
-线性时间选择问题，问题规模 $0&amp;lt;\epsilon&amp;lt;1$&lt;/p&gt;
-&lt;h2 id=&#34;步骤&#34;&gt;步骤
-&lt;/h2&gt;&lt;ol&gt;
-&lt;li&gt;划分成$\frac{n}{5}$个组&lt;/li&gt;
-&lt;li&gt;各组内任意排序&lt;/li&gt;
-&lt;li&gt;每组中，$pivot_{i}$ = 中位数&lt;/li&gt;
-&lt;li&gt;一共$\frac{n}{5}$个$pivot$，再找出中位数
-只有75个元素以上才能缩小$\frac{1}{4}$&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h2 id=&#34;补充&#34;&gt;补充
-&lt;/h2&gt;&lt;p&gt;划分因子选择3、7：7可以，3不行&lt;/p&gt;
-&lt;h1 id=&#34;210-最近点对问题&#34;&gt;2.10 最近点对问题
-&lt;/h1&gt;&lt;h2 id=&#34;直线&#34;&gt;直线
-&lt;/h2&gt;&lt;p&gt;暴力$O(n^{2})$
-一次排序、一维扫描，$O(nlogn)$&lt;/p&gt;
-&lt;h2 id=&#34;二维&#34;&gt;二维
-&lt;/h2&gt;&lt;p&gt;蛮力；分治（平衡子问题）
-如何分治？能在线性时间内完成？&lt;/p&gt;
-</description>
-        </item>
-        
+        <lastBuildDate></lastBuildDate><atom:link href="https://invalidval.github.io/posts/notes/algorithm/index.xml" rel="self" type="application/rss+xml" />
     </channel>
 </rss>

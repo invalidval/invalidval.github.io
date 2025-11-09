@@ -6,13 +6,14 @@
         <description>Recent content in Categories on zcys univ II Hugo ver</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en</language>
+        <copyright>Example Person</copyright>
         <lastBuildDate>Wed, 05 Nov 2025 00:00:00 +0800</lastBuildDate><atom:link href="https://invalidval.github.io/categories/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Algorithm</title>
         <link>https://invalidval.github.io/categories/algorithm/</link>
         <pubDate>Wed, 05 Nov 2025 00:00:00 +0800</pubDate>
         
         <guid>https://invalidval.github.io/categories/algorithm/</guid>
-        <description></description>
+        <description>&lt;img src="https://invalidval.github.io/categories/algorithm/hutomo-abrianto-l2jk-uxb1BY-unsplash.jpg" alt="Featured image of post Algorithm" /&gt;</description>
         </item>
         <item>
         <title>CP</title>
@@ -45,6 +46,14 @@
         
         <guid>https://invalidval.github.io/categories/tech/</guid>
         <description></description>
+        </item>
+        <item>
+        <title>Test</title>
+        <link>https://invalidval.github.io/categories/test/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>https://invalidval.github.io/categories/test/</guid>
+        <description>&lt;img src="https://invalidval.github.io/categories/test/hutomo-abrianto-l2jk-uxb1BY-unsplash.jpg" alt="Featured image of post Test" /&gt;</description>
         </item>
         
     </channel>

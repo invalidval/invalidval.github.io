@@ -6,17 +6,18 @@
         <description>Recent content in ER模型 on zcys univ II Hugo ver</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en</language>
+        <copyright>Example Person</copyright>
         <lastBuildDate>Thu, 23 Oct 2025 00:00:00 +0800</lastBuildDate><atom:link href="https://invalidval.github.io/tags/er%E6%A8%A1%E5%9E%8B/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Chapter6 ER模型</title>
-        <link>https://invalidval.github.io/posts/notes/datebase/%E7%AC%AC%E5%85%AD%E7%AB%A0er%E6%A8%A1%E5%9E%8B/</link>
+        <link>https://invalidval.github.io/p/chapter6-er%E6%A8%A1%E5%9E%8B/</link>
         <pubDate>Thu, 23 Oct 2025 00:00:00 +0800</pubDate>
         
-        <guid>https://invalidval.github.io/posts/notes/datebase/%E7%AC%AC%E5%85%AD%E7%AB%A0er%E6%A8%A1%E5%9E%8B/</guid>
+        <guid>https://invalidval.github.io/p/chapter6-er%E6%A8%A1%E5%9E%8B/</guid>
         <description>&lt;h1 id=&#34;chapter-6-the-entity-relationship-model&#34;&gt;Chapter 6 The Entity-Relationship Model
-&lt;/h1&gt;&lt;p&gt;&lt;img src=&#34;https://invalidval.github.io/posts/notes/datebase/%E7%AC%AC%E5%85%AD%E7%AB%A0er%E6%A8%A1%E5%9E%8B/erd.png&#34;
+&lt;/h1&gt;&lt;p&gt;&lt;img src=&#34;https://invalidval.github.io/p/chapter6-er%E6%A8%A1%E5%9E%8B/erd.png&#34;
 	width=&#34;1171&#34;
 	height=&#34;1073&#34;
-	srcset=&#34;https://invalidval.github.io/posts/notes/datebase/%E7%AC%AC%E5%85%AD%E7%AB%A0er%E6%A8%A1%E5%9E%8B/erd_hu_7397ce272e3e7e02.png 480w, https://invalidval.github.io/posts/notes/datebase/%E7%AC%AC%E5%85%AD%E7%AB%A0er%E6%A8%A1%E5%9E%8B/erd_hu_f0fd75825304ea4b.png 1024w&#34;
+	srcset=&#34;https://invalidval.github.io/p/chapter6-er%E6%A8%A1%E5%9E%8B/erd_hu_7397ce272e3e7e02.png 480w, https://invalidval.github.io/p/chapter6-er%E6%A8%A1%E5%9E%8B/erd_hu_f0fd75825304ea4b.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;ER diagram&#34;
@@ -35,10 +36,10 @@
 &lt;h2 id=&#34;choice-of-primary-key-for-binary-relationship&#34;&gt;Choice of Primary key for Binary Relationship
 &lt;/h2&gt;&lt;p&gt;在多的那一端把一的主键拿过来当外键&lt;/p&gt;
 &lt;h2 id=&#34;多元联系non-binary&#34;&gt;多元联系(non-binary)
-&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://invalidval.github.io/posts/notes/datebase/%E7%AC%AC%E5%85%AD%E7%AB%A0er%E6%A8%A1%E5%9E%8B/nonebinary.png&#34;
+&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://invalidval.github.io/p/chapter6-er%E6%A8%A1%E5%9E%8B/nonebinary.png&#34;
 	width=&#34;933&#34;
 	height=&#34;359&#34;
-	srcset=&#34;https://invalidval.github.io/posts/notes/datebase/%E7%AC%AC%E5%85%AD%E7%AB%A0er%E6%A8%A1%E5%9E%8B/nonebinary_hu_90ed7bc08ea5076e.png 480w, https://invalidval.github.io/posts/notes/datebase/%E7%AC%AC%E5%85%AD%E7%AB%A0er%E6%A8%A1%E5%9E%8B/nonebinary_hu_8a18ac6277bc90b4.png 1024w&#34;
+	srcset=&#34;https://invalidval.github.io/p/chapter6-er%E6%A8%A1%E5%9E%8B/nonebinary_hu_90ed7bc08ea5076e.png 480w, https://invalidval.github.io/p/chapter6-er%E6%A8%A1%E5%9E%8B/nonebinary_hu_8a18ac6277bc90b4.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;三元Ternary Relationship&#34;
@@ -55,10 +56,10 @@
 &lt;/h3&gt;&lt;p&gt;→：一
 —：多
 (one,many) x (one,many) = 4 种&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://invalidval.github.io/posts/notes/datebase/%E7%AC%AC%E5%85%AD%E7%AB%A0er%E6%A8%A1%E5%9E%8B/onetoone.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://invalidval.github.io/p/chapter6-er%E6%A8%A1%E5%9E%8B/onetoone.png&#34;
 	width=&#34;1077&#34;
 	height=&#34;283&#34;
-	srcset=&#34;https://invalidval.github.io/posts/notes/datebase/%E7%AC%AC%E5%85%AD%E7%AB%A0er%E6%A8%A1%E5%9E%8B/onetoone_hu_4b3b28947f5fe4df.png 480w, https://invalidval.github.io/posts/notes/datebase/%E7%AC%AC%E5%85%AD%E7%AB%A0er%E6%A8%A1%E5%9E%8B/onetoone_hu_b4e9fa82a8ffafb9.png 1024w&#34;
+	srcset=&#34;https://invalidval.github.io/p/chapter6-er%E6%A8%A1%E5%9E%8B/onetoone_hu_4b3b28947f5fe4df.png 480w, https://invalidval.github.io/p/chapter6-er%E6%A8%A1%E5%9E%8B/onetoone_hu_b4e9fa82a8ffafb9.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;一对一&#34;
@@ -81,10 +82,10 @@
 Not to use the &lt;code&gt;primary-key&lt;/code&gt; of an entity set as an attributes of another entity set (to represent implicitly association between these two entity sets), it is better to use an relationship set  to explicitly show this association
 e.g.  for the entity student, do not use instructor.id as its attribute, in stead of,  representing association among student and instructor using &lt;code&gt;relationship&lt;/code&gt; advisor.&lt;/p&gt;
 &lt;p&gt;用实体还是关系？“动作”对应“联系”&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://invalidval.github.io/posts/notes/datebase/%E7%AC%AC%E5%85%AD%E7%AB%A0er%E6%A8%A1%E5%9E%8B/weake.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://invalidval.github.io/p/chapter6-er%E6%A8%A1%E5%9E%8B/weake.png&#34;
 	width=&#34;1811&#34;
 	height=&#34;1026&#34;
-	srcset=&#34;https://invalidval.github.io/posts/notes/datebase/%E7%AC%AC%E5%85%AD%E7%AB%A0er%E6%A8%A1%E5%9E%8B/weake_hu_75aeef19b0c5a435.png 480w, https://invalidval.github.io/posts/notes/datebase/%E7%AC%AC%E5%85%AD%E7%AB%A0er%E6%A8%A1%E5%9E%8B/weake_hu_8882bfca8686d0a2.png 1024w&#34;
+	srcset=&#34;https://invalidval.github.io/p/chapter6-er%E6%A8%A1%E5%9E%8B/weake_hu_75aeef19b0c5a435.png 480w, https://invalidval.github.io/p/chapter6-er%E6%A8%A1%E5%9E%8B/weake_hu_8882bfca8686d0a2.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;弱实体集&#34;
@@ -107,10 +108,10 @@ e.g.  for the entity student, do not use instructor.id as its attribute, in stea
 &lt;h3 id=&#34;aggregation&#34;&gt;Aggregation
 &lt;/h3&gt;&lt;p&gt;relationship on relationship（联系的联系）&lt;/p&gt;
 &lt;h2 id=&#34;er图记号总结&#34;&gt;ER图记号总结
-&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://invalidval.github.io/posts/notes/datebase/%E7%AC%AC%E5%85%AD%E7%AB%A0er%E6%A8%A1%E5%9E%8B/notation.png&#34;
+&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://invalidval.github.io/p/chapter6-er%E6%A8%A1%E5%9E%8B/notation.png&#34;
 	width=&#34;1448&#34;
 	height=&#34;830&#34;
-	srcset=&#34;https://invalidval.github.io/posts/notes/datebase/%E7%AC%AC%E5%85%AD%E7%AB%A0er%E6%A8%A1%E5%9E%8B/notation_hu_2e71417dac28c066.png 480w, https://invalidval.github.io/posts/notes/datebase/%E7%AC%AC%E5%85%AD%E7%AB%A0er%E6%A8%A1%E5%9E%8B/notation_hu_eae70deb99dd7e5b.png 1024w&#34;
+	srcset=&#34;https://invalidval.github.io/p/chapter6-er%E6%A8%A1%E5%9E%8B/notation_hu_2e71417dac28c066.png 480w, https://invalidval.github.io/p/chapter6-er%E6%A8%A1%E5%9E%8B/notation_hu_eae70deb99dd7e5b.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;记号&#34;
@@ -121,10 +122,10 @@ e.g.  for the entity student, do not use instructor.id as its attribute, in stea
 		data-flex-basis=&#34;418px&#34;
 	
 &gt;
-&lt;img src=&#34;https://invalidval.github.io/posts/notes/datebase/%E7%AC%AC%E5%85%AD%E7%AB%A0er%E6%A8%A1%E5%9E%8B/image-1.png&#34;
+&lt;img src=&#34;https://invalidval.github.io/p/chapter6-er%E6%A8%A1%E5%9E%8B/image-1.png&#34;
 	width=&#34;1340&#34;
 	height=&#34;910&#34;
-	srcset=&#34;https://invalidval.github.io/posts/notes/datebase/%E7%AC%AC%E5%85%AD%E7%AB%A0er%E6%A8%A1%E5%9E%8B/image-1_hu_2eca5d22e9091c97.png 480w, https://invalidval.github.io/posts/notes/datebase/%E7%AC%AC%E5%85%AD%E7%AB%A0er%E6%A8%A1%E5%9E%8B/image-1_hu_148bcaec67969326.png 1024w&#34;
+	srcset=&#34;https://invalidval.github.io/p/chapter6-er%E6%A8%A1%E5%9E%8B/image-1_hu_2eca5d22e9091c97.png 480w, https://invalidval.github.io/p/chapter6-er%E6%A8%A1%E5%9E%8B/image-1_hu_148bcaec67969326.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;记号（续）&#34;
@@ -135,10 +136,10 @@ e.g.  for the entity student, do not use instructor.id as its attribute, in stea
 		data-flex-basis=&#34;353px&#34;
 	
 &gt;
-&lt;img src=&#34;https://invalidval.github.io/posts/notes/datebase/%E7%AC%AC%E5%85%AD%E7%AB%A0er%E6%A8%A1%E5%9E%8B/image-2.png&#34;
+&lt;img src=&#34;https://invalidval.github.io/p/chapter6-er%E6%A8%A1%E5%9E%8B/image-2.png&#34;
 	width=&#34;1765&#34;
 	height=&#34;988&#34;
-	srcset=&#34;https://invalidval.github.io/posts/notes/datebase/%E7%AC%AC%E5%85%AD%E7%AB%A0er%E6%A8%A1%E5%9E%8B/image-2_hu_d48f4362889822da.png 480w, https://invalidval.github.io/posts/notes/datebase/%E7%AC%AC%E5%85%AD%E7%AB%A0er%E6%A8%A1%E5%9E%8B/image-2_hu_75aeac4bc8f0ad8c.png 1024w&#34;
+	srcset=&#34;https://invalidval.github.io/p/chapter6-er%E6%A8%A1%E5%9E%8B/image-2_hu_d48f4362889822da.png 480w, https://invalidval.github.io/p/chapter6-er%E6%A8%A1%E5%9E%8B/image-2_hu_75aeac4bc8f0ad8c.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;替代记号&#34;
@@ -149,10 +150,10 @@ e.g.  for the entity student, do not use instructor.id as its attribute, in stea
 		data-flex-basis=&#34;428px&#34;
 	
 &gt;
-&lt;img src=&#34;https://invalidval.github.io/posts/notes/datebase/%E7%AC%AC%E5%85%AD%E7%AB%A0er%E6%A8%A1%E5%9E%8B/image-3.png&#34;
+&lt;img src=&#34;https://invalidval.github.io/p/chapter6-er%E6%A8%A1%E5%9E%8B/image-3.png&#34;
 	width=&#34;1839&#34;
 	height=&#34;1011&#34;
-	srcset=&#34;https://invalidval.github.io/posts/notes/datebase/%E7%AC%AC%E5%85%AD%E7%AB%A0er%E6%A8%A1%E5%9E%8B/image-3_hu_f9791aa57282eeee.png 480w, https://invalidval.github.io/posts/notes/datebase/%E7%AC%AC%E5%85%AD%E7%AB%A0er%E6%A8%A1%E5%9E%8B/image-3_hu_b8fd75e1fb94a904.png 1024w&#34;
+	srcset=&#34;https://invalidval.github.io/p/chapter6-er%E6%A8%A1%E5%9E%8B/image-3_hu_f9791aa57282eeee.png 480w, https://invalidval.github.io/p/chapter6-er%E6%A8%A1%E5%9E%8B/image-3_hu_b8fd75e1fb94a904.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;替代记号（续）&#34;
@@ -167,10 +168,10 @@ e.g.  for the entity student, do not use instructor.id as its attribute, in stea
         </item>
         <item>
         <title>Deepseek整理的ISA</title>
-        <link>https://invalidval.github.io/posts/notes/datebase/deepseek%E6%80%BB%E7%BB%93%E7%9A%84isa/</link>
+        <link>https://invalidval.github.io/p/deepseek%E6%95%B4%E7%90%86%E7%9A%84isa/</link>
         <pubDate>Thu, 23 Oct 2025 00:00:00 +0800</pubDate>
         
-        <guid>https://invalidval.github.io/posts/notes/datebase/deepseek%E6%80%BB%E7%BB%93%E7%9A%84isa/</guid>
+        <guid>https://invalidval.github.io/p/deepseek%E6%95%B4%E7%90%86%E7%9A%84isa/</guid>
         <description>&lt;h1 id=&#34;isa关系68&#34;&gt;ISA关系（6.8）
 &lt;/h1&gt;&lt;p&gt;&lt;strong&gt;ISA Relationship&lt;/strong&gt; 指的是一种特定的&lt;strong&gt;数据建模&lt;/strong&gt;技术，用于在概念模型（如ER图）中表示实体之间的继承关系。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;ISA&lt;/strong&gt; 是 &lt;strong&gt;“IS-A”&lt;/strong&gt; 的缩写，例如 “&lt;strong&gt;A Manager IS-AN Employee&lt;/strong&gt;”（一个经理 &lt;strong&gt;是&lt;/strong&gt; 一个员工）。它描述了一种&lt;strong&gt;父类型（超类型）&lt;/strong&gt; 和&lt;strong&gt;子类型&lt;/strong&gt; 之间的层次关系。&lt;/p&gt;
@@ -222,7 +223,7 @@ e.g.  for the entity student, do not use instructor.id as its attribute, in stea
 &lt;/ul&gt;
 &lt;hr&gt;
 &lt;h3 id=&#34;在数据库中的实现方式&#34;&gt;在数据库中的实现方式
-&lt;/h3&gt;&lt;!-- raw HTML omitted --&gt;
+&lt;/h3&gt;&lt;div style=&#34;background-color: #FFFF00&#34;&gt;ISA层次结构在物理数据库中主要有三种实现方式：&lt;/div&gt;
 &lt;h4 id=&#34;1-每个具体类一张表&#34;&gt;1. 每个具体类一张表
 &lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;方法：&lt;/strong&gt; 忽略超类型，只为&lt;strong&gt;每个子类型&lt;/strong&gt;创建一张表。这张表包含该子类型特有的属性，以及从超类型继承来的所有属性。&lt;/li&gt;

@@ -7,7 +7,15 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>en</language>
         <copyright>Example Person</copyright>
-        <lastBuildDate>Wed, 05 Nov 2025 00:00:00 +0800</lastBuildDate><atom:link href="https://invalidval.github.io/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Tue, 11 Nov 2025 00:00:00 +0800</lastBuildDate><atom:link href="https://invalidval.github.io/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>数据库</title>
+        <link>https://invalidval.github.io/categories/database/</link>
+        <pubDate>Tue, 11 Nov 2025 00:00:00 +0800</pubDate>
+        
+        <guid>https://invalidval.github.io/categories/database/</guid>
+        <description>&lt;img src="https://invalidval.github.io/categories/database/bg.jpg" alt="Featured image of post 数据库" /&gt;</description>
+        </item>
+        <item>
         <title>Algorithm</title>
         <link>https://invalidval.github.io/categories/algorithm/</link>
         <pubDate>Wed, 05 Nov 2025 00:00:00 +0800</pubDate>
@@ -16,44 +24,28 @@
         <description>&lt;img src="https://invalidval.github.io/categories/algorithm/hutomo-abrianto-l2jk-uxb1BY-unsplash.jpg" alt="Featured image of post Algorithm" /&gt;</description>
         </item>
         <item>
-        <title>CP</title>
-        <link>https://invalidval.github.io/categories/cp/</link>
-        <pubDate>Tue, 04 Nov 2025 00:00:00 +0800</pubDate>
-        
-        <guid>https://invalidval.github.io/categories/cp/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>OS</title>
+        <title>操作系统</title>
         <link>https://invalidval.github.io/categories/os/</link>
         <pubDate>Tue, 04 Nov 2025 00:00:00 +0800</pubDate>
         
         <guid>https://invalidval.github.io/categories/os/</guid>
-        <description></description>
+        <description>&lt;img src="https://invalidval.github.io/categories/os/windows-10-crash-funny-io.jpg" alt="Featured image of post 操作系统" /&gt;</description>
         </item>
         <item>
-        <title>DataBase</title>
-        <link>https://invalidval.github.io/categories/database/</link>
-        <pubDate>Thu, 23 Oct 2025 00:00:00 +0800</pubDate>
+        <title>编译原理</title>
+        <link>https://invalidval.github.io/categories/cp/</link>
+        <pubDate>Tue, 04 Nov 2025 00:00:00 +0800</pubDate>
         
-        <guid>https://invalidval.github.io/categories/database/</guid>
-        <description></description>
+        <guid>https://invalidval.github.io/categories/cp/</guid>
+        <description>&lt;img src="https://invalidval.github.io/categories/cp/cp.png" alt="Featured image of post 编译原理" /&gt;</description>
         </item>
         <item>
-        <title>Tech</title>
+        <title>技术杂谈</title>
         <link>https://invalidval.github.io/categories/tech/</link>
         <pubDate>Sun, 01 Jan 2023 00:00:00 +0800</pubDate>
         
         <guid>https://invalidval.github.io/categories/tech/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>Test</title>
-        <link>https://invalidval.github.io/categories/test/</link>
-        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-        
-        <guid>https://invalidval.github.io/categories/test/</guid>
-        <description>&lt;img src="https://invalidval.github.io/categories/test/hutomo-abrianto-l2jk-uxb1BY-unsplash.jpg" alt="Featured image of post Test" /&gt;</description>
+        <description>&lt;img src="https://invalidval.github.io/categories/tech/e3ba1c59495f3f54aa24381875ad5e54.jpg" alt="Featured image of post 技术杂谈" /&gt;</description>
         </item>
         
     </channel>

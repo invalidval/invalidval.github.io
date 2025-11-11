@@ -13,7 +13,7 @@
         <pubDate>Tue, 04 Nov 2025 00:00:00 +0800</pubDate>
         
         <guid>https://invalidval.github.io/p/%E7%AC%AC%E5%85%AD%E7%AB%A0-%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5/</guid>
-        <description>&lt;h1 id=&#34;信号量有关的同步问题&#34;&gt;信号量有关的同步问题
+        <description>&lt;img src="https://invalidval.github.io/p/%E7%AC%AC%E5%85%AD%E7%AB%A0-%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5/1.jpg" alt="Featured image of post 第六章 进程同步" /&gt;&lt;h1 id=&#34;信号量有关的同步问题&#34;&gt;信号量有关的同步问题
 &lt;/h1&gt;&lt;h2 id=&#34;有限缓冲&#34;&gt;有限缓冲
 &lt;/h2&gt;&lt;p&gt;1、分析需要的信号量个数&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;

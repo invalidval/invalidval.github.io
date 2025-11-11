@@ -8,6 +8,123 @@
         <language>en</language>
         <copyright>Example Person</copyright>
         <lastBuildDate>Thu, 23 Oct 2025 00:00:00 +0800</lastBuildDate><atom:link href="https://invalidval.github.io/tags/er%E6%A8%A1%E5%9E%8B/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Chapter 6.8 ISA</title>
+        <link>https://invalidval.github.io/p/chapter-6.8-isa/</link>
+        <pubDate>Thu, 23 Oct 2025 00:00:00 +0800</pubDate>
+        
+        <guid>https://invalidval.github.io/p/chapter-6.8-isa/</guid>
+        <description>&lt;h1 id=&#34;isa关系68&#34;&gt;ISA关系（6.8）
+&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;ISA Relationship&lt;/strong&gt; 指的是一种特定的&lt;strong&gt;数据建模&lt;/strong&gt;技术，用于在概念模型（如ER图）中表示实体之间的继承关系。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;ISA&lt;/strong&gt; 是 &lt;strong&gt;“IS-A”&lt;/strong&gt; 的缩写，例如 “&lt;strong&gt;A Manager IS-AN Employee&lt;/strong&gt;”（一个经理 &lt;strong&gt;是&lt;/strong&gt; 一个员工）。它描述了一种&lt;strong&gt;父类型（超类型）&lt;/strong&gt; 和&lt;strong&gt;子类型&lt;/strong&gt; 之间的层次关系。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;核心概念&#34;&gt;核心概念
+&lt;/h3&gt;&lt;p&gt;在数据库设计中，ISA关系用于捕捉现实世界中存在的&lt;strong&gt;分类结构&lt;/strong&gt;。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;超类型 / 父类：&lt;/strong&gt; 一个更一般化、更抽象的实体。
+&lt;ul&gt;
+&lt;li&gt;例如：&lt;code&gt;人(Person)&lt;/code&gt;、&lt;code&gt;账户(Account)&lt;/code&gt;、&lt;code&gt;车辆(Vehicle)&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;子类型 / 子类：&lt;/strong&gt; 一个更具体、更特化的实体，它是超类型的一种。
+&lt;ul&gt;
+&lt;li&gt;例如：&lt;code&gt;员工(Employee)&lt;/code&gt; 和 &lt;code&gt;学生(Student)&lt;/code&gt; 是 &lt;code&gt;人(Person)&lt;/code&gt; 的子类型。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;储蓄账户(SavingsAccount)&lt;/code&gt; 和 &lt;code&gt;支票账户(CheckingAccount)&lt;/code&gt; 是 &lt;code&gt;账户(Account)&lt;/code&gt; 的子类型。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;isa关系的两个关键约束&#34;&gt;ISA关系的两个关键约束
+&lt;/h3&gt;&lt;p&gt;当你在设计中使用ISA关系时，必须定义两个重要的约束：&lt;/p&gt;
+&lt;h4 id=&#34;1-重叠约束disjointoverlapping-constraint&#34;&gt;1. 重叠约束（Disjoint/Overlapping Constraint）
+&lt;/h4&gt;&lt;p&gt;规定一个超类型的实例是否可以同时属于多个子类型。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;不允许重叠：&lt;/strong&gt; 一个超类实例只能属于&lt;strong&gt;一个&lt;/strong&gt;子类型。
+&lt;ul&gt;
+&lt;li&gt;例如：一个 &lt;code&gt;账户(Account)&lt;/code&gt; 要么是 &lt;code&gt;储蓄账户(SavingsAccount)&lt;/code&gt;，要么是 &lt;code&gt;支票账户(CheckingAccount)&lt;/code&gt;，但不能同时是两者。用 &lt;strong&gt;“OR”&lt;/strong&gt; 表示。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;允许重叠：&lt;/strong&gt; 一个超类实例可以同时属于&lt;strong&gt;多个&lt;/strong&gt;子类型。
+&lt;ul&gt;
+&lt;li&gt;例如：一个 &lt;code&gt;人(Person)&lt;/code&gt; 可以同时是 &lt;code&gt;员工(Employee)&lt;/code&gt; 和 &lt;code&gt;学生(Student)&lt;/code&gt;。用 &lt;strong&gt;“AND”&lt;/strong&gt; 表示。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;2-完备性约束completeness-constraint&#34;&gt;2. 完备性约束（Completeness constraint）
+&lt;/h4&gt;&lt;p&gt;规定超类型中的每一个实例是否都&lt;strong&gt;必须&lt;/strong&gt;至少属于一个子类型。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;全完备性（total）：&lt;/strong&gt; 超类型的&lt;strong&gt;每一个&lt;/strong&gt;实例都&lt;strong&gt;必须&lt;/strong&gt;是某个子类型的实例。
+&lt;ul&gt;
+&lt;li&gt;例如：公司规定，每一个 &lt;code&gt;员工(Employee)&lt;/code&gt; 都必须是 &lt;code&gt;小时工(HourlyEmployee)&lt;/code&gt; 或 &lt;code&gt;月薪工(SalariedEmployee)&lt;/code&gt; 中的一种。超类型 &lt;code&gt;员工(Employee)&lt;/code&gt; 不会存在不属于任何子类的“孤例”。在ER图中，用&lt;strong&gt;双线&lt;/strong&gt;表示。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;部分完备性（partial）：&lt;/strong&gt; 超类型的实例&lt;strong&gt;可以&lt;/strong&gt;不属于任何子类型。
+&lt;ul&gt;
+&lt;li&gt;例如：一个 &lt;code&gt;人(Person)&lt;/code&gt; 可以只是普通人，既不是 &lt;code&gt;员工(Employee)&lt;/code&gt;，也不是 &lt;code&gt;学生(Student)&lt;/code&gt;。在ER图中，用&lt;strong&gt;单线&lt;/strong&gt;表示。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;在数据库中的实现方式&#34;&gt;在数据库中的实现方式
+&lt;/h3&gt;&lt;div style=&#34;background-color: #FFFF00&#34;&gt;ISA层次结构在物理数据库中主要有三种实现方式：&lt;/div&gt;
+&lt;h4 id=&#34;1-每个具体类一张表&#34;&gt;1. 每个具体类一张表
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;方法：&lt;/strong&gt; 忽略超类型，只为&lt;strong&gt;每个子类型&lt;/strong&gt;创建一张表。这张表包含该子类型特有的属性，以及从超类型继承来的所有属性。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;举例：&lt;/strong&gt; 创建 &lt;code&gt;学生表(Students)&lt;/code&gt; 和 &lt;code&gt;员工表(Employees)&lt;/code&gt;，没有 &lt;code&gt;人表(Persons)&lt;/code&gt;。&lt;code&gt;Students&lt;/code&gt;表中有 &lt;code&gt;student_id, name, age, major&lt;/code&gt; 等字段。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;优点：&lt;/strong&gt; 查询特定子类型的数据时速度快。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;缺点：&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;数据冗余（如果一个人既是学生又是员工，他的&lt;code&gt;name&lt;/code&gt;和&lt;code&gt;age&lt;/code&gt;信息会在两张表中重复存储）。&lt;/li&gt;
+&lt;li&gt;难以对所有人进行统一查询（需要&lt;code&gt;UNION&lt;/code&gt;操作）。&lt;/li&gt;
+&lt;li&gt;无法表示不属于任何子类的人。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;2-单张表&#34;&gt;2. 单张表
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;方法：&lt;/strong&gt; 将整个层次结构“扁平化”为&lt;strong&gt;一张表&lt;/strong&gt;。这张表包含超类型和所有子类型的所有属性。同时，增加一个“类型鉴别”字段来标识每一行属于哪个子类型。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;举例：&lt;/strong&gt; 创建一张 &lt;code&gt;人表(Persons)&lt;/code&gt;，包含字段：&lt;code&gt;person_id, name, age, person_type, major, salary, department&lt;/code&gt;。
+&lt;ul&gt;
+&lt;li&gt;如果 &lt;code&gt;person_type = ‘Student’&lt;/code&gt;，那么 &lt;code&gt;major&lt;/code&gt; 字段有意义，&lt;code&gt;salary&lt;/code&gt; 字段为NULL。&lt;/li&gt;
+&lt;li&gt;如果 &lt;code&gt;person_type = ‘Employee’&lt;/code&gt;，那么 &lt;code&gt;salary&lt;/code&gt; 字段有意义，&lt;code&gt;major&lt;/code&gt; 字段为NULL。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;优点：&lt;/strong&gt; 统一查询非常简单，不需要&lt;code&gt;JOIN&lt;/code&gt;操作。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;缺点：&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;表中存在大量&lt;code&gt;NULL&lt;/code&gt;值，浪费存储空间。&lt;/li&gt;
+&lt;li&gt;表结构会随着子类型的增加而变得非常庞大和复杂。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;3-超类型和子类型分别建表&#34;&gt;3. 超类型和子类型分别建表
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;方法：&lt;/strong&gt; 为&lt;strong&gt;超类型&lt;/strong&gt;和&lt;strong&gt;每一个子类型&lt;/strong&gt;都创建一张表。
+&lt;ul&gt;
+&lt;li&gt;超类型表包含所有实例共享的公共属性（和一个主键）。&lt;/li&gt;
+&lt;li&gt;子类型表只包含其特有的属性，并&lt;strong&gt;共享超类型表的主键&lt;/strong&gt;（即子类型表的主键同时也是引用超类型表的外键）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;举例：&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;人表(Persons)&lt;/code&gt;：&lt;code&gt;person_id (PK), name, age&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;学生表(Students)&lt;/code&gt;：&lt;code&gt;person_id (PK, FK references Persons), major&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;员工表(Employees)&lt;/code&gt;：&lt;code&gt;person_id (PK, FK references Persons), salary, department&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;优点：&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;设计规范，消除了数据冗余。&lt;/li&gt;
+&lt;li&gt;易于添加新的子类型。&lt;/li&gt;
+&lt;li&gt;能很好地支持重叠约束（一个人可以同时在&lt;code&gt;Students&lt;/code&gt;和&lt;code&gt;Employees&lt;/code&gt;表中有记录）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;缺点：&lt;/strong&gt; 查询数据时需要频繁使用&lt;code&gt;JOIN&lt;/code&gt;操作，性能可能成为瓶颈。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;总结&#34;&gt;总结
+&lt;/h3&gt;&lt;p&gt;在数据库领域中，&lt;strong&gt;ISA Relationship&lt;/strong&gt; 是一个强大的概念建模工具，它清晰地表达了 &lt;strong&gt;“是一个”&lt;/strong&gt; 的继承关系。理解并正确定义其&lt;strong&gt;重叠约束&lt;/strong&gt;和&lt;strong&gt;完备性约束&lt;/strong&gt;至关重要，因为它直接影响到最终数据库表结构的设计选择（每种实现方式都有其优缺点，需要根据具体应用场景进行权衡）。&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>Chapter6 ER模型</title>
         <link>https://invalidval.github.io/p/chapter6-er%E6%A8%A1%E5%9E%8B/</link>
         <pubDate>Thu, 23 Oct 2025 00:00:00 +0800</pubDate>
@@ -164,123 +281,6 @@ e.g.  for the entity student, do not use instructor.id as its attribute, in stea
 		data-flex-basis=&#34;436px&#34;
 	
 &gt;&lt;/p&gt;
-</description>
-        </item>
-        <item>
-        <title>Deepseek整理的ISA</title>
-        <link>https://invalidval.github.io/p/deepseek%E6%95%B4%E7%90%86%E7%9A%84isa/</link>
-        <pubDate>Thu, 23 Oct 2025 00:00:00 +0800</pubDate>
-        
-        <guid>https://invalidval.github.io/p/deepseek%E6%95%B4%E7%90%86%E7%9A%84isa/</guid>
-        <description>&lt;h1 id=&#34;isa关系68&#34;&gt;ISA关系（6.8）
-&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;ISA Relationship&lt;/strong&gt; 指的是一种特定的&lt;strong&gt;数据建模&lt;/strong&gt;技术，用于在概念模型（如ER图）中表示实体之间的继承关系。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;ISA&lt;/strong&gt; 是 &lt;strong&gt;“IS-A”&lt;/strong&gt; 的缩写，例如 “&lt;strong&gt;A Manager IS-AN Employee&lt;/strong&gt;”（一个经理 &lt;strong&gt;是&lt;/strong&gt; 一个员工）。它描述了一种&lt;strong&gt;父类型（超类型）&lt;/strong&gt; 和&lt;strong&gt;子类型&lt;/strong&gt; 之间的层次关系。&lt;/p&gt;
-&lt;hr&gt;
-&lt;h3 id=&#34;核心概念&#34;&gt;核心概念
-&lt;/h3&gt;&lt;p&gt;在数据库设计中，ISA关系用于捕捉现实世界中存在的&lt;strong&gt;分类结构&lt;/strong&gt;。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;超类型 / 父类：&lt;/strong&gt; 一个更一般化、更抽象的实体。
-&lt;ul&gt;
-&lt;li&gt;例如：&lt;code&gt;人(Person)&lt;/code&gt;、&lt;code&gt;账户(Account)&lt;/code&gt;、&lt;code&gt;车辆(Vehicle)&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;子类型 / 子类：&lt;/strong&gt; 一个更具体、更特化的实体，它是超类型的一种。
-&lt;ul&gt;
-&lt;li&gt;例如：&lt;code&gt;员工(Employee)&lt;/code&gt; 和 &lt;code&gt;学生(Student)&lt;/code&gt; 是 &lt;code&gt;人(Person)&lt;/code&gt; 的子类型。&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;储蓄账户(SavingsAccount)&lt;/code&gt; 和 &lt;code&gt;支票账户(CheckingAccount)&lt;/code&gt; 是 &lt;code&gt;账户(Account)&lt;/code&gt; 的子类型。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;isa关系的两个关键约束&#34;&gt;ISA关系的两个关键约束
-&lt;/h3&gt;&lt;p&gt;当你在设计中使用ISA关系时，必须定义两个重要的约束：&lt;/p&gt;
-&lt;h4 id=&#34;1-重叠约束disjointoverlapping-constraint&#34;&gt;1. 重叠约束（Disjoint/Overlapping Constraint）
-&lt;/h4&gt;&lt;p&gt;规定一个超类型的实例是否可以同时属于多个子类型。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;不允许重叠：&lt;/strong&gt; 一个超类实例只能属于&lt;strong&gt;一个&lt;/strong&gt;子类型。
-&lt;ul&gt;
-&lt;li&gt;例如：一个 &lt;code&gt;账户(Account)&lt;/code&gt; 要么是 &lt;code&gt;储蓄账户(SavingsAccount)&lt;/code&gt;，要么是 &lt;code&gt;支票账户(CheckingAccount)&lt;/code&gt;，但不能同时是两者。用 &lt;strong&gt;“OR”&lt;/strong&gt; 表示。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;允许重叠：&lt;/strong&gt; 一个超类实例可以同时属于&lt;strong&gt;多个&lt;/strong&gt;子类型。
-&lt;ul&gt;
-&lt;li&gt;例如：一个 &lt;code&gt;人(Person)&lt;/code&gt; 可以同时是 &lt;code&gt;员工(Employee)&lt;/code&gt; 和 &lt;code&gt;学生(Student)&lt;/code&gt;。用 &lt;strong&gt;“AND”&lt;/strong&gt; 表示。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h4 id=&#34;2-完备性约束completeness-constraint&#34;&gt;2. 完备性约束（Completeness constraint）
-&lt;/h4&gt;&lt;p&gt;规定超类型中的每一个实例是否都&lt;strong&gt;必须&lt;/strong&gt;至少属于一个子类型。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;全完备性（total）：&lt;/strong&gt; 超类型的&lt;strong&gt;每一个&lt;/strong&gt;实例都&lt;strong&gt;必须&lt;/strong&gt;是某个子类型的实例。
-&lt;ul&gt;
-&lt;li&gt;例如：公司规定，每一个 &lt;code&gt;员工(Employee)&lt;/code&gt; 都必须是 &lt;code&gt;小时工(HourlyEmployee)&lt;/code&gt; 或 &lt;code&gt;月薪工(SalariedEmployee)&lt;/code&gt; 中的一种。超类型 &lt;code&gt;员工(Employee)&lt;/code&gt; 不会存在不属于任何子类的“孤例”。在ER图中，用&lt;strong&gt;双线&lt;/strong&gt;表示。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;部分完备性（partial）：&lt;/strong&gt; 超类型的实例&lt;strong&gt;可以&lt;/strong&gt;不属于任何子类型。
-&lt;ul&gt;
-&lt;li&gt;例如：一个 &lt;code&gt;人(Person)&lt;/code&gt; 可以只是普通人，既不是 &lt;code&gt;员工(Employee)&lt;/code&gt;，也不是 &lt;code&gt;学生(Student)&lt;/code&gt;。在ER图中，用&lt;strong&gt;单线&lt;/strong&gt;表示。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr&gt;
-&lt;h3 id=&#34;在数据库中的实现方式&#34;&gt;在数据库中的实现方式
-&lt;/h3&gt;&lt;div style=&#34;background-color: #FFFF00&#34;&gt;ISA层次结构在物理数据库中主要有三种实现方式：&lt;/div&gt;
-&lt;h4 id=&#34;1-每个具体类一张表&#34;&gt;1. 每个具体类一张表
-&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;方法：&lt;/strong&gt; 忽略超类型，只为&lt;strong&gt;每个子类型&lt;/strong&gt;创建一张表。这张表包含该子类型特有的属性，以及从超类型继承来的所有属性。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;举例：&lt;/strong&gt; 创建 &lt;code&gt;学生表(Students)&lt;/code&gt; 和 &lt;code&gt;员工表(Employees)&lt;/code&gt;，没有 &lt;code&gt;人表(Persons)&lt;/code&gt;。&lt;code&gt;Students&lt;/code&gt;表中有 &lt;code&gt;student_id, name, age, major&lt;/code&gt; 等字段。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;优点：&lt;/strong&gt; 查询特定子类型的数据时速度快。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;缺点：&lt;/strong&gt;
-&lt;ul&gt;
-&lt;li&gt;数据冗余（如果一个人既是学生又是员工，他的&lt;code&gt;name&lt;/code&gt;和&lt;code&gt;age&lt;/code&gt;信息会在两张表中重复存储）。&lt;/li&gt;
-&lt;li&gt;难以对所有人进行统一查询（需要&lt;code&gt;UNION&lt;/code&gt;操作）。&lt;/li&gt;
-&lt;li&gt;无法表示不属于任何子类的人。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h4 id=&#34;2-单张表&#34;&gt;2. 单张表
-&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;方法：&lt;/strong&gt; 将整个层次结构“扁平化”为&lt;strong&gt;一张表&lt;/strong&gt;。这张表包含超类型和所有子类型的所有属性。同时，增加一个“类型鉴别”字段来标识每一行属于哪个子类型。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;举例：&lt;/strong&gt; 创建一张 &lt;code&gt;人表(Persons)&lt;/code&gt;，包含字段：&lt;code&gt;person_id, name, age, person_type, major, salary, department&lt;/code&gt;。
-&lt;ul&gt;
-&lt;li&gt;如果 &lt;code&gt;person_type = ‘Student’&lt;/code&gt;，那么 &lt;code&gt;major&lt;/code&gt; 字段有意义，&lt;code&gt;salary&lt;/code&gt; 字段为NULL。&lt;/li&gt;
-&lt;li&gt;如果 &lt;code&gt;person_type = ‘Employee’&lt;/code&gt;，那么 &lt;code&gt;salary&lt;/code&gt; 字段有意义，&lt;code&gt;major&lt;/code&gt; 字段为NULL。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;优点：&lt;/strong&gt; 统一查询非常简单，不需要&lt;code&gt;JOIN&lt;/code&gt;操作。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;缺点：&lt;/strong&gt;
-&lt;ul&gt;
-&lt;li&gt;表中存在大量&lt;code&gt;NULL&lt;/code&gt;值，浪费存储空间。&lt;/li&gt;
-&lt;li&gt;表结构会随着子类型的增加而变得非常庞大和复杂。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h4 id=&#34;3-超类型和子类型分别建表&#34;&gt;3. 超类型和子类型分别建表
-&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;方法：&lt;/strong&gt; 为&lt;strong&gt;超类型&lt;/strong&gt;和&lt;strong&gt;每一个子类型&lt;/strong&gt;都创建一张表。
-&lt;ul&gt;
-&lt;li&gt;超类型表包含所有实例共享的公共属性（和一个主键）。&lt;/li&gt;
-&lt;li&gt;子类型表只包含其特有的属性，并&lt;strong&gt;共享超类型表的主键&lt;/strong&gt;（即子类型表的主键同时也是引用超类型表的外键）。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;举例：&lt;/strong&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;人表(Persons)&lt;/code&gt;：&lt;code&gt;person_id (PK), name, age&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;学生表(Students)&lt;/code&gt;：&lt;code&gt;person_id (PK, FK references Persons), major&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;员工表(Employees)&lt;/code&gt;：&lt;code&gt;person_id (PK, FK references Persons), salary, department&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;优点：&lt;/strong&gt;
-&lt;ul&gt;
-&lt;li&gt;设计规范，消除了数据冗余。&lt;/li&gt;
-&lt;li&gt;易于添加新的子类型。&lt;/li&gt;
-&lt;li&gt;能很好地支持重叠约束（一个人可以同时在&lt;code&gt;Students&lt;/code&gt;和&lt;code&gt;Employees&lt;/code&gt;表中有记录）。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;缺点：&lt;/strong&gt; 查询数据时需要频繁使用&lt;code&gt;JOIN&lt;/code&gt;操作，性能可能成为瓶颈。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr&gt;
-&lt;h3 id=&#34;总结&#34;&gt;总结
-&lt;/h3&gt;&lt;p&gt;在数据库领域中，&lt;strong&gt;ISA Relationship&lt;/strong&gt; 是一个强大的概念建模工具，它清晰地表达了 &lt;strong&gt;“是一个”&lt;/strong&gt; 的继承关系。理解并正确定义其&lt;strong&gt;重叠约束&lt;/strong&gt;和&lt;strong&gt;完备性约束&lt;/strong&gt;至关重要，因为它直接影响到最终数据库表结构的设计选择（每种实现方式都有其优缺点，需要根据具体应用场景进行权衡）。&lt;/p&gt;
 </description>
         </item>
         

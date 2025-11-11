@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-    <head><meta charset='utf-8'>
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content=" 一、 基础查询 (Basic Queries) 1. SELECT &amp; FROM 1 2 SELECT * FROM employees; SELECT name, salary FROM employees; 2. WHERE 条件筛选 1 2 3 4 5 SELECT * FROM employees WHERE salary &gt; 5000; SELECT * FROM employees WHERE department = &#39;IT&#39; AND salary &gt; 6000; SELECT * FROM employees WHERE name LIKE &#39;A%&#39;; -- 名字以A开头 SELECT * FROM employees WHERE age BETWEEN 25 AND 35; SELECT * FROM employees WHERE department IN (&#39;IT&#39;, &#39;HR&#39;, &#39;Finance&#39;); 3. ORDER BY 排序 1 2 SELECT * FROM employees ORDER BY salary DESC; SELECT * FROM employees ORDER BY department ASC, salary DESC; 4. DISTINCT 去重 1 SELECT DISTINCT department FROM employees; 二、 聚合函数与分组 (Aggregation &amp; Grouping) 5. 聚合函数 1 2 3 4 5 6 7 SELECT COUNT(*) as total_employees, AVG(salary) as avg_salary, MAX(salary) as max_salary, MIN(salary) as min_salary, SUM(salary) as total_salary FROM employees; 6. GROUP BY 分组 1 2 3 4 5 6 SELECT department, COUNT(*) as emp_count, AVG(salary) as avg_salary FROM employees GROUP BY department; 7. HAVING 分组后筛选 1 2 3 4 5 6 SELECT department, COUNT(*) as emp_count FROM employees GROUP BY department HAVING COUNT(*) &gt; 5; 三、 多表连接 (Joins) 8. INNER JOIN 1 2 3 SELECT e.name, d.department_name FROM employees e INNER JOIN departments d ON e.department_id = d.id; 9. LEFT/RIGHT JOIN 1 2 3 SELECT e.name, d.department_name FROM employees e LEFT JOIN departments d ON e.department_id = d.id; 10. FULL OUTER JOIN 1 2 3 SELECT e.name, d.department_name FROM employees e FULL OUTER JOIN departments d ON e.department_id = d.id; 11. 多表连接 1 2 3 4 SELECT e.name, d.department_name, p.project_name FROM employees e JOIN departments d ON e.department_id = d.id JOIN projects p ON e.id = p.leader_id; 四、 子查询 (Subqueries) 12. 标量子查询 1 2 3 SELECT name, salary, (SELECT AVG(salary) FROM employees) as company_avg FROM employees; 13. IN 子查询 1 2 3 4 5 SELECT name FROM employees WHERE department_id IN ( SELECT id FROM departments WHERE budget &gt; 100000 ); 14. EXISTS 子查询 1 2 3 4 5 6 SELECT name FROM employees e WHERE EXISTS ( SELECT 1 FROM projects p WHERE p.leader_id = e.id ); 15. 关联子查询 1 2 3 4 5 6 7 SELECT name, salary, department FROM employees e1 WHERE salary &gt; ( SELECT AVG(salary) FROM employees e2 WHERE e2.department = e1.department ); 五、 高级查询技术 (Advanced Techniques) 16. CTE (公用表表达式) 1 2 3 4 5 6 7 8 WITH department_stats AS ( SELECT department, AVG(salary) as avg_salary FROM employees GROUP BY department ) SELECT * FROM department_stats WHERE avg_salary &gt; 6000; 17. 递归 CTE 1 2 3 4 5 6 7 8 9 10 11 12 13 14 WITH RECURSIVE org_chart AS ( -- 基础情况 SELECT employee_id, name, manager_id, 1 as level FROM employees WHERE manager_id IS NULL UNION ALL -- 递归情况 SELECT e.employee_id, e.name, e.manager_id, oc.level + 1 FROM employees e JOIN org_chart oc ON e.manager_id = oc.employee_id ) SELECT * FROM org_chart; 18. 窗口函数 1 2 3 4 5 6 7 8 SELECT name, department, salary, RANK() OVER (PARTITION BY department ORDER BY salary DESC) as dept_rank, AVG(salary) OVER (PARTITION BY department) as dept_avg_salary, LAG(salary) OVER (ORDER BY salary) as prev_salary FROM employees; 19. PIVOT 行列转换 1 2 3 4 5 6 7 8 9 10 -- SQL Server SELECT * FROM ( SELECT department, salary FROM employees ) AS SourceTable PIVOT ( AVG(salary) FOR department IN ([IT], [HR], [Finance]) ) AS PivotTable; 六、 数据操作 (Data Manipulation) 20. INSERT 1 2 3 4 5 6 INSERT INTO employees (name, salary, department) VALUES (&#39;John Doe&#39;, 5000, &#39;IT&#39;); -- 插入查询结果 INSERT INTO high_paid_employees (name, salary) SELECT name, salary FROM employees WHERE salary &gt; 8000; 21. UPDATE 1 2 3 4 5 6 7 8 9 10 UPDATE employees SET salary = salary * 1.1 WHERE department = &#39;IT&#39;; -- 使用子查询更新 UPDATE employees SET salary = ( SELECT AVG(salary) FROM employees ) WHERE salary IS NULL; 22. DELETE 1 2 3 4 5 6 7 DELETE FROM employees WHERE salary &lt; 3000; -- 使用子查询删除 DELETE FROM employees WHERE department_id IN ( SELECT id FROM departments WHERE active = 0 ); 23. MERGE/UPSERT 1 2 3 4 5 -- PostgreSQL INSERT INTO employees (id, name, salary) VALUES (1, &#39;John&#39;, 5000) ON CONFLICT (id) DO UPDATE SET name = EXCLUDED.name, salary = EXCLUDED.salary; 七、 事务控制 (Transaction Control) 24. 事务处理 1 2 3 4 5 6 7 8 9 10 BEGIN TRANSACTION; UPDATE accounts SET balance = balance - 100 WHERE id = 1; UPDATE accounts SET balance = balance + 100 WHERE id = 2; -- 如果一切正常 COMMIT; -- 如果出现错误 ROLLBACK; 八、 性能优化相关 25. 索引使用 1 2 CREATE INDEX idx_employee_department ON employees(department); CREATE INDEX idx_employee_name_salary ON employees(name, salary); 26. 分页查询 1 2 3 4 5 -- MySQL SELECT * FROM employees ORDER BY id LIMIT 10 OFFSET 20; -- SQL Server SELECT * FROM employees ORDER BY id OFFSET 20 ROWS FETCH NEXT 10 ROWS ONLY; 27. 查询性能分析 1 2 3 4 5 6 -- 查看执行计划 EXPLAIN SELECT * FROM employees WHERE salary &gt; 5000; -- SQL Server SET STATISTICS TIME ON; SELECT * FROM employees WHERE salary &gt; 5000; 九、 实用函数 28. 字符串函数 1 2 3 4 5 6 7 SELECT UPPER(name) as upper_name, LOWER(name) as lower_name, LENGTH(name) as name_length, SUBSTRING(name, 1, 3) as name_prefix, CONCAT(first_name, &#39; &#39;, last_name) as full_name FROM employees; 29. 日期函数 1 2 3 4 5 6 SELECT CURRENT_DATE as today, EXTRACT(YEAR FROM hire_date) as hire_year, DATE_ADD(hire_date, INTERVAL 1 YEAR) as anniversary, DATEDIFF(CURRENT_DATE, hire_date) as days_employed FROM employees; 30. 条件表达式 1 2 3 4 5 6 7 8 9 10 SELECT name, salary, CASE WHEN salary &lt; 3000 THEN &#39;Low&#39; WHEN salary BETWEEN 3000 AND 7000 THEN &#39;Medium&#39; ELSE &#39;High&#39; END as salary_level, COALESCE(bonus, 0) as bonus_amount FROM employees; 这份指南涵盖了 SQL 从基础到高级的大部分常用语法。建议在实际工作中根据需要查阅相关部分，并通过练习来熟练掌握。\n">
 <title>Deepseek整理的SQL</title>
 
-<link rel='canonical' href='https://invalidval.github.io/p/deepseek%E6%95%B4%E7%90%86%E7%9A%84sql/'>
+<link rel='canonical' href='http://localhost:1313/p/deepseek%E6%95%B4%E7%90%86%E7%9A%84sql/'>
 
 <link rel="stylesheet" href="/scss/style.min.87ca80477aa1448125ceb18fc23b426abe36aef3a929499010496741e153b66e.css"><meta property='og:title' content="Deepseek整理的SQL">
 <meta property='og:description' content=" 一、 基础查询 (Basic Queries) 1. SELECT &amp; FROM 1 2 SELECT * FROM employees; SELECT name, salary FROM employees; 2. WHERE 条件筛选 1 2 3 4 5 SELECT * FROM employees WHERE salary &gt; 5000; SELECT * FROM employees WHERE department = &#39;IT&#39; AND salary &gt; 6000; SELECT * FROM employees WHERE name LIKE &#39;A%&#39;; -- 名字以A开头 SELECT * FROM employees WHERE age BETWEEN 25 AND 35; SELECT * FROM employees WHERE department IN (&#39;IT&#39;, &#39;HR&#39;, &#39;Finance&#39;); 3. ORDER BY 排序 1 2 SELECT * FROM employees ORDER BY salary DESC; SELECT * FROM employees ORDER BY department ASC, salary DESC; 4. DISTINCT 去重 1 SELECT DISTINCT department FROM employees; 二、 聚合函数与分组 (Aggregation &amp; Grouping) 5. 聚合函数 1 2 3 4 5 6 7 SELECT COUNT(*) as total_employees, AVG(salary) as avg_salary, MAX(salary) as max_salary, MIN(salary) as min_salary, SUM(salary) as total_salary FROM employees; 6. GROUP BY 分组 1 2 3 4 5 6 SELECT department, COUNT(*) as emp_count, AVG(salary) as avg_salary FROM employees GROUP BY department; 7. HAVING 分组后筛选 1 2 3 4 5 6 SELECT department, COUNT(*) as emp_count FROM employees GROUP BY department HAVING COUNT(*) &gt; 5; 三、 多表连接 (Joins) 8. INNER JOIN 1 2 3 SELECT e.name, d.department_name FROM employees e INNER JOIN departments d ON e.department_id = d.id; 9. LEFT/RIGHT JOIN 1 2 3 SELECT e.name, d.department_name FROM employees e LEFT JOIN departments d ON e.department_id = d.id; 10. FULL OUTER JOIN 1 2 3 SELECT e.name, d.department_name FROM employees e FULL OUTER JOIN departments d ON e.department_id = d.id; 11. 多表连接 1 2 3 4 SELECT e.name, d.department_name, p.project_name FROM employees e JOIN departments d ON e.department_id = d.id JOIN projects p ON e.id = p.leader_id; 四、 子查询 (Subqueries) 12. 标量子查询 1 2 3 SELECT name, salary, (SELECT AVG(salary) FROM employees) as company_avg FROM employees; 13. IN 子查询 1 2 3 4 5 SELECT name FROM employees WHERE department_id IN ( SELECT id FROM departments WHERE budget &gt; 100000 ); 14. EXISTS 子查询 1 2 3 4 5 6 SELECT name FROM employees e WHERE EXISTS ( SELECT 1 FROM projects p WHERE p.leader_id = e.id ); 15. 关联子查询 1 2 3 4 5 6 7 SELECT name, salary, department FROM employees e1 WHERE salary &gt; ( SELECT AVG(salary) FROM employees e2 WHERE e2.department = e1.department ); 五、 高级查询技术 (Advanced Techniques) 16. CTE (公用表表达式) 1 2 3 4 5 6 7 8 WITH department_stats AS ( SELECT department, AVG(salary) as avg_salary FROM employees GROUP BY department ) SELECT * FROM department_stats WHERE avg_salary &gt; 6000; 17. 递归 CTE 1 2 3 4 5 6 7 8 9 10 11 12 13 14 WITH RECURSIVE org_chart AS ( -- 基础情况 SELECT employee_id, name, manager_id, 1 as level FROM employees WHERE manager_id IS NULL UNION ALL -- 递归情况 SELECT e.employee_id, e.name, e.manager_id, oc.level + 1 FROM employees e JOIN org_chart oc ON e.manager_id = oc.employee_id ) SELECT * FROM org_chart; 18. 窗口函数 1 2 3 4 5 6 7 8 SELECT name, department, salary, RANK() OVER (PARTITION BY department ORDER BY salary DESC) as dept_rank, AVG(salary) OVER (PARTITION BY department) as dept_avg_salary, LAG(salary) OVER (ORDER BY salary) as prev_salary FROM employees; 19. PIVOT 行列转换 1 2 3 4 5 6 7 8 9 10 -- SQL Server SELECT * FROM ( SELECT department, salary FROM employees ) AS SourceTable PIVOT ( AVG(salary) FOR department IN ([IT], [HR], [Finance]) ) AS PivotTable; 六、 数据操作 (Data Manipulation) 20. INSERT 1 2 3 4 5 6 INSERT INTO employees (name, salary, department) VALUES (&#39;John Doe&#39;, 5000, &#39;IT&#39;); -- 插入查询结果 INSERT INTO high_paid_employees (name, salary) SELECT name, salary FROM employees WHERE salary &gt; 8000; 21. UPDATE 1 2 3 4 5 6 7 8 9 10 UPDATE employees SET salary = salary * 1.1 WHERE department = &#39;IT&#39;; -- 使用子查询更新 UPDATE employees SET salary = ( SELECT AVG(salary) FROM employees ) WHERE salary IS NULL; 22. DELETE 1 2 3 4 5 6 7 DELETE FROM employees WHERE salary &lt; 3000; -- 使用子查询删除 DELETE FROM employees WHERE department_id IN ( SELECT id FROM departments WHERE active = 0 ); 23. MERGE/UPSERT 1 2 3 4 5 -- PostgreSQL INSERT INTO employees (id, name, salary) VALUES (1, &#39;John&#39;, 5000) ON CONFLICT (id) DO UPDATE SET name = EXCLUDED.name, salary = EXCLUDED.salary; 七、 事务控制 (Transaction Control) 24. 事务处理 1 2 3 4 5 6 7 8 9 10 BEGIN TRANSACTION; UPDATE accounts SET balance = balance - 100 WHERE id = 1; UPDATE accounts SET balance = balance + 100 WHERE id = 2; -- 如果一切正常 COMMIT; -- 如果出现错误 ROLLBACK; 八、 性能优化相关 25. 索引使用 1 2 CREATE INDEX idx_employee_department ON employees(department); CREATE INDEX idx_employee_name_salary ON employees(name, salary); 26. 分页查询 1 2 3 4 5 -- MySQL SELECT * FROM employees ORDER BY id LIMIT 10 OFFSET 20; -- SQL Server SELECT * FROM employees ORDER BY id OFFSET 20 ROWS FETCH NEXT 10 ROWS ONLY; 27. 查询性能分析 1 2 3 4 5 6 -- 查看执行计划 EXPLAIN SELECT * FROM employees WHERE salary &gt; 5000; -- SQL Server SET STATISTICS TIME ON; SELECT * FROM employees WHERE salary &gt; 5000; 九、 实用函数 28. 字符串函数 1 2 3 4 5 6 7 SELECT UPPER(name) as upper_name, LOWER(name) as lower_name, LENGTH(name) as name_length, SUBSTRING(name, 1, 3) as name_prefix, CONCAT(first_name, &#39; &#39;, last_name) as full_name FROM employees; 29. 日期函数 1 2 3 4 5 6 SELECT CURRENT_DATE as today, EXTRACT(YEAR FROM hire_date) as hire_year, DATE_ADD(hire_date, INTERVAL 1 YEAR) as anniversary, DATEDIFF(CURRENT_DATE, hire_date) as days_employed FROM employees; 30. 条件表达式 1 2 3 4 5 6 7 8 9 10 SELECT name, salary, CASE WHEN salary &lt; 3000 THEN &#39;Low&#39; WHEN salary BETWEEN 3000 AND 7000 THEN &#39;Medium&#39; ELSE &#39;High&#39; END as salary_level, COALESCE(bonus, 0) as bonus_amount FROM employees; 这份指南涵盖了 SQL 从基础到高级的大部分常用语法。建议在实际工作中根据需要查阅相关部分，并通过练习来熟练掌握。\n">
-<meta property='og:url' content='https://invalidval.github.io/p/deepseek%E6%95%B4%E7%90%86%E7%9A%84sql/'>
+<meta property='og:url' content='http://localhost:1313/p/deepseek%E6%95%B4%E7%90%86%E7%9A%84sql/'>
 <meta property='og:site_name' content='zcys univ II Hugo ver'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='ds' /><meta property='article:tag' content='SQL' /><meta property='article:published_time' content='2023-01-01T00:00:00&#43;08:00'/><meta property='article:modified_time' content='2023-01-01T00:00:00&#43;08:00'/>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='ds' /><meta property='article:tag' content='SQL' /><meta property='article:published_time' content='2025-10-01T00:00:00&#43;08:00'/><meta property='article:modified_time' content='2025-10-01T00:00:00&#43;08:00'/>
 <meta name="twitter:title" content="Deepseek整理的SQL">
 <meta name="twitter:description" content=" 一、 基础查询 (Basic Queries) 1. SELECT &amp; FROM 1 2 SELECT * FROM employees; SELECT name, salary FROM employees; 2. WHERE 条件筛选 1 2 3 4 5 SELECT * FROM employees WHERE salary &gt; 5000; SELECT * FROM employees WHERE department = &#39;IT&#39; AND salary &gt; 6000; SELECT * FROM employees WHERE name LIKE &#39;A%&#39;; -- 名字以A开头 SELECT * FROM employees WHERE age BETWEEN 25 AND 35; SELECT * FROM employees WHERE department IN (&#39;IT&#39;, &#39;HR&#39;, &#39;Finance&#39;); 3. ORDER BY 排序 1 2 SELECT * FROM employees ORDER BY salary DESC; SELECT * FROM employees ORDER BY department ASC, salary DESC; 4. DISTINCT 去重 1 SELECT DISTINCT department FROM employees; 二、 聚合函数与分组 (Aggregation &amp; Grouping) 5. 聚合函数 1 2 3 4 5 6 7 SELECT COUNT(*) as total_employees, AVG(salary) as avg_salary, MAX(salary) as max_salary, MIN(salary) as min_salary, SUM(salary) as total_salary FROM employees; 6. GROUP BY 分组 1 2 3 4 5 6 SELECT department, COUNT(*) as emp_count, AVG(salary) as avg_salary FROM employees GROUP BY department; 7. HAVING 分组后筛选 1 2 3 4 5 6 SELECT department, COUNT(*) as emp_count FROM employees GROUP BY department HAVING COUNT(*) &gt; 5; 三、 多表连接 (Joins) 8. INNER JOIN 1 2 3 SELECT e.name, d.department_name FROM employees e INNER JOIN departments d ON e.department_id = d.id; 9. LEFT/RIGHT JOIN 1 2 3 SELECT e.name, d.department_name FROM employees e LEFT JOIN departments d ON e.department_id = d.id; 10. FULL OUTER JOIN 1 2 3 SELECT e.name, d.department_name FROM employees e FULL OUTER JOIN departments d ON e.department_id = d.id; 11. 多表连接 1 2 3 4 SELECT e.name, d.department_name, p.project_name FROM employees e JOIN departments d ON e.department_id = d.id JOIN projects p ON e.id = p.leader_id; 四、 子查询 (Subqueries) 12. 标量子查询 1 2 3 SELECT name, salary, (SELECT AVG(salary) FROM employees) as company_avg FROM employees; 13. IN 子查询 1 2 3 4 5 SELECT name FROM employees WHERE department_id IN ( SELECT id FROM departments WHERE budget &gt; 100000 ); 14. EXISTS 子查询 1 2 3 4 5 6 SELECT name FROM employees e WHERE EXISTS ( SELECT 1 FROM projects p WHERE p.leader_id = e.id ); 15. 关联子查询 1 2 3 4 5 6 7 SELECT name, salary, department FROM employees e1 WHERE salary &gt; ( SELECT AVG(salary) FROM employees e2 WHERE e2.department = e1.department ); 五、 高级查询技术 (Advanced Techniques) 16. CTE (公用表表达式) 1 2 3 4 5 6 7 8 WITH department_stats AS ( SELECT department, AVG(salary) as avg_salary FROM employees GROUP BY department ) SELECT * FROM department_stats WHERE avg_salary &gt; 6000; 17. 递归 CTE 1 2 3 4 5 6 7 8 9 10 11 12 13 14 WITH RECURSIVE org_chart AS ( -- 基础情况 SELECT employee_id, name, manager_id, 1 as level FROM employees WHERE manager_id IS NULL UNION ALL -- 递归情况 SELECT e.employee_id, e.name, e.manager_id, oc.level + 1 FROM employees e JOIN org_chart oc ON e.manager_id = oc.employee_id ) SELECT * FROM org_chart; 18. 窗口函数 1 2 3 4 5 6 7 8 SELECT name, department, salary, RANK() OVER (PARTITION BY department ORDER BY salary DESC) as dept_rank, AVG(salary) OVER (PARTITION BY department) as dept_avg_salary, LAG(salary) OVER (ORDER BY salary) as prev_salary FROM employees; 19. PIVOT 行列转换 1 2 3 4 5 6 7 8 9 10 -- SQL Server SELECT * FROM ( SELECT department, salary FROM employees ) AS SourceTable PIVOT ( AVG(salary) FOR department IN ([IT], [HR], [Finance]) ) AS PivotTable; 六、 数据操作 (Data Manipulation) 20. INSERT 1 2 3 4 5 6 INSERT INTO employees (name, salary, department) VALUES (&#39;John Doe&#39;, 5000, &#39;IT&#39;); -- 插入查询结果 INSERT INTO high_paid_employees (name, salary) SELECT name, salary FROM employees WHERE salary &gt; 8000; 21. UPDATE 1 2 3 4 5 6 7 8 9 10 UPDATE employees SET salary = salary * 1.1 WHERE department = &#39;IT&#39;; -- 使用子查询更新 UPDATE employees SET salary = ( SELECT AVG(salary) FROM employees ) WHERE salary IS NULL; 22. DELETE 1 2 3 4 5 6 7 DELETE FROM employees WHERE salary &lt; 3000; -- 使用子查询删除 DELETE FROM employees WHERE department_id IN ( SELECT id FROM departments WHERE active = 0 ); 23. MERGE/UPSERT 1 2 3 4 5 -- PostgreSQL INSERT INTO employees (id, name, salary) VALUES (1, &#39;John&#39;, 5000) ON CONFLICT (id) DO UPDATE SET name = EXCLUDED.name, salary = EXCLUDED.salary; 七、 事务控制 (Transaction Control) 24. 事务处理 1 2 3 4 5 6 7 8 9 10 BEGIN TRANSACTION; UPDATE accounts SET balance = balance - 100 WHERE id = 1; UPDATE accounts SET balance = balance + 100 WHERE id = 2; -- 如果一切正常 COMMIT; -- 如果出现错误 ROLLBACK; 八、 性能优化相关 25. 索引使用 1 2 CREATE INDEX idx_employee_department ON employees(department); CREATE INDEX idx_employee_name_salary ON employees(name, salary); 26. 分页查询 1 2 3 4 5 -- MySQL SELECT * FROM employees ORDER BY id LIMIT 10 OFFSET 20; -- SQL Server SELECT * FROM employees ORDER BY id OFFSET 20 ROWS FETCH NEXT 10 ROWS ONLY; 27. 查询性能分析 1 2 3 4 5 6 -- 查看执行计划 EXPLAIN SELECT * FROM employees WHERE salary &gt; 5000; -- SQL Server SET STATISTICS TIME ON; SELECT * FROM employees WHERE salary &gt; 5000; 九、 实用函数 28. 字符串函数 1 2 3 4 5 6 7 SELECT UPPER(name) as upper_name, LOWER(name) as lower_name, LENGTH(name) as name_length, SUBSTRING(name, 1, 3) as name_prefix, CONCAT(first_name, &#39; &#39;, last_name) as full_name FROM employees; 29. 日期函数 1 2 3 4 5 6 SELECT CURRENT_DATE as today, EXTRACT(YEAR FROM hire_date) as hire_year, DATE_ADD(hire_date, INTERVAL 1 YEAR) as anniversary, DATEDIFF(CURRENT_DATE, hire_date) as days_employed FROM employees; 30. 条件表达式 1 2 3 4 5 6 7 8 9 10 SELECT name, salary, CASE WHEN salary &lt; 3000 THEN &#39;Low&#39; WHEN salary BETWEEN 3000 AND 7000 THEN &#39;Medium&#39; ELSE &#39;High&#39; END as salary_level, COALESCE(bonus, 0) as bonus_amount FROM employees; 这份指南涵盖了 SQL 从基础到高级的大部分常用语法。建议在实际工作中根据需要查阅相关部分，并通过练习来熟练掌握。\n">
     </head>
@@ -252,11 +252,11 @@
 
                             <select name="language" title="language" onchange="window.location.href = this.selectedOptions[0].value">
                                 
-                                    <option value="https://invalidval.github.io/" selected>English</option>
+                                    <option value="http://localhost:1313/" selected>English</option>
                                 
-                                    <option value="https://invalidval.github.io/zh-cn/" >中文</option>
+                                    <option value="http://localhost:1313/zh-cn/" >中文</option>
                                 
-                                    <option value="https://invalidval.github.io/ar/" >عربي</option>
+                                    <option value="http://localhost:1313/ar/" >عربي</option>
                                 
                             </select>
                         </li>
@@ -405,6 +405,16 @@
         </div>
         
 	
+        <div class="nav-previous">
+            <a href="/p/chapter2-%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80/" rel="prev">
+                <span class="nav-arrow">→</span>
+                <div class="nav-content">
+                    <span class="nav-label">下一篇文章</span>
+                    <span class="nav-title">Chapter2 关系数据库基础</span>
+                </div>
+            </a>
+        </div>
+        
 
     </div>
 </nav>
@@ -498,8 +508,8 @@
     
     <header class="article-category">
         
-            <a href="/categories/database/" >
-                DataBase
+            <a href="/categories/database/" style="background-color: #2a9d8f; color: #fff;">
+                数据库
             </a>
         
     </header>
@@ -529,7 +539,7 @@
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published">Jan 01, 2023</time>
+                <time class="article-time--published">Oct 01, 2025</time>
             </div>
         
 
@@ -1187,19 +1197,6 @@
             
                 
 <article class="">
-    <a href="/p/chapter7-%E5%87%BD%E6%95%B0%E4%BE%9D%E8%B5%96/">
-        
-        
-
-        <div class="article-details">
-            <h2 class="article-title">Chapter7 函数依赖</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="">
     <a href="/p/chapter3-sql%E9%9B%86%E5%90%88%E6%93%8D%E4%BD%9C/">
         
         
@@ -1232,6 +1229,19 @@
 
         <div class="article-details">
             <h2 class="article-title">Deepseek整理的ISA</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/chapter3-sql-ppt/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Chapter3 SQL ppt</h2>
         </div>
     </a>
 </article>
@@ -1403,7 +1413,7 @@
                 src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
                 
                 >
-            </script><script type="text/javascript" src="/ts/main.1e9a3bafd846ced4c345d084b355fb8c7bae75701c338f8a1f8a82c780137826.js" defer></script>
+            </script><script type="text/javascript" src="/ts/main.14dc9b5c686098a717b375e00cd3cdb7ec726b71f8639c33ed21f0736fce2bc8.js" defer></script>
 <script>
     (function () {
         const customFont = document.createElement('link');

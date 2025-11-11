@@ -2,23 +2,6 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://invalidval.github.io/zh-cn/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://invalidval.github.io/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="ar"
-                href="https://invalidval.github.io/ar/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn"
-                href="https://invalidval.github.io/zh-cn/"
-                />
-  </url><url>
     <loc>https://invalidval.github.io/zh-cn/categories/</loc>
     <xhtml:link
                 rel="alternate"
@@ -75,6 +58,23 @@
                 rel="alternate"
                 hreflang="zh-cn"
                 href="https://invalidval.github.io/zh-cn/%E5%85%B3%E4%BA%8E/"
+                />
+  </url><url>
+    <loc>https://invalidval.github.io/zh-cn/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://invalidval.github.io/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ar"
+                href="https://invalidval.github.io/ar/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://invalidval.github.io/zh-cn/"
                 />
   </url>
 </urlset>

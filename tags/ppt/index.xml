@@ -2,23 +2,23 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Ppt on zcys univ II Hugo ver</title>
-        <link>https://invalidval.github.io/tags/ppt/</link>
+        <link>http://localhost:1313/tags/ppt/</link>
         <description>Recent content in Ppt on zcys univ II Hugo ver</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en</language>
         <copyright>Example Person</copyright>
-        <lastBuildDate>Sun, 01 Jan 2023 00:00:00 +0800</lastBuildDate><atom:link href="https://invalidval.github.io/tags/ppt/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Wed, 01 Oct 2025 00:00:00 +0800</lastBuildDate><atom:link href="http://localhost:1313/tags/ppt/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Chapter3 SQL ppt</title>
-        <link>https://invalidval.github.io/p/chapter3-sql-ppt/</link>
-        <pubDate>Sun, 01 Jan 2023 00:00:00 +0800</pubDate>
+        <link>http://localhost:1313/p/chapter3-sql-ppt/</link>
+        <pubDate>Wed, 01 Oct 2025 00:00:00 +0800</pubDate>
         
-        <guid>https://invalidval.github.io/p/chapter3-sql-ppt/</guid>
+        <guid>http://localhost:1313/p/chapter3-sql-ppt/</guid>
         <description>&lt;h1 id=&#34;sql&#34;&gt;SQL
 &lt;/h1&gt;&lt;h2 id=&#34;语法&#34;&gt;语法
-&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://invalidval.github.io/p/chapter3-sql-ppt/syntax.png&#34;
+&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;http://localhost:1313/p/chapter3-sql-ppt/syntax.png&#34;
 	width=&#34;1674&#34;
 	height=&#34;948&#34;
-	srcset=&#34;https://invalidval.github.io/p/chapter3-sql-ppt/syntax_hu_5deb6cede58b4266.png 480w, https://invalidval.github.io/p/chapter3-sql-ppt/syntax_hu_f7b2ba22d94ae1ca.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/p/chapter3-sql-ppt/syntax_hu_5deb6cede58b4266.png 480w, http://localhost:1313/p/chapter3-sql-ppt/syntax_hu_f7b2ba22d94ae1ca.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;alt text&#34;

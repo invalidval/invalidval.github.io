@@ -6,7 +6,7 @@
 
 <link rel='canonical' href='https://invalidval.github.io/p/chapter6-er%E6%A8%A1%E5%9E%8B/'>
 
-<link rel="stylesheet" href="/scss/style.min.87ca80477aa1448125ceb18fc23b426abe36aef3a929499010496741e153b66e.css"><meta property='og:title' content="Chapter6 ER模型">
+<link rel="stylesheet" href="/scss/style.min.b351b3d5ee1d5870a2d2502778500c735ae341013f603eb34e772579445f78ca.css"><meta property='og:title' content="Chapter6 ER模型">
 <meta property='og:description' content="Chapter 6 The Entity-Relationship Model Entity Sets（实体集，实体型） 一张学生表是一个实体集，一个学生是一个实体（一行记录）\nRelationship Sets(关系集) 选课表就是一个关系集。它定义了“学生”和“课程”之间的“选修”这种关系。关系表示特定实体之间的一次具体关联。它对应的是联系表中的一行记录。 关系集也可以拥有自己的属性（关系集属性），用于描述关系的特征。它同样对应联系表中的列。选课表这个关系集可以有成绩、选修日期等属性，这些属性不属于学生，也不属于课程，而是属于“选修”这个行为本身。\nChoice of Primary key for Binary Relationship 在多的那一端把一的主键拿过来当外键\n多元联系(non-binary) 先转成多个二元联系再转表：将其他实体集的主键和关系自身属性建成表，各实体集不存放多余属性。\nE-R图（概念设计结果） Representing Cardinality Constraints in ER Diagram →：一 —：多 (one,many) x (one,many) = 4 种\n参与约束(Participant Constraints) 完全参与、部分参与\n逻辑设计阶段 E-R图转关系模式 实体、联系、属性（单值属性、多值属性、复合属性）如何转表？ 多值属性单独转表 复合属性拆开（如时间、地址）\n弱实体集、强实体集； 用实体还是属性？ Not to use the primary-key of an entity set as an attributes of another entity set (to represent implicitly association between these two entity sets), it is better to use an relationship set to explicitly show this association e.g. for the entity student, do not use instructor.id as its attribute, in stead of, representing association among student and instructor using relationship advisor.\n">
 <meta property='og:url' content='https://invalidval.github.io/p/chapter6-er%E6%A8%A1%E5%9E%8B/'>
 <meta property='og:site_name' content='zcys univ II Hugo ver'>

@@ -95,11 +95,17 @@ A+，得到A+ = {A, B, C}。&lt;/li&gt;
 &gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;h2 id=&#34;canonical-cover最简函数依赖集&#34;&gt;Canonical Cover【最简函数依赖集】
-&lt;/h2&gt;&lt;p&gt;函数依赖集F的规范覆盖（Canonical Cover），记为Fc，是一个等价于F的最小函数依赖集。规范覆盖具有以下性质：&lt;/p&gt;
+&lt;/h2&gt;&lt;p&gt;函数依赖集F的规范覆盖（Canonical Cover），记为Fc，是一个等价于F的最小函数依赖集。
+A canonical cover for F is a set of dependencies Fc such that:&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;每个函数依赖的右侧只有一个属性。&lt;/li&gt;
-&lt;li&gt;没有冗余的函数依赖。&lt;/li&gt;
-&lt;li&gt;没有冗余的属性在函数依赖的左侧。&lt;/li&gt;
+&lt;li&gt;F logically implies all dependencies in Fc&lt;/li&gt;
+&lt;li&gt;Fc logically implies all dependencies in F&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;(F+ = Fc+)&lt;/p&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;no functional dependency in Fc contains an extraneous attribute&lt;/li&gt;
+&lt;li&gt;each &lt;strong&gt;left side&lt;/strong&gt; of functional dependency in Fc is &lt;strong&gt;unique&lt;/strong&gt;. That is, there are no two dependencies in Fc, with the &lt;strong&gt;same left side&lt;/strong&gt;
+i.e. X → Y and X → Z cannot both be in Fc&lt;/li&gt;
 &lt;/ol&gt;
 &lt;h3 id=&#34;计算规范覆盖的步骤&#34;&gt;计算规范覆盖的步骤
 &lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;

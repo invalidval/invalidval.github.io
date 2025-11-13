@@ -627,11 +627,17 @@ A+，得到A+ = {A, B, C}。</li>
 ></li>
 </ol>
 <h2 id="canonical-cover最简函数依赖集">Canonical Cover【最简函数依赖集】
-</h2><p>函数依赖集F的规范覆盖（Canonical Cover），记为Fc，是一个等价于F的最小函数依赖集。规范覆盖具有以下性质：</p>
+</h2><p>函数依赖集F的规范覆盖（Canonical Cover），记为Fc，是一个等价于F的最小函数依赖集。
+A canonical cover for F is a set of dependencies Fc such that:</p>
 <ol>
-<li>每个函数依赖的右侧只有一个属性。</li>
-<li>没有冗余的函数依赖。</li>
-<li>没有冗余的属性在函数依赖的左侧。</li>
+<li>F logically implies all dependencies in Fc</li>
+<li>Fc logically implies all dependencies in F</li>
+</ol>
+<p>(F+ = Fc+)</p>
+<ol start="3">
+<li>no functional dependency in Fc contains an extraneous attribute</li>
+<li>each <strong>left side</strong> of functional dependency in Fc is <strong>unique</strong>. That is, there are no two dependencies in Fc, with the <strong>same left side</strong>
+i.e. X → Y and X → Z cannot both be in Fc</li>
 </ol>
 <h3 id="计算规范覆盖的步骤">计算规范覆盖的步骤
 </h3><div class="highlight"><div class="chroma">

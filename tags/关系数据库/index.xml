@@ -44,12 +44,7 @@
 	
 &gt;&lt;/p&gt;
 &lt;h3 id=&#34;closure-of-a-set-of-functional-dependencies&#34;&gt;Closure of a Set of Functional Dependencies
-&lt;/h3&gt;&lt;p&gt;The set of all functional dependencies &lt;strong&gt;logically implied&lt;/strong&gt; by F is the closure of F, which is denoted as F+. It is the set of all functional dependencies that can be inferred from F using Armstrong&amp;rsquo;s axioms. These axioms include:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;Reflexivity: If Y ⊆ X, then X → Y holds.&lt;/li&gt;
-&lt;li&gt;Augmentation: If X → Y holds, then XZ → YZ holds for any Z.&lt;/li&gt;
-&lt;li&gt;Transitivity: If X → Y and Y → Z hold, then X → Z holds.&lt;/li&gt;
-&lt;/ol&gt;
+&lt;/h3&gt;&lt;p&gt;The set of all functional dependencies &lt;strong&gt;logically implied&lt;/strong&gt; by F is the closure of F, which is denoted as F+. It is the set of all functional dependencies that can be inferred from F using Armstrong&amp;rsquo;s axioms.&lt;/p&gt;
 &lt;h3 id=&#34;armstrongs-axioms&#34;&gt;Armstrong&amp;rsquo;s Axioms
 &lt;/h3&gt;&lt;p&gt;Armstrong&amp;rsquo;s axioms are a set of rules used to infer all the functional dependencies in a relational database. They are sound (i.e., they only produce valid dependencies) and complete (i.e., they can produce all valid dependencies).&lt;/p&gt;
 &lt;ol&gt;
@@ -107,11 +102,34 @@ A+，得到A+ = {A, B, C}。&lt;/li&gt;
 &lt;li&gt;没有冗余的属性在函数依赖的左侧。&lt;/li&gt;
 &lt;/ol&gt;
 &lt;h3 id=&#34;计算规范覆盖的步骤&#34;&gt;计算规范覆盖的步骤
-&lt;/h3&gt;&lt;ol&gt;
-&lt;li&gt;将每个函数依赖的右侧拆分为单个属性。&lt;/li&gt;
-&lt;li&gt;移除冗余的函数依赖。&lt;/li&gt;
-&lt;li&gt;移除冗余的属性在函数依赖的左侧。&lt;/li&gt;
-&lt;/ol&gt;
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;do&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;、使用&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Union&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;rule结合右侧&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;、去除&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Fc中的冗余属性&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;while&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Fc不变&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-27.png&#34;
+	width=&#34;1296&#34;
+	height=&#34;594&#34;
+	srcset=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-27_hu_1497373f187648df.png 480w, https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-27_hu_40b7989c9939b866.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;计算步骤&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;218&#34;
+		data-flex-basis=&#34;523px&#34;
+	
+&gt;&lt;/p&gt;
 &lt;h3 id=&#34;例子-1&#34;&gt;例子
 &lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-3.png&#34;
 	width=&#34;1782&#34;
@@ -126,7 +144,22 @@ A+，得到A+ = {A, B, C}。&lt;/li&gt;
 		data-flex-grow=&#34;174&#34;
 		data-flex-basis=&#34;419px&#34;
 	
-&gt;。&lt;/p&gt;
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;fffc&#34;&gt;F、F+、Fc
+&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-26.png&#34;
+	width=&#34;1041&#34;
+	height=&#34;633&#34;
+	srcset=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-26_hu_f224a3501e5cb8fb.png 480w, https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-26_hu_32c9c7326cb5b275.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;三者关系&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;164&#34;
+		data-flex-basis=&#34;394px&#34;
+	
+&gt;&lt;/p&gt;
 &lt;h2 id=&#34;extraneous-attributes冗余属性&#34;&gt;Extraneous Attributes（冗余属性）
 &lt;/h2&gt;&lt;p&gt;在函数依赖X → Y中，如果存在属性A ∈ X，使得在去掉A后，X - {A} → Y仍然成立，则称A是冗余属性。&lt;/p&gt;
 &lt;h3 id=&#34;例子-2&#34;&gt;例子
@@ -141,44 +174,36 @@ A+，得到A+ = {A, B, C}。&lt;/li&gt;
 &lt;li&gt;检查是否B+包含C：
 &lt;ul&gt;
 &lt;li&gt;B+不包含C，因此A不是冗余属性。
-最终，属性A在AB → C中不是冗余属性。
-对于右端冗余属性的检查：
-在函数依赖X → Y中，如果存在属性B ∈ Y，使得在去掉B后，X → Y - {B}仍然成立，则称B是冗余属性。&lt;/li&gt;
+最终，属性A在AB → C中不是冗余属性。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;移除左端冗余属性，得到更强的函数依赖【所需左端前提条件更少】
-移除右端冗余属性，得到更弱的函数依赖【结论更少】&lt;/p&gt;
+&lt;p&gt;对于右端冗余属性的检查：
+在函数依赖X → Y中，如果存在属性B ∈ Y，使得在去掉B后，X → Y - {B}仍然成立，则称B是冗余属性。&lt;/p&gt;
+&lt;p&gt;移除左端冗余属性，得到更强的函数依赖【所需左端前提条件更少】&lt;/p&gt;
+&lt;p&gt;移除右端冗余属性，得到更弱的函数依赖【结论更少】&lt;/p&gt;
 &lt;p&gt;一个依赖关系under F的意思是可以从F中推导出该依赖关系&lt;/p&gt;
 &lt;h2 id=&#34;dependency-preservation依赖保持&#34;&gt;Dependency Preservation（依赖保持）
 &lt;/h2&gt;&lt;p&gt;在关系模式分解中，如果分解后的每个子模式的函数依赖集的联合能够推导出原始模式的所有函数依赖，则称该分解是依赖保持的。&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;与holds on的区别在于，
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;holds on是指某个具体的关系实例满足某个函数依赖，
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;而dependency preservation是指分解后的模式在所有可能的关系实例中都能保持原始模式的函数依赖。
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-4.png&#34;
+&lt;p&gt;与holds on的区别在于，
+holds on是指某个具体的关系实例满足某个函数依赖，
+而dependency preservation是指分解后的模式在所有可能的关系实例中都能保持原始模式的函数依赖。&lt;/p&gt;
+&lt;p&gt;Fi：
+&lt;img src=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-4.png&#34;
 	width=&#34;1809&#34;
 	height=&#34;909&#34;
 	srcset=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-4_hu_22e9e7391756f43f.png 480w, https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-4_hu_efc7da62c3ccf696.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
-		alt=&#34;什么是Fi，老子也没懂&#34;
+		alt=&#34;什么是Fi&#34;
 	
 	
 		class=&#34;gallery-image&#34; 
 		data-flex-grow=&#34;199&#34;
 		data-flex-basis=&#34;477px&#34;
 	
-&gt;
-&lt;img src=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-5.png&#34;
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-5.png&#34;
 	width=&#34;1722&#34;
 	height=&#34;836&#34;
 	srcset=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-5_hu_f59f776af4162e1.png 480w, https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-5_hu_d8c7858f2bea98b8.png 1024w&#34;
@@ -191,8 +216,8 @@ A+，得到A+ = {A, B, C}。&lt;/li&gt;
 		data-flex-grow=&#34;205&#34;
 		data-flex-basis=&#34;494px&#34;
 	
-&gt;
-&lt;img src=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-7.png&#34;
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-7.png&#34;
 	width=&#34;1812&#34;
 	height=&#34;954&#34;
 	srcset=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-7_hu_3f0c7a0db91ea827.png 480w, https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-7_hu_dc30d980fc7eace4.png 1024w&#34;
@@ -205,8 +230,8 @@ A+，得到A+ = {A, B, C}。&lt;/li&gt;
 		data-flex-grow=&#34;189&#34;
 		data-flex-basis=&#34;455px&#34;
 	
-&gt;
-&lt;img src=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-8.png&#34;
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-8.png&#34;
 	width=&#34;1755&#34;
 	height=&#34;981&#34;
 	srcset=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-8_hu_5d8013d2378b395c.png 480w, https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-8_hu_e9101c0a101b14a8.png 1024w&#34;
@@ -219,8 +244,8 @@ A+，得到A+ = {A, B, C}。&lt;/li&gt;
 		data-flex-grow=&#34;178&#34;
 		data-flex-basis=&#34;429px&#34;
 	
-&gt;
-&lt;img src=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-9.png&#34;
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-9.png&#34;
 	width=&#34;1782&#34;
 	height=&#34;573&#34;
 	srcset=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-9_hu_c08fcd348858bd9c.png 480w, https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-9_hu_c75f593ad4bfde3a.png 1024w&#34;
@@ -236,21 +261,42 @@ A+，得到A+ = {A, B, C}。&lt;/li&gt;
 &gt;&lt;/p&gt;
 &lt;h2 id=&#34;75-algorithms-for-decomposition-using-functional-dependencies&#34;&gt;7.5 Algorithms for Decomposition Using Functional Dependencies
 &lt;/h2&gt;&lt;p&gt;本节内容
-BCNF
-Testing for BCNF /判断关系模式是否是BCNF
-Testing Decomposition for BCNF/ 判断分解后的子模式是否是BCNF
-BCNF decomposition algorithm/将关系模式分解为BCNF的方法
-3NF
-Testing for 3NF
-3NF decomposition algorithm
-Comparison of BCNF and 3NF&lt;/p&gt;
+BCNF&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Testing for BCNF /判断关系模式是否是BCNF&lt;/li&gt;
+&lt;li&gt;Testing Decomposition for BCNF/ 判断分解后的子模式是否是BCNF&lt;/li&gt;
+&lt;li&gt;BCNF decomposition algorithm/将关系模式分解为BCNF的方法&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;3NF&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Testing for 3NF&lt;/li&gt;
+&lt;li&gt;3NF decomposition algorithm&lt;/li&gt;
+&lt;li&gt;Comparison of BCNF and 3NF&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h3 id=&#34;testing-for-bcnf&#34;&gt;Testing for BCNF
-&lt;/h3&gt;&lt;p&gt;判断关系模式R是否是BCNF的步骤：&lt;/p&gt;
+&lt;/h3&gt;&lt;p&gt;To check if a non-trivial dependency $\alpha$ causes a violation of BCNF&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;计算函数依赖集F的规范覆盖Fc。&lt;/li&gt;
-&lt;li&gt;对于Fc中的每个函数依赖X → Y，检查X是否是R的超键。&lt;/li&gt;
-&lt;li&gt;如果所有函数依赖的左侧都是超键，则R是BCNF；否则，R不是BCNF。&lt;/li&gt;
+&lt;li&gt;compute $\alpha^+$ (the attribute closure of $\alpha$), and&lt;/li&gt;
+&lt;li&gt;verify that it includes all attributes of R, that is, $\alpha$ is a &lt;strong&gt;superkey&lt;/strong&gt; of R.&lt;/li&gt;
 &lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;Simplified but Incorrect&lt;/strong&gt; test: To check if a relation schema R is in BCNF, it &lt;strong&gt;suffices&lt;/strong&gt; to check &lt;strong&gt;only the dependencies in the given set F&lt;/strong&gt; for violation of BCNF, &lt;strong&gt;rather than&lt;/strong&gt; checking all dependencies in &lt;strong&gt;F+&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;If none of the dependencies in F causes a violation of BCNF, then none of the dependencies in F+ will cause a violation of BCNF either.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;However, simplified test using only F is incorrect when testing a relation in a decomposition of R&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;也就是说判断BCNF可以使用F作为充分条件，因为F无违例说明F+也无违例，&lt;em&gt;但是判断子模式（a decomposition of R）只用F是错的！！！&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-20.png&#34;
+	width=&#34;1164&#34;
+	height=&#34;258&#34;
+	srcset=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-20_hu_4d8ee6303023f21d.png 480w, https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-20_hu_7b4b3d127b277b4.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;反例&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;451&#34;
+		data-flex-basis=&#34;1082px&#34;
+	
+&gt;&lt;/p&gt;
 &lt;h3 id=&#34;testing-decomposition-for-bcnf&#34;&gt;Testing Decomposition for BCNF
 &lt;/h3&gt;&lt;p&gt;Note:&lt;/p&gt;
 &lt;ul&gt;
@@ -263,22 +309,30 @@ the restriction of F to R1是{A → B}，因为B → C在R1中无效。&lt;/li&g
 &lt;p&gt;测试由R分解后的子模式Ri是否BCNF，不能仅凭R上的F，应该采用F+&lt;/p&gt;
 &lt;h3 id=&#34;decomposition-algorithm-for-bcnf&#34;&gt;Decomposition Algorithm for BCNF
 &lt;/h3&gt;&lt;ol&gt;
-&lt;li&gt;检查关系模式R是否是BCNF。如果是，则返回R作为分解结果。&lt;/li&gt;
-&lt;li&gt;如果R不是BCNF，找到一个违反BCNF的函数依赖X → Y，其中X不是R的超键。&lt;/li&gt;
-&lt;li&gt;将R分解为两个子模式R1和R2：
+&lt;li&gt;
+&lt;p&gt;检查关系模式R是否是BCNF。如果是，则返回R作为分解结果。（to determine whether or not Ri is in BCNF,  the &lt;em&gt;restriction of F to Ri&lt;/em&gt; and the &lt;em&gt;candidate keys of Ri&lt;/em&gt; need to be computed）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;如果R不是BCNF，找到一个违反BCNF的函数依赖X → Y，其中X不是R的超键。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;将R分解为两个子模式R1和R2：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;R1 = X ∪ Y&lt;/li&gt;
 &lt;li&gt;R2 = R - Y + X&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;递归地对R1和R2应用步骤1-3，直到所有子模式都是BCNF。
-Note:&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;递归地对R1和R2应用步骤1-3，直到所有子模式都是BCNF。&lt;/p&gt;
+&lt;/li&gt;
 &lt;/ol&gt;
+&lt;p&gt;Note:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;3中R1的意思是包含X和Y的所有属性的子模式，R2的意思是R中去掉Y属性后再加上X属性的子模式&lt;/li&gt;
 &lt;li&gt;该算法可能不会产生依赖保持的分解。&lt;/li&gt;
-&lt;li&gt;该算法确保每个子模式都是BCNF。
-&lt;img src=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-10.png&#34;
+&lt;li&gt;该算法确保每个子模式都是BCNF。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-10.png&#34;
 	width=&#34;1779&#34;
 	height=&#34;666&#34;
 	srcset=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-10_hu_89ac9b91046d1cb2.png 480w, https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-10_hu_9543829986eb1b24.png 1024w&#34;
@@ -291,8 +345,8 @@ Note:&lt;/li&gt;
 		data-flex-grow=&#34;267&#34;
 		data-flex-basis=&#34;641px&#34;
 	
-&gt;
-&lt;img src=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-11.png&#34;
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-11.png&#34;
 	width=&#34;1764&#34;
 	height=&#34;777&#34;
 	srcset=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-11_hu_fa01c86cb11d1cb.png 480w, https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-11_hu_ee10086738b5980e.png 1024w&#34;
@@ -305,8 +359,8 @@ Note:&lt;/li&gt;
 		data-flex-grow=&#34;227&#34;
 		data-flex-basis=&#34;544px&#34;
 	
-&gt;
-&lt;img src=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-14.png&#34;
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-14.png&#34;
 	width=&#34;1791&#34;
 	height=&#34;710&#34;
 	srcset=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-14_hu_382cae119eb7c7e8.png 480w, https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-14_hu_d6ea7c4da10825dd.png 1024w&#34;
@@ -319,8 +373,8 @@ Note:&lt;/li&gt;
 		data-flex-grow=&#34;252&#34;
 		data-flex-basis=&#34;605px&#34;
 	
-&gt;
-&lt;img src=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-12.png&#34;
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-12.png&#34;
 	width=&#34;1785&#34;
 	height=&#34;609&#34;
 	srcset=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-12_hu_6d3f761eb69c5f7b.png 480w, https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-12_hu_6662cd04c3398405.png 1024w&#34;
@@ -333,8 +387,8 @@ Note:&lt;/li&gt;
 		data-flex-grow=&#34;293&#34;
 		data-flex-basis=&#34;703px&#34;
 	
-&gt;
-&lt;img src=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-13.png&#34;
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-13.png&#34;
 	width=&#34;1797&#34;
 	height=&#34;990&#34;
 	srcset=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-13_hu_b9ceb1655c31af7d.png 480w, https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-13_hu_2a0c61b484aa2f76.png 1024w&#34;
@@ -347,8 +401,7 @@ Note:&lt;/li&gt;
 		data-flex-grow=&#34;181&#34;
 		data-flex-basis=&#34;435px&#34;
 	
-&gt;&lt;/li&gt;
-&lt;/ul&gt;
+&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;BCNF分解不保证依赖保持&lt;/strong&gt;
 &lt;img src=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-15.png&#34;
 	width=&#34;1827&#34;
@@ -364,18 +417,44 @@ Note:&lt;/li&gt;
 		data-flex-basis=&#34;488px&#34;
 	
 &gt;&lt;/p&gt;
+&lt;h3 id=&#34;testing-for-3nf&#34;&gt;Testing for 3NF
+&lt;/h3&gt;&lt;p&gt;Need to check only FDs &lt;strong&gt;in F&lt;/strong&gt;, &lt;strong&gt;no checking all FDs in F+&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;Step1. Use attribute closure to check for each dependency $\alpha$, if $\alpha$ is a superkey&lt;/p&gt;
+&lt;p&gt;检查每个函数依赖左端是否为超键&lt;/p&gt;
+&lt;p&gt;Step2. If $\alpha$ is not a superkey, we have to verify if each attribute in $\beta$ is contained in a candidate key of R&lt;/p&gt;
+&lt;p&gt;如果左端不是超键，检查右端属性是否包含在某个候选键中&lt;/p&gt;
+&lt;p&gt;This test is rather more expensive, since it involve finding all candidate keys&lt;/p&gt;
+&lt;p&gt;Testing for 3NF has been shown to be NP-hard!&lt;/p&gt;
+&lt;p&gt;Interestingly, &lt;em&gt;decomposition into third normal form (described shortly) can be done in polynomial time&lt;/em&gt;&lt;/p&gt;
 &lt;h3 id=&#34;decomposition-algorithm-for-3nf&#34;&gt;Decomposition Algorithm for 3NF
 &lt;/h3&gt;&lt;p&gt;为什么需要3NF分解算法？
 因为BCNF分解不保证依赖保持，而3NF分解算法可以保证依赖保持。&lt;/p&gt;
-&lt;p&gt;testing for 3NF has been shown to be NP-hard,
-Interestingly, decomposition into third normal form (described shortly) can be done in polynomial time
-算法步骤：&lt;/p&gt;
+&lt;p&gt;算法步骤：&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;计算函数依赖集F的规范覆盖Fc。&lt;/li&gt;
 &lt;li&gt;对于Fc中的每个函数依赖X → Y，创建一个子模式R_i = X ∪ Y。&lt;/li&gt;
 &lt;li&gt;如果没有子模式包含R的候选键，则添加一个子模式R_k，该子模式包含R的一个候选键。&lt;/li&gt;
 &lt;li&gt;返回所有子模式作为分解结果。&lt;/li&gt;
 &lt;/ol&gt;
+&lt;p&gt;Note:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;只要有一个候选键包含在第2步构造出的某个子模式Ri中，就无需在第3步中，为候选键单独构造子模式。
+任意挑选R的一个候选键【&lt;strong&gt;只需挑选一个&lt;/strong&gt;】，对该候选健单独构造一个关系模式；无需考虑全部候选键!!!&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-21.png&#34;
+	width=&#34;1161&#34;
+	height=&#34;645&#34;
+	srcset=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-21_hu_cec451a3dd56cce4.png 480w, https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-21_hu_976fba405b689f9f.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;3NF分解算法&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;180&#34;
+		data-flex-basis=&#34;432px&#34;
+	
+&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Example of 3NF Decomposition&lt;/strong&gt;
 设有关系模式R(A, B, C, D)和函数依赖集F = {A → B, B → C}，应用3NF分解算法：&lt;/p&gt;
 &lt;ol&gt;
@@ -390,11 +469,48 @@ Interestingly, decomposition into third normal form (described shortly) can be d
 &lt;li&gt;R的候选键是{A, D}，没有子模式包含它，因此添加R3 = {A, D}。&lt;/li&gt;
 &lt;li&gt;返回子模式R1, R2, R3作为分解结果。&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;Note:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;只要有一个候选键包含在第2步构造出的某个子模式Ri中，就无需在第3步中，为候选键单独构造子模式。
-任意挑选R的一个候选键【&lt;strong&gt;只需挑选一个&lt;/strong&gt;】，对该候选健单独构造一个关系模式；无需考虑全部候选键!!!&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-22.png&#34;
+	width=&#34;1164&#34;
+	height=&#34;663&#34;
+	srcset=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-22_hu_67873d20e9ddc42a.png 480w, https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-22_hu_f9404de0c4a5b738.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;例&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;175&#34;
+		data-flex-basis=&#34;421px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-23.png&#34;
+	width=&#34;1128&#34;
+	height=&#34;612&#34;
+	srcset=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-23_hu_403642a6e7d9874a.png 480w, https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-23_hu_7a0cd73f3a5a07ed.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;例1-续&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;184&#34;
+		data-flex-basis=&#34;442px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-24.png&#34;
+	width=&#34;1140&#34;
+	height=&#34;450&#34;
+	srcset=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-24_hu_654e0d91df1835c2.png 480w, https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-24_hu_48d68feda7f9d13.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;例1-续续&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;253&#34;
+		data-flex-basis=&#34;608px&#34;
+	
+&gt;&lt;/p&gt;
 &lt;h2 id=&#34;appendix-7-1-computing-candidate-keys&#34;&gt;Appendix 7-1 Computing Candidate Keys
 &lt;/h2&gt;&lt;p&gt;计算候选键的步骤：&lt;/p&gt;
 &lt;p&gt;step1. 将R的所有属性分为四类：&lt;/p&gt;
@@ -432,8 +548,8 @@ Interestingly, decomposition into third normal form (described shortly) can be d
 		data-flex-grow=&#34;180&#34;
 		data-flex-basis=&#34;432px&#34;
 	
-&gt;
-&lt;img src=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-17.png&#34;
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-17.png&#34;
 	width=&#34;1765&#34;
 	height=&#34;1020&#34;
 	srcset=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-17_hu_1be38c38f57ad938.png 480w, https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-17_hu_f2a15f7d30448e2a.png 1024w&#34;
@@ -463,8 +579,8 @@ Interestingly, decomposition into third normal form (described shortly) can be d
 		data-flex-grow=&#34;200&#34;
 		data-flex-basis=&#34;480px&#34;
 	
-&gt;
-&lt;img src=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-19.png&#34;
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-19.png&#34;
 	width=&#34;1782&#34;
 	height=&#34;792&#34;
 	srcset=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-19_hu_d2cc9b323dba4902.png 480w, https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-19_hu_88d2609632db0c17.png 1024w&#34;
@@ -476,6 +592,22 @@ Interestingly, decomposition into third normal form (described shortly) can be d
 		class=&#34;gallery-image&#34; 
 		data-flex-grow=&#34;225&#34;
 		data-flex-basis=&#34;540px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;判断最高范式&lt;/strong&gt;
+计算候选键，从BCNF向下找&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-25.png&#34;
+	width=&#34;1161&#34;
+	height=&#34;657&#34;
+	srcset=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-25_hu_1ee5769a9bbefc2b.png 480w, https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-25_hu_a71aa6d19bd70b02.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;例&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;176&#34;
+		data-flex-basis=&#34;424px&#34;
 	
 &gt;&lt;/p&gt;
 </description>

@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Functional-Dependency Theory SQL for judging FDs Closure of a Set of Functional Dependencies The set of all functional dependencies logically implied by F is the closure of F, which is denoted as F+. It is the set of all functional dependencies that can be inferred from F using Armstrong&rsquo;s axioms. These axioms include:\nReflexivity: If Y ⊆ X, then X → Y holds. Augmentation: If X → Y holds, then XZ → YZ holds for any Z. Transitivity: If X → Y and Y → Z hold, then X → Z holds. Armstrong&rsquo;s Axioms Armstrong&rsquo;s axioms are a set of rules used to infer all the functional dependencies in a relational database. They are sound (i.e., they only produce valid dependencies) and complete (i.e., they can produce all valid dependencies).\n">
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Functional-Dependency Theory SQL for judging FDs Closure of a Set of Functional Dependencies The set of all functional dependencies logically implied by F is the closure of F, which is denoted as F+. It is the set of all functional dependencies that can be inferred from F using Armstrong&rsquo;s axioms.\nArmstrong&rsquo;s Axioms Armstrong&rsquo;s axioms are a set of rules used to infer all the functional dependencies in a relational database. They are sound (i.e., they only produce valid dependencies) and complete (i.e., they can produce all valid dependencies).\n">
 <title>Chapter7 分解算法(大概是7.4-7.5)</title>
 
 <link rel='canonical' href='https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/'>
 
 <link rel="stylesheet" href="/scss/style.min.b351b3d5ee1d5870a2d2502778500c735ae341013f603eb34e772579445f78ca.css"><meta property='og:title' content="Chapter7 分解算法(大概是7.4-7.5)">
-<meta property='og:description' content="Functional-Dependency Theory SQL for judging FDs Closure of a Set of Functional Dependencies The set of all functional dependencies logically implied by F is the closure of F, which is denoted as F+. It is the set of all functional dependencies that can be inferred from F using Armstrong&rsquo;s axioms. These axioms include:\nReflexivity: If Y ⊆ X, then X → Y holds. Augmentation: If X → Y holds, then XZ → YZ holds for any Z. Transitivity: If X → Y and Y → Z hold, then X → Z holds. Armstrong&rsquo;s Axioms Armstrong&rsquo;s axioms are a set of rules used to infer all the functional dependencies in a relational database. They are sound (i.e., they only produce valid dependencies) and complete (i.e., they can produce all valid dependencies).\n">
+<meta property='og:description' content="Functional-Dependency Theory SQL for judging FDs Closure of a Set of Functional Dependencies The set of all functional dependencies logically implied by F is the closure of F, which is denoted as F+. It is the set of all functional dependencies that can be inferred from F using Armstrong&rsquo;s axioms.\nArmstrong&rsquo;s Axioms Armstrong&rsquo;s axioms are a set of rules used to infer all the functional dependencies in a relational database. They are sound (i.e., they only produce valid dependencies) and complete (i.e., they can produce all valid dependencies).\n">
 <meta property='og:url' content='https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/'>
 <meta property='og:site_name' content='zcys univ II Hugo ver'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='关系数据库' /><meta property='article:published_time' content='2025-11-11T00:00:00&#43;08:00'/><meta property='article:modified_time' content='2025-11-11T00:00:00&#43;08:00'/><meta property='og:image' content='https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/c7.png' />
 <meta name="twitter:title" content="Chapter7 分解算法(大概是7.4-7.5)">
-<meta name="twitter:description" content="Functional-Dependency Theory SQL for judging FDs Closure of a Set of Functional Dependencies The set of all functional dependencies logically implied by F is the closure of F, which is denoted as F+. It is the set of all functional dependencies that can be inferred from F using Armstrong&rsquo;s axioms. These axioms include:\nReflexivity: If Y ⊆ X, then X → Y holds. Augmentation: If X → Y holds, then XZ → YZ holds for any Z. Transitivity: If X → Y and Y → Z hold, then X → Z holds. Armstrong&rsquo;s Axioms Armstrong&rsquo;s axioms are a set of rules used to infer all the functional dependencies in a relational database. They are sound (i.e., they only produce valid dependencies) and complete (i.e., they can produce all valid dependencies).\n"><meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:description" content="Functional-Dependency Theory SQL for judging FDs Closure of a Set of Functional Dependencies The set of all functional dependencies logically implied by F is the closure of F, which is denoted as F+. It is the set of all functional dependencies that can be inferred from F using Armstrong&rsquo;s axioms.\nArmstrong&rsquo;s Axioms Armstrong&rsquo;s axioms are a set of rules used to infer all the functional dependencies in a relational database. They are sound (i.e., they only produce valid dependencies) and complete (i.e., they can produce all valid dependencies).\n"><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content='https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/c7.png' />
     </head>
     <body class="
@@ -331,6 +331,7 @@
         <li><a href="#例子-1">例子</a></li>
       </ol>
     </li>
+    <li><a href="#fffc">F、F+、Fc</a></li>
     <li><a href="#extraneous-attributes冗余属性">Extraneous Attributes（冗余属性）</a>
       <ol>
         <li><a href="#例子-2">例子</a></li>
@@ -342,6 +343,7 @@
         <li><a href="#testing-for-bcnf">Testing for BCNF</a></li>
         <li><a href="#testing-decomposition-for-bcnf">Testing Decomposition for BCNF</a></li>
         <li><a href="#decomposition-algorithm-for-bcnf">Decomposition Algorithm for BCNF</a></li>
+        <li><a href="#testing-for-3nf">Testing for 3NF</a></li>
         <li><a href="#decomposition-algorithm-for-3nf">Decomposition Algorithm for 3NF</a></li>
       </ol>
     </li>
@@ -527,7 +529,7 @@
 
 
                 <time class="article-time--reading">
-                    3 minute read
+                    4 minute read
                 </time>
             </div>
         
@@ -573,12 +575,7 @@
 	
 ></p>
 <h3 id="closure-of-a-set-of-functional-dependencies">Closure of a Set of Functional Dependencies
-</h3><p>The set of all functional dependencies <strong>logically implied</strong> by F is the closure of F, which is denoted as F+. It is the set of all functional dependencies that can be inferred from F using Armstrong&rsquo;s axioms. These axioms include:</p>
-<ol>
-<li>Reflexivity: If Y ⊆ X, then X → Y holds.</li>
-<li>Augmentation: If X → Y holds, then XZ → YZ holds for any Z.</li>
-<li>Transitivity: If X → Y and Y → Z hold, then X → Z holds.</li>
-</ol>
+</h3><p>The set of all functional dependencies <strong>logically implied</strong> by F is the closure of F, which is denoted as F+. It is the set of all functional dependencies that can be inferred from F using Armstrong&rsquo;s axioms.</p>
 <h3 id="armstrongs-axioms">Armstrong&rsquo;s Axioms
 </h3><p>Armstrong&rsquo;s axioms are a set of rules used to infer all the functional dependencies in a relational database. They are sound (i.e., they only produce valid dependencies) and complete (i.e., they can produce all valid dependencies).</p>
 <ol>
@@ -636,11 +633,34 @@ A+，得到A+ = {A, B, C}。</li>
 <li>没有冗余的属性在函数依赖的左侧。</li>
 </ol>
 <h3 id="计算规范覆盖的步骤">计算规范覆盖的步骤
-</h3><ol>
-<li>将每个函数依赖的右侧拆分为单个属性。</li>
-<li>移除冗余的函数依赖。</li>
-<li>移除冗余的属性在函数依赖的左侧。</li>
-</ol>
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="k">do</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="mi">1</span><span class="err">、使用</span><span class="n">Union</span> <span class="n">rule结合右侧</span>
+</span></span><span class="line"><span class="cl">    <span class="mi">2</span><span class="err">、去除</span><span class="n">Fc中的冗余属性</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span><span class="k">while</span><span class="p">(</span><span class="n">Fc不变</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-27.png"
+	width="1296"
+	height="594"
+	srcset="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-27_hu_1497373f187648df.png 480w, /p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-27_hu_40b7989c9939b866.png 1024w"
+	loading="lazy"
+	
+		alt="计算步骤"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="218"
+		data-flex-basis="523px"
+	
+></p>
 <h3 id="例子-1">例子
 </h3><p><img src="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-3.png"
 	width="1782"
@@ -655,7 +675,22 @@ A+，得到A+ = {A, B, C}。</li>
 		data-flex-grow="174"
 		data-flex-basis="419px"
 	
->。</p>
+></p>
+<h2 id="fffc">F、F+、Fc
+</h2><p><img src="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-26.png"
+	width="1041"
+	height="633"
+	srcset="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-26_hu_f224a3501e5cb8fb.png 480w, /p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-26_hu_32c9c7326cb5b275.png 1024w"
+	loading="lazy"
+	
+		alt="三者关系"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="164"
+		data-flex-basis="394px"
+	
+></p>
 <h2 id="extraneous-attributes冗余属性">Extraneous Attributes（冗余属性）
 </h2><p>在函数依赖X → Y中，如果存在属性A ∈ X，使得在去掉A后，X - {A} → Y仍然成立，则称A是冗余属性。</p>
 <h3 id="例子-2">例子
@@ -670,44 +705,36 @@ A+，得到A+ = {A, B, C}。</li>
 <li>检查是否B+包含C：
 <ul>
 <li>B+不包含C，因此A不是冗余属性。
-最终，属性A在AB → C中不是冗余属性。
-对于右端冗余属性的检查：
-在函数依赖X → Y中，如果存在属性B ∈ Y，使得在去掉B后，X → Y - {B}仍然成立，则称B是冗余属性。</li>
+最终，属性A在AB → C中不是冗余属性。</li>
 </ul>
 </li>
 </ol>
-<p>移除左端冗余属性，得到更强的函数依赖【所需左端前提条件更少】
-移除右端冗余属性，得到更弱的函数依赖【结论更少】</p>
+<p>对于右端冗余属性的检查：
+在函数依赖X → Y中，如果存在属性B ∈ Y，使得在去掉B后，X → Y - {B}仍然成立，则称B是冗余属性。</p>
+<p>移除左端冗余属性，得到更强的函数依赖【所需左端前提条件更少】</p>
+<p>移除右端冗余属性，得到更弱的函数依赖【结论更少】</p>
 <p>一个依赖关系under F的意思是可以从F中推导出该依赖关系</p>
 <h2 id="dependency-preservation依赖保持">Dependency Preservation（依赖保持）
 </h2><p>在关系模式分解中，如果分解后的每个子模式的函数依赖集的联合能够推导出原始模式的所有函数依赖，则称该分解是依赖保持的。</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">与holds on的区别在于，
-</span></span><span class="line"><span class="cl">holds on是指某个具体的关系实例满足某个函数依赖，
-</span></span><span class="line"><span class="cl">而dependency preservation是指分解后的模式在所有可能的关系实例中都能保持原始模式的函数依赖。
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p><img src="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-4.png"
+<p>与holds on的区别在于，
+holds on是指某个具体的关系实例满足某个函数依赖，
+而dependency preservation是指分解后的模式在所有可能的关系实例中都能保持原始模式的函数依赖。</p>
+<p>Fi：
+<img src="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-4.png"
 	width="1809"
 	height="909"
 	srcset="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-4_hu_22e9e7391756f43f.png 480w, /p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-4_hu_efc7da62c3ccf696.png 1024w"
 	loading="lazy"
 	
-		alt="什么是Fi，老子也没懂"
+		alt="什么是Fi"
 	
 	
 		class="gallery-image" 
 		data-flex-grow="199"
 		data-flex-basis="477px"
 	
->
-<img src="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-5.png"
+></p>
+<p><img src="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-5.png"
 	width="1722"
 	height="836"
 	srcset="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-5_hu_f59f776af4162e1.png 480w, /p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-5_hu_d8c7858f2bea98b8.png 1024w"
@@ -720,8 +747,8 @@ A+，得到A+ = {A, B, C}。</li>
 		data-flex-grow="205"
 		data-flex-basis="494px"
 	
->
-<img src="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-7.png"
+></p>
+<p><img src="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-7.png"
 	width="1812"
 	height="954"
 	srcset="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-7_hu_3f0c7a0db91ea827.png 480w, /p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-7_hu_dc30d980fc7eace4.png 1024w"
@@ -734,8 +761,8 @@ A+，得到A+ = {A, B, C}。</li>
 		data-flex-grow="189"
 		data-flex-basis="455px"
 	
->
-<img src="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-8.png"
+></p>
+<p><img src="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-8.png"
 	width="1755"
 	height="981"
 	srcset="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-8_hu_5d8013d2378b395c.png 480w, /p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-8_hu_e9101c0a101b14a8.png 1024w"
@@ -748,8 +775,8 @@ A+，得到A+ = {A, B, C}。</li>
 		data-flex-grow="178"
 		data-flex-basis="429px"
 	
->
-<img src="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-9.png"
+></p>
+<p><img src="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-9.png"
 	width="1782"
 	height="573"
 	srcset="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-9_hu_c08fcd348858bd9c.png 480w, /p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-9_hu_c75f593ad4bfde3a.png 1024w"
@@ -765,21 +792,42 @@ A+，得到A+ = {A, B, C}。</li>
 ></p>
 <h2 id="75-algorithms-for-decomposition-using-functional-dependencies">7.5 Algorithms for Decomposition Using Functional Dependencies
 </h2><p>本节内容
-BCNF
-Testing for BCNF /判断关系模式是否是BCNF
-Testing Decomposition for BCNF/ 判断分解后的子模式是否是BCNF
-BCNF decomposition algorithm/将关系模式分解为BCNF的方法
-3NF
-Testing for 3NF
-3NF decomposition algorithm
-Comparison of BCNF and 3NF</p>
+BCNF</p>
+<ul>
+<li>Testing for BCNF /判断关系模式是否是BCNF</li>
+<li>Testing Decomposition for BCNF/ 判断分解后的子模式是否是BCNF</li>
+<li>BCNF decomposition algorithm/将关系模式分解为BCNF的方法</li>
+</ul>
+<p>3NF</p>
+<ul>
+<li>Testing for 3NF</li>
+<li>3NF decomposition algorithm</li>
+<li>Comparison of BCNF and 3NF</li>
+</ul>
 <h3 id="testing-for-bcnf">Testing for BCNF
-</h3><p>判断关系模式R是否是BCNF的步骤：</p>
+</h3><p>To check if a non-trivial dependency $\alpha$ causes a violation of BCNF</p>
 <ol>
-<li>计算函数依赖集F的规范覆盖Fc。</li>
-<li>对于Fc中的每个函数依赖X → Y，检查X是否是R的超键。</li>
-<li>如果所有函数依赖的左侧都是超键，则R是BCNF；否则，R不是BCNF。</li>
+<li>compute $\alpha^+$ (the attribute closure of $\alpha$), and</li>
+<li>verify that it includes all attributes of R, that is, $\alpha$ is a <strong>superkey</strong> of R.</li>
 </ol>
+<p><strong>Simplified but Incorrect</strong> test: To check if a relation schema R is in BCNF, it <strong>suffices</strong> to check <strong>only the dependencies in the given set F</strong> for violation of BCNF, <strong>rather than</strong> checking all dependencies in <strong>F+</strong>.</p>
+<p>If none of the dependencies in F causes a violation of BCNF, then none of the dependencies in F+ will cause a violation of BCNF either.</p>
+<p><strong>However, simplified test using only F is incorrect when testing a relation in a decomposition of R</strong></p>
+<p>也就是说判断BCNF可以使用F作为充分条件，因为F无违例说明F+也无违例，<em>但是判断子模式（a decomposition of R）只用F是错的！！！</em></p>
+<p><img src="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-20.png"
+	width="1164"
+	height="258"
+	srcset="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-20_hu_4d8ee6303023f21d.png 480w, /p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-20_hu_7b4b3d127b277b4.png 1024w"
+	loading="lazy"
+	
+		alt="反例"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="451"
+		data-flex-basis="1082px"
+	
+></p>
 <h3 id="testing-decomposition-for-bcnf">Testing Decomposition for BCNF
 </h3><p>Note:</p>
 <ul>
@@ -792,22 +840,30 @@ the restriction of F to R1是{A → B}，因为B → C在R1中无效。</li>
 <p>测试由R分解后的子模式Ri是否BCNF，不能仅凭R上的F，应该采用F+</p>
 <h3 id="decomposition-algorithm-for-bcnf">Decomposition Algorithm for BCNF
 </h3><ol>
-<li>检查关系模式R是否是BCNF。如果是，则返回R作为分解结果。</li>
-<li>如果R不是BCNF，找到一个违反BCNF的函数依赖X → Y，其中X不是R的超键。</li>
-<li>将R分解为两个子模式R1和R2：
+<li>
+<p>检查关系模式R是否是BCNF。如果是，则返回R作为分解结果。（to determine whether or not Ri is in BCNF,  the <em>restriction of F to Ri</em> and the <em>candidate keys of Ri</em> need to be computed）</p>
+</li>
+<li>
+<p>如果R不是BCNF，找到一个违反BCNF的函数依赖X → Y，其中X不是R的超键。</p>
+</li>
+<li>
+<p>将R分解为两个子模式R1和R2：</p>
 <ul>
 <li>R1 = X ∪ Y</li>
 <li>R2 = R - Y + X</li>
 </ul>
 </li>
-<li>递归地对R1和R2应用步骤1-3，直到所有子模式都是BCNF。
-Note:</li>
+<li>
+<p>递归地对R1和R2应用步骤1-3，直到所有子模式都是BCNF。</p>
+</li>
 </ol>
+<p>Note:</p>
 <ul>
 <li>3中R1的意思是包含X和Y的所有属性的子模式，R2的意思是R中去掉Y属性后再加上X属性的子模式</li>
 <li>该算法可能不会产生依赖保持的分解。</li>
-<li>该算法确保每个子模式都是BCNF。
-<img src="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-10.png"
+<li>该算法确保每个子模式都是BCNF。</li>
+</ul>
+<p><img src="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-10.png"
 	width="1779"
 	height="666"
 	srcset="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-10_hu_89ac9b91046d1cb2.png 480w, /p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-10_hu_9543829986eb1b24.png 1024w"
@@ -820,8 +876,8 @@ Note:</li>
 		data-flex-grow="267"
 		data-flex-basis="641px"
 	
->
-<img src="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-11.png"
+></p>
+<p><img src="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-11.png"
 	width="1764"
 	height="777"
 	srcset="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-11_hu_fa01c86cb11d1cb.png 480w, /p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-11_hu_ee10086738b5980e.png 1024w"
@@ -834,8 +890,8 @@ Note:</li>
 		data-flex-grow="227"
 		data-flex-basis="544px"
 	
->
-<img src="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-14.png"
+></p>
+<p><img src="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-14.png"
 	width="1791"
 	height="710"
 	srcset="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-14_hu_382cae119eb7c7e8.png 480w, /p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-14_hu_d6ea7c4da10825dd.png 1024w"
@@ -848,8 +904,8 @@ Note:</li>
 		data-flex-grow="252"
 		data-flex-basis="605px"
 	
->
-<img src="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-12.png"
+></p>
+<p><img src="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-12.png"
 	width="1785"
 	height="609"
 	srcset="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-12_hu_6d3f761eb69c5f7b.png 480w, /p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-12_hu_6662cd04c3398405.png 1024w"
@@ -862,8 +918,8 @@ Note:</li>
 		data-flex-grow="293"
 		data-flex-basis="703px"
 	
->
-<img src="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-13.png"
+></p>
+<p><img src="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-13.png"
 	width="1797"
 	height="990"
 	srcset="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-13_hu_b9ceb1655c31af7d.png 480w, /p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-13_hu_2a0c61b484aa2f76.png 1024w"
@@ -876,8 +932,7 @@ Note:</li>
 		data-flex-grow="181"
 		data-flex-basis="435px"
 	
-></li>
-</ul>
+></p>
 <p><strong>BCNF分解不保证依赖保持</strong>
 <img src="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-15.png"
 	width="1827"
@@ -893,18 +948,44 @@ Note:</li>
 		data-flex-basis="488px"
 	
 ></p>
+<h3 id="testing-for-3nf">Testing for 3NF
+</h3><p>Need to check only FDs <strong>in F</strong>, <strong>no checking all FDs in F+</strong>.</p>
+<p>Step1. Use attribute closure to check for each dependency $\alpha$, if $\alpha$ is a superkey</p>
+<p>检查每个函数依赖左端是否为超键</p>
+<p>Step2. If $\alpha$ is not a superkey, we have to verify if each attribute in $\beta$ is contained in a candidate key of R</p>
+<p>如果左端不是超键，检查右端属性是否包含在某个候选键中</p>
+<p>This test is rather more expensive, since it involve finding all candidate keys</p>
+<p>Testing for 3NF has been shown to be NP-hard!</p>
+<p>Interestingly, <em>decomposition into third normal form (described shortly) can be done in polynomial time</em></p>
 <h3 id="decomposition-algorithm-for-3nf">Decomposition Algorithm for 3NF
 </h3><p>为什么需要3NF分解算法？
 因为BCNF分解不保证依赖保持，而3NF分解算法可以保证依赖保持。</p>
-<p>testing for 3NF has been shown to be NP-hard,
-Interestingly, decomposition into third normal form (described shortly) can be done in polynomial time
-算法步骤：</p>
+<p>算法步骤：</p>
 <ol>
 <li>计算函数依赖集F的规范覆盖Fc。</li>
 <li>对于Fc中的每个函数依赖X → Y，创建一个子模式R_i = X ∪ Y。</li>
 <li>如果没有子模式包含R的候选键，则添加一个子模式R_k，该子模式包含R的一个候选键。</li>
 <li>返回所有子模式作为分解结果。</li>
 </ol>
+<p>Note:</p>
+<ul>
+<li>只要有一个候选键包含在第2步构造出的某个子模式Ri中，就无需在第3步中，为候选键单独构造子模式。
+任意挑选R的一个候选键【<strong>只需挑选一个</strong>】，对该候选健单独构造一个关系模式；无需考虑全部候选键!!!</li>
+</ul>
+<p><img src="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-21.png"
+	width="1161"
+	height="645"
+	srcset="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-21_hu_cec451a3dd56cce4.png 480w, /p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-21_hu_976fba405b689f9f.png 1024w"
+	loading="lazy"
+	
+		alt="3NF分解算法"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="180"
+		data-flex-basis="432px"
+	
+></p>
 <p><strong>Example of 3NF Decomposition</strong>
 设有关系模式R(A, B, C, D)和函数依赖集F = {A → B, B → C}，应用3NF分解算法：</p>
 <ol>
@@ -919,11 +1000,48 @@ Interestingly, decomposition into third normal form (described shortly) can be d
 <li>R的候选键是{A, D}，没有子模式包含它，因此添加R3 = {A, D}。</li>
 <li>返回子模式R1, R2, R3作为分解结果。</li>
 </ol>
-<p>Note:</p>
-<ul>
-<li>只要有一个候选键包含在第2步构造出的某个子模式Ri中，就无需在第3步中，为候选键单独构造子模式。
-任意挑选R的一个候选键【<strong>只需挑选一个</strong>】，对该候选健单独构造一个关系模式；无需考虑全部候选键!!!</li>
-</ul>
+<p><img src="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-22.png"
+	width="1164"
+	height="663"
+	srcset="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-22_hu_67873d20e9ddc42a.png 480w, /p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-22_hu_f9404de0c4a5b738.png 1024w"
+	loading="lazy"
+	
+		alt="例"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="175"
+		data-flex-basis="421px"
+	
+></p>
+<p><img src="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-23.png"
+	width="1128"
+	height="612"
+	srcset="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-23_hu_403642a6e7d9874a.png 480w, /p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-23_hu_7a0cd73f3a5a07ed.png 1024w"
+	loading="lazy"
+	
+		alt="例1-续"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="184"
+		data-flex-basis="442px"
+	
+></p>
+<p><img src="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-24.png"
+	width="1140"
+	height="450"
+	srcset="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-24_hu_654e0d91df1835c2.png 480w, /p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-24_hu_48d68feda7f9d13.png 1024w"
+	loading="lazy"
+	
+		alt="例1-续续"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="253"
+		data-flex-basis="608px"
+	
+></p>
 <h2 id="appendix-7-1-computing-candidate-keys">Appendix 7-1 Computing Candidate Keys
 </h2><p>计算候选键的步骤：</p>
 <p>step1. 将R的所有属性分为四类：</p>
@@ -961,8 +1079,8 @@ Interestingly, decomposition into third normal form (described shortly) can be d
 		data-flex-grow="180"
 		data-flex-basis="432px"
 	
->
-<img src="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-17.png"
+></p>
+<p><img src="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-17.png"
 	width="1765"
 	height="1020"
 	srcset="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-17_hu_1be38c38f57ad938.png 480w, /p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-17_hu_f2a15f7d30448e2a.png 1024w"
@@ -992,8 +1110,8 @@ Interestingly, decomposition into third normal form (described shortly) can be d
 		data-flex-grow="200"
 		data-flex-basis="480px"
 	
->
-<img src="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-19.png"
+></p>
+<p><img src="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-19.png"
 	width="1782"
 	height="792"
 	srcset="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-19_hu_d2cc9b323dba4902.png 480w, /p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-19_hu_88d2609632db0c17.png 1024w"
@@ -1005,6 +1123,22 @@ Interestingly, decomposition into third normal form (described shortly) can be d
 		class="gallery-image" 
 		data-flex-grow="225"
 		data-flex-basis="540px"
+	
+></p>
+<p><strong>判断最高范式</strong>
+计算候选键，从BCNF向下找</p>
+<p><img src="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-25.png"
+	width="1161"
+	height="657"
+	srcset="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-25_hu_1ee5769a9bbefc2b.png 480w, /p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-25_hu_a71aa6d19bd70b02.png 1024w"
+	loading="lazy"
+	
+		alt="例"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="176"
+		data-flex-basis="424px"
 	
 ></p>
 

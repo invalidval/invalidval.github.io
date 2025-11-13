@@ -511,6 +511,24 @@ the restriction of F to R1是{A → B}，因为B → C在R1中无效。&lt;/li&g
 		data-flex-basis=&#34;608px&#34;
 	
 &gt;&lt;/p&gt;
+&lt;h2 id=&#34;对比记忆bcnf和3nf算法&#34;&gt;对比记忆BCNF和3NF算法
+&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-28.png&#34;
+	width=&#34;1454&#34;
+	height=&#34;531&#34;
+	srcset=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-28_hu_efc79475e51237a2.png 480w, https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-28_hu_a2411b0ec48dd2fa.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;算法对比&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;273&#34;
+		data-flex-basis=&#34;657px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;3NF合成：依赖于一个预先处理好的、最小化的规范覆盖Fc来“合成”模式。Fc是它的输入。&lt;/p&gt;
+&lt;p&gt;BCNF分解：是一个递归的、基于验证的分解过程，它直接使用当前模式上成立的函数依赖（来自原始F或其投影）来指导分解。它不关心F是否最小化。&lt;/p&gt;
+&lt;p&gt;因此，计算BCNF分解一般不需要计算Fc。&lt;/p&gt;
 &lt;h2 id=&#34;appendix-7-1-computing-candidate-keys&#34;&gt;Appendix 7-1 Computing Candidate Keys
 &lt;/h2&gt;&lt;p&gt;计算候选键的步骤：&lt;/p&gt;
 &lt;p&gt;step1. 将R的所有属性分为四类：&lt;/p&gt;
@@ -1086,6 +1104,21 @@ e.g.  for the entity student, do not use instructor.id as its attribute, in stea
 		data-flex-basis=&#34;423px&#34;
 	
 &gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;弱实体集理解&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://invalidval.github.io/p/chapter6-er%E6%A8%A1%E5%9E%8B/image-4.png&#34;
+	width=&#34;1808&#34;
+	height=&#34;999&#34;
+	srcset=&#34;https://invalidval.github.io/p/chapter6-er%E6%A8%A1%E5%9E%8B/image-4_hu_768e97fa097db0f.png 480w, https://invalidval.github.io/p/chapter6-er%E6%A8%A1%E5%9E%8B/image-4_hu_e32fc9b501293992.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;例子&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;180&#34;
+		data-flex-basis=&#34;434px&#34;
+	
+&gt;&lt;/p&gt;
 &lt;h2 id=&#34;扩展er-详情看isa那篇&#34;&gt;扩展ER （详情看ISA那篇）
 &lt;/h2&gt;&lt;h3 id=&#34;面向对象erobject-oriented-oo-e-r&#34;&gt;面向对象ER：Object-oriented (OO) E-R
 &lt;/h3&gt;&lt;p&gt;specialization （特化，特殊化，例化）
@@ -1159,7 +1192,7 @@ e.g.  for the entity student, do not use instructor.id as its attribute, in stea
         <item>
         <title>Chapter2 关系数据库基础</title>
         <link>https://invalidval.github.io/p/chapter2-%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80/</link>
-        <pubDate>Sun, 01 Jan 2023 00:00:00 +0800</pubDate>
+        <pubDate>Wed, 10 Sep 2025 00:00:00 +0800</pubDate>
         
         <guid>https://invalidval.github.io/p/chapter2-%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80/</guid>
         <description>&lt;h1 id=&#34;关系数据库结构&#34;&gt;关系数据库结构
@@ -1223,6 +1256,108 @@ taking the key as a attribute set,  the attributes in the candidate keys, i.e. t
 		class=&#34;gallery-image&#34; 
 		data-flex-grow=&#34;327&#34;
 		data-flex-basis=&#34;786px&#34;
+	
+&gt;&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>Chapter1 基本概念</title>
+        <link>https://invalidval.github.io/p/chapter1-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/</link>
+        <pubDate>Mon, 01 Sep 2025 00:00:00 +0800</pubDate>
+        
+        <guid>https://invalidval.github.io/p/chapter1-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/</guid>
+        <description>&lt;h2 id=&#34;名词&#34;&gt;名词
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;Database (DB)&lt;/li&gt;
+&lt;li&gt;The term DBS and DBMS are used interchangeably in the textbook&lt;/li&gt;
+&lt;li&gt;Database application system
+DB + DBMS + Application programs + Users/Administers&lt;/li&gt;
+&lt;li&gt;DBS = DB + DBMS&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;os文件系统缺点&#34;&gt;OS文件系统缺点
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;Data redundancy and inconsistency&lt;/li&gt;
+&lt;li&gt;Difficulty in accessing data&lt;/li&gt;
+&lt;li&gt;Data isolation/独立性（信号量）&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;数据库系统目的&#34;&gt;数据库系统目的
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;Integrity/完整性 problems【语义约束】&lt;/li&gt;
+&lt;li&gt;Atomicity/原子性 of updates&lt;/li&gt;
+&lt;li&gt;Concurrent access/并发访问 by multiple users&lt;/li&gt;
+&lt;li&gt;Security problems&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;数据模型数据建模数据抽象&#34;&gt;数据模型、数据建模、数据抽象
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;data models
+a collection of conceptual tools for describing:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;data, data relationships/联系&lt;/li&gt;
+&lt;li&gt;data semantics/语义&lt;/li&gt;
+&lt;li&gt;consistency/一致性 constraints&lt;/li&gt;
+&lt;li&gt;specifications for data organization and access&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;data modeling
+organize application data in the database, according to data model, by data abstraction&lt;/li&gt;
+&lt;li&gt;data abstraction&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;database modeling mechanism&lt;/li&gt;
+&lt;li&gt;hide the complexity of data structures to represent data in the database from users through &lt;strong&gt;view-logical-physical levels&lt;/strong&gt; of data abstraction&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;levels-of-abstraction&#34;&gt;Levels of Abstraction
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;Physical level&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;describes how a record (e.g., instructor) is stored and accessed in database files&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;Logical level&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;Implementation/DB-oriented
+describes data stored in database, and the relationships among the data.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;View level&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;application programs hide details of data types
+views can also hide information (such as an employee’s salary) for security purposes.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;described as Entity-relationship (E-R) diagrams&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;ddl-dml&#34;&gt;DDL DML
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;Data Definition Language&lt;/li&gt;
+&lt;li&gt;DML&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;procedural/过程性 DML &amp;ndash;  require a user to specify what data are needed and how to get those data
+[e.g. relational algebra]&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;declarative/声明性 DML  &amp;ndash; require a user to specify what data are needed without specifying how to get those data
+[e.g. SQL]&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;数据库设计阶段&#34;&gt;数据库设计阶段
+&lt;/h2&gt;&lt;p&gt;从保持data independence角度出发，根据data models所定义的数据规范形式，在view、logical 、 physical三个层次，通过data abstraction，经过&lt;strong&gt;概念设计、逻辑设计、物理设计&lt;/strong&gt;三个步骤，构造 面向具体应用领域的DBS的  E-R diagrams, external schema/logical schema , internal schema的集合, 得到conceptual DB 、logical DB 、physical DB设计结果&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://invalidval.github.io/p/chapter1-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/image.png&#34;
+	width=&#34;821&#34;
+	height=&#34;654&#34;
+	srcset=&#34;https://invalidval.github.io/p/chapter1-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/image_hu_71208316d6a6b099.png 480w, https://invalidval.github.io/p/chapter1-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/image_hu_15fc1bc9c3089cc5.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;设计阶段&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;125&#34;
+		data-flex-basis=&#34;301px&#34;
 	
 &gt;&lt;/p&gt;
 </description>

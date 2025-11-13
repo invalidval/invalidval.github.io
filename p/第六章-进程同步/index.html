@@ -6,7 +6,7 @@
 
 <link rel='canonical' href='https://invalidval.github.io/p/%E7%AC%AC%E5%85%AD%E7%AB%A0-%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5/'>
 
-<link rel="stylesheet" href="/scss/style.min.b351b3d5ee1d5870a2d2502778500c735ae341013f603eb34e772579445f78ca.css"><meta property='og:title' content="第六章 进程同步">
+<link rel="stylesheet" href="/scss/style.min.daa55b48e67dc978a42506ccd9f4d2d2cdf1b07a1b561a4e034dcb834320f94a.css"><meta property='og:title' content="第六章 进程同步">
 <meta property='og:description' content="信号量有关的同步问题 有限缓冲 1、分析需要的信号量个数\n1 2 3 Binary semaphore mutex = 1；//互斥信号量，实现对缓冲区的互斥访问 semaphore empty = n；//同步信号量，表示空闲缓冲区的数量 semaphore full = 0；//同步信号量，表示产品的数量，也即非空缓冲区的数量 2、类c代码 互斥信号量一定要放在同步信号量之后\n复杂读者-写者 普通 1 2 3 4 int r_cnt = 0; Semaphore wrt = 1; r_mutex = 1; 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 writer(){ wait(wrt); //w signal(wrt); } reader(){ wait(r_mutex); r_cnt++; if(r_cnt == 1) wait(wrt); signal(r_mutex); //r wait(r_mutex); r_cnt--; if(r_cnt == 0) signal(wrt); signal(r_mutex); } 带队列的读-写 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 Semaphore q = 1; writer(){ wait(q); //逻辑不变 signal(q); } reader(){ wait(q); wait(r_mutex); r_cnt++; if(r_cnt == 1) wait(wrt); signal(r_mutex); signal(q); // 完成读计数之后就signal队列，之后你慢慢读没人管你 //r wait(r_mutex); r_cnt--; if(r_cnt == 0) signal(wrt); signal(r_mutex); } 扩展的读写者问题——最多允许M个读者同时读 ">
 <meta property='og:url' content='https://invalidval.github.io/p/%E7%AC%AC%E5%85%AD%E7%AB%A0-%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5/'>
 <meta property='og:site_name' content='zcys univ II Hugo ver'>

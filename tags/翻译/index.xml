@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>翻译 on zcys univ II Hugo ver</title>
+        <link>https://invalidval.github.io/tags/%E7%BF%BB%E8%AF%91/</link>
+        <description>Recent content in 翻译 on zcys univ II Hugo ver</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <copyright>© 2020-2027 zcys</copyright>
+        <lastBuildDate>Sat, 15 Nov 2025 00:00:00 +0800</lastBuildDate><atom:link href="https://invalidval.github.io/tags/%E7%BF%BB%E8%AF%91/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Chapter 5 语法制导和翻译技术</title>
+        <link>https://invalidval.github.io/p/chapter-5-%E8%AF%AD%E6%B3%95%E5%88%B6%E5%AF%BC%E5%92%8C%E7%BF%BB%E8%AF%91%E6%8A%80%E6%9C%AF/</link>
+        <pubDate>Sat, 15 Nov 2025 00:00:00 +0800</pubDate>
+        
+        <guid>https://invalidval.github.io/p/chapter-5-%E8%AF%AD%E6%B3%95%E5%88%B6%E5%AF%BC%E5%92%8C%E7%BF%BB%E8%AF%91%E6%8A%80%E6%9C%AF/</guid>
+        <description>&lt;img src="https://invalidval.github.io/p/chapter-5-%E8%AF%AD%E6%B3%95%E5%88%B6%E5%AF%BC%E5%92%8C%E7%BF%BB%E8%AF%91%E6%8A%80%E6%9C%AF/cp5.png" alt="Featured image of post Chapter 5 语法制导和翻译技术" /&gt;&lt;h2 id=&#34;讲什么了&#34;&gt;讲什么了
+&lt;/h2&gt;&lt;p&gt;语法制导定义和翻译方案&lt;/p&gt;
+&lt;p&gt;S属性定义的自底向上实现&lt;/p&gt;
+&lt;p&gt;L属性定义的自底向上实现&lt;/p&gt;
+&lt;h2 id=&#34;关键概念&#34;&gt;关键概念
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;综合属性&lt;/li&gt;
+&lt;li&gt;继承属性&lt;/li&gt;
+&lt;li&gt;S属性定义和L属性定义的LR分析实现&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;翻译思路&#34;&gt;翻译思路
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;根据翻译目标确定产生式的语义（含义）&lt;/li&gt;
+&lt;li&gt;根据产生式的含义，分析，每个符号的语义&lt;/li&gt;
+&lt;li&gt;把语义以属性的形式附加到相应文法符号上&lt;/li&gt;
+&lt;li&gt;设计语义规则，从而形成语法制导定义&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;翻译目标决定语义规则，翻译结果依赖于语义规则&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;翻译目标-&amp;gt;语义规则-&amp;gt;翻译结果&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;把语义动作插入到产生式的适当位置，形成翻译方案&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;翻译方案规定了语义动作的执行时机&lt;/p&gt;
+&lt;h2 id=&#34;语法制导翻译的一般步骤&#34;&gt;语法制导翻译的一般步骤
+&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://invalidval.github.io/p/chapter-5-%E8%AF%AD%E6%B3%95%E5%88%B6%E5%AF%BC%E5%92%8C%E7%BF%BB%E8%AF%91%E6%8A%80%E6%9C%AF/image.png&#34;
+	width=&#34;846&#34;
+	height=&#34;270&#34;
+	srcset=&#34;https://invalidval.github.io/p/chapter-5-%E8%AF%AD%E6%B3%95%E5%88%B6%E5%AF%BC%E5%92%8C%E7%BF%BB%E8%AF%91%E6%8A%80%E6%9C%AF/image_hu_cbace78a818c075.png 480w, https://invalidval.github.io/p/chapter-5-%E8%AF%AD%E6%B3%95%E5%88%B6%E5%AF%BC%E5%92%8C%E7%BF%BB%E8%AF%91%E6%8A%80%E6%9C%AF/image_hu_7e6a74ae82c09eaa.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;翻译步骤&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;313&#34;
+		data-flex-basis=&#34;752px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;1-语法制导定义&#34;&gt;1. 语法制导定义
+&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://invalidval.github.io/p/chapter-5-%E8%AF%AD%E6%B3%95%E5%88%B6%E5%AF%BC%E5%92%8C%E7%BF%BB%E8%AF%91%E6%8A%80%E6%9C%AF/image-1.png&#34;
+	width=&#34;1539&#34;
+	height=&#34;655&#34;
+	srcset=&#34;https://invalidval.github.io/p/chapter-5-%E8%AF%AD%E6%B3%95%E5%88%B6%E5%AF%BC%E5%92%8C%E7%BF%BB%E8%AF%91%E6%8A%80%E6%9C%AF/image-1_hu_c3110237a0bc4d.png 480w, https://invalidval.github.io/p/chapter-5-%E8%AF%AD%E6%B3%95%E5%88%B6%E5%AF%BC%E5%92%8C%E7%BF%BB%E8%AF%91%E6%8A%80%E6%9C%AF/image-1_hu_e60646e51d628cee.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;没看懂汉字&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;234&#34;
+		data-flex-basis=&#34;563px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://invalidval.github.io/p/chapter-5-%E8%AF%AD%E6%B3%95%E5%88%B6%E5%AF%BC%E5%92%8C%E7%BF%BB%E8%AF%91%E6%8A%80%E6%9C%AF/image-2.png&#34;
+	width=&#34;1590&#34;
+	height=&#34;865&#34;
+	srcset=&#34;https://invalidval.github.io/p/chapter-5-%E8%AF%AD%E6%B3%95%E5%88%B6%E5%AF%BC%E5%92%8C%E7%BF%BB%E8%AF%91%E6%8A%80%E6%9C%AF/image-2_hu_f37126c6955f899f.png 480w, https://invalidval.github.io/p/chapter-5-%E8%AF%AD%E6%B3%95%E5%88%B6%E5%AF%BC%E5%92%8C%E7%BF%BB%E8%AF%91%E6%8A%80%E6%9C%AF/image-2_hu_958aad26ef34b31.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;继续&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;183&#34;
+		data-flex-basis=&#34;441px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;综合属性&lt;/strong&gt;：&lt;/p&gt;
+&lt;p&gt;产生式左部符号的综合属性是从该产生式右部文法符号的属性值计算出来的；&lt;/p&gt;
+&lt;p&gt;在分析树中，一个内部结点的综合属性是从其子结点的属性值计算出来的。&lt;/p&gt;
+&lt;p&gt;虚拟综合属性：将过程调用或程序段（print）的语义规则看成左部的虚拟综合属性&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;继承属性&lt;/strong&gt;：
+产生式右部某文法符号的继承属性是从其所在产生式的左部符号和/或右部文法符号的属性值计算出来的；&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://invalidval.github.io/p/chapter-5-%E8%AF%AD%E6%B3%95%E5%88%B6%E5%AF%BC%E5%92%8C%E7%BF%BB%E8%AF%91%E6%8A%80%E6%9C%AF/image-3.png&#34;
+	width=&#34;419&#34;
+	height=&#34;55&#34;
+	srcset=&#34;https://invalidval.github.io/p/chapter-5-%E8%AF%AD%E6%B3%95%E5%88%B6%E5%AF%BC%E5%92%8C%E7%BF%BB%E8%AF%91%E6%8A%80%E6%9C%AF/image-3_hu_2419d5f41adfaec1.png 480w, https://invalidval.github.io/p/chapter-5-%E8%AF%AD%E6%B3%95%E5%88%B6%E5%AF%BC%E5%92%8C%E7%BF%BB%E8%AF%91%E6%8A%80%E6%9C%AF/image-3_hu_fded2dfddfd5f09f.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;继承属性&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;761&#34;
+		data-flex-basis=&#34;1828px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://invalidval.github.io/p/chapter-5-%E8%AF%AD%E6%B3%95%E5%88%B6%E5%AF%BC%E5%92%8C%E7%BF%BB%E8%AF%91%E6%8A%80%E6%9C%AF/image-4.png&#34;
+	width=&#34;649&#34;
+	height=&#34;95&#34;
+	srcset=&#34;https://invalidval.github.io/p/chapter-5-%E8%AF%AD%E6%B3%95%E5%88%B6%E5%AF%BC%E5%92%8C%E7%BF%BB%E8%AF%91%E6%8A%80%E6%9C%AF/image-4_hu_47a250707262868c.png 480w, https://invalidval.github.io/p/chapter-5-%E8%AF%AD%E6%B3%95%E5%88%B6%E5%AF%BC%E5%92%8C%E7%BF%BB%E8%AF%91%E6%8A%80%E6%9C%AF/image-4_hu_147e12000a5c163b.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;继承属性-1&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;683&#34;
+		data-flex-basis=&#34;1639px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;在分析树中，一个结点的继承属性是从其父结点和/或兄弟结点的属性值计算出来的。&lt;/p&gt;
+&lt;h2 id=&#34;2-依赖图&#34;&gt;2. 依赖图
+&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://invalidval.github.io/p/chapter-5-%E8%AF%AD%E6%B3%95%E5%88%B6%E5%AF%BC%E5%92%8C%E7%BF%BB%E8%AF%91%E6%8A%80%E6%9C%AF/image-5.png&#34;
+	width=&#34;1583&#34;
+	height=&#34;589&#34;
+	srcset=&#34;https://invalidval.github.io/p/chapter-5-%E8%AF%AD%E6%B3%95%E5%88%B6%E5%AF%BC%E5%92%8C%E7%BF%BB%E8%AF%91%E6%8A%80%E6%9C%AF/image-5_hu_b0c7bd15f5ee6b7.png 480w, https://invalidval.github.io/p/chapter-5-%E8%AF%AD%E6%B3%95%E5%88%B6%E5%AF%BC%E5%92%8C%E7%BF%BB%E8%AF%91%E6%8A%80%E6%9C%AF/image-5_hu_6009343ecf976c26.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;举例&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;268&#34;
+		data-flex-basis=&#34;645px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;3-拓扑排序&#34;&gt;3. 拓扑排序
+&lt;/h2&gt;&lt;p&gt;由前指向后&lt;/p&gt;
+&lt;h2 id=&#34;4-s-l属性定义&#34;&gt;4. S L属性定义
+&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://invalidval.github.io/p/chapter-5-%E8%AF%AD%E6%B3%95%E5%88%B6%E5%AF%BC%E5%92%8C%E7%BF%BB%E8%AF%91%E6%8A%80%E6%9C%AF/image-6.png&#34;
+	width=&#34;1476&#34;
+	height=&#34;570&#34;
+	srcset=&#34;https://invalidval.github.io/p/chapter-5-%E8%AF%AD%E6%B3%95%E5%88%B6%E5%AF%BC%E5%92%8C%E7%BF%BB%E8%AF%91%E6%8A%80%E6%9C%AF/image-6_hu_9763efd6ca23aa69.png 480w, https://invalidval.github.io/p/chapter-5-%E8%AF%AD%E6%B3%95%E5%88%B6%E5%AF%BC%E5%92%8C%E7%BF%BB%E8%AF%91%E6%8A%80%E6%9C%AF/image-6_hu_cf97421a2cd73f6a.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;两种属性&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;258&#34;
+		data-flex-basis=&#34;621px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;注意，Xj的继承属性不能依赖于其右边的符号！&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://invalidval.github.io/p/chapter-5-%E8%AF%AD%E6%B3%95%E5%88%B6%E5%AF%BC%E5%92%8C%E7%BF%BB%E8%AF%91%E6%8A%80%E6%9C%AF/image-7.png&#34;
+	width=&#34;478&#34;
+	height=&#34;464&#34;
+	srcset=&#34;https://invalidval.github.io/p/chapter-5-%E8%AF%AD%E6%B3%95%E5%88%B6%E5%AF%BC%E5%92%8C%E7%BF%BB%E8%AF%91%E6%8A%80%E6%9C%AF/image-7_hu_42316beb421390ef.png 480w, https://invalidval.github.io/p/chapter-5-%E8%AF%AD%E6%B3%95%E5%88%B6%E5%AF%BC%E5%92%8C%E7%BF%BB%E8%AF%91%E6%8A%80%E6%9C%AF/image-7_hu_d770a4040538eba4.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;非L属性例子&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;103&#34;
+		data-flex-basis=&#34;247px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;5-翻译方案&#34;&gt;5. 翻译方案
+&lt;/h2&gt;&lt;p&gt;对于S属性，把这个动作放在相应的产生式右边末尾&lt;/p&gt;
+&lt;p&gt;对于L属性，动作不能引用其右边文法符号的综合属性，左部符号的综合属性应放在产生式右端末尾；右部某符号的继承属性必须放在这个符号之前&lt;/p&gt;
+&lt;h2 id=&#34;s属性的自底向上实现&#34;&gt;S属性的自底向上实现
+&lt;/h2&gt;</description>
+        </item>
+        
+    </channel>
+</rss>

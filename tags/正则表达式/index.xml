@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>正则表达式 on zcys univ II Hugo ver</title>
+        <link>https://invalidval.github.io/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/</link>
+        <description>Recent content in 正则表达式 on zcys univ II Hugo ver</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <copyright>© 2020-2027 zcys</copyright>
+        <lastBuildDate>Tue, 04 Nov 2025 00:00:00 +0800</lastBuildDate><atom:link href="https://invalidval.github.io/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Chapter 2 形式语言与自动机基础 </title>
+        <link>https://invalidval.github.io/p/chapter-2-%E5%BD%A2%E5%BC%8F%E8%AF%AD%E8%A8%80%E4%B8%8E%E8%87%AA%E5%8A%A8%E6%9C%BA%E5%9F%BA%E7%A1%80/</link>
+        <pubDate>Tue, 04 Nov 2025 00:00:00 +0800</pubDate>
+        
+        <guid>https://invalidval.github.io/p/chapter-2-%E5%BD%A2%E5%BC%8F%E8%AF%AD%E8%A8%80%E4%B8%8E%E8%87%AA%E5%8A%A8%E6%9C%BA%E5%9F%BA%E7%A1%80/</guid>
+        <description>&lt;img src="https://invalidval.github.io/p/chapter-2-%E5%BD%A2%E5%BC%8F%E8%AF%AD%E8%A8%80%E4%B8%8E%E8%87%AA%E5%8A%A8%E6%9C%BA%E5%9F%BA%E7%A1%80/cp2.png" alt="Featured image of post Chapter 2 形式语言与自动机基础 " /&gt;&lt;h1 id=&#34;chapter-2-形式语言与自动机基础&#34;&gt;Chapter 2 形式语言与自动机基础
+&lt;/h1&gt;&lt;span class=&#34;spoiler&#34; &gt;真TMD气死老子了，考这个b编译原理期中，其他题一分没扣，就这b自动机两个大题几乎分扣完了，CTMD，SB自动机，编译原理你考自动机还考两个是吧，害老子白丢2分总分，正则文法有你这么诡异的吗？？？你看看往年题呢？？&lt;/span&gt;
+&lt;style&gt;
+
+.spoiler { 
+  color: black; 
+  background-color:black;
+}
+.spoiler:hover{
+  color: white;
+}
+&lt;/style&gt;
+
+&lt;p&gt;自动机是非常好的发明，在编译原理中有重要作用，我们一定要学好自动机理论&lt;/p&gt;
+&lt;h2 id=&#34;大水课の-复习&#34;&gt;「大水课」の 复习
+&lt;/h2&gt;&lt;p&gt;与这学期有关的自动机理论减少到了正则文法和有限自动机，而且考试还考的是确定有限自动机DFA。&lt;/p&gt;
+&lt;h2 id=&#34;语言和文法&#34;&gt;语言和文法
+&lt;/h2&gt;&lt;p&gt;分清0型、1型、2型、3型。&lt;/p&gt;
+&lt;p&gt;2型是CFG，3型是「正规文法」「线性文法」，所产生的语言叫「正规语言」&lt;/p&gt;
+&lt;p&gt;所以我们一定要上正规大学&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://invalidval.github.io/p/chapter-2-%E5%BD%A2%E5%BC%8F%E8%AF%AD%E8%A8%80%E4%B8%8E%E8%87%AA%E5%8A%A8%E6%9C%BA%E5%9F%BA%E7%A1%80/image.png&#34;
+	width=&#34;1500&#34;
+	height=&#34;150&#34;
+	srcset=&#34;https://invalidval.github.io/p/chapter-2-%E5%BD%A2%E5%BC%8F%E8%AF%AD%E8%A8%80%E4%B8%8E%E8%87%AA%E5%8A%A8%E6%9C%BA%E5%9F%BA%E7%A1%80/image_hu_8d6896b7428e8858.png 480w, https://invalidval.github.io/p/chapter-2-%E5%BD%A2%E5%BC%8F%E8%AF%AD%E8%A8%80%E4%B8%8E%E8%87%AA%E5%8A%A8%E6%9C%BA%E5%9F%BA%E7%A1%80/image_hu_f3af741520d496ec.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;其实正则和正规是一个意思&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;1000&#34;
+		data-flex-basis=&#34;2400px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;正规文法在所有产生式的右侧，最多只有一个非终结符，并且如果存在，它必须出现在最右端。&lt;/p&gt;
+&lt;p&gt;至于左线性文法，构造出的DFA是镜像的，我们不管它。&lt;/p&gt;
+&lt;h2 id=&#34;文法变换&#34;&gt;文法变换
+&lt;/h2&gt;&lt;h3 id=&#34;消除二义性&#34;&gt;消除二义性
+&lt;/h3&gt;&lt;h3 id=&#34;消除左递归&#34;&gt;消除左递归
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;自顶向下&lt;/strong&gt;的语法分析不能识别左递归文法&lt;/p&gt;
+&lt;h3 id=&#34;提取左公因子&#34;&gt;提取左公因子
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;预测分析法&lt;/strong&gt;不能识别左公因子文法，在填预测分析表时会出现多重表项
+&lt;strong&gt;总之，消除左递归和提取左公因子只有改写为LL(1)文法时才需要！！&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id=&#34;正规文法与有限自动机的等价性&#34;&gt;正规文法与有限自动机的等价性
+&lt;/h2&gt;&lt;p&gt;实际上主要考右线性文法与确定有限自动机(DFA)的等价性&lt;/p&gt;
+&lt;p&gt;定理2.3 对每一个右线性文法G或左线性文法G，都存在一个等价的有限自动机M&lt;/p&gt;
+&lt;p&gt;定理2.4 对每一个DFA M，对存在一个等价的右线性文法G和一个等价的左线性文法G&#39;&lt;/p&gt;
+&lt;p&gt;推论2 对任何一个有限自动机M，对存在一个等价的正规文法G，反之亦然&lt;/p&gt;
+&lt;p&gt;推论3 对任何一个右线性文法G，都存在一个等价的左线性文法G&amp;rsquo;，反之亦然&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;右线性文法 -&amp;gt; 有限自动机（不一定是DFA）&lt;/strong&gt;：
+这是非常简单的，因为只管将B-&amp;gt;aB写成$\delta(B,a) = {B}$就行了，注意只有终结符的对应终结状态。但这不一定是确定的！！！&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;有限自动机（不一定是DFA）-&amp;gt; 右线性文法&lt;/strong&gt;  ：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://invalidval.github.io/p/chapter-2-%E5%BD%A2%E5%BC%8F%E8%AF%AD%E8%A8%80%E4%B8%8E%E8%87%AA%E5%8A%A8%E6%9C%BA%E5%9F%BA%E7%A1%80/image-2.png&#34;
+	width=&#34;783&#34;
+	height=&#34;453&#34;
+	srcset=&#34;https://invalidval.github.io/p/chapter-2-%E5%BD%A2%E5%BC%8F%E8%AF%AD%E8%A8%80%E4%B8%8E%E8%87%AA%E5%8A%A8%E6%9C%BA%E5%9F%BA%E7%A1%80/image-2_hu_8e977b25458bd826.png 480w, https://invalidval.github.io/p/chapter-2-%E5%BD%A2%E5%BC%8F%E8%AF%AD%E8%A8%80%E4%B8%8E%E8%87%AA%E5%8A%A8%E6%9C%BA%E5%9F%BA%E7%A1%80/image-2_hu_99ab6e32fd0ed752.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;原题给出的自动机&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;172&#34;
+		data-flex-basis=&#34;414px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;按左侧写法空串消不完全就导致了B状态少识别一个0?是这个原因吗？一点也不直观，操&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://invalidval.github.io/p/chapter-2-%E5%BD%A2%E5%BC%8F%E8%AF%AD%E8%A8%80%E4%B8%8E%E8%87%AA%E5%8A%A8%E6%9C%BA%E5%9F%BA%E7%A1%80/image-1.png&#34;
+	width=&#34;1656&#34;
+	height=&#34;795&#34;
+	srcset=&#34;https://invalidval.github.io/p/chapter-2-%E5%BD%A2%E5%BC%8F%E8%AF%AD%E8%A8%80%E4%B8%8E%E8%87%AA%E5%8A%A8%E6%9C%BA%E5%9F%BA%E7%A1%80/image-1_hu_bd8ec59927746c97.png 480w, https://invalidval.github.io/p/chapter-2-%E5%BD%A2%E5%BC%8F%E8%AF%AD%E8%A8%80%E4%B8%8E%E8%87%AA%E5%8A%A8%E6%9C%BA%E5%9F%BA%E7%A1%80/image-1_hu_76a7e7d149daa0f5.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;期中第二题&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;208&#34;
+		data-flex-basis=&#34;499px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;有限自动机 -&amp;gt; 正规表达式&lt;/strong&gt;：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;正规表达式 -&amp;gt; 有限自动机&lt;/strong&gt;：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;正规表达式 -&amp;gt; 正规文法&lt;/strong&gt;：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;正规文法 -&amp;gt; 正规表达式&lt;/strong&gt;：&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="讲什么了 语法制导定义和翻译方案\nS属性定义的自底向上实现\nL属性定义的自底向上实现\n关键概念 综合属性 继承属性 S属性定义和L属性定义的LR分析实现 翻译思路 根据翻译目标确定产生式的语义（含义） 根据产生式的含义，分析，每个符号的语义 把语义以属性的形式附加到相应文法符号上 设计语义规则，从而形成语法制导定义 翻译目标决定语义规则，翻译结果依赖于语义规则\n翻译目标-&gt;语义规则-&gt;翻译结果\n把语义动作插入到产生式的适当位置，形成翻译方案\n翻译方案规定了语义动作的执行时机\n语法制导翻译的一般步骤 1. 语法制导定义 综合属性：\n产生式左部符号的综合属性是从该产生式右部文法符号的属性值计算出来的；\n在分析树中，一个内部结点的综合属性是从其子结点的属性值计算出来的。\n虚拟综合属性：将过程调用或程序段（print）的语义规则看成左部的虚拟综合属性\n继承属性： 产生式右部某文法符号的继承属性是从其所在产生式的左部符号和/或右部文法符号的属性值计算出来的；\n在分析树中，一个结点的继承属性是从其父结点和/或兄弟结点的属性值计算出来的。\n2. 依赖图 3. 拓扑排序 由前指向后\n">
+<title>Chapter 5 语法制导和翻译技术</title>
+
+<link rel='canonical' href='https://invalidval.github.io/p/chapter-5-%E8%AF%AD%E6%B3%95%E5%88%B6%E5%AF%BC%E5%92%8C%E7%BF%BB%E8%AF%91%E6%8A%80%E6%9C%AF/'>
+
+<link rel="stylesheet" href="/scss/style.min.39298367ffd71577271c5d1dcc9776d7b36a9e4a7ea9e50e8211affeb981df21.css"><meta property='og:title' content="Chapter 5 语法制导和翻译技术">
+<meta property='og:description' content="讲什么了 语法制导定义和翻译方案\nS属性定义的自底向上实现\nL属性定义的自底向上实现\n关键概念 综合属性 继承属性 S属性定义和L属性定义的LR分析实现 翻译思路 根据翻译目标确定产生式的语义（含义） 根据产生式的含义，分析，每个符号的语义 把语义以属性的形式附加到相应文法符号上 设计语义规则，从而形成语法制导定义 翻译目标决定语义规则，翻译结果依赖于语义规则\n翻译目标-&gt;语义规则-&gt;翻译结果\n把语义动作插入到产生式的适当位置，形成翻译方案\n翻译方案规定了语义动作的执行时机\n语法制导翻译的一般步骤 1. 语法制导定义 综合属性：\n产生式左部符号的综合属性是从该产生式右部文法符号的属性值计算出来的；\n在分析树中，一个内部结点的综合属性是从其子结点的属性值计算出来的。\n虚拟综合属性：将过程调用或程序段（print）的语义规则看成左部的虚拟综合属性\n继承属性： 产生式右部某文法符号的继承属性是从其所在产生式的左部符号和/或右部文法符号的属性值计算出来的；\n在分析树中，一个结点的继承属性是从其父结点和/或兄弟结点的属性值计算出来的。\n2. 依赖图 3. 拓扑排序 由前指向后\n">
+<meta property='og:url' content='https://invalidval.github.io/p/chapter-5-%E8%AF%AD%E6%B3%95%E5%88%B6%E5%AF%BC%E5%92%8C%E7%BF%BB%E8%AF%91%E6%8A%80%E6%9C%AF/'>
+<meta property='og:site_name' content='zcys univ II Hugo ver'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='翻译' /><meta property='article:published_time' content='2025-11-15T00:00:00&#43;08:00'/><meta property='article:modified_time' content='2025-11-15T00:00:00&#43;08:00'/><meta property='og:image' content='https://invalidval.github.io/p/chapter-5-%E8%AF%AD%E6%B3%95%E5%88%B6%E5%AF%BC%E5%92%8C%E7%BF%BB%E8%AF%91%E6%8A%80%E6%9C%AF/cp5.png' />
+<meta name="twitter:title" content="Chapter 5 语法制导和翻译技术">
+<meta name="twitter:description" content="讲什么了 语法制导定义和翻译方案\nS属性定义的自底向上实现\nL属性定义的自底向上实现\n关键概念 综合属性 继承属性 S属性定义和L属性定义的LR分析实现 翻译思路 根据翻译目标确定产生式的语义（含义） 根据产生式的含义，分析，每个符号的语义 把语义以属性的形式附加到相应文法符号上 设计语义规则，从而形成语法制导定义 翻译目标决定语义规则，翻译结果依赖于语义规则\n翻译目标-&gt;语义规则-&gt;翻译结果\n把语义动作插入到产生式的适当位置，形成翻译方案\n翻译方案规定了语义动作的执行时机\n语法制导翻译的一般步骤 1. 语法制导定义 综合属性：\n产生式左部符号的综合属性是从该产生式右部文法符号的属性值计算出来的；\n在分析树中，一个内部结点的综合属性是从其子结点的属性值计算出来的。\n虚拟综合属性：将过程调用或程序段（print）的语义规则看成左部的虚拟综合属性\n继承属性： 产生式右部某文法符号的继承属性是从其所在产生式的左部符号和/或右部文法符号的属性值计算出来的；\n在分析树中，一个结点的继承属性是从其父结点和/或兄弟结点的属性值计算出来的。\n2. 依赖图 3. 拓扑排序 由前指向后\n"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://invalidval.github.io/p/chapter-5-%E8%AF%AD%E6%B3%95%E5%88%B6%E5%AF%BC%E5%92%8C%E7%BF%BB%E8%AF%91%E6%8A%80%E6%9C%AF/cp5.png' />
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu_42b13e7dece29f43.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🐲</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">zcys univ II Hugo ver</a></h1>
+            <h2 class="site-description">We won&#39;t give up, we won&#39;t forget</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com/CaiJimmy/hugo-theme-stack'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com'
+                        target="_blank"
+                        title="Twitter"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%85%B3%E4%BA%8E%E6%88%91/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+        <li  class='current' >
+            <a href='/post/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                
+                <span>Posts</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Links</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+                    
+                        <li id="i18n-switch">  
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                            <select name="language" title="language" onchange="window.location.href = this.selectedOptions[0].value">
+                                
+                                    <option value="https://invalidval.github.io/" selected>English</option>
+                                
+                                    <option value="https://invalidval.github.io/zh-cn/" >中文</option>
+                                
+                                    <option value="https://invalidval.github.io/ar/" >عربي</option>
+                                
+                            </select>
+                        </li>
+                    
+                
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>Dark Mode</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#讲什么了">讲什么了</a></li>
+    <li><a href="#关键概念">关键概念</a></li>
+    <li><a href="#翻译思路">翻译思路</a></li>
+    <li><a href="#语法制导翻译的一般步骤">语法制导翻译的一般步骤</a></li>
+    <li><a href="#1-语法制导定义">1. 语法制导定义</a></li>
+    <li><a href="#2-依赖图">2. 依赖图</a></li>
+    <li><a href="#3-拓扑排序">3. 拓扑排序</a></li>
+    <li><a href="#4-s-l属性定义">4. S L属性定义</a></li>
+    <li><a href="#5-翻译方案">5. 翻译方案</a></li>
+    <li><a href="#s属性的自底向上实现">S属性的自底向上实现</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+
+    
+    
+<nav class="post-navigation">
+    <div class="nav-links">
+        
+	
+        <div class="nav-previous">
+            <a href="/p/chapter-4-%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90/" rel="prev">
+                <span class="nav-arrow">←</span>
+                <div class="nav-content">
+                    <span class="nav-label">上一篇文章</span>
+                    <span class="nav-title">Chapter 4 语法分析</span>
+                </div>
+            </a>
+        </div>
+        
+    
+    </div>
+</nav>
+
+<style>
+.post-navigation {
+    margin: 3rem 0;
+    border-top: 1px solid #eaeaea;
+    padding-top: 2rem;
+}
+
+.nav-links {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.nav-previous, .nav-next {
+    display: flex;
+}
+
+.nav-previous a, .nav-next a {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    border: 1px solid #eaeaea;
+    border-radius: 8px;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.2s ease;
+    flex: 1;
+}
+
+.nav-previous a:hover, .nav-next a:hover {
+    border-color: #007acc;
+    background-color: #f8f9fa;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.nav-previous a {
+    text-align: left;
+}
+
+.nav-next a {
+    text-align: right;
+    flex-direction: row-reverse;
+}
+
+.nav-arrow {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #007acc;
+    margin: 0 0.5rem;
+}
+
+.nav-content {
+    flex: 1;
+}
+
+.nav-label {
+    display: block;
+    font-size: 0.875rem;
+    color: #666;
+    margin-bottom: 0.25rem;
+}
+
+.nav-title {
+    display: block;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+ 
+@media (max-width: 768px) {
+    .nav-links {
+        grid-template-columns: 1fr;
+    }
+    
+    .nav-title {
+        font-size: 0.9rem;
+    }
+}
+</style>
+
+    
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/chapter-5-%E8%AF%AD%E6%B3%95%E5%88%B6%E5%AF%BC%E5%92%8C%E7%BF%BB%E8%AF%91%E6%8A%80%E6%9C%AF/">
+                <img src="/p/chapter-5-%E8%AF%AD%E6%B3%95%E5%88%B6%E5%AF%BC%E5%92%8C%E7%BF%BB%E8%AF%91%E6%8A%80%E6%9C%AF/cp5_hu_ad25de27e3143e88.png"
+                        srcset="/p/chapter-5-%E8%AF%AD%E6%B3%95%E5%88%B6%E5%AF%BC%E5%92%8C%E7%BF%BB%E8%AF%91%E6%8A%80%E6%9C%AF/cp5_hu_ad25de27e3143e88.png 800w, /p/chapter-5-%E8%AF%AD%E6%B3%95%E5%88%B6%E5%AF%BC%E5%92%8C%E7%BF%BB%E8%AF%91%E6%8A%80%E6%9C%AF/cp5_hu_b52a0b5964942012.png 1600w"
+                        width="800" 
+                        height="452" 
+                        loading="lazy"
+                        alt="Featured image of post Chapter 5 语法制导和翻译技术" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/cp/" style="background-color: #2a9d8f; color: #fff;">
+                编译原理
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/chapter-5-%E8%AF%AD%E6%B3%95%E5%88%B6%E5%AF%BC%E5%92%8C%E7%BF%BB%E8%AF%91%E6%8A%80%E6%9C%AF/">Chapter 5 语法制导和翻译技术</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Nov 15, 2025</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    1 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h2 id="讲什么了">讲什么了
+</h2><p>语法制导定义和翻译方案</p>
+<p>S属性定义的自底向上实现</p>
+<p>L属性定义的自底向上实现</p>
+<h2 id="关键概念">关键概念
+</h2><ol>
+<li>综合属性</li>
+<li>继承属性</li>
+<li>S属性定义和L属性定义的LR分析实现</li>
+</ol>
+<h2 id="翻译思路">翻译思路
+</h2><ol>
+<li>根据翻译目标确定产生式的语义（含义）</li>
+<li>根据产生式的含义，分析，每个符号的语义</li>
+<li>把语义以属性的形式附加到相应文法符号上</li>
+<li>设计语义规则，从而形成语法制导定义</li>
+</ol>
+<p><strong>翻译目标决定语义规则，翻译结果依赖于语义规则</strong></p>
+<p>翻译目标-&gt;语义规则-&gt;翻译结果</p>
+<p><strong>把语义动作插入到产生式的适当位置，形成翻译方案</strong></p>
+<p>翻译方案规定了语义动作的执行时机</p>
+<h2 id="语法制导翻译的一般步骤">语法制导翻译的一般步骤
+</h2><p><img src="/p/chapter-5-%E8%AF%AD%E6%B3%95%E5%88%B6%E5%AF%BC%E5%92%8C%E7%BF%BB%E8%AF%91%E6%8A%80%E6%9C%AF/image.png"
+	width="846"
+	height="270"
+	srcset="/p/chapter-5-%E8%AF%AD%E6%B3%95%E5%88%B6%E5%AF%BC%E5%92%8C%E7%BF%BB%E8%AF%91%E6%8A%80%E6%9C%AF/image_hu_cbace78a818c075.png 480w, /p/chapter-5-%E8%AF%AD%E6%B3%95%E5%88%B6%E5%AF%BC%E5%92%8C%E7%BF%BB%E8%AF%91%E6%8A%80%E6%9C%AF/image_hu_7e6a74ae82c09eaa.png 1024w"
+	loading="lazy"
+	
+		alt="翻译步骤"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="313"
+		data-flex-basis="752px"
+	
+></p>
+<h2 id="1-语法制导定义">1. 语法制导定义
+</h2><p><img src="/p/chapter-5-%E8%AF%AD%E6%B3%95%E5%88%B6%E5%AF%BC%E5%92%8C%E7%BF%BB%E8%AF%91%E6%8A%80%E6%9C%AF/image-1.png"
+	width="1539"
+	height="655"
+	srcset="/p/chapter-5-%E8%AF%AD%E6%B3%95%E5%88%B6%E5%AF%BC%E5%92%8C%E7%BF%BB%E8%AF%91%E6%8A%80%E6%9C%AF/image-1_hu_c3110237a0bc4d.png 480w, /p/chapter-5-%E8%AF%AD%E6%B3%95%E5%88%B6%E5%AF%BC%E5%92%8C%E7%BF%BB%E8%AF%91%E6%8A%80%E6%9C%AF/image-1_hu_e60646e51d628cee.png 1024w"
+	loading="lazy"
+	
+		alt="没看懂汉字"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="234"
+		data-flex-basis="563px"
+	
+></p>
+<p><img src="/p/chapter-5-%E8%AF%AD%E6%B3%95%E5%88%B6%E5%AF%BC%E5%92%8C%E7%BF%BB%E8%AF%91%E6%8A%80%E6%9C%AF/image-2.png"
+	width="1590"
+	height="865"
+	srcset="/p/chapter-5-%E8%AF%AD%E6%B3%95%E5%88%B6%E5%AF%BC%E5%92%8C%E7%BF%BB%E8%AF%91%E6%8A%80%E6%9C%AF/image-2_hu_f37126c6955f899f.png 480w, /p/chapter-5-%E8%AF%AD%E6%B3%95%E5%88%B6%E5%AF%BC%E5%92%8C%E7%BF%BB%E8%AF%91%E6%8A%80%E6%9C%AF/image-2_hu_958aad26ef34b31.png 1024w"
+	loading="lazy"
+	
+		alt="继续"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="183"
+		data-flex-basis="441px"
+	
+></p>
+<p><strong>综合属性</strong>：</p>
+<p>产生式左部符号的综合属性是从该产生式右部文法符号的属性值计算出来的；</p>
+<p>在分析树中，一个内部结点的综合属性是从其子结点的属性值计算出来的。</p>
+<p>虚拟综合属性：将过程调用或程序段（print）的语义规则看成左部的虚拟综合属性</p>
+<p><strong>继承属性</strong>：
+产生式右部某文法符号的继承属性是从其所在产生式的左部符号和/或右部文法符号的属性值计算出来的；</p>
+<p><img src="/p/chapter-5-%E8%AF%AD%E6%B3%95%E5%88%B6%E5%AF%BC%E5%92%8C%E7%BF%BB%E8%AF%91%E6%8A%80%E6%9C%AF/image-3.png"
+	width="419"
+	height="55"
+	srcset="/p/chapter-5-%E8%AF%AD%E6%B3%95%E5%88%B6%E5%AF%BC%E5%92%8C%E7%BF%BB%E8%AF%91%E6%8A%80%E6%9C%AF/image-3_hu_2419d5f41adfaec1.png 480w, /p/chapter-5-%E8%AF%AD%E6%B3%95%E5%88%B6%E5%AF%BC%E5%92%8C%E7%BF%BB%E8%AF%91%E6%8A%80%E6%9C%AF/image-3_hu_fded2dfddfd5f09f.png 1024w"
+	loading="lazy"
+	
+		alt="继承属性"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="761"
+		data-flex-basis="1828px"
+	
+></p>
+<p><img src="/p/chapter-5-%E8%AF%AD%E6%B3%95%E5%88%B6%E5%AF%BC%E5%92%8C%E7%BF%BB%E8%AF%91%E6%8A%80%E6%9C%AF/image-4.png"
+	width="649"
+	height="95"
+	srcset="/p/chapter-5-%E8%AF%AD%E6%B3%95%E5%88%B6%E5%AF%BC%E5%92%8C%E7%BF%BB%E8%AF%91%E6%8A%80%E6%9C%AF/image-4_hu_47a250707262868c.png 480w, /p/chapter-5-%E8%AF%AD%E6%B3%95%E5%88%B6%E5%AF%BC%E5%92%8C%E7%BF%BB%E8%AF%91%E6%8A%80%E6%9C%AF/image-4_hu_147e12000a5c163b.png 1024w"
+	loading="lazy"
+	
+		alt="继承属性-1"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="683"
+		data-flex-basis="1639px"
+	
+></p>
+<p>在分析树中，一个结点的继承属性是从其父结点和/或兄弟结点的属性值计算出来的。</p>
+<h2 id="2-依赖图">2. 依赖图
+</h2><p><img src="/p/chapter-5-%E8%AF%AD%E6%B3%95%E5%88%B6%E5%AF%BC%E5%92%8C%E7%BF%BB%E8%AF%91%E6%8A%80%E6%9C%AF/image-5.png"
+	width="1583"
+	height="589"
+	srcset="/p/chapter-5-%E8%AF%AD%E6%B3%95%E5%88%B6%E5%AF%BC%E5%92%8C%E7%BF%BB%E8%AF%91%E6%8A%80%E6%9C%AF/image-5_hu_b0c7bd15f5ee6b7.png 480w, /p/chapter-5-%E8%AF%AD%E6%B3%95%E5%88%B6%E5%AF%BC%E5%92%8C%E7%BF%BB%E8%AF%91%E6%8A%80%E6%9C%AF/image-5_hu_6009343ecf976c26.png 1024w"
+	loading="lazy"
+	
+		alt="举例"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="268"
+		data-flex-basis="645px"
+	
+></p>
+<h2 id="3-拓扑排序">3. 拓扑排序
+</h2><p>由前指向后</p>
+<h2 id="4-s-l属性定义">4. S L属性定义
+</h2><p><img src="/p/chapter-5-%E8%AF%AD%E6%B3%95%E5%88%B6%E5%AF%BC%E5%92%8C%E7%BF%BB%E8%AF%91%E6%8A%80%E6%9C%AF/image-6.png"
+	width="1476"
+	height="570"
+	srcset="/p/chapter-5-%E8%AF%AD%E6%B3%95%E5%88%B6%E5%AF%BC%E5%92%8C%E7%BF%BB%E8%AF%91%E6%8A%80%E6%9C%AF/image-6_hu_9763efd6ca23aa69.png 480w, /p/chapter-5-%E8%AF%AD%E6%B3%95%E5%88%B6%E5%AF%BC%E5%92%8C%E7%BF%BB%E8%AF%91%E6%8A%80%E6%9C%AF/image-6_hu_cf97421a2cd73f6a.png 1024w"
+	loading="lazy"
+	
+		alt="两种属性"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="258"
+		data-flex-basis="621px"
+	
+></p>
+<p><strong>注意，Xj的继承属性不能依赖于其右边的符号！</strong></p>
+<p><img src="/p/chapter-5-%E8%AF%AD%E6%B3%95%E5%88%B6%E5%AF%BC%E5%92%8C%E7%BF%BB%E8%AF%91%E6%8A%80%E6%9C%AF/image-7.png"
+	width="478"
+	height="464"
+	srcset="/p/chapter-5-%E8%AF%AD%E6%B3%95%E5%88%B6%E5%AF%BC%E5%92%8C%E7%BF%BB%E8%AF%91%E6%8A%80%E6%9C%AF/image-7_hu_42316beb421390ef.png 480w, /p/chapter-5-%E8%AF%AD%E6%B3%95%E5%88%B6%E5%AF%BC%E5%92%8C%E7%BF%BB%E8%AF%91%E6%8A%80%E6%9C%AF/image-7_hu_d770a4040538eba4.png 1024w"
+	loading="lazy"
+	
+		alt="非L属性例子"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="103"
+		data-flex-basis="247px"
+	
+></p>
+<h2 id="5-翻译方案">5. 翻译方案
+</h2><p>对于S属性，把这个动作放在相应的产生式右边末尾</p>
+<p>对于L属性，动作不能引用其右边文法符号的综合属性，左部符号的综合属性应放在产生式右端末尾；右部某符号的继承属性必须放在这个符号之前</p>
+<h2 id="s属性的自底向上实现">S属性的自底向上实现
+</h2>
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/%E7%BF%BB%E8%AF%91/">翻译</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Related content</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/p/chapter-4-%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Chapter 4 语法分析</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/chapter-2-%E5%BD%A2%E5%BC%8F%E8%AF%AD%E8%A8%80%E4%B8%8E%E8%87%AA%E5%8A%A8%E6%9C%BA%E5%9F%BA%E7%A1%80/">
+        
+        
+            <div class="article-image">
+                <img src="/p/chapter-2-%E5%BD%A2%E5%BC%8F%E8%AF%AD%E8%A8%80%E4%B8%8E%E8%87%AA%E5%8A%A8%E6%9C%BA%E5%9F%BA%E7%A1%80/cp2.2a71cfb1da370d380fb3706a34b6b618_hu_b6b694e7907102cc.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Chapter 2 形式语言与自动机基础 "
+                        
+                        data-hash="md5-KnHPsdo3DTgPs3BqNLa2GA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Chapter 2 形式语言与自动机基础 </h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <script
+    src="https://giscus.app/client.js"
+    data-repo="invalidval/invalidval.github.io"
+    data-repo-id="R_kgDONxCpDQ"
+    data-category="Announcements"
+    data-category-id="DIC_kwDONxCpDc4CxrD4"
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="top"
+    data-theme="light"
+    data-lang="en"
+    data-loading=""
+    crossorigin="anonymous"
+    async
+></script>
+<script>
+    function setGiscusTheme(theme) {
+        let giscus = document.querySelector("iframe.giscus-frame");
+        if (giscus) {
+            giscus.contentWindow.postMessage(
+                {
+                    giscus: {
+                        setConfig: {
+                            theme: theme,
+                        },
+                    },
+                },
+                "https://giscus.app"
+            );
+        }
+    }
+
+    (function () {
+        addEventListener("message", (e) => {
+            if (event.origin !== "https://giscus.app") return;
+            handler();
+        });
+        window.addEventListener("onColorSchemeChange", handler);
+
+        function handler() {
+            if (document.documentElement.dataset.scheme === "light") {
+                setGiscusTheme('light');
+            } else {
+                setGiscusTheme('dark_dimmed');
+            }
+        }
+    })();
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2026 © 2020-2027 zcys
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.31.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+    
+
+            </main>
+        </div>
+        
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.1e9a3bafd846ced4c345d084b355fb8c7bae75701c338f8a1f8a82c780137826.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+
+    </body>
+
+</html>
+

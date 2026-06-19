@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en-us" dir="ltr">
     <head><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="SQL 语法 SELECT distinct 去重 1 2 select `distinct/all` dept_name from instructor 四则运算和重命名 1 select ID, name, salary/12 as monthly_salary FROM natural join 自然连接 1 2 3 4 select name, course_id from instructor natural join teaches where instructor. dept_name = ‘Art’ // 等价于加上 where instructor.ID = teaches.ID and WHERE SQL allows the use of the logical connectives and, or, and not The operands of the logical connectives can be expressions involving the comparison operators &lt;, &lt;=, &gt;, &gt;=, =, and &lt;&gt;.（以及between A and B 用法）\n">
 <title>Chapter3 Intro-to-SQL</title>
 
 <link rel='canonical' href='https://invalidval.github.io/p/chapter3-intro-to-sql/'>
 
-<link rel="stylesheet" href="/scss/style.min.daa55b48e67dc978a42506ccd9f4d2d2cdf1b07a1b561a4e034dcb834320f94a.css"><meta property='og:title' content="Chapter3 Intro-to-SQL">
+<link rel="stylesheet" href="/scss/style.min.39298367ffd71577271c5d1dcc9776d7b36a9e4a7ea9e50e8211affeb981df21.css"><meta property='og:title' content="Chapter3 Intro-to-SQL">
 <meta property='og:description' content="SQL 语法 SELECT distinct 去重 1 2 select `distinct/all` dept_name from instructor 四则运算和重命名 1 select ID, name, salary/12 as monthly_salary FROM natural join 自然连接 1 2 3 4 select name, course_id from instructor natural join teaches where instructor. dept_name = ‘Art’ // 等价于加上 where instructor.ID = teaches.ID and WHERE SQL allows the use of the logical connectives and, or, and not The operands of the logical connectives can be expressions involving the comparison operators &lt;, &lt;=, &gt;, &gt;=, =, and &lt;&gt;.（以及between A and B 用法）\n">
 <meta property='og:url' content='https://invalidval.github.io/p/chapter3-intro-to-sql/'>
 <meta property='og:site_name' content='zcys univ II Hugo ver'>
@@ -56,13 +56,13 @@
                     
                     
                         
-                        <img src="/img/avatar_hu_c666be78737d2f33.png" width="300"
+                        <img src="/img/avatar_hu_42b13e7dece29f43.png" width="300"
                             height="300" class="site-logo" loading="lazy" alt="Avatar">
                     
                 
                 </a>
                 
-                    <span class="emoji">🍥</span>
+                    <span class="emoji">🐲</span>
                 
             </figure>
             
@@ -70,7 +70,7 @@
         
         <div class="site-meta">
             <h1 class="site-name"><a href="/">zcys univ II Hugo ver</a></h1>
-            <h2 class="site-description">zcys univ II Hugo ver</h2>
+            <h2 class="site-description">We won&#39;t give up, we won&#39;t forget</h2>
         </div>
     </header><ol class="menu-social">
             
@@ -530,7 +530,7 @@
 </h2><p><img src="/p/chapter3-intro-to-sql/syntax.png"
 	width="1674"
 	height="948"
-	srcset="/p/chapter3-intro-to-sql/syntax_hu_5deb6cede58b4266.png 480w, /p/chapter3-intro-to-sql/syntax_hu_f7b2ba22d94ae1ca.png 1024w"
+	srcset="/p/chapter3-intro-to-sql/syntax_hu_298f7e5862e0f3bd.png 480w, /p/chapter3-intro-to-sql/syntax_hu_84f7c28fe6457cd4.png 1024w"
 	loading="lazy"
 	
 		alt="alt text"
@@ -550,7 +550,7 @@
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-SQL" data-lang="SQL"><span class="line"><span class="cl"><span class="k">select</span><span class="w"> </span><span class="o">`</span><span class="k">distinct</span><span class="o">/</span><span class="k">all</span><span class="o">`</span><span class="w"> </span><span class="n">dept_name</span><span class="w"> 
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">from</span><span class="w"> </span><span class="n">instructor</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">from</span><span class="w"> </span><span class="n">instructor</span><span class="w">
 </span></span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="四则运算和重命名">四则运算和重命名
@@ -573,9 +573,9 @@
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-SQL" data-lang="SQL"><span class="line"><span class="cl"><span class="k">select</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">course_id</span><span class="w"> 
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">from</span><span class="w"> </span><span class="n">instructor</span><span class="w"> </span><span class="k">natural</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">teaches</span><span class="w"> 
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">where</span><span class="w"> </span><span class="n">instructor</span><span class="p">.</span><span class="w"> </span><span class="n">dept_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">‘</span><span class="n">Art</span><span class="err">’</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">//</span><span class="w"> </span><span class="err">等价于加上</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">instructor</span><span class="p">.</span><span class="n">ID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">teaches</span><span class="p">.</span><span class="n">ID</span><span class="w"> </span><span class="k">and</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">from</span><span class="w"> </span><span class="n">instructor</span><span class="w"> </span><span class="k">natural</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">teaches</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="k">where</span><span class="w"> </span><span class="n">instructor</span><span class="p">.</span><span class="w"> </span><span class="n">dept_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">‘</span><span class="n">Art</span><span class="err">’</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="o">//</span><span class="w"> </span><span class="err">等价于加上</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">instructor</span><span class="p">.</span><span class="n">ID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">teaches</span><span class="p">.</span><span class="n">ID</span><span class="w"> </span><span class="k">and</span><span class="w">
 </span></span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="where">WHERE
@@ -590,8 +590,8 @@ The operands of the logical connectives can be expressions involving the compari
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">select</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">course_id</span><span class="w"> 
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">from</span><span class="w"> </span><span class="n">instructor</span><span class="p">,</span><span class="w"> </span><span class="n">teaches</span><span class="w"> 
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">where</span><span class="w"> </span><span class="p">(</span><span class="n">instructor</span><span class="p">.</span><span class="n">ID</span><span class="p">,</span><span class="w"> </span><span class="n">dept_name</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">teaches</span><span class="p">.</span><span class="n">ID</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Biology&#39;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">from</span><span class="w"> </span><span class="n">instructor</span><span class="p">,</span><span class="w"> </span><span class="n">teaches</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="k">where</span><span class="w"> </span><span class="p">(</span><span class="n">instructor</span><span class="p">.</span><span class="n">ID</span><span class="p">,</span><span class="w"> </span><span class="n">dept_name</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">teaches</span><span class="p">.</span><span class="n">ID</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Biology&#39;</span><span class="p">);</span><span class="w">
 </span></span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="tuple-variables">Tuple Variables
@@ -604,8 +604,8 @@ The operands of the logical connectives can be expressions involving the compari
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">select</span><span class="w"> </span><span class="k">distinct</span><span class="w"> </span><span class="n">T</span><span class="p">.</span><span class="n">name</span><span class="w"> 
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">from</span><span class="w"> </span><span class="n">instructor</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">T</span><span class="p">,</span><span class="w"> </span><span class="n">instructor</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">S</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">where</span><span class="w"> </span><span class="n">T</span><span class="p">.</span><span class="n">salary</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">S</span><span class="p">.</span><span class="n">salary</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">S</span><span class="p">.</span><span class="n">dept_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">‘</span><span class="n">Comp</span><span class="p">.</span><span class="w"> </span><span class="n">Sci</span><span class="p">.</span><span class="err">’</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">from</span><span class="w"> </span><span class="n">instructor</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">T</span><span class="p">,</span><span class="w"> </span><span class="n">instructor</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">S</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">where</span><span class="w"> </span><span class="n">T</span><span class="p">.</span><span class="n">salary</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">S</span><span class="p">.</span><span class="n">salary</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">S</span><span class="p">.</span><span class="n">dept_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">‘</span><span class="n">Comp</span><span class="p">.</span><span class="w"> </span><span class="n">Sci</span><span class="p">.</span><span class="err">’</span><span class="w">
 </span></span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="执行顺序">执行顺序
@@ -625,10 +625,10 @@ The operands of the logical connectives can be expressions involving the compari
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-SQL" data-lang="SQL"><span class="line"><span class="cl"><span class="c1">-- ✅ 正确：使用HAVING对分组结果进行筛选
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">SELECT</span><span class="w"> </span><span class="n">department</span><span class="p">,</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">emp_count</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">FROM</span><span class="w"> </span><span class="n">employees</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">department</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">HAVING</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span><span class="w">  </span><span class="c1">-- 这里COUNT()在每组内计算
+</span></span></span><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">department</span><span class="p">,</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">emp_count</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">employees</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">department</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">HAVING</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span><span class="w">  </span><span class="c1">-- 这里COUNT()在每组内计算
 </span></span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="cte">CTE
@@ -662,30 +662,30 @@ The operands of the logical connectives can be expressions involving the compari
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">WITH</span><span class="w"> 
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">department_stats</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="n">department_stats</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="p">(</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">SELECT</span><span class="w"> 
 </span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">department</span><span class="p">,</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">AVG</span><span class="p">(</span><span class="n">salary</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">avg_salary</span><span class="p">,</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">employee_count</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">FROM</span><span class="w"> </span><span class="n">employees</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">department</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">),</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">high_avg_departments</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="p">),</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="n">high_avg_departments</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="p">(</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c1">-- 这个CTE引用了前一个CTE
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">    </span><span class="k">SELECT</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">SELECT</span><span class="w"> 
 </span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">department</span><span class="p">,</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">avg_salary</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">FROM</span><span class="w"> </span><span class="n">department_stats</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">WHERE</span><span class="w"> </span><span class="n">avg_salary</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">6000</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">)</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- 主查询
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">SELECT</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="c1">-- 主查询
+</span></span></span><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> 
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">e</span><span class="p">.</span><span class="n">name</span><span class="p">,</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">e</span><span class="p">.</span><span class="n">salary</span><span class="p">,</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">h</span><span class="p">.</span><span class="n">avg_salary</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">department_avg</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">FROM</span><span class="w"> </span><span class="n">employees</span><span class="w"> </span><span class="n">e</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">JOIN</span><span class="w"> </span><span class="n">high_avg_departments</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">department</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">h</span><span class="p">.</span><span class="n">department</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">WHERE</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">salary</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">h</span><span class="p">.</span><span class="n">avg_salary</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">employees</span><span class="w"> </span><span class="n">e</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">JOIN</span><span class="w"> </span><span class="n">high_avg_departments</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">department</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">h</span><span class="p">.</span><span class="n">department</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">salary</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">h</span><span class="p">.</span><span class="n">avg_salary</span><span class="p">;</span><span class="w">
 </span></span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="group-by">GROUP BY
@@ -700,9 +700,9 @@ The operands of the logical connectives can be expressions involving the compari
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="cm">/* erroneous query */</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">select</span><span class="w"> </span><span class="n">dept_name</span><span class="p">,</span><span class="w"> </span><span class="n">ID</span><span class="p">,</span><span class="w"> </span><span class="k">avg</span><span class="w"> </span><span class="p">(</span><span class="n">salary</span><span class="p">)</span><span class="w"> </span><span class="c1">-- ID 不在聚合属性中
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">from</span><span class="w"> </span><span class="n">instructor</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">group</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">dept_name</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">select</span><span class="w"> </span><span class="n">dept_name</span><span class="p">,</span><span class="w"> </span><span class="n">ID</span><span class="p">,</span><span class="w"> </span><span class="k">avg</span><span class="w"> </span><span class="p">(</span><span class="n">salary</span><span class="p">)</span><span class="w"> </span><span class="c1">-- ID 不在聚合属性中
+</span></span></span><span class="line"><span class="cl"><span class="k">from</span><span class="w"> </span><span class="n">instructor</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">group</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">dept_name</span><span class="w">
 </span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>正确用法：（可以有多个聚合运算）</p>
@@ -756,8 +756,8 @@ The operands of the logical connectives can be expressions involving the compari
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">category</span><span class="p">,</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">transaction_count</span><span class="p">,</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">SUM</span><span class="p">(</span><span class="n">sales_amount</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">total_sales</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">FROM</span><span class="w"> </span><span class="n">sales</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">category</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">sales</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">category</span><span class="p">;</span><span class="w">
 </span></span></span></code></pre></td></tr></table>
 </div>
 </div><div class="table-wrapper"><table>
@@ -798,12 +798,12 @@ The operands of the logical connectives can be expressions involving the compari
 <pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> 
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">department</span><span class="p">,</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">employee_count</span><span class="p">,</span><span class="w">      </span><span class="c1">-- 计数
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">    </span><span class="k">AVG</span><span class="p">(</span><span class="n">salary</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">avg_salary</span><span class="p">,</span><span class="w">       </span><span class="c1">-- 平均值
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">    </span><span class="k">SUM</span><span class="p">(</span><span class="n">salary</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">total_salary</span><span class="p">,</span><span class="w">     </span><span class="c1">-- 求和
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">    </span><span class="k">MAX</span><span class="p">(</span><span class="n">salary</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">max_salary</span><span class="p">,</span><span class="w">       </span><span class="c1">-- 最大值
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">    </span><span class="k">MIN</span><span class="p">(</span><span class="n">salary</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">min_salary</span><span class="w">        </span><span class="c1">-- 最小值
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">FROM</span><span class="w"> </span><span class="n">employees</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">department</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">AVG</span><span class="p">(</span><span class="n">salary</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">avg_salary</span><span class="p">,</span><span class="w">       </span><span class="c1">-- 平均值
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">SUM</span><span class="p">(</span><span class="n">salary</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">total_salary</span><span class="p">,</span><span class="w">     </span><span class="c1">-- 求和
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">MAX</span><span class="p">(</span><span class="n">salary</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">max_salary</span><span class="p">,</span><span class="w">       </span><span class="c1">-- 最大值
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">MIN</span><span class="p">(</span><span class="n">salary</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">min_salary</span><span class="w">        </span><span class="c1">-- 最小值
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">employees</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">department</span><span class="p">;</span><span class="w">
 </span></span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="order-by">ORDER BY
@@ -814,7 +814,7 @@ The operands of the logical connectives can be expressions involving the compari
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">employees</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">salary</span><span class="w"> </span><span class="k">DESC</span><span class="p">;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">employees</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">department</span><span class="w"> </span><span class="k">ASC</span><span class="p">,</span><span class="w"> </span><span class="n">salary</span><span class="w"> </span><span class="k">DESC</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">employees</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">department</span><span class="w"> </span><span class="k">ASC</span><span class="p">,</span><span class="w"> </span><span class="n">salary</span><span class="w"> </span><span class="k">DESC</span><span class="p">;</span><span class="w">
 </span></span></span></code></pre></td></tr></table>
 </div>
 </div>
@@ -902,7 +902,7 @@ The operands of the logical connectives can be expressions involving the compari
         
         
             <div class="article-image">
-                <img src="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/c7.8c9954ec69bee801f868ee1a498adaf3_hu_77efefbf7dbea07b.png" 
+                <img src="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/c7.8c9954ec69bee801f868ee1a498adaf3_hu_bb74fe340d8ad704.png" 
                         width="250" 
                         height="150" 
                         loading="lazy"
@@ -926,7 +926,7 @@ The operands of the logical connectives can be expressions involving the compari
         
         
             <div class="article-image">
-                <img src="/p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/c7.5468b3514b5277cab6d512ae84f1448b_hu_359eadd785e603a6.png" 
+                <img src="/p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/c7.5468b3514b5277cab6d512ae84f1448b_hu_b4723dc5d8b9b0f1.png" 
                         width="250" 
                         height="150" 
                         loading="lazy"
@@ -1010,7 +1010,7 @@ The operands of the logical connectives can be expressions involving the compari
         
             2020 - 
         
-        2025 Example Person
+        2026 © 2020-2027 zcys
     </section>
     
     <section class="powerby">

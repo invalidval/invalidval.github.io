@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Memory on zcys univ II Hugo ver</title>
+        <link>https://invalidval.github.io/tags/memory/</link>
+        <description>Recent content in Memory on zcys univ II Hugo ver</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <copyright>© 2020-2027 zcys</copyright>
+        <lastBuildDate>Sun, 16 Nov 2025 00:00:00 +0800</lastBuildDate><atom:link href="https://invalidval.github.io/tags/memory/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Chapter 8 内存管理</title>
+        <link>https://invalidval.github.io/p/chapter-8-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/</link>
+        <pubDate>Sun, 16 Nov 2025 00:00:00 +0800</pubDate>
+        
+        <guid>https://invalidval.github.io/p/chapter-8-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/</guid>
+        <description>&lt;h2 id=&#34;xx&#34;&gt;xx
+&lt;/h2&gt;&lt;h2 id=&#34;intel-pentium-的段页式&#34;&gt;Intel Pentium 的段页式
+&lt;/h2&gt;</description>
+        </item>
+        
+    </channel>
+</rss>

@@ -5,8 +5,8 @@
         <link>https://invalidval.github.io/tags/%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93/</link>
         <description>Recent content in 关系数据库 on zcys univ II Hugo ver</description>
         <generator>Hugo -- gohugo.io</generator>
-        <language>en</language>
-        <copyright>Example Person</copyright>
+        <language>en-us</language>
+        <copyright>© 2020-2027 zcys</copyright>
         <lastBuildDate>Tue, 11 Nov 2025 00:00:00 +0800</lastBuildDate><atom:link href="https://invalidval.github.io/tags/%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Chapter7 分解算法(大概是7.4-7.5)</title>
         <link>https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/</link>
@@ -18,7 +18,7 @@
 &lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image.png&#34;
 	width=&#34;1170&#34;
 	height=&#34;531&#34;
-	srcset=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image_hu_fbbf3765274fc645.png 480w, https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image_hu_3685a5474aacfa59.png 1024w&#34;
+	srcset=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image_hu_e2267616503f700d.png 480w, https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image_hu_64318e63540e65c5.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;断言&#34;
@@ -32,7 +32,7 @@
 &lt;img src=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-1.png&#34;
 	width=&#34;1164&#34;
 	height=&#34;516&#34;
-	srcset=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-1_hu_644ef2888ce87e8e.png 480w, https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-1_hu_99d8e10ad593effd.png 1024w&#34;
+	srcset=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-1_hu_79ad47924dc2ac9e.png 480w, https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-1_hu_44558c7edea5be15.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;元组变量&#34;
@@ -82,7 +82,7 @@ A+，得到A+ = {A, B, C}。&lt;/li&gt;
 &lt;img src=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-2.png&#34;
 	width=&#34;1772&#34;
 	height=&#34;768&#34;
-	srcset=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-2_hu_933f2dfe75ba76be.png 480w, https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-2_hu_8b280a5ce04fff6b.png 1024w&#34;
+	srcset=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-2_hu_f6d123c69ac1d337.png 480w, https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-2_hu_591414955facae73.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;属性闭包例子&#34;
@@ -125,7 +125,7 @@ i.e. X → Y and X → Z cannot both be in Fc&lt;/li&gt;
 &lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-27.png&#34;
 	width=&#34;1296&#34;
 	height=&#34;594&#34;
-	srcset=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-27_hu_1497373f187648df.png 480w, https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-27_hu_40b7989c9939b866.png 1024w&#34;
+	srcset=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-27_hu_b142bc648f1efbcb.png 480w, https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-27_hu_f5feb12ddc03e4dc.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;计算步骤&#34;
@@ -140,7 +140,7 @@ i.e. X → Y and X → Z cannot both be in Fc&lt;/li&gt;
 &lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-3.png&#34;
 	width=&#34;1782&#34;
 	height=&#34;1019&#34;
-	srcset=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-3_hu_678d161d910204b9.png 480w, https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-3_hu_cd9fc73393e31cc8.png 1024w&#34;
+	srcset=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-3_hu_580c864d3a17d03.png 480w, https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-3_hu_22f3049dc9040274.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;Fc计算&#34;
@@ -155,7 +155,7 @@ i.e. X → Y and X → Z cannot both be in Fc&lt;/li&gt;
 &lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-26.png&#34;
 	width=&#34;1041&#34;
 	height=&#34;633&#34;
-	srcset=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-26_hu_f224a3501e5cb8fb.png 480w, https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-26_hu_32c9c7326cb5b275.png 1024w&#34;
+	srcset=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-26_hu_fb37a92581e183bd.png 480w, https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-26_hu_60a5f40cf8572202.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;三者关系&#34;
@@ -198,7 +198,7 @@ holds on是指某个具体的关系实例满足某个函数依赖，
 &lt;img src=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-4.png&#34;
 	width=&#34;1809&#34;
 	height=&#34;909&#34;
-	srcset=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-4_hu_22e9e7391756f43f.png 480w, https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-4_hu_efc7da62c3ccf696.png 1024w&#34;
+	srcset=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-4_hu_a951acfcdc7f9603.png 480w, https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-4_hu_e4b405c36b6d6118.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;什么是Fi&#34;
@@ -212,7 +212,7 @@ holds on是指某个具体的关系实例满足某个函数依赖，
 &lt;p&gt;&lt;img src=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-5.png&#34;
 	width=&#34;1722&#34;
 	height=&#34;836&#34;
-	srcset=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-5_hu_f59f776af4162e1.png 480w, https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-5_hu_d8c7858f2bea98b8.png 1024w&#34;
+	srcset=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-5_hu_4505f6557cb2b0af.png 480w, https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-5_hu_7fb42074d5a96664.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;preserved例子&#34;
@@ -226,7 +226,7 @@ holds on是指某个具体的关系实例满足某个函数依赖，
 &lt;p&gt;&lt;img src=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-7.png&#34;
 	width=&#34;1812&#34;
 	height=&#34;954&#34;
-	srcset=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-7_hu_3f0c7a0db91ea827.png 480w, https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-7_hu_dc30d980fc7eace4.png 1024w&#34;
+	srcset=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-7_hu_fdcc75e97be61eff.png 480w, https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-7_hu_3d2c1e2a15194cd4.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;cnmd&#34;
@@ -240,7 +240,7 @@ holds on是指某个具体的关系实例满足某个函数依赖，
 &lt;p&gt;&lt;img src=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-8.png&#34;
 	width=&#34;1755&#34;
 	height=&#34;981&#34;
-	srcset=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-8_hu_5d8013d2378b395c.png 480w, https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-8_hu_e9101c0a101b14a8.png 1024w&#34;
+	srcset=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-8_hu_5b4730ab5619b979.png 480w, https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-8_hu_67ef2c8809ef6fca.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;不保持分解&#34;
@@ -254,7 +254,7 @@ holds on是指某个具体的关系实例满足某个函数依赖，
 &lt;p&gt;&lt;img src=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-9.png&#34;
 	width=&#34;1782&#34;
 	height=&#34;573&#34;
-	srcset=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-9_hu_c08fcd348858bd9c.png 480w, https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-9_hu_c75f593ad4bfde3a.png 1024w&#34;
+	srcset=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-9_hu_ca0a0afcabec3823.png 480w, https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-9_hu_22251605edf79efe.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;保持分解&#34;
@@ -292,7 +292,7 @@ BCNF&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-20.png&#34;
 	width=&#34;1164&#34;
 	height=&#34;258&#34;
-	srcset=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-20_hu_4d8ee6303023f21d.png 480w, https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-20_hu_7b4b3d127b277b4.png 1024w&#34;
+	srcset=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-20_hu_4b89d8459fce7601.png 480w, https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-20_hu_7cfe218b369dcfbc.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;反例&#34;
@@ -341,7 +341,7 @@ the restriction of F to R1是{A → B}，因为B → C在R1中无效。&lt;/li&g
 &lt;p&gt;&lt;img src=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-10.png&#34;
 	width=&#34;1779&#34;
 	height=&#34;666&#34;
-	srcset=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-10_hu_89ac9b91046d1cb2.png 480w, https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-10_hu_9543829986eb1b24.png 1024w&#34;
+	srcset=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-10_hu_c2ecb6a587115f79.png 480w, https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-10_hu_ed83342f77a0d173.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;分解例子1&#34;
@@ -355,7 +355,7 @@ the restriction of F to R1是{A → B}，因为B → C在R1中无效。&lt;/li&g
 &lt;p&gt;&lt;img src=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-11.png&#34;
 	width=&#34;1764&#34;
 	height=&#34;777&#34;
-	srcset=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-11_hu_fa01c86cb11d1cb.png 480w, https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-11_hu_ee10086738b5980e.png 1024w&#34;
+	srcset=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-11_hu_d8edb1c74090943b.png 480w, https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-11_hu_1a44e3996102cf03.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;分解例子2-1&#34;
@@ -369,7 +369,7 @@ the restriction of F to R1是{A → B}，因为B → C在R1中无效。&lt;/li&g
 &lt;p&gt;&lt;img src=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-14.png&#34;
 	width=&#34;1791&#34;
 	height=&#34;710&#34;
-	srcset=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-14_hu_382cae119eb7c7e8.png 480w, https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-14_hu_d6ea7c4da10825dd.png 1024w&#34;
+	srcset=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-14_hu_63f061fbb97f9959.png 480w, https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-14_hu_fe28c9ecc74dd96e.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;分解步骤树&#34;
@@ -383,7 +383,7 @@ the restriction of F to R1是{A → B}，因为B → C在R1中无效。&lt;/li&g
 &lt;p&gt;&lt;img src=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-12.png&#34;
 	width=&#34;1785&#34;
 	height=&#34;609&#34;
-	srcset=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-12_hu_6d3f761eb69c5f7b.png 480w, https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-12_hu_6662cd04c3398405.png 1024w&#34;
+	srcset=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-12_hu_4ee0b1e84627ff37.png 480w, https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-12_hu_35cded195e18a125.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;分解例子2-2&#34;
@@ -397,7 +397,7 @@ the restriction of F to R1是{A → B}，因为B → C在R1中无效。&lt;/li&g
 &lt;p&gt;&lt;img src=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-13.png&#34;
 	width=&#34;1797&#34;
 	height=&#34;990&#34;
-	srcset=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-13_hu_b9ceb1655c31af7d.png 480w, https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-13_hu_2a0c61b484aa2f76.png 1024w&#34;
+	srcset=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-13_hu_aee0c715deee3a8f.png 480w, https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-13_hu_2a3fd1bcb1a88375.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;分解例子2-3&#34;
@@ -412,7 +412,7 @@ the restriction of F to R1是{A → B}，因为B → C在R1中无效。&lt;/li&g
 &lt;img src=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-15.png&#34;
 	width=&#34;1827&#34;
 	height=&#34;897&#34;
-	srcset=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-15_hu_edcf2ae7121d145b.png 480w, https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-15_hu_7dca34e770012f47.png 1024w&#34;
+	srcset=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-15_hu_dc0c430eb852ba90.png 480w, https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-15_hu_e3989a3a8294d35c.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;not preserved&#34;
@@ -450,7 +450,7 @@ the restriction of F to R1是{A → B}，因为B → C在R1中无效。&lt;/li&g
 &lt;p&gt;&lt;img src=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-21.png&#34;
 	width=&#34;1161&#34;
 	height=&#34;645&#34;
-	srcset=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-21_hu_cec451a3dd56cce4.png 480w, https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-21_hu_976fba405b689f9f.png 1024w&#34;
+	srcset=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-21_hu_9bee182df711dcb8.png 480w, https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-21_hu_aeaee23d710afd2b.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;3NF分解算法&#34;
@@ -478,7 +478,7 @@ the restriction of F to R1是{A → B}，因为B → C在R1中无效。&lt;/li&g
 &lt;p&gt;&lt;img src=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-22.png&#34;
 	width=&#34;1164&#34;
 	height=&#34;663&#34;
-	srcset=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-22_hu_67873d20e9ddc42a.png 480w, https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-22_hu_f9404de0c4a5b738.png 1024w&#34;
+	srcset=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-22_hu_84f5ac3be45d6754.png 480w, https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-22_hu_89e856b74b060e32.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;例&#34;
@@ -492,7 +492,7 @@ the restriction of F to R1是{A → B}，因为B → C在R1中无效。&lt;/li&g
 &lt;p&gt;&lt;img src=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-23.png&#34;
 	width=&#34;1128&#34;
 	height=&#34;612&#34;
-	srcset=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-23_hu_403642a6e7d9874a.png 480w, https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-23_hu_7a0cd73f3a5a07ed.png 1024w&#34;
+	srcset=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-23_hu_2f57ca50373ece9b.png 480w, https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-23_hu_3538893af5fb6495.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;例1-续&#34;
@@ -506,7 +506,7 @@ the restriction of F to R1是{A → B}，因为B → C在R1中无效。&lt;/li&g
 &lt;p&gt;&lt;img src=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-24.png&#34;
 	width=&#34;1140&#34;
 	height=&#34;450&#34;
-	srcset=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-24_hu_654e0d91df1835c2.png 480w, https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-24_hu_48d68feda7f9d13.png 1024w&#34;
+	srcset=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-24_hu_8d52b00b1281af3b.png 480w, https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-24_hu_9e8fc2f8420213b4.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;例1-续续&#34;
@@ -521,7 +521,7 @@ the restriction of F to R1是{A → B}，因为B → C在R1中无效。&lt;/li&g
 &lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-28.png&#34;
 	width=&#34;1454&#34;
 	height=&#34;531&#34;
-	srcset=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-28_hu_efc79475e51237a2.png 480w, https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-28_hu_a2411b0ec48dd2fa.png 1024w&#34;
+	srcset=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-28_hu_af6e8a2f3d9f2c2e.png 480w, https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-28_hu_c9c165b004e995c4.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;算法对比&#34;
@@ -562,7 +562,7 @@ the restriction of F to R1是{A → B}，因为B → C在R1中无效。&lt;/li&g
 &lt;img src=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-16.png&#34;
 	width=&#34;1806&#34;
 	height=&#34;1002&#34;
-	srcset=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-16_hu_f7e35a5179194bb9.png 480w, https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-16_hu_3e633aab96018d48.png 1024w&#34;
+	srcset=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-16_hu_6c2d8cee338c8f17.png 480w, https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-16_hu_d47a1725f7961ae8.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;例子&#34;
@@ -576,7 +576,7 @@ the restriction of F to R1是{A → B}，因为B → C在R1中无效。&lt;/li&g
 &lt;p&gt;&lt;img src=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-17.png&#34;
 	width=&#34;1765&#34;
 	height=&#34;1020&#34;
-	srcset=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-17_hu_1be38c38f57ad938.png 480w, https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-17_hu_f2a15f7d30448e2a.png 1024w&#34;
+	srcset=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-17_hu_926c07e4fc13f20c.png 480w, https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-17_hu_bf93876575c56e2e.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;例子-2&#34;
@@ -593,7 +593,7 @@ the restriction of F to R1是{A → B}，因为B → C在R1中无效。&lt;/li&g
 &lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-18.png&#34;
 	width=&#34;1800&#34;
 	height=&#34;900&#34;
-	srcset=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-18_hu_ece034353ccd875a.png 480w, https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-18_hu_97495aea3edc5824.png 1024w&#34;
+	srcset=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-18_hu_6e4b733bfc3f7590.png 480w, https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-18_hu_cdce5a96005afa5d.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;1&#34;
@@ -607,7 +607,7 @@ the restriction of F to R1是{A → B}，因为B → C在R1中无效。&lt;/li&g
 &lt;p&gt;&lt;img src=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-19.png&#34;
 	width=&#34;1782&#34;
 	height=&#34;792&#34;
-	srcset=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-19_hu_d2cc9b323dba4902.png 480w, https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-19_hu_88d2609632db0c17.png 1024w&#34;
+	srcset=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-19_hu_e542db208e3ff87e.png 480w, https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-19_hu_c8cfa95dd9f45b22.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;2&#34;
@@ -623,7 +623,7 @@ the restriction of F to R1是{A → B}，因为B → C在R1中无效。&lt;/li&g
 &lt;p&gt;&lt;img src=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-25.png&#34;
 	width=&#34;1161&#34;
 	height=&#34;657&#34;
-	srcset=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-25_hu_1ee5769a9bbefc2b.png 480w, https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-25_hu_a71aa6d19bd70b02.png 1024w&#34;
+	srcset=&#34;https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-25_hu_aeadf7adce4722ac.png 480w, https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-25_hu_9cc63e724711bc5e.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;例&#34;
@@ -646,7 +646,7 @@ the restriction of F to R1是{A → B}，因为B → C在R1中无效。&lt;/li&g
 &lt;/h1&gt;&lt;p&gt;&lt;img src=&#34;https://invalidval.github.io/p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/image-2.png&#34;
 	width=&#34;1013&#34;
 	height=&#34;567&#34;
-	srcset=&#34;https://invalidval.github.io/p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/image-2_hu_493d6f455a140a7f.png 480w, https://invalidval.github.io/p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/image-2_hu_1e944343fcb1755b.png 1024w&#34;
+	srcset=&#34;https://invalidval.github.io/p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/image-2_hu_c23b0a779a01066d.png 480w, https://invalidval.github.io/p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/image-2_hu_19bd10a141498cff.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;关系数据库设计内容/步骤&#34;
@@ -662,7 +662,7 @@ the restriction of F to R1是{A → B}，因为B → C在R1中无效。&lt;/li&g
 &lt;img src=&#34;https://invalidval.github.io/p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/image-3.png&#34;
 	width=&#34;1011&#34;
 	height=&#34;564&#34;
-	srcset=&#34;https://invalidval.github.io/p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/image-3_hu_1b39139cf869d3be.png 480w, https://invalidval.github.io/p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/image-3_hu_a2f4d7abc69d7b88.png 1024w&#34;
+	srcset=&#34;https://invalidval.github.io/p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/image-3_hu_fbfad82776fc359.png 480w, https://invalidval.github.io/p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/image-3_hu_5c0855f7ac86d1ff.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;无损连接与SQL&#34;
@@ -689,7 +689,7 @@ the restriction of F to R1是{A → B}，因为B → C在R1中无效。&lt;/li&g
 &lt;img src=&#34;https://invalidval.github.io/p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/image-1.png&#34;
 	width=&#34;2037&#34;
 	height=&#34;1140&#34;
-	srcset=&#34;https://invalidval.github.io/p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/image-1_hu_72fea522126e530a.png 480w, https://invalidval.github.io/p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/image-1_hu_76ae8d1399a3e256.png 1024w&#34;
+	srcset=&#34;https://invalidval.github.io/p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/image-1_hu_52c6f0f03a9f3b4c.png 480w, https://invalidval.github.io/p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/image-1_hu_bec389a6aa230799.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;范式定义&#34;
@@ -718,7 +718,7 @@ the restriction of F to R1是{A → B}，因为B → C在R1中无效。&lt;/li&g
 &lt;p&gt;&lt;img src=&#34;https://invalidval.github.io/p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/nfs.png&#34;
 	width=&#34;1383&#34;
 	height=&#34;355&#34;
-	srcset=&#34;https://invalidval.github.io/p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/nfs_hu_c1c0ded694fa508a.png 480w, https://invalidval.github.io/p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/nfs_hu_5fa213c649ab6922.png 1024w&#34;
+	srcset=&#34;https://invalidval.github.io/p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/nfs_hu_3dc281c56b68831f.png 480w, https://invalidval.github.io/p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/nfs_hu_92e7a0256c14be9f.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;NF&#34;
@@ -737,7 +737,7 @@ the restriction of F to R1是{A → B}，因为B → C在R1中无效。&lt;/li&g
 &lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://invalidval.github.io/p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/image-4.png&#34;
 	width=&#34;1857&#34;
 	height=&#34;1017&#34;
-	srcset=&#34;https://invalidval.github.io/p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/image-4_hu_c3d6c1bffa1ae256.png 480w, https://invalidval.github.io/p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/image-4_hu_ae4b454ad7a8d09b.png 1024w&#34;
+	srcset=&#34;https://invalidval.github.io/p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/image-4_hu_b31e2aac5375edb9.png 480w, https://invalidval.github.io/p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/image-4_hu_34199de9ef36e0c0.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;函数依赖保持与满足的区别&#34;
@@ -752,7 +752,7 @@ the restriction of F to R1是{A → B}，因为B → C在R1中无效。&lt;/li&g
 &lt;img src=&#34;https://invalidval.github.io/p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/image-5.png&#34;
 	width=&#34;1535&#34;
 	height=&#34;1023&#34;
-	srcset=&#34;https://invalidval.github.io/p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/image-5_hu_45240c7a96bfb079.png 480w, https://invalidval.github.io/p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/image-5_hu_77986a6470d2c1d1.png 1024w&#34;
+	srcset=&#34;https://invalidval.github.io/p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/image-5_hu_2c0231be0b7cb0db.png 480w, https://invalidval.github.io/p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/image-5_hu_da509821cd49bac1.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;例子&#34;
@@ -767,7 +767,7 @@ the restriction of F to R1是{A → B}，因为B → C在R1中无效。&lt;/li&g
 &lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://invalidval.github.io/p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/image-6.png&#34;
 	width=&#34;1752&#34;
 	height=&#34;525&#34;
-	srcset=&#34;https://invalidval.github.io/p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/image-6_hu_5d676a39e93a262d.png 480w, https://invalidval.github.io/p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/image-6_hu_e9ab209866b1f62c.png 1024w&#34;
+	srcset=&#34;https://invalidval.github.io/p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/image-6_hu_5863b447348a7de9.png 480w, https://invalidval.github.io/p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/image-6_hu_98e0f48fa7c18247.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;Trival FD例子&#34;
@@ -782,7 +782,7 @@ the restriction of F to R1是{A → B}，因为B → C在R1中无效。&lt;/li&g
 &lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://invalidval.github.io/p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/image-7.png&#34;
 	width=&#34;1839&#34;
 	height=&#34;549&#34;
-	srcset=&#34;https://invalidval.github.io/p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/image-7_hu_bfd82bf6b8dd22bc.png 480w, https://invalidval.github.io/p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/image-7_hu_100f91fd0d2e1716.png 1024w&#34;
+	srcset=&#34;https://invalidval.github.io/p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/image-7_hu_2eb48df38f3753b5.png 480w, https://invalidval.github.io/p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/image-7_hu_ec8733c89e265db8.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;Transitive&#34;
@@ -801,7 +801,7 @@ the restriction of F to R1是{A → B}，因为B → C在R1中无效。&lt;/li&g
 &lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://invalidval.github.io/p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/image-8.png&#34;
 	width=&#34;1794&#34;
 	height=&#34;474&#34;
-	srcset=&#34;https://invalidval.github.io/p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/image-8_hu_2f31f466e1d31449.png 480w, https://invalidval.github.io/p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/image-8_hu_176bdc86ac5a9e02.png 1024w&#34;
+	srcset=&#34;https://invalidval.github.io/p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/image-8_hu_72eea5fb944b68ef.png 480w, https://invalidval.github.io/p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/image-8_hu_62ca47296012858e.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;条件&#34;
@@ -815,7 +815,7 @@ the restriction of F to R1是{A → B}，因为B → C在R1中无效。&lt;/li&g
 &lt;img src=&#34;https://invalidval.github.io/p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/image-9.png&#34;
 	width=&#34;1785&#34;
 	height=&#34;915&#34;
-	srcset=&#34;https://invalidval.github.io/p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/image-9_hu_15b47d5e9414eef7.png 480w, https://invalidval.github.io/p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/image-9_hu_c2925814dd9913d2.png 1024w&#34;
+	srcset=&#34;https://invalidval.github.io/p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/image-9_hu_164afef8df729ceb.png 480w, https://invalidval.github.io/p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/image-9_hu_7d349a1510fbfcc0.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;例子&#34;
@@ -844,7 +844,7 @@ $\alpha$ is a superkey for R
 &lt;img src=&#34;https://invalidval.github.io/p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/image-10.png&#34;
 	width=&#34;1773&#34;
 	height=&#34;936&#34;
-	srcset=&#34;https://invalidval.github.io/p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/image-10_hu_76a914defd60cd33.png 480w, https://invalidval.github.io/p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/image-10_hu_725bb9b4a484b43b.png 1024w&#34;
+	srcset=&#34;https://invalidval.github.io/p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/image-10_hu_80efe80387974ce.png 480w, https://invalidval.github.io/p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/image-10_hu_7b2b2819c7be3958.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;我也不知道为什么在这讲&#34;
@@ -873,7 +873,7 @@ Third condition is a minimal &lt;em&gt;relaxation&lt;/em&gt;（放宽） of BCNF
 &lt;img src=&#34;https://invalidval.github.io/p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/image-11.png&#34;
 	width=&#34;1143&#34;
 	height=&#34;627&#34;
-	srcset=&#34;https://invalidval.github.io/p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/image-11_hu_de9a69fa781e77cc.png 480w, https://invalidval.github.io/p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/image-11_hu_ceefd351e9e7deed.png 1024w&#34;
+	srcset=&#34;https://invalidval.github.io/p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/image-11_hu_827949c99c68a25d.png 480w, https://invalidval.github.io/p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/image-11_hu_30eb27702d51ee75.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;有点懵逼，自己看吧&#34;
@@ -1031,7 +1031,7 @@ BCNF分解保证无损连接，但不保证函数依赖保持&lt;/li&gt;
 &lt;/h1&gt;&lt;p&gt;&lt;img src=&#34;https://invalidval.github.io/p/chapter6-er%E6%A8%A1%E5%9E%8B/erd.png&#34;
 	width=&#34;1171&#34;
 	height=&#34;1073&#34;
-	srcset=&#34;https://invalidval.github.io/p/chapter6-er%E6%A8%A1%E5%9E%8B/erd_hu_7397ce272e3e7e02.png 480w, https://invalidval.github.io/p/chapter6-er%E6%A8%A1%E5%9E%8B/erd_hu_f0fd75825304ea4b.png 1024w&#34;
+	srcset=&#34;https://invalidval.github.io/p/chapter6-er%E6%A8%A1%E5%9E%8B/erd_hu_6a5c2466b4731a33.png 480w, https://invalidval.github.io/p/chapter6-er%E6%A8%A1%E5%9E%8B/erd_hu_51381b7fb074b665.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;ER diagram&#34;
@@ -1053,7 +1053,7 @@ BCNF分解保证无损连接，但不保证函数依赖保持&lt;/li&gt;
 &lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://invalidval.github.io/p/chapter6-er%E6%A8%A1%E5%9E%8B/nonebinary.png&#34;
 	width=&#34;933&#34;
 	height=&#34;359&#34;
-	srcset=&#34;https://invalidval.github.io/p/chapter6-er%E6%A8%A1%E5%9E%8B/nonebinary_hu_90ed7bc08ea5076e.png 480w, https://invalidval.github.io/p/chapter6-er%E6%A8%A1%E5%9E%8B/nonebinary_hu_8a18ac6277bc90b4.png 1024w&#34;
+	srcset=&#34;https://invalidval.github.io/p/chapter6-er%E6%A8%A1%E5%9E%8B/nonebinary_hu_f33616bebe0b85ca.png 480w, https://invalidval.github.io/p/chapter6-er%E6%A8%A1%E5%9E%8B/nonebinary_hu_854c91feafc6c663.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;三元Ternary Relationship&#34;
@@ -1073,7 +1073,7 @@ BCNF分解保证无损连接，但不保证函数依赖保持&lt;/li&gt;
 &lt;p&gt;&lt;img src=&#34;https://invalidval.github.io/p/chapter6-er%E6%A8%A1%E5%9E%8B/onetoone.png&#34;
 	width=&#34;1077&#34;
 	height=&#34;283&#34;
-	srcset=&#34;https://invalidval.github.io/p/chapter6-er%E6%A8%A1%E5%9E%8B/onetoone_hu_4b3b28947f5fe4df.png 480w, https://invalidval.github.io/p/chapter6-er%E6%A8%A1%E5%9E%8B/onetoone_hu_b4e9fa82a8ffafb9.png 1024w&#34;
+	srcset=&#34;https://invalidval.github.io/p/chapter6-er%E6%A8%A1%E5%9E%8B/onetoone_hu_924460c238451471.png 480w, https://invalidval.github.io/p/chapter6-er%E6%A8%A1%E5%9E%8B/onetoone_hu_a42ab6fbd28f8a05.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;一对一&#34;
@@ -1099,7 +1099,7 @@ e.g.  for the entity student, do not use instructor.id as its attribute, in stea
 &lt;p&gt;&lt;img src=&#34;https://invalidval.github.io/p/chapter6-er%E6%A8%A1%E5%9E%8B/weake.png&#34;
 	width=&#34;1811&#34;
 	height=&#34;1026&#34;
-	srcset=&#34;https://invalidval.github.io/p/chapter6-er%E6%A8%A1%E5%9E%8B/weake_hu_75aeef19b0c5a435.png 480w, https://invalidval.github.io/p/chapter6-er%E6%A8%A1%E5%9E%8B/weake_hu_8882bfca8686d0a2.png 1024w&#34;
+	srcset=&#34;https://invalidval.github.io/p/chapter6-er%E6%A8%A1%E5%9E%8B/weake_hu_d328f9d556355bcf.png 480w, https://invalidval.github.io/p/chapter6-er%E6%A8%A1%E5%9E%8B/weake_hu_53562d5201781e3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;弱实体集&#34;
@@ -1114,7 +1114,7 @@ e.g.  for the entity student, do not use instructor.id as its attribute, in stea
 &lt;p&gt;&lt;img src=&#34;https://invalidval.github.io/p/chapter6-er%E6%A8%A1%E5%9E%8B/image-4.png&#34;
 	width=&#34;1808&#34;
 	height=&#34;999&#34;
-	srcset=&#34;https://invalidval.github.io/p/chapter6-er%E6%A8%A1%E5%9E%8B/image-4_hu_768e97fa097db0f.png 480w, https://invalidval.github.io/p/chapter6-er%E6%A8%A1%E5%9E%8B/image-4_hu_e32fc9b501293992.png 1024w&#34;
+	srcset=&#34;https://invalidval.github.io/p/chapter6-er%E6%A8%A1%E5%9E%8B/image-4_hu_a3e1ab552bf22eb6.png 480w, https://invalidval.github.io/p/chapter6-er%E6%A8%A1%E5%9E%8B/image-4_hu_f1842b34d0d5debb.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;例子&#34;
@@ -1140,7 +1140,7 @@ e.g.  for the entity student, do not use instructor.id as its attribute, in stea
 &lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://invalidval.github.io/p/chapter6-er%E6%A8%A1%E5%9E%8B/notation.png&#34;
 	width=&#34;1448&#34;
 	height=&#34;830&#34;
-	srcset=&#34;https://invalidval.github.io/p/chapter6-er%E6%A8%A1%E5%9E%8B/notation_hu_2e71417dac28c066.png 480w, https://invalidval.github.io/p/chapter6-er%E6%A8%A1%E5%9E%8B/notation_hu_eae70deb99dd7e5b.png 1024w&#34;
+	srcset=&#34;https://invalidval.github.io/p/chapter6-er%E6%A8%A1%E5%9E%8B/notation_hu_404e07e4af850b3.png 480w, https://invalidval.github.io/p/chapter6-er%E6%A8%A1%E5%9E%8B/notation_hu_6fc6c6b12f482d56.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;记号&#34;
@@ -1154,7 +1154,7 @@ e.g.  for the entity student, do not use instructor.id as its attribute, in stea
 &lt;img src=&#34;https://invalidval.github.io/p/chapter6-er%E6%A8%A1%E5%9E%8B/image-1.png&#34;
 	width=&#34;1340&#34;
 	height=&#34;910&#34;
-	srcset=&#34;https://invalidval.github.io/p/chapter6-er%E6%A8%A1%E5%9E%8B/image-1_hu_2eca5d22e9091c97.png 480w, https://invalidval.github.io/p/chapter6-er%E6%A8%A1%E5%9E%8B/image-1_hu_148bcaec67969326.png 1024w&#34;
+	srcset=&#34;https://invalidval.github.io/p/chapter6-er%E6%A8%A1%E5%9E%8B/image-1_hu_d413e1272f036925.png 480w, https://invalidval.github.io/p/chapter6-er%E6%A8%A1%E5%9E%8B/image-1_hu_64c34a0a405b8cef.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;记号（续）&#34;
@@ -1168,7 +1168,7 @@ e.g.  for the entity student, do not use instructor.id as its attribute, in stea
 &lt;img src=&#34;https://invalidval.github.io/p/chapter6-er%E6%A8%A1%E5%9E%8B/image-2.png&#34;
 	width=&#34;1765&#34;
 	height=&#34;988&#34;
-	srcset=&#34;https://invalidval.github.io/p/chapter6-er%E6%A8%A1%E5%9E%8B/image-2_hu_d48f4362889822da.png 480w, https://invalidval.github.io/p/chapter6-er%E6%A8%A1%E5%9E%8B/image-2_hu_75aeac4bc8f0ad8c.png 1024w&#34;
+	srcset=&#34;https://invalidval.github.io/p/chapter6-er%E6%A8%A1%E5%9E%8B/image-2_hu_6bd483fb4472a90.png 480w, https://invalidval.github.io/p/chapter6-er%E6%A8%A1%E5%9E%8B/image-2_hu_f80fd6228f8120e1.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;替代记号&#34;
@@ -1182,7 +1182,7 @@ e.g.  for the entity student, do not use instructor.id as its attribute, in stea
 &lt;img src=&#34;https://invalidval.github.io/p/chapter6-er%E6%A8%A1%E5%9E%8B/image-3.png&#34;
 	width=&#34;1839&#34;
 	height=&#34;1011&#34;
-	srcset=&#34;https://invalidval.github.io/p/chapter6-er%E6%A8%A1%E5%9E%8B/image-3_hu_f9791aa57282eeee.png 480w, https://invalidval.github.io/p/chapter6-er%E6%A8%A1%E5%9E%8B/image-3_hu_b8fd75e1fb94a904.png 1024w&#34;
+	srcset=&#34;https://invalidval.github.io/p/chapter6-er%E6%A8%A1%E5%9E%8B/image-3_hu_8152a052ae88cf0b.png 480w, https://invalidval.github.io/p/chapter6-er%E6%A8%A1%E5%9E%8B/image-3_hu_5ddc0fae6addf5ee.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;替代记号（续）&#34;
@@ -1223,7 +1223,7 @@ taking the key as a attribute set,  the attributes in the candidate keys, i.e. t
 &lt;img src=&#34;https://invalidval.github.io/p/chapter2-%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80/alg.png&#34;
 	width=&#34;1155&#34;
 	height=&#34;858&#34;
-	srcset=&#34;https://invalidval.github.io/p/chapter2-%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80/alg_hu_437309c250861868.png 480w, https://invalidval.github.io/p/chapter2-%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80/alg_hu_de816a7d8886c9b.png 1024w&#34;
+	srcset=&#34;https://invalidval.github.io/p/chapter2-%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80/alg_hu_2c876872a021c3fc.png 480w, https://invalidval.github.io/p/chapter2-%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80/alg_hu_710fbfcf8e88f136.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;alt text&#34;
@@ -1238,7 +1238,7 @@ taking the key as a attribute set,  the attributes in the candidate keys, i.e. t
 &lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://invalidval.github.io/p/chapter2-%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80/join.png&#34;
 	width=&#34;1761&#34;
 	height=&#34;657&#34;
-	srcset=&#34;https://invalidval.github.io/p/chapter2-%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80/join_hu_81b7bbe814a81538.png 480w, https://invalidval.github.io/p/chapter2-%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80/join_hu_9972cf8518627a6a.png 1024w&#34;
+	srcset=&#34;https://invalidval.github.io/p/chapter2-%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80/join_hu_6c67302591add9bf.png 480w, https://invalidval.github.io/p/chapter2-%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80/join_hu_a489ad5a7a00cd37.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;alt text&#34;
@@ -1253,7 +1253,7 @@ taking the key as a attribute set,  the attributes in the candidate keys, i.e. t
 &lt;img src=&#34;https://invalidval.github.io/p/chapter2-%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80/as.png&#34;
 	width=&#34;1800&#34;
 	height=&#34;549&#34;
-	srcset=&#34;https://invalidval.github.io/p/chapter2-%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80/as_hu_cff2afed3258b1f9.png 480w, https://invalidval.github.io/p/chapter2-%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80/as_hu_7b878884a20c71ee.png 1024w&#34;
+	srcset=&#34;https://invalidval.github.io/p/chapter2-%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80/as_hu_18f52c99b50021da.png 480w, https://invalidval.github.io/p/chapter2-%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80/as_hu_8de0f8fef37586fd.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;alt text&#34;
@@ -1355,7 +1355,7 @@ views can also hide information (such as an employee’s salary) for security pu
 &lt;p&gt;&lt;img src=&#34;https://invalidval.github.io/p/chapter1-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/image.png&#34;
 	width=&#34;821&#34;
 	height=&#34;654&#34;
-	srcset=&#34;https://invalidval.github.io/p/chapter1-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/image_hu_71208316d6a6b099.png 480w, https://invalidval.github.io/p/chapter1-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/image_hu_15fc1bc9c3089cc5.png 1024w&#34;
+	srcset=&#34;https://invalidval.github.io/p/chapter1-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/image_hu_f52d49a3889e19e6.png 480w, https://invalidval.github.io/p/chapter1-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/image_hu_c06b64ab57b95906.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;设计阶段&#34;

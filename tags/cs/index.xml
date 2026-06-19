@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>CS on zcys univ II Hugo ver</title>
+        <link>https://invalidval.github.io/tags/cs/</link>
+        <description>Recent content in CS on zcys univ II Hugo ver</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <copyright>© 2020-2027 zcys</copyright>
+        <lastBuildDate>Mon, 13 Apr 2026 00:00:00 +0800</lastBuildDate><atom:link href="https://invalidval.github.io/tags/cs/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>【系统结构】Chapter 1-3 复习</title>
+        <link>https://invalidval.github.io/p/%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84chapter-1-3-%E5%A4%8D%E4%B9%A0/</link>
+        <pubDate>Mon, 13 Apr 2026 00:00:00 +0800</pubDate>
+        
+        <guid>https://invalidval.github.io/p/%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84chapter-1-3-%E5%A4%8D%E4%B9%A0/</guid>
+        <description>&lt;h2 id=&#34;第一三章&#34;&gt;第一三章
+&lt;/h2&gt;&lt;h2 id=&#34;分层&#34;&gt;分层
+&lt;/h2&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;解释&lt;/th&gt;
+          &lt;th&gt;翻译&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;微程序级 - 传统机器语言级 - 操作系统级&lt;/td&gt;
+          &lt;td&gt;==汇编语言级== - 高级语言级 - 应用语言级&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;ul&gt;
+&lt;li&gt;翻译：用转换程序把高一级机器上的程序转换为低一级机器上的等效程序，然后再在这低一级机器上运行。速度快、占用空间大。&lt;/li&gt;
+&lt;li&gt;解释：对于高一级机器上程序中的每一条语句或指令，转换为低级语言的一段等效程序执行，执行完后再去高一级机器取下一条语句或指令。速度慢、占用空间小。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;定义&#34;&gt;定义
+&lt;/h2&gt;&lt;p&gt;计算机系统结构的定义：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;计算机系统结构&lt;/strong&gt;是指&lt;strong&gt;传统机器程序员&lt;/strong&gt;所看到的计算机属性，即==&lt;strong&gt;概念性结构&lt;/strong&gt;、&lt;strong&gt;功能特性&lt;/strong&gt;。==&lt;/li&gt;
+&lt;li&gt;计算机系统结构的实质：&lt;strong&gt;确定计算机系统中软硬件的界面&lt;/strong&gt;，界面之上是软件实现的功能，界面之下是硬件和固件实现的功能。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;透明性&lt;/strong&gt;：一种本来存在的事物或属性，从某种角度看好像不存在或看不到。低层机器的属性对高层机器程序员来说通常是透明的。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;广义系统结构定义&lt;/strong&gt;：包括指令系统结构、组成、硬件。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;指令集&#34;&gt;指令集
+&lt;/h2&gt;&lt;p&gt;ARM：RISC（精简指令集）
+X86：CISC（复杂指令集）&lt;/p&gt;
+&lt;h2 id=&#34;flynn分类法&#34;&gt;Flynn分类法
+&lt;/h2&gt;&lt;p&gt;按照指令流和数据流的多倍性&lt;/p&gt;
+&lt;h2 id=&#34;冯氏分类法&#34;&gt;冯氏分类法
+&lt;/h2&gt;&lt;p&gt;（字，位） x （串，并）&lt;/p&gt;
+&lt;h2 id=&#34;handler分类法&#34;&gt;Handler分类法
+&lt;/h2&gt;&lt;p&gt;三元组：控制器（乘流水部件数）、ALU/PE（乘流水部件）、字长（乘流水部件）&lt;/p&gt;
+&lt;h2 id=&#34;系统结构的发展&#34;&gt;系统结构的发展
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;冯诺依曼结构：输入设备、输出设备、控制器、运算器、存储器。指令与数据同等对待（一条总线）。&lt;/li&gt;
+&lt;li&gt;冯诺伊曼以==运算器==为中心，核心思想是==存储器==&lt;/li&gt;
+&lt;li&gt;哈佛结构：冯诺依曼基础上，指令与数据分离。现代计算机都是哈佛结构。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;系统结构设计&#34;&gt;系统结构设计
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;方向（中间：传统机器级 - 操作系统级）&lt;/li&gt;
+&lt;li&gt;兼容性&lt;/li&gt;
+&lt;li&gt;模拟（实现==虚拟机的指令集==）&lt;/li&gt;
+&lt;li&gt;仿真（用宿主机的==微程序去解释实现另一台机器的指令集==）&lt;/li&gt;
+&lt;li&gt;并行性从低到高：
+&lt;ul&gt;
+&lt;li&gt;指令内部&lt;/li&gt;
+&lt;li&gt;指令见&lt;/li&gt;
+&lt;li&gt;线程间&lt;/li&gt;
+&lt;li&gt;任务/过程级（子程序/进程为调度单元）&lt;/li&gt;
+&lt;li&gt;作业/程序级&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;提高并行性的途径：
+&lt;ul&gt;
+&lt;li&gt;时间重叠：==轮流使用==同一套硬件的==各个部分==。&lt;/li&gt;
+&lt;li&gt;资源重复：重复设置硬件资源。&lt;/li&gt;
+&lt;li&gt;资源共享：按顺序轮流使用==同一套硬件==设备。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;原理和公式&#34;&gt;原理和公式
+&lt;/h2&gt;&lt;h3 id=&#34;局部性原理&#34;&gt;局部性原理：
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;时间、空间相对地簇集&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;amdahl定律&#34;&gt;Amdahl定律
+&lt;/h3&gt;&lt;p&gt;![[Pasted image 20260413161910.png]]
+扩展Amdahl：分母为单个部件提升之和，分子不变&lt;/p&gt;
+&lt;h3 id=&#34;cpu性能公式&#34;&gt;CPU性能公式
+&lt;/h3&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;符号&lt;/th&gt;
+          &lt;th&gt;含义&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;IC&lt;/td&gt;
+          &lt;td&gt;指令时钟周期数&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;MIPS&lt;/td&gt;
+          &lt;td&gt;百万指令每秒&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;CPI&lt;/td&gt;
+          &lt;td&gt;CLOCK per Instruction&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;ul&gt;
+&lt;li&gt;CPU时间：时钟周期数 * 时钟周期时间==（越小越好，衡量CPU性能）==&lt;/li&gt;
+&lt;li&gt;CPI越小性能越高&lt;/li&gt;
+&lt;li&gt;MIPS = 主频（每秒时钟周期数）/ CPI（每条指令时钟周期数） ==（百万单位）==&lt;/li&gt;
+&lt;li&gt;程序执行时间 = 指令数 / 主频 ==（MHz -&amp;gt; 单位毫秒）==&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

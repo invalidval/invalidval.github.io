@@ -5,8 +5,8 @@
         <link>https://invalidval.github.io/tags/er%E6%A8%A1%E5%9E%8B/</link>
         <description>Recent content in ER模型 on zcys univ II Hugo ver</description>
         <generator>Hugo -- gohugo.io</generator>
-        <language>en</language>
-        <copyright>Example Person</copyright>
+        <language>en-us</language>
+        <copyright>© 2020-2027 zcys</copyright>
         <lastBuildDate>Thu, 23 Oct 2025 00:00:00 +0800</lastBuildDate><atom:link href="https://invalidval.github.io/tags/er%E6%A8%A1%E5%9E%8B/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Chapter 6.8 ISA</title>
         <link>https://invalidval.github.io/p/chapter-6.8-isa/</link>
@@ -134,7 +134,7 @@
 &lt;/h1&gt;&lt;p&gt;&lt;img src=&#34;https://invalidval.github.io/p/chapter6-er%E6%A8%A1%E5%9E%8B/erd.png&#34;
 	width=&#34;1171&#34;
 	height=&#34;1073&#34;
-	srcset=&#34;https://invalidval.github.io/p/chapter6-er%E6%A8%A1%E5%9E%8B/erd_hu_7397ce272e3e7e02.png 480w, https://invalidval.github.io/p/chapter6-er%E6%A8%A1%E5%9E%8B/erd_hu_f0fd75825304ea4b.png 1024w&#34;
+	srcset=&#34;https://invalidval.github.io/p/chapter6-er%E6%A8%A1%E5%9E%8B/erd_hu_6a5c2466b4731a33.png 480w, https://invalidval.github.io/p/chapter6-er%E6%A8%A1%E5%9E%8B/erd_hu_51381b7fb074b665.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;ER diagram&#34;
@@ -156,7 +156,7 @@
 &lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://invalidval.github.io/p/chapter6-er%E6%A8%A1%E5%9E%8B/nonebinary.png&#34;
 	width=&#34;933&#34;
 	height=&#34;359&#34;
-	srcset=&#34;https://invalidval.github.io/p/chapter6-er%E6%A8%A1%E5%9E%8B/nonebinary_hu_90ed7bc08ea5076e.png 480w, https://invalidval.github.io/p/chapter6-er%E6%A8%A1%E5%9E%8B/nonebinary_hu_8a18ac6277bc90b4.png 1024w&#34;
+	srcset=&#34;https://invalidval.github.io/p/chapter6-er%E6%A8%A1%E5%9E%8B/nonebinary_hu_f33616bebe0b85ca.png 480w, https://invalidval.github.io/p/chapter6-er%E6%A8%A1%E5%9E%8B/nonebinary_hu_854c91feafc6c663.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;三元Ternary Relationship&#34;
@@ -176,7 +176,7 @@
 &lt;p&gt;&lt;img src=&#34;https://invalidval.github.io/p/chapter6-er%E6%A8%A1%E5%9E%8B/onetoone.png&#34;
 	width=&#34;1077&#34;
 	height=&#34;283&#34;
-	srcset=&#34;https://invalidval.github.io/p/chapter6-er%E6%A8%A1%E5%9E%8B/onetoone_hu_4b3b28947f5fe4df.png 480w, https://invalidval.github.io/p/chapter6-er%E6%A8%A1%E5%9E%8B/onetoone_hu_b4e9fa82a8ffafb9.png 1024w&#34;
+	srcset=&#34;https://invalidval.github.io/p/chapter6-er%E6%A8%A1%E5%9E%8B/onetoone_hu_924460c238451471.png 480w, https://invalidval.github.io/p/chapter6-er%E6%A8%A1%E5%9E%8B/onetoone_hu_a42ab6fbd28f8a05.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;一对一&#34;
@@ -202,7 +202,7 @@ e.g.  for the entity student, do not use instructor.id as its attribute, in stea
 &lt;p&gt;&lt;img src=&#34;https://invalidval.github.io/p/chapter6-er%E6%A8%A1%E5%9E%8B/weake.png&#34;
 	width=&#34;1811&#34;
 	height=&#34;1026&#34;
-	srcset=&#34;https://invalidval.github.io/p/chapter6-er%E6%A8%A1%E5%9E%8B/weake_hu_75aeef19b0c5a435.png 480w, https://invalidval.github.io/p/chapter6-er%E6%A8%A1%E5%9E%8B/weake_hu_8882bfca8686d0a2.png 1024w&#34;
+	srcset=&#34;https://invalidval.github.io/p/chapter6-er%E6%A8%A1%E5%9E%8B/weake_hu_d328f9d556355bcf.png 480w, https://invalidval.github.io/p/chapter6-er%E6%A8%A1%E5%9E%8B/weake_hu_53562d5201781e3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;弱实体集&#34;
@@ -217,7 +217,7 @@ e.g.  for the entity student, do not use instructor.id as its attribute, in stea
 &lt;p&gt;&lt;img src=&#34;https://invalidval.github.io/p/chapter6-er%E6%A8%A1%E5%9E%8B/image-4.png&#34;
 	width=&#34;1808&#34;
 	height=&#34;999&#34;
-	srcset=&#34;https://invalidval.github.io/p/chapter6-er%E6%A8%A1%E5%9E%8B/image-4_hu_768e97fa097db0f.png 480w, https://invalidval.github.io/p/chapter6-er%E6%A8%A1%E5%9E%8B/image-4_hu_e32fc9b501293992.png 1024w&#34;
+	srcset=&#34;https://invalidval.github.io/p/chapter6-er%E6%A8%A1%E5%9E%8B/image-4_hu_a3e1ab552bf22eb6.png 480w, https://invalidval.github.io/p/chapter6-er%E6%A8%A1%E5%9E%8B/image-4_hu_f1842b34d0d5debb.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;例子&#34;
@@ -243,7 +243,7 @@ e.g.  for the entity student, do not use instructor.id as its attribute, in stea
 &lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://invalidval.github.io/p/chapter6-er%E6%A8%A1%E5%9E%8B/notation.png&#34;
 	width=&#34;1448&#34;
 	height=&#34;830&#34;
-	srcset=&#34;https://invalidval.github.io/p/chapter6-er%E6%A8%A1%E5%9E%8B/notation_hu_2e71417dac28c066.png 480w, https://invalidval.github.io/p/chapter6-er%E6%A8%A1%E5%9E%8B/notation_hu_eae70deb99dd7e5b.png 1024w&#34;
+	srcset=&#34;https://invalidval.github.io/p/chapter6-er%E6%A8%A1%E5%9E%8B/notation_hu_404e07e4af850b3.png 480w, https://invalidval.github.io/p/chapter6-er%E6%A8%A1%E5%9E%8B/notation_hu_6fc6c6b12f482d56.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;记号&#34;
@@ -257,7 +257,7 @@ e.g.  for the entity student, do not use instructor.id as its attribute, in stea
 &lt;img src=&#34;https://invalidval.github.io/p/chapter6-er%E6%A8%A1%E5%9E%8B/image-1.png&#34;
 	width=&#34;1340&#34;
 	height=&#34;910&#34;
-	srcset=&#34;https://invalidval.github.io/p/chapter6-er%E6%A8%A1%E5%9E%8B/image-1_hu_2eca5d22e9091c97.png 480w, https://invalidval.github.io/p/chapter6-er%E6%A8%A1%E5%9E%8B/image-1_hu_148bcaec67969326.png 1024w&#34;
+	srcset=&#34;https://invalidval.github.io/p/chapter6-er%E6%A8%A1%E5%9E%8B/image-1_hu_d413e1272f036925.png 480w, https://invalidval.github.io/p/chapter6-er%E6%A8%A1%E5%9E%8B/image-1_hu_64c34a0a405b8cef.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;记号（续）&#34;
@@ -271,7 +271,7 @@ e.g.  for the entity student, do not use instructor.id as its attribute, in stea
 &lt;img src=&#34;https://invalidval.github.io/p/chapter6-er%E6%A8%A1%E5%9E%8B/image-2.png&#34;
 	width=&#34;1765&#34;
 	height=&#34;988&#34;
-	srcset=&#34;https://invalidval.github.io/p/chapter6-er%E6%A8%A1%E5%9E%8B/image-2_hu_d48f4362889822da.png 480w, https://invalidval.github.io/p/chapter6-er%E6%A8%A1%E5%9E%8B/image-2_hu_75aeac4bc8f0ad8c.png 1024w&#34;
+	srcset=&#34;https://invalidval.github.io/p/chapter6-er%E6%A8%A1%E5%9E%8B/image-2_hu_6bd483fb4472a90.png 480w, https://invalidval.github.io/p/chapter6-er%E6%A8%A1%E5%9E%8B/image-2_hu_f80fd6228f8120e1.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;替代记号&#34;
@@ -285,7 +285,7 @@ e.g.  for the entity student, do not use instructor.id as its attribute, in stea
 &lt;img src=&#34;https://invalidval.github.io/p/chapter6-er%E6%A8%A1%E5%9E%8B/image-3.png&#34;
 	width=&#34;1839&#34;
 	height=&#34;1011&#34;
-	srcset=&#34;https://invalidval.github.io/p/chapter6-er%E6%A8%A1%E5%9E%8B/image-3_hu_f9791aa57282eeee.png 480w, https://invalidval.github.io/p/chapter6-er%E6%A8%A1%E5%9E%8B/image-3_hu_b8fd75e1fb94a904.png 1024w&#34;
+	srcset=&#34;https://invalidval.github.io/p/chapter6-er%E6%A8%A1%E5%9E%8B/image-3_hu_8152a052ae88cf0b.png 480w, https://invalidval.github.io/p/chapter6-er%E6%A8%A1%E5%9E%8B/image-3_hu_5ddc0fae6addf5ee.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;替代记号（续）&#34;

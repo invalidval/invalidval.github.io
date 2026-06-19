@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Chapter 2 形式语言与自动机基础 真TMD气死老子了，考这个b编译原理期中，其他题一分没扣，就这b自动机两个大题几乎分扣完了，CTMD，SB自动机，编译原理你考自动机还考两个是吧，害老子白丢2分总分，正则文法有你这么诡异的吗？？？你看看往年题呢？？\r自动机是非常好的发明，在编译原理中有重要作用，我们一定要学好自动机理论\n「大水课」の 复习 与这学期有关的自动机理论减少到了正则文法和有限自动机，而且考试还考的是确定有限自动机DFA。\n语言和文法 分清0型、1型、2型、3型。\n2型是CFG，3型是「正规文法」「线性文法」，所产生的语言叫「正规语言」\n所以我们一定要上正规大学\n正规文法在所有产生式的右侧，最多只有一个非终结符，并且如果存在，它必须出现在最右端。\n至于左线性文法，构造出的DFA是镜像的，我们不管它。\n文法变换 消除二义性 消除左递归 自顶向下的语法分析不能识别左递归文法\n提取左公因子 预测分析法不能识别左公因子文法，在填预测分析表时会出现多重表项 总之，消除左递归和提取左公因子只有改写为LL(1)文法时才需要！！\n正规文法与有限自动机的等价性 实际上主要考右线性文法与确定有限自动机(DFA)的等价性\n定理2.3 对每一个右线性文法G或左线性文法G，都存在一个等价的有限自动机M\n定理2.4 对每一个DFA M，对存在一个等价的右线性文法G和一个等价的左线性文法G'\n推论2 对任何一个有限自动机M，对存在一个等价的正规文法G，反之亦然\n推论3 对任何一个右线性文法G，都存在一个等价的左线性文法G&rsquo;，反之亦然\n右线性文法 -&gt; 有限自动机（不一定是DFA）： 这是非常简单的，因为只管将B-&gt;aB写成$\\delta(B,a) = {B}$就行了，注意只有终结符的对应终结状态。但这不一定是确定的！！！\n有限自动机（不一定是DFA）-&gt; 右线性文法 ：\n按左侧写法空串消不完全就导致了B状态少识别一个0?是这个原因吗？一点也不直观，操\n">
+<title>Chapter 2 形式语言与自动机基础 </title>
+
+<link rel='canonical' href='https://invalidval.github.io/p/chapter-2-%E5%BD%A2%E5%BC%8F%E8%AF%AD%E8%A8%80%E4%B8%8E%E8%87%AA%E5%8A%A8%E6%9C%BA%E5%9F%BA%E7%A1%80/'>
+
+<link rel="stylesheet" href="/scss/style.min.39298367ffd71577271c5d1dcc9776d7b36a9e4a7ea9e50e8211affeb981df21.css"><meta property='og:title' content="Chapter 2 形式语言与自动机基础 ">
+<meta property='og:description' content="Chapter 2 形式语言与自动机基础 真TMD气死老子了，考这个b编译原理期中，其他题一分没扣，就这b自动机两个大题几乎分扣完了，CTMD，SB自动机，编译原理你考自动机还考两个是吧，害老子白丢2分总分，正则文法有你这么诡异的吗？？？你看看往年题呢？？\r自动机是非常好的发明，在编译原理中有重要作用，我们一定要学好自动机理论\n「大水课」の 复习 与这学期有关的自动机理论减少到了正则文法和有限自动机，而且考试还考的是确定有限自动机DFA。\n语言和文法 分清0型、1型、2型、3型。\n2型是CFG，3型是「正规文法」「线性文法」，所产生的语言叫「正规语言」\n所以我们一定要上正规大学\n正规文法在所有产生式的右侧，最多只有一个非终结符，并且如果存在，它必须出现在最右端。\n至于左线性文法，构造出的DFA是镜像的，我们不管它。\n文法变换 消除二义性 消除左递归 自顶向下的语法分析不能识别左递归文法\n提取左公因子 预测分析法不能识别左公因子文法，在填预测分析表时会出现多重表项 总之，消除左递归和提取左公因子只有改写为LL(1)文法时才需要！！\n正规文法与有限自动机的等价性 实际上主要考右线性文法与确定有限自动机(DFA)的等价性\n定理2.3 对每一个右线性文法G或左线性文法G，都存在一个等价的有限自动机M\n定理2.4 对每一个DFA M，对存在一个等价的右线性文法G和一个等价的左线性文法G'\n推论2 对任何一个有限自动机M，对存在一个等价的正规文法G，反之亦然\n推论3 对任何一个右线性文法G，都存在一个等价的左线性文法G&rsquo;，反之亦然\n右线性文法 -&gt; 有限自动机（不一定是DFA）： 这是非常简单的，因为只管将B-&gt;aB写成$\\delta(B,a) = {B}$就行了，注意只有终结符的对应终结状态。但这不一定是确定的！！！\n有限自动机（不一定是DFA）-&gt; 右线性文法 ：\n按左侧写法空串消不完全就导致了B状态少识别一个0?是这个原因吗？一点也不直观，操\n">
+<meta property='og:url' content='https://invalidval.github.io/p/chapter-2-%E5%BD%A2%E5%BC%8F%E8%AF%AD%E8%A8%80%E4%B8%8E%E8%87%AA%E5%8A%A8%E6%9C%BA%E5%9F%BA%E7%A1%80/'>
+<meta property='og:site_name' content='zcys univ II Hugo ver'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='DFA' /><meta property='article:tag' content='正则表达式' /><meta property='article:published_time' content='2025-11-04T00:00:00&#43;08:00'/><meta property='article:modified_time' content='2025-11-04T00:00:00&#43;08:00'/><meta property='og:image' content='https://invalidval.github.io/p/chapter-2-%E5%BD%A2%E5%BC%8F%E8%AF%AD%E8%A8%80%E4%B8%8E%E8%87%AA%E5%8A%A8%E6%9C%BA%E5%9F%BA%E7%A1%80/cp2.png' />
+<meta name="twitter:title" content="Chapter 2 形式语言与自动机基础 ">
+<meta name="twitter:description" content="Chapter 2 形式语言与自动机基础 真TMD气死老子了，考这个b编译原理期中，其他题一分没扣，就这b自动机两个大题几乎分扣完了，CTMD，SB自动机，编译原理你考自动机还考两个是吧，害老子白丢2分总分，正则文法有你这么诡异的吗？？？你看看往年题呢？？\r自动机是非常好的发明，在编译原理中有重要作用，我们一定要学好自动机理论\n「大水课」の 复习 与这学期有关的自动机理论减少到了正则文法和有限自动机，而且考试还考的是确定有限自动机DFA。\n语言和文法 分清0型、1型、2型、3型。\n2型是CFG，3型是「正规文法」「线性文法」，所产生的语言叫「正规语言」\n所以我们一定要上正规大学\n正规文法在所有产生式的右侧，最多只有一个非终结符，并且如果存在，它必须出现在最右端。\n至于左线性文法，构造出的DFA是镜像的，我们不管它。\n文法变换 消除二义性 消除左递归 自顶向下的语法分析不能识别左递归文法\n提取左公因子 预测分析法不能识别左公因子文法，在填预测分析表时会出现多重表项 总之，消除左递归和提取左公因子只有改写为LL(1)文法时才需要！！\n正规文法与有限自动机的等价性 实际上主要考右线性文法与确定有限自动机(DFA)的等价性\n定理2.3 对每一个右线性文法G或左线性文法G，都存在一个等价的有限自动机M\n定理2.4 对每一个DFA M，对存在一个等价的右线性文法G和一个等价的左线性文法G'\n推论2 对任何一个有限自动机M，对存在一个等价的正规文法G，反之亦然\n推论3 对任何一个右线性文法G，都存在一个等价的左线性文法G&rsquo;，反之亦然\n右线性文法 -&gt; 有限自动机（不一定是DFA）： 这是非常简单的，因为只管将B-&gt;aB写成$\\delta(B,a) = {B}$就行了，注意只有终结符的对应终结状态。但这不一定是确定的！！！\n有限自动机（不一定是DFA）-&gt; 右线性文法 ：\n按左侧写法空串消不完全就导致了B状态少识别一个0?是这个原因吗？一点也不直观，操\n"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://invalidval.github.io/p/chapter-2-%E5%BD%A2%E5%BC%8F%E8%AF%AD%E8%A8%80%E4%B8%8E%E8%87%AA%E5%8A%A8%E6%9C%BA%E5%9F%BA%E7%A1%80/cp2.png' />
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu_42b13e7dece29f43.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🐲</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">zcys univ II Hugo ver</a></h1>
+            <h2 class="site-description">We won&#39;t give up, we won&#39;t forget</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com/CaiJimmy/hugo-theme-stack'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com'
+                        target="_blank"
+                        title="Twitter"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%85%B3%E4%BA%8E%E6%88%91/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+        <li  class='current' >
+            <a href='/post/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                
+                <span>Posts</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Links</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+                    
+                        <li id="i18n-switch">  
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                            <select name="language" title="language" onchange="window.location.href = this.selectedOptions[0].value">
+                                
+                                    <option value="https://invalidval.github.io/" selected>English</option>
+                                
+                                    <option value="https://invalidval.github.io/zh-cn/" >中文</option>
+                                
+                                    <option value="https://invalidval.github.io/ar/" >عربي</option>
+                                
+                            </select>
+                        </li>
+                    
+                
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>Dark Mode</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#大水课の-复习">「大水课」の 复习</a></li>
+    <li><a href="#语言和文法">语言和文法</a></li>
+    <li><a href="#文法变换">文法变换</a>
+      <ol>
+        <li><a href="#消除二义性">消除二义性</a></li>
+        <li><a href="#消除左递归">消除左递归</a></li>
+        <li><a href="#提取左公因子">提取左公因子</a></li>
+      </ol>
+    </li>
+    <li><a href="#正规文法与有限自动机的等价性">正规文法与有限自动机的等价性</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+
+    
+    
+<nav class="post-navigation">
+    <div class="nav-links">
+        
+	
+    
+            <div class="nav-next">
+                <a href="/p/chapter-4-%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90/" rel="next">
+                    <div class="nav-content">
+                        <span class="nav-label">下一篇文章</span>
+                        <span class="nav-title">Chapter 4 语法分析</span>
+                    </div>
+                    <span class="nav-arrow">→</span>
+                </a>
+            </div>
+            
+    </div>
+</nav>
+
+<style>
+.post-navigation {
+    margin: 3rem 0;
+    border-top: 1px solid #eaeaea;
+    padding-top: 2rem;
+}
+
+.nav-links {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.nav-previous, .nav-next {
+    display: flex;
+}
+
+.nav-previous a, .nav-next a {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    border: 1px solid #eaeaea;
+    border-radius: 8px;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.2s ease;
+    flex: 1;
+}
+
+.nav-previous a:hover, .nav-next a:hover {
+    border-color: #007acc;
+    background-color: #f8f9fa;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.nav-previous a {
+    text-align: left;
+}
+
+.nav-next a {
+    text-align: right;
+    flex-direction: row-reverse;
+}
+
+.nav-arrow {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #007acc;
+    margin: 0 0.5rem;
+}
+
+.nav-content {
+    flex: 1;
+}
+
+.nav-label {
+    display: block;
+    font-size: 0.875rem;
+    color: #666;
+    margin-bottom: 0.25rem;
+}
+
+.nav-title {
+    display: block;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+ 
+@media (max-width: 768px) {
+    .nav-links {
+        grid-template-columns: 1fr;
+    }
+    
+    .nav-title {
+        font-size: 0.9rem;
+    }
+}
+</style>
+
+    
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/chapter-2-%E5%BD%A2%E5%BC%8F%E8%AF%AD%E8%A8%80%E4%B8%8E%E8%87%AA%E5%8A%A8%E6%9C%BA%E5%9F%BA%E7%A1%80/">
+                <img src="/p/chapter-2-%E5%BD%A2%E5%BC%8F%E8%AF%AD%E8%A8%80%E4%B8%8E%E8%87%AA%E5%8A%A8%E6%9C%BA%E5%9F%BA%E7%A1%80/cp2_hu_c2f72e39e6e9c828.png"
+                        srcset="/p/chapter-2-%E5%BD%A2%E5%BC%8F%E8%AF%AD%E8%A8%80%E4%B8%8E%E8%87%AA%E5%8A%A8%E6%9C%BA%E5%9F%BA%E7%A1%80/cp2_hu_c2f72e39e6e9c828.png 800w, /p/chapter-2-%E5%BD%A2%E5%BC%8F%E8%AF%AD%E8%A8%80%E4%B8%8E%E8%87%AA%E5%8A%A8%E6%9C%BA%E5%9F%BA%E7%A1%80/cp2_hu_62a8892843ac0b43.png 1600w"
+                        width="800" 
+                        height="455" 
+                        loading="lazy"
+                        alt="Featured image of post Chapter 2 形式语言与自动机基础 " />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/cp/" style="background-color: #2a9d8f; color: #fff;">
+                编译原理
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/chapter-2-%E5%BD%A2%E5%BC%8F%E8%AF%AD%E8%A8%80%E4%B8%8E%E8%87%AA%E5%8A%A8%E6%9C%BA%E5%9F%BA%E7%A1%80/">Chapter 2 形式语言与自动机基础 </a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Nov 04, 2025</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    1 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h1 id="chapter-2-形式语言与自动机基础">Chapter 2 形式语言与自动机基础
+</h1><span class="spoiler" >真TMD气死老子了，考这个b编译原理期中，其他题一分没扣，就这b自动机两个大题几乎分扣完了，CTMD，SB自动机，编译原理你考自动机还考两个是吧，害老子白丢2分总分，正则文法有你这么诡异的吗？？？你看看往年题呢？？</span>
+<style>
+
+.spoiler { 
+  color: black; 
+  background-color:black;
+}
+.spoiler:hover{
+  color: white;
+}
+</style>
+
+<p>自动机是非常好的发明，在编译原理中有重要作用，我们一定要学好自动机理论</p>
+<h2 id="大水课の-复习">「大水课」の 复习
+</h2><p>与这学期有关的自动机理论减少到了正则文法和有限自动机，而且考试还考的是确定有限自动机DFA。</p>
+<h2 id="语言和文法">语言和文法
+</h2><p>分清0型、1型、2型、3型。</p>
+<p>2型是CFG，3型是「正规文法」「线性文法」，所产生的语言叫「正规语言」</p>
+<p>所以我们一定要上正规大学</p>
+<p><img src="/p/chapter-2-%E5%BD%A2%E5%BC%8F%E8%AF%AD%E8%A8%80%E4%B8%8E%E8%87%AA%E5%8A%A8%E6%9C%BA%E5%9F%BA%E7%A1%80/image.png"
+	width="1500"
+	height="150"
+	srcset="/p/chapter-2-%E5%BD%A2%E5%BC%8F%E8%AF%AD%E8%A8%80%E4%B8%8E%E8%87%AA%E5%8A%A8%E6%9C%BA%E5%9F%BA%E7%A1%80/image_hu_8d6896b7428e8858.png 480w, /p/chapter-2-%E5%BD%A2%E5%BC%8F%E8%AF%AD%E8%A8%80%E4%B8%8E%E8%87%AA%E5%8A%A8%E6%9C%BA%E5%9F%BA%E7%A1%80/image_hu_f3af741520d496ec.png 1024w"
+	loading="lazy"
+	
+		alt="其实正则和正规是一个意思"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="1000"
+		data-flex-basis="2400px"
+	
+></p>
+<p>正规文法在所有产生式的右侧，最多只有一个非终结符，并且如果存在，它必须出现在最右端。</p>
+<p>至于左线性文法，构造出的DFA是镜像的，我们不管它。</p>
+<h2 id="文法变换">文法变换
+</h2><h3 id="消除二义性">消除二义性
+</h3><h3 id="消除左递归">消除左递归
+</h3><p><strong>自顶向下</strong>的语法分析不能识别左递归文法</p>
+<h3 id="提取左公因子">提取左公因子
+</h3><p><strong>预测分析法</strong>不能识别左公因子文法，在填预测分析表时会出现多重表项
+<strong>总之，消除左递归和提取左公因子只有改写为LL(1)文法时才需要！！</strong></p>
+<h2 id="正规文法与有限自动机的等价性">正规文法与有限自动机的等价性
+</h2><p>实际上主要考右线性文法与确定有限自动机(DFA)的等价性</p>
+<p>定理2.3 对每一个右线性文法G或左线性文法G，都存在一个等价的有限自动机M</p>
+<p>定理2.4 对每一个DFA M，对存在一个等价的右线性文法G和一个等价的左线性文法G'</p>
+<p>推论2 对任何一个有限自动机M，对存在一个等价的正规文法G，反之亦然</p>
+<p>推论3 对任何一个右线性文法G，都存在一个等价的左线性文法G&rsquo;，反之亦然</p>
+<p><strong>右线性文法 -&gt; 有限自动机（不一定是DFA）</strong>：
+这是非常简单的，因为只管将B-&gt;aB写成$\delta(B,a) = {B}$就行了，注意只有终结符的对应终结状态。但这不一定是确定的！！！</p>
+<p><strong>有限自动机（不一定是DFA）-&gt; 右线性文法</strong>  ：</p>
+<p><img src="/p/chapter-2-%E5%BD%A2%E5%BC%8F%E8%AF%AD%E8%A8%80%E4%B8%8E%E8%87%AA%E5%8A%A8%E6%9C%BA%E5%9F%BA%E7%A1%80/image-2.png"
+	width="783"
+	height="453"
+	srcset="/p/chapter-2-%E5%BD%A2%E5%BC%8F%E8%AF%AD%E8%A8%80%E4%B8%8E%E8%87%AA%E5%8A%A8%E6%9C%BA%E5%9F%BA%E7%A1%80/image-2_hu_8e977b25458bd826.png 480w, /p/chapter-2-%E5%BD%A2%E5%BC%8F%E8%AF%AD%E8%A8%80%E4%B8%8E%E8%87%AA%E5%8A%A8%E6%9C%BA%E5%9F%BA%E7%A1%80/image-2_hu_99ab6e32fd0ed752.png 1024w"
+	loading="lazy"
+	
+		alt="原题给出的自动机"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="172"
+		data-flex-basis="414px"
+	
+></p>
+<p>按左侧写法空串消不完全就导致了B状态少识别一个0?是这个原因吗？一点也不直观，操</p>
+<p><img src="/p/chapter-2-%E5%BD%A2%E5%BC%8F%E8%AF%AD%E8%A8%80%E4%B8%8E%E8%87%AA%E5%8A%A8%E6%9C%BA%E5%9F%BA%E7%A1%80/image-1.png"
+	width="1656"
+	height="795"
+	srcset="/p/chapter-2-%E5%BD%A2%E5%BC%8F%E8%AF%AD%E8%A8%80%E4%B8%8E%E8%87%AA%E5%8A%A8%E6%9C%BA%E5%9F%BA%E7%A1%80/image-1_hu_bd8ec59927746c97.png 480w, /p/chapter-2-%E5%BD%A2%E5%BC%8F%E8%AF%AD%E8%A8%80%E4%B8%8E%E8%87%AA%E5%8A%A8%E6%9C%BA%E5%9F%BA%E7%A1%80/image-1_hu_76a7e7d149daa0f5.png 1024w"
+	loading="lazy"
+	
+		alt="期中第二题"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="208"
+		data-flex-basis="499px"
+	
+></p>
+<p><strong>有限自动机 -&gt; 正规表达式</strong>：</p>
+<p><strong>正规表达式 -&gt; 有限自动机</strong>：</p>
+<p><strong>正规表达式 -&gt; 正规文法</strong>：</p>
+<p><strong>正规文法 -&gt; 正规表达式</strong>：</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/dfa/">DFA</a>
+        
+            <a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">正则表达式</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Related content</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/chapter-5-%E8%AF%AD%E6%B3%95%E5%88%B6%E5%AF%BC%E5%92%8C%E7%BF%BB%E8%AF%91%E6%8A%80%E6%9C%AF/">
+        
+        
+            <div class="article-image">
+                <img src="/p/chapter-5-%E8%AF%AD%E6%B3%95%E5%88%B6%E5%AF%BC%E5%92%8C%E7%BF%BB%E8%AF%91%E6%8A%80%E6%9C%AF/cp5.3adc53437ae9042b7b6f23d919a17dc3_hu_1b1c075c277fb49e.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Chapter 5 语法制导和翻译技术"
+                        
+                        data-hash="md5-OtxTQ3rpBCt7byPZGaF9ww==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Chapter 5 语法制导和翻译技术</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/chapter-4-%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Chapter 4 语法分析</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <script
+    src="https://giscus.app/client.js"
+    data-repo="invalidval/invalidval.github.io"
+    data-repo-id="R_kgDONxCpDQ"
+    data-category="Announcements"
+    data-category-id="DIC_kwDONxCpDc4CxrD4"
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="top"
+    data-theme="light"
+    data-lang="en"
+    data-loading=""
+    crossorigin="anonymous"
+    async
+></script>
+<script>
+    function setGiscusTheme(theme) {
+        let giscus = document.querySelector("iframe.giscus-frame");
+        if (giscus) {
+            giscus.contentWindow.postMessage(
+                {
+                    giscus: {
+                        setConfig: {
+                            theme: theme,
+                        },
+                    },
+                },
+                "https://giscus.app"
+            );
+        }
+    }
+
+    (function () {
+        addEventListener("message", (e) => {
+            if (event.origin !== "https://giscus.app") return;
+            handler();
+        });
+        window.addEventListener("onColorSchemeChange", handler);
+
+        function handler() {
+            if (document.documentElement.dataset.scheme === "light") {
+                setGiscusTheme('light');
+            } else {
+                setGiscusTheme('dark_dimmed');
+            }
+        }
+    })();
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2026 © 2020-2027 zcys
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.31.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+    
+
+            </main>
+        </div>
+        
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.1e9a3bafd846ced4c345d084b355fb8c7bae75701c338f8a1f8a82c780137826.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+
+    </body>
+
+</html>
+

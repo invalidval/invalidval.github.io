@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en-us" dir="ltr">
     <head><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Chapter 6 The Entity-Relationship Model Entity Sets（实体集，实体型） 一张学生表是一个实体集，一个学生是一个实体（一行记录）\nRelationship Sets(关系集) 选课表就是一个关系集。它定义了“学生”和“课程”之间的“选修”这种关系。关系表示特定实体之间的一次具体关联。它对应的是联系表中的一行记录。 关系集也可以拥有自己的属性（关系集属性），用于描述关系的特征。它同样对应联系表中的列。选课表这个关系集可以有成绩、选修日期等属性，这些属性不属于学生，也不属于课程，而是属于“选修”这个行为本身。\nChoice of Primary key for Binary Relationship 在多的那一端把一的主键拿过来当外键\n多元联系(non-binary) 先转成多个二元联系再转表：将其他实体集的主键和关系自身属性建成表，各实体集不存放多余属性。\nE-R图（概念设计结果） Representing Cardinality Constraints in ER Diagram →：一 —：多 (one,many) x (one,many) = 4 种\n参与约束(Participant Constraints) 完全参与、部分参与\n逻辑设计阶段 E-R图转关系模式 实体、联系、属性（单值属性、多值属性、复合属性）如何转表？ 多值属性单独转表 复合属性拆开（如时间、地址）\n弱实体集、强实体集； 用实体还是属性？ Not to use the primary-key of an entity set as an attributes of another entity set (to represent implicitly association between these two entity sets), it is better to use an relationship set to explicitly show this association e.g. for the entity student, do not use instructor.id as its attribute, in stead of, representing association among student and instructor using relationship advisor.\n">
 <title>Chapter6 ER模型</title>
 
 <link rel='canonical' href='https://invalidval.github.io/p/chapter6-er%E6%A8%A1%E5%9E%8B/'>
 
-<link rel="stylesheet" href="/scss/style.min.daa55b48e67dc978a42506ccd9f4d2d2cdf1b07a1b561a4e034dcb834320f94a.css"><meta property='og:title' content="Chapter6 ER模型">
+<link rel="stylesheet" href="/scss/style.min.39298367ffd71577271c5d1dcc9776d7b36a9e4a7ea9e50e8211affeb981df21.css"><meta property='og:title' content="Chapter6 ER模型">
 <meta property='og:description' content="Chapter 6 The Entity-Relationship Model Entity Sets（实体集，实体型） 一张学生表是一个实体集，一个学生是一个实体（一行记录）\nRelationship Sets(关系集) 选课表就是一个关系集。它定义了“学生”和“课程”之间的“选修”这种关系。关系表示特定实体之间的一次具体关联。它对应的是联系表中的一行记录。 关系集也可以拥有自己的属性（关系集属性），用于描述关系的特征。它同样对应联系表中的列。选课表这个关系集可以有成绩、选修日期等属性，这些属性不属于学生，也不属于课程，而是属于“选修”这个行为本身。\nChoice of Primary key for Binary Relationship 在多的那一端把一的主键拿过来当外键\n多元联系(non-binary) 先转成多个二元联系再转表：将其他实体集的主键和关系自身属性建成表，各实体集不存放多余属性。\nE-R图（概念设计结果） Representing Cardinality Constraints in ER Diagram →：一 —：多 (one,many) x (one,many) = 4 种\n参与约束(Participant Constraints) 完全参与、部分参与\n逻辑设计阶段 E-R图转关系模式 实体、联系、属性（单值属性、多值属性、复合属性）如何转表？ 多值属性单独转表 复合属性拆开（如时间、地址）\n弱实体集、强实体集； 用实体还是属性？ Not to use the primary-key of an entity set as an attributes of another entity set (to represent implicitly association between these two entity sets), it is better to use an relationship set to explicitly show this association e.g. for the entity student, do not use instructor.id as its attribute, in stead of, representing association among student and instructor using relationship advisor.\n">
 <meta property='og:url' content='https://invalidval.github.io/p/chapter6-er%E6%A8%A1%E5%9E%8B/'>
 <meta property='og:site_name' content='zcys univ II Hugo ver'>
@@ -56,13 +56,13 @@
                     
                     
                         
-                        <img src="/img/avatar_hu_c666be78737d2f33.png" width="300"
+                        <img src="/img/avatar_hu_42b13e7dece29f43.png" width="300"
                             height="300" class="site-logo" loading="lazy" alt="Avatar">
                     
                 
                 </a>
                 
-                    <span class="emoji">🍥</span>
+                    <span class="emoji">🐲</span>
                 
             </figure>
             
@@ -70,7 +70,7 @@
         
         <div class="site-meta">
             <h1 class="site-name"><a href="/">zcys univ II Hugo ver</a></h1>
-            <h2 class="site-description">zcys univ II Hugo ver</h2>
+            <h2 class="site-description">We won&#39;t give up, we won&#39;t forget</h2>
         </div>
     </header><ol class="menu-social">
             
@@ -525,7 +525,7 @@
 </h1><p><img src="/p/chapter6-er%E6%A8%A1%E5%9E%8B/erd.png"
 	width="1171"
 	height="1073"
-	srcset="/p/chapter6-er%E6%A8%A1%E5%9E%8B/erd_hu_7397ce272e3e7e02.png 480w, /p/chapter6-er%E6%A8%A1%E5%9E%8B/erd_hu_f0fd75825304ea4b.png 1024w"
+	srcset="/p/chapter6-er%E6%A8%A1%E5%9E%8B/erd_hu_6a5c2466b4731a33.png 480w, /p/chapter6-er%E6%A8%A1%E5%9E%8B/erd_hu_51381b7fb074b665.png 1024w"
 	loading="lazy"
 	
 		alt="ER diagram"
@@ -547,7 +547,7 @@
 </h2><p><img src="/p/chapter6-er%E6%A8%A1%E5%9E%8B/nonebinary.png"
 	width="933"
 	height="359"
-	srcset="/p/chapter6-er%E6%A8%A1%E5%9E%8B/nonebinary_hu_90ed7bc08ea5076e.png 480w, /p/chapter6-er%E6%A8%A1%E5%9E%8B/nonebinary_hu_8a18ac6277bc90b4.png 1024w"
+	srcset="/p/chapter6-er%E6%A8%A1%E5%9E%8B/nonebinary_hu_f33616bebe0b85ca.png 480w, /p/chapter6-er%E6%A8%A1%E5%9E%8B/nonebinary_hu_854c91feafc6c663.png 1024w"
 	loading="lazy"
 	
 		alt="三元Ternary Relationship"
@@ -567,7 +567,7 @@
 <p><img src="/p/chapter6-er%E6%A8%A1%E5%9E%8B/onetoone.png"
 	width="1077"
 	height="283"
-	srcset="/p/chapter6-er%E6%A8%A1%E5%9E%8B/onetoone_hu_4b3b28947f5fe4df.png 480w, /p/chapter6-er%E6%A8%A1%E5%9E%8B/onetoone_hu_b4e9fa82a8ffafb9.png 1024w"
+	srcset="/p/chapter6-er%E6%A8%A1%E5%9E%8B/onetoone_hu_924460c238451471.png 480w, /p/chapter6-er%E6%A8%A1%E5%9E%8B/onetoone_hu_a42ab6fbd28f8a05.png 1024w"
 	loading="lazy"
 	
 		alt="一对一"
@@ -593,7 +593,7 @@ e.g.  for the entity student, do not use instructor.id as its attribute, in stea
 <p><img src="/p/chapter6-er%E6%A8%A1%E5%9E%8B/weake.png"
 	width="1811"
 	height="1026"
-	srcset="/p/chapter6-er%E6%A8%A1%E5%9E%8B/weake_hu_75aeef19b0c5a435.png 480w, /p/chapter6-er%E6%A8%A1%E5%9E%8B/weake_hu_8882bfca8686d0a2.png 1024w"
+	srcset="/p/chapter6-er%E6%A8%A1%E5%9E%8B/weake_hu_d328f9d556355bcf.png 480w, /p/chapter6-er%E6%A8%A1%E5%9E%8B/weake_hu_53562d5201781e3.png 1024w"
 	loading="lazy"
 	
 		alt="弱实体集"
@@ -608,7 +608,7 @@ e.g.  for the entity student, do not use instructor.id as its attribute, in stea
 <p><img src="/p/chapter6-er%E6%A8%A1%E5%9E%8B/image-4.png"
 	width="1808"
 	height="999"
-	srcset="/p/chapter6-er%E6%A8%A1%E5%9E%8B/image-4_hu_768e97fa097db0f.png 480w, /p/chapter6-er%E6%A8%A1%E5%9E%8B/image-4_hu_e32fc9b501293992.png 1024w"
+	srcset="/p/chapter6-er%E6%A8%A1%E5%9E%8B/image-4_hu_a3e1ab552bf22eb6.png 480w, /p/chapter6-er%E6%A8%A1%E5%9E%8B/image-4_hu_f1842b34d0d5debb.png 1024w"
 	loading="lazy"
 	
 		alt="例子"
@@ -634,7 +634,7 @@ e.g.  for the entity student, do not use instructor.id as its attribute, in stea
 </h2><p><img src="/p/chapter6-er%E6%A8%A1%E5%9E%8B/notation.png"
 	width="1448"
 	height="830"
-	srcset="/p/chapter6-er%E6%A8%A1%E5%9E%8B/notation_hu_2e71417dac28c066.png 480w, /p/chapter6-er%E6%A8%A1%E5%9E%8B/notation_hu_eae70deb99dd7e5b.png 1024w"
+	srcset="/p/chapter6-er%E6%A8%A1%E5%9E%8B/notation_hu_404e07e4af850b3.png 480w, /p/chapter6-er%E6%A8%A1%E5%9E%8B/notation_hu_6fc6c6b12f482d56.png 1024w"
 	loading="lazy"
 	
 		alt="记号"
@@ -648,7 +648,7 @@ e.g.  for the entity student, do not use instructor.id as its attribute, in stea
 <img src="/p/chapter6-er%E6%A8%A1%E5%9E%8B/image-1.png"
 	width="1340"
 	height="910"
-	srcset="/p/chapter6-er%E6%A8%A1%E5%9E%8B/image-1_hu_2eca5d22e9091c97.png 480w, /p/chapter6-er%E6%A8%A1%E5%9E%8B/image-1_hu_148bcaec67969326.png 1024w"
+	srcset="/p/chapter6-er%E6%A8%A1%E5%9E%8B/image-1_hu_d413e1272f036925.png 480w, /p/chapter6-er%E6%A8%A1%E5%9E%8B/image-1_hu_64c34a0a405b8cef.png 1024w"
 	loading="lazy"
 	
 		alt="记号（续）"
@@ -662,7 +662,7 @@ e.g.  for the entity student, do not use instructor.id as its attribute, in stea
 <img src="/p/chapter6-er%E6%A8%A1%E5%9E%8B/image-2.png"
 	width="1765"
 	height="988"
-	srcset="/p/chapter6-er%E6%A8%A1%E5%9E%8B/image-2_hu_d48f4362889822da.png 480w, /p/chapter6-er%E6%A8%A1%E5%9E%8B/image-2_hu_75aeac4bc8f0ad8c.png 1024w"
+	srcset="/p/chapter6-er%E6%A8%A1%E5%9E%8B/image-2_hu_6bd483fb4472a90.png 480w, /p/chapter6-er%E6%A8%A1%E5%9E%8B/image-2_hu_f80fd6228f8120e1.png 1024w"
 	loading="lazy"
 	
 		alt="替代记号"
@@ -676,7 +676,7 @@ e.g.  for the entity student, do not use instructor.id as its attribute, in stea
 <img src="/p/chapter6-er%E6%A8%A1%E5%9E%8B/image-3.png"
 	width="1839"
 	height="1011"
-	srcset="/p/chapter6-er%E6%A8%A1%E5%9E%8B/image-3_hu_f9791aa57282eeee.png 480w, /p/chapter6-er%E6%A8%A1%E5%9E%8B/image-3_hu_b8fd75e1fb94a904.png 1024w"
+	srcset="/p/chapter6-er%E6%A8%A1%E5%9E%8B/image-3_hu_8152a052ae88cf0b.png 480w, /p/chapter6-er%E6%A8%A1%E5%9E%8B/image-3_hu_5ddc0fae6addf5ee.png 1024w"
 	loading="lazy"
 	
 		alt="替代记号（续）"
@@ -748,7 +748,7 @@ e.g.  for the entity student, do not use instructor.id as its attribute, in stea
         
         
             <div class="article-image">
-                <img src="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/c7.8c9954ec69bee801f868ee1a498adaf3_hu_77efefbf7dbea07b.png" 
+                <img src="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/c7.8c9954ec69bee801f868ee1a498adaf3_hu_bb74fe340d8ad704.png" 
                         width="250" 
                         height="150" 
                         loading="lazy"
@@ -772,7 +772,7 @@ e.g.  for the entity student, do not use instructor.id as its attribute, in stea
         
         
             <div class="article-image">
-                <img src="/p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/c7.5468b3514b5277cab6d512ae84f1448b_hu_359eadd785e603a6.png" 
+                <img src="/p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/c7.5468b3514b5277cab6d512ae84f1448b_hu_b4723dc5d8b9b0f1.png" 
                         width="250" 
                         height="150" 
                         loading="lazy"
@@ -882,7 +882,7 @@ e.g.  for the entity student, do not use instructor.id as its attribute, in stea
         
             2020 - 
         
-        2025 Example Person
+        2026 © 2020-2027 zcys
     </section>
     
     <section class="powerby">

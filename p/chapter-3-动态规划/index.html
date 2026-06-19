@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en-us" dir="ltr">
     <head><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="最优子结构性质 重叠子问题性质 (期末一章一个大题，就这么问)\n矩阵连乘、最长公共子序列、最大子段和、背包 最优质、极大极小、全局最优\n引言 使用动态规划可以优化分治算法解决Fabonacci数列的问题。分治算法的时间复杂度为O(2^n)，而动态规划通过保存中间结果将时间复杂度降低到O(n)。\n零、矩阵连乘问题 矩阵连乘问题是指给定一系列矩阵，求它们的最优乘法顺序，以使得计算所需的标量乘法次数最少。设有n个矩阵A1, A2, &hellip;, An，矩阵Ai的维数为pi-1 × pi。定义一个n维数组dp，其中dp[i][j]表示矩阵Ai到Aj的最优乘法次数。\n2 动态规划解法 2.1 递归结构 $$dp[i][j] = \\begin{cases}\r0 & , i = j \\\\\r\\min_{i \\leq k < j} \\{dp[i][k] + dp[k+1][j] + p_{i-1}p_kp_j\\} & , i < j\r\\end{cases}$$2.2 代码\n1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 void MatrixChainOrder(int p[], int n){ int dp[n][n]; for(int i = 1; i &lt; n; i++) dp[i][i] = 0; for(int l = 2; l &lt; n; l++){ // l is chain length for(int i = 1; i &lt; n - l + 1; i++){ int j = i + l - 1; dp[i][j] = INT_MAX; for(int k = i; k &lt;= j - 1; k++){ int q = dp[i][k] + dp[k+1][j] + p[i-1]*p[k]*p[j]; if(q &lt; dp[i][j]) dp[i][j] = q; } } } } 复杂度分析：时间复杂度为$O(n^{3})$，空间复杂度为$O(n^{2})$。\n">
 <title>Chapter 3 动态规划</title>
 
 <link rel='canonical' href='https://invalidval.github.io/p/chapter-3-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/'>
 
-<link rel="stylesheet" href="/scss/style.min.daa55b48e67dc978a42506ccd9f4d2d2cdf1b07a1b561a4e034dcb834320f94a.css"><meta property='og:title' content="Chapter 3 动态规划">
+<link rel="stylesheet" href="/scss/style.min.39298367ffd71577271c5d1dcc9776d7b36a9e4a7ea9e50e8211affeb981df21.css"><meta property='og:title' content="Chapter 3 动态规划">
 <meta property='og:description' content="最优子结构性质 重叠子问题性质 (期末一章一个大题，就这么问)\n矩阵连乘、最长公共子序列、最大子段和、背包 最优质、极大极小、全局最优\n引言 使用动态规划可以优化分治算法解决Fabonacci数列的问题。分治算法的时间复杂度为O(2^n)，而动态规划通过保存中间结果将时间复杂度降低到O(n)。\n零、矩阵连乘问题 矩阵连乘问题是指给定一系列矩阵，求它们的最优乘法顺序，以使得计算所需的标量乘法次数最少。设有n个矩阵A1, A2, &hellip;, An，矩阵Ai的维数为pi-1 × pi。定义一个n维数组dp，其中dp[i][j]表示矩阵Ai到Aj的最优乘法次数。\n2 动态规划解法 2.1 递归结构 $$dp[i][j] = \\begin{cases}\r0 & , i = j \\\\\r\\min_{i \\leq k < j} \\{dp[i][k] + dp[k+1][j] + p_{i-1}p_kp_j\\} & , i < j\r\\end{cases}$$2.2 代码\n1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 void MatrixChainOrder(int p[], int n){ int dp[n][n]; for(int i = 1; i &lt; n; i++) dp[i][i] = 0; for(int l = 2; l &lt; n; l++){ // l is chain length for(int i = 1; i &lt; n - l + 1; i++){ int j = i + l - 1; dp[i][j] = INT_MAX; for(int k = i; k &lt;= j - 1; k++){ int q = dp[i][k] + dp[k+1][j] + p[i-1]*p[k]*p[j]; if(q &lt; dp[i][j]) dp[i][j] = q; } } } } 复杂度分析：时间复杂度为$O(n^{3})$，空间复杂度为$O(n^{2})$。\n">
 <meta property='og:url' content='https://invalidval.github.io/p/chapter-3-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/'>
 <meta property='og:site_name' content='zcys univ II Hugo ver'>
@@ -57,13 +57,13 @@
                     
                     
                         
-                        <img src="/img/avatar_hu_c666be78737d2f33.png" width="300"
+                        <img src="/img/avatar_hu_42b13e7dece29f43.png" width="300"
                             height="300" class="site-logo" loading="lazy" alt="Avatar">
                     
                 
                 </a>
                 
-                    <span class="emoji">🍥</span>
+                    <span class="emoji">🐲</span>
                 
             </figure>
             
@@ -71,7 +71,7 @@
         
         <div class="site-meta">
             <h1 class="site-name"><a href="/">zcys univ II Hugo ver</a></h1>
-            <h2 class="site-description">zcys univ II Hugo ver</h2>
+            <h2 class="site-description">We won&#39;t give up, we won&#39;t forget</h2>
         </div>
     </header><ol class="menu-social">
             
@@ -474,8 +474,8 @@
     <header class="article-header">
         <div class="article-image">
             <a href="/p/chapter-3-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">
-                <img src="/p/chapter-3-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/head_hu_68663fa9d93581ff.png"
-                        srcset="/p/chapter-3-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/head_hu_68663fa9d93581ff.png 800w, /p/chapter-3-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/head_hu_e208ed76f2ff216a.png 1600w"
+                <img src="/p/chapter-3-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/head_hu_679e1d05aac011c.png"
+                        srcset="/p/chapter-3-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/head_hu_679e1d05aac011c.png 800w, /p/chapter-3-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/head_hu_95626798ff7c4179.png 1600w"
                         width="800" 
                         height="449" 
                         loading="lazy"
@@ -590,7 +590,7 @@ $$dp[i][j] = \begin{cases}
 </span></span><span class="line"><span class="cl">    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">l</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="n">l</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">l</span><span class="o">++</span><span class="p">){</span> <span class="c1">// l is chain length
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span> <span class="o">-</span> <span class="n">l</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">){</span>
+</span></span></span><span class="line"><span class="cl">        <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span> <span class="o">-</span> <span class="n">l</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">){</span>
 </span></span><span class="line"><span class="cl">            <span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="n">l</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">            <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">INT_MAX</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">            <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">k</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span> <span class="n">k</span> <span class="o">&lt;=</span> <span class="n">j</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="n">k</span><span class="o">++</span><span class="p">){</span>
@@ -607,7 +607,7 @@ $$dp[i][j] = \begin{cases}
 </h2><p><img src="/p/chapter-3-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/image.png"
 	width="585"
 	height="213"
-	srcset="/p/chapter-3-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/image_hu_e0bf337a7f9b0966.png 480w, /p/chapter-3-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/image_hu_99158ada91dbf4a9.png 1024w"
+	srcset="/p/chapter-3-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/image_hu_5786dc4e2a15f06.png 480w, /p/chapter-3-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/image_hu_242572511c7957b7.png 1024w"
 	loading="lazy"
 	
 		alt="偷来的图"
@@ -624,7 +624,7 @@ $$dp[i][j] = \begin{cases}
 </h3><p><img src="/p/chapter-3-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/image-1.png"
 	width="880"
 	height="203"
-	srcset="/p/chapter-3-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/image-1_hu_983f8b67484f98c7.png 480w, /p/chapter-3-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/image-1_hu_ab1dbce8cd5e2c23.png 1024w"
+	srcset="/p/chapter-3-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/image-1_hu_147507085785cf5f.png 480w, /p/chapter-3-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/image-1_hu_87a62c513a1ae45c.png 1024w"
 	loading="lazy"
 	
 		alt="1"
@@ -639,7 +639,7 @@ $$dp[i][j] = \begin{cases}
 </h3><p><img src="/p/chapter-3-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/image-2.png"
 	width="869"
 	height="177"
-	srcset="/p/chapter-3-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/image-2_hu_f43ff341ef35760f.png 480w, /p/chapter-3-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/image-2_hu_708dcc83a74bc3e8.png 1024w"
+	srcset="/p/chapter-3-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/image-2_hu_ac445d7401c1a4d1.png 480w, /p/chapter-3-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/image-2_hu_35164e3659e30e4d.png 1024w"
 	loading="lazy"
 	
 		alt="2"
@@ -653,7 +653,7 @@ $$dp[i][j] = \begin{cases}
 <img src="/p/chapter-3-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/image-3.png"
 	width="861"
 	height="203"
-	srcset="/p/chapter-3-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/image-3_hu_3110731c2bf70bda.png 480w, /p/chapter-3-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/image-3_hu_7c939c10aeda794f.png 1024w"
+	srcset="/p/chapter-3-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/image-3_hu_c5e48deb1958d804.png 480w, /p/chapter-3-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/image-3_hu_6966f3ce18dd5ab8.png 1024w"
 	loading="lazy"
 	
 		alt="3"
@@ -905,6 +905,19 @@ $$$$dp[0][j] = 0, \quad 0 \leq j \leq W$$<p><strong>2.2 代码</strong></p>
             
                 
 <article class="">
+    <a href="/p/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84%E5%92%8C%E7%BA%BF%E6%AE%B5%E6%A0%91/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">树状数组和线段树</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
     <a href="/p/chapter-4-%E8%B4%AA%E5%BF%83/">
         
         
@@ -995,7 +1008,7 @@ $$$$dp[0][j] = 0, \quad 0 \leq j \leq W$$<p><strong>2.2 代码</strong></p>
         
             2020 - 
         
-        2025 Example Person
+        2026 © 2020-2027 zcys
     </section>
     
     <section class="powerby">

@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en-us" dir="ltr">
     <head><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="关系数据库设计步骤 无损连接 有损连接：拆分再恢复时出现多余错误记录 如果R1、R2没有公共属性，则join时会退化成笛卡尔积\n规范化理论 数据依赖 在逻辑DBS设计过程中，将E-R图转换，得到面向特定应用领域的初始关系模式集。这些初始关系模式集中可能存在多种作为完整性约束的关系模式属性间的数据依赖 (Data Dependencies) 关系\n函数依赖 (Functional Dependencies, FD, §7.2) 多值依赖 (Mutivalued Dependencies, MVD, §7.4, 7.6) 连接依赖 (Join Dependencies, JD) （略） 函数依赖是特殊的多值依赖 多值依赖又是连接依赖的特例\n范式关系 保证关系模式的函数无损连接性、函数依赖保持性进行关系规范化处理即模式分解 1NF 原子属性\n2NF 由1NF消除非主属性对键的部分（函数）依赖得到 不包含非主属性对键的部分依赖\n3NF 由2NF消除非主属性对键的传递依赖得到 不包含非主属性的对键的部分、传递依赖\nBCNF 由3NF消除主属性对键的部分和传递依赖得到 不包含主属性、非主属性对键的部分和传递依赖\n4NF 由BCNF消除非平凡且非函数依赖的多值依赖得到\n5NF 由4NF消除非平凡的连接依赖得到\n概念 函数依赖 可参考 Chapter 7 函数依赖\n">
 <title>Chapter7 关系规范化(7.1-7.3)</title>
 
 <link rel='canonical' href='https://invalidval.github.io/p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/'>
 
-<link rel="stylesheet" href="/scss/style.min.daa55b48e67dc978a42506ccd9f4d2d2cdf1b07a1b561a4e034dcb834320f94a.css"><meta property='og:title' content="Chapter7 关系规范化(7.1-7.3)">
+<link rel="stylesheet" href="/scss/style.min.39298367ffd71577271c5d1dcc9776d7b36a9e4a7ea9e50e8211affeb981df21.css"><meta property='og:title' content="Chapter7 关系规范化(7.1-7.3)">
 <meta property='og:description' content="关系数据库设计步骤 无损连接 有损连接：拆分再恢复时出现多余错误记录 如果R1、R2没有公共属性，则join时会退化成笛卡尔积\n规范化理论 数据依赖 在逻辑DBS设计过程中，将E-R图转换，得到面向特定应用领域的初始关系模式集。这些初始关系模式集中可能存在多种作为完整性约束的关系模式属性间的数据依赖 (Data Dependencies) 关系\n函数依赖 (Functional Dependencies, FD, §7.2) 多值依赖 (Mutivalued Dependencies, MVD, §7.4, 7.6) 连接依赖 (Join Dependencies, JD) （略） 函数依赖是特殊的多值依赖 多值依赖又是连接依赖的特例\n范式关系 保证关系模式的函数无损连接性、函数依赖保持性进行关系规范化处理即模式分解 1NF 原子属性\n2NF 由1NF消除非主属性对键的部分（函数）依赖得到 不包含非主属性对键的部分依赖\n3NF 由2NF消除非主属性对键的传递依赖得到 不包含非主属性的对键的部分、传递依赖\nBCNF 由3NF消除主属性对键的部分和传递依赖得到 不包含主属性、非主属性对键的部分和传递依赖\n4NF 由BCNF消除非平凡且非函数依赖的多值依赖得到\n5NF 由4NF消除非平凡的连接依赖得到\n概念 函数依赖 可参考 Chapter 7 函数依赖\n">
 <meta property='og:url' content='https://invalidval.github.io/p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/'>
 <meta property='og:site_name' content='zcys univ II Hugo ver'>
@@ -57,13 +57,13 @@
                     
                     
                         
-                        <img src="/img/avatar_hu_c666be78737d2f33.png" width="300"
+                        <img src="/img/avatar_hu_42b13e7dece29f43.png" width="300"
                             height="300" class="site-logo" loading="lazy" alt="Avatar">
                     
                 
                 </a>
                 
-                    <span class="emoji">🍥</span>
+                    <span class="emoji">🐲</span>
                 
             </figure>
             
@@ -71,7 +71,7 @@
         
         <div class="site-meta">
             <h1 class="site-name"><a href="/">zcys univ II Hugo ver</a></h1>
-            <h2 class="site-description">zcys univ II Hugo ver</h2>
+            <h2 class="site-description">We won&#39;t give up, we won&#39;t forget</h2>
         </div>
     </header><ol class="menu-social">
             
@@ -482,8 +482,8 @@
     <header class="article-header">
         <div class="article-image">
             <a href="/p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/">
-                <img src="/p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/c7_hu_d328e8f1d75546f2.png"
-                        srcset="/p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/c7_hu_d328e8f1d75546f2.png 800w, /p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/c7_hu_f26d2b7294231822.png 1600w"
+                <img src="/p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/c7_hu_90b9be82106e8552.png"
+                        srcset="/p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/c7_hu_90b9be82106e8552.png 800w, /p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/c7_hu_1017fefc3fc76cce.png 1600w"
                         width="800" 
                         height="450" 
                         loading="lazy"
@@ -562,7 +562,7 @@
 </h1><p><img src="/p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/image-2.png"
 	width="1013"
 	height="567"
-	srcset="/p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/image-2_hu_493d6f455a140a7f.png 480w, /p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/image-2_hu_1e944343fcb1755b.png 1024w"
+	srcset="/p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/image-2_hu_c23b0a779a01066d.png 480w, /p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/image-2_hu_19bd10a141498cff.png 1024w"
 	loading="lazy"
 	
 		alt="关系数据库设计内容/步骤"
@@ -578,7 +578,7 @@
 <img src="/p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/image-3.png"
 	width="1011"
 	height="564"
-	srcset="/p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/image-3_hu_1b39139cf869d3be.png 480w, /p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/image-3_hu_a2f4d7abc69d7b88.png 1024w"
+	srcset="/p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/image-3_hu_fbfad82776fc359.png 480w, /p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/image-3_hu_5c0855f7ac86d1ff.png 1024w"
 	loading="lazy"
 	
 		alt="无损连接与SQL"
@@ -605,7 +605,7 @@
 <img src="/p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/image-1.png"
 	width="2037"
 	height="1140"
-	srcset="/p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/image-1_hu_72fea522126e530a.png 480w, /p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/image-1_hu_76ae8d1399a3e256.png 1024w"
+	srcset="/p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/image-1_hu_52c6f0f03a9f3b4c.png 480w, /p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/image-1_hu_bec389a6aa230799.png 1024w"
 	loading="lazy"
 	
 		alt="范式定义"
@@ -634,7 +634,7 @@
 <p><img src="/p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/nfs.png"
 	width="1383"
 	height="355"
-	srcset="/p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/nfs_hu_c1c0ded694fa508a.png 480w, /p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/nfs_hu_5fa213c649ab6922.png 1024w"
+	srcset="/p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/nfs_hu_3dc281c56b68831f.png 480w, /p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/nfs_hu_92e7a0256c14be9f.png 1024w"
 	loading="lazy"
 	
 		alt="NF"
@@ -653,7 +653,7 @@
 </h3><p><img src="/p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/image-4.png"
 	width="1857"
 	height="1017"
-	srcset="/p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/image-4_hu_c3d6c1bffa1ae256.png 480w, /p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/image-4_hu_ae4b454ad7a8d09b.png 1024w"
+	srcset="/p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/image-4_hu_b31e2aac5375edb9.png 480w, /p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/image-4_hu_34199de9ef36e0c0.png 1024w"
 	loading="lazy"
 	
 		alt="函数依赖保持与满足的区别"
@@ -668,7 +668,7 @@
 <img src="/p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/image-5.png"
 	width="1535"
 	height="1023"
-	srcset="/p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/image-5_hu_45240c7a96bfb079.png 480w, /p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/image-5_hu_77986a6470d2c1d1.png 1024w"
+	srcset="/p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/image-5_hu_2c0231be0b7cb0db.png 480w, /p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/image-5_hu_da509821cd49bac1.png 1024w"
 	loading="lazy"
 	
 		alt="例子"
@@ -683,7 +683,7 @@
 </h3><p><img src="/p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/image-6.png"
 	width="1752"
 	height="525"
-	srcset="/p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/image-6_hu_5d676a39e93a262d.png 480w, /p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/image-6_hu_e9ab209866b1f62c.png 1024w"
+	srcset="/p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/image-6_hu_5863b447348a7de9.png 480w, /p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/image-6_hu_98e0f48fa7c18247.png 1024w"
 	loading="lazy"
 	
 		alt="Trival FD例子"
@@ -698,7 +698,7 @@
 </h3><p><img src="/p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/image-7.png"
 	width="1839"
 	height="549"
-	srcset="/p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/image-7_hu_bfd82bf6b8dd22bc.png 480w, /p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/image-7_hu_100f91fd0d2e1716.png 1024w"
+	srcset="/p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/image-7_hu_2eb48df38f3753b5.png 480w, /p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/image-7_hu_ec8733c89e265db8.png 1024w"
 	loading="lazy"
 	
 		alt="Transitive"
@@ -717,7 +717,7 @@
 </h3><p><img src="/p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/image-8.png"
 	width="1794"
 	height="474"
-	srcset="/p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/image-8_hu_2f31f466e1d31449.png 480w, /p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/image-8_hu_176bdc86ac5a9e02.png 1024w"
+	srcset="/p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/image-8_hu_72eea5fb944b68ef.png 480w, /p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/image-8_hu_62ca47296012858e.png 1024w"
 	loading="lazy"
 	
 		alt="条件"
@@ -731,7 +731,7 @@
 <img src="/p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/image-9.png"
 	width="1785"
 	height="915"
-	srcset="/p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/image-9_hu_15b47d5e9414eef7.png 480w, /p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/image-9_hu_c2925814dd9913d2.png 1024w"
+	srcset="/p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/image-9_hu_164afef8df729ceb.png 480w, /p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/image-9_hu_7d349a1510fbfcc0.png 1024w"
 	loading="lazy"
 	
 		alt="例子"
@@ -760,7 +760,7 @@ $\alpha$ is a superkey for R
 <img src="/p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/image-10.png"
 	width="1773"
 	height="936"
-	srcset="/p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/image-10_hu_76a914defd60cd33.png 480w, /p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/image-10_hu_725bb9b4a484b43b.png 1024w"
+	srcset="/p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/image-10_hu_80efe80387974ce.png 480w, /p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/image-10_hu_7b2b2819c7be3958.png 1024w"
 	loading="lazy"
 	
 		alt="我也不知道为什么在这讲"
@@ -789,7 +789,7 @@ Third condition is a minimal <em>relaxation</em>（放宽） of BCNF to ensure d
 <img src="/p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/image-11.png"
 	width="1143"
 	height="627"
-	srcset="/p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/image-11_hu_de9a69fa781e77cc.png 480w, /p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/image-11_hu_ceefd351e9e7deed.png 1024w"
+	srcset="/p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/image-11_hu_827949c99c68a25d.png 480w, /p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/image-11_hu_30eb27702d51ee75.png 1024w"
 	loading="lazy"
 	
 		alt="有点懵逼，自己看吧"
@@ -890,7 +890,7 @@ BCNF分解保证无损连接，但不保证函数依赖保持</li>
         
         
             <div class="article-image">
-                <img src="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/c7.8c9954ec69bee801f868ee1a498adaf3_hu_77efefbf7dbea07b.png" 
+                <img src="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/c7.8c9954ec69bee801f868ee1a498adaf3_hu_bb74fe340d8ad704.png" 
                         width="250" 
                         height="150" 
                         loading="lazy"
@@ -1026,7 +1026,7 @@ BCNF分解保证无损连接，但不保证函数依赖保持</li>
         
             2020 - 
         
-        2025 Example Person
+        2026 © 2020-2027 zcys
     </section>
     
     <section class="powerby">

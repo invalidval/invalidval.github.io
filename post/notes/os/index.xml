@@ -5,15 +5,25 @@
         <link>https://invalidval.github.io/post/notes/os/</link>
         <description>Recent content in 操作系统 on zcys univ II Hugo ver</description>
         <generator>Hugo -- gohugo.io</generator>
-        <language>en</language>
-        <copyright>Example Person</copyright>
-        <lastBuildDate>Tue, 04 Nov 2025 00:00:00 +0800</lastBuildDate><atom:link href="https://invalidval.github.io/post/notes/os/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>第六章 进程同步</title>
-        <link>https://invalidval.github.io/p/%E7%AC%AC%E5%85%AD%E7%AB%A0-%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5/</link>
+        <language>en-us</language>
+        <copyright>© 2020-2027 zcys</copyright>
+        <lastBuildDate>Sun, 16 Nov 2025 00:00:00 +0800</lastBuildDate><atom:link href="https://invalidval.github.io/post/notes/os/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Chapter 8 内存管理</title>
+        <link>https://invalidval.github.io/p/chapter-8-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/</link>
+        <pubDate>Sun, 16 Nov 2025 00:00:00 +0800</pubDate>
+        
+        <guid>https://invalidval.github.io/p/chapter-8-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/</guid>
+        <description>&lt;h2 id=&#34;xx&#34;&gt;xx
+&lt;/h2&gt;&lt;h2 id=&#34;intel-pentium-的段页式&#34;&gt;Intel Pentium 的段页式
+&lt;/h2&gt;</description>
+        </item>
+        <item>
+        <title>Chapter 6 进程同步</title>
+        <link>https://invalidval.github.io/p/chapter-6-%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5/</link>
         <pubDate>Tue, 04 Nov 2025 00:00:00 +0800</pubDate>
         
-        <guid>https://invalidval.github.io/p/%E7%AC%AC%E5%85%AD%E7%AB%A0-%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5/</guid>
-        <description>&lt;img src="https://invalidval.github.io/p/%E7%AC%AC%E5%85%AD%E7%AB%A0-%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5/1.jpg" alt="Featured image of post 第六章 进程同步" /&gt;&lt;h1 id=&#34;信号量有关的同步问题&#34;&gt;信号量有关的同步问题
+        <guid>https://invalidval.github.io/p/chapter-6-%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5/</guid>
+        <description>&lt;img src="https://invalidval.github.io/p/chapter-6-%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5/1.jpg" alt="Featured image of post Chapter 6 进程同步" /&gt;&lt;h1 id=&#34;信号量有关的同步问题&#34;&gt;信号量有关的同步问题
 &lt;/h1&gt;&lt;h2 id=&#34;有限缓冲&#34;&gt;有限缓冲
 &lt;/h2&gt;&lt;p&gt;1、分析需要的信号量个数&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -24,15 +34,15 @@
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
 &lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;Binary&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;semaphore&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;mutex&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;；&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;//互斥信号量，实现对缓冲区的互斥访问
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;semaphore&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;empty&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;n&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;；&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;//同步信号量，表示空闲缓冲区的数量
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;semaphore&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;full&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;；&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;//同步信号量，表示产品的数量，也即非空缓冲区的数量
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;semaphore&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;empty&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;n&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;；&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;//同步信号量，表示空闲缓冲区的数量
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;semaphore&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;full&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;；&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;//同步信号量，表示产品的数量，也即非空缓冲区的数量
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;2、类c代码
-&lt;img src=&#34;https://invalidval.github.io/p/%E7%AC%AC%E5%85%AD%E7%AB%A0-%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5/image.png&#34;
+&lt;img src=&#34;https://invalidval.github.io/p/chapter-6-%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5/image.png&#34;
 	width=&#34;1191&#34;
 	height=&#34;477&#34;
-	srcset=&#34;https://invalidval.github.io/p/%E7%AC%AC%E5%85%AD%E7%AB%A0-%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5/image_hu_62187498e1bd04c8.png 480w, https://invalidval.github.io/p/%E7%AC%AC%E5%85%AD%E7%AB%A0-%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5/image_hu_af72591013fe49f1.png 1024w&#34;
+	srcset=&#34;https://invalidval.github.io/p/chapter-6-%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5/image_hu_7f86ee290e25cd23.png 480w, https://invalidval.github.io/p/chapter-6-%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5/image_hu_9dfeb5fde8c2beb2.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;alt text&#34;
@@ -85,7 +95,7 @@
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;writer&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(){&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nf&#34;&gt;wait&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;wrt&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;c1&#34;&gt;//w
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;nf&#34;&gt;signal&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;wrt&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nf&#34;&gt;signal&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;wrt&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;reader&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(){&lt;/span&gt;
@@ -94,7 +104,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;r_cnt&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;wait&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;wrt&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nf&#34;&gt;signal&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;r_mutex&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;c1&#34;&gt;//r
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;nf&#34;&gt;wait&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;r_mutex&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nf&#34;&gt;wait&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;r_mutex&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;r_cnt&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;--&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;r_cnt&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;signal&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;wrt&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nf&#34;&gt;signal&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;r_mutex&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
@@ -132,7 +142,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;writer&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(){&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nf&#34;&gt;wait&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;q&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;c1&#34;&gt;//逻辑不变
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;nf&#34;&gt;signal&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;q&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nf&#34;&gt;signal&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;q&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;reader&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(){&lt;/span&gt;
@@ -142,8 +152,8 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;r_cnt&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;wait&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;wrt&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nf&#34;&gt;signal&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;r_mutex&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nf&#34;&gt;signal&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;q&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// 完成读计数之后就signal队列，之后你慢慢读没人管你
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;c1&#34;&gt;//r
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;nf&#34;&gt;wait&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;r_mutex&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;c1&#34;&gt;//r
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nf&#34;&gt;wait&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;r_mutex&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;r_cnt&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;--&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;r_cnt&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;signal&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;wrt&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nf&#34;&gt;signal&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;r_mutex&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
@@ -152,10 +162,10 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;h3 id=&#34;扩展的读写者问题最多允许m个读者同时读&#34;&gt;扩展的读写者问题——最多允许M个读者同时读
-&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://invalidval.github.io/p/%E7%AC%AC%E5%85%AD%E7%AB%A0-%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5/image-1.png&#34;
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://invalidval.github.io/p/chapter-6-%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5/image-1.png&#34;
 	width=&#34;969&#34;
 	height=&#34;965&#34;
-	srcset=&#34;https://invalidval.github.io/p/%E7%AC%AC%E5%85%AD%E7%AB%A0-%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5/image-1_hu_8758022534248490.png 480w, https://invalidval.github.io/p/%E7%AC%AC%E5%85%AD%E7%AB%A0-%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5/image-1_hu_b7f7604ef41bd7b.png 1024w&#34;
+	srcset=&#34;https://invalidval.github.io/p/chapter-6-%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5/image-1_hu_955c5a933a33e3e1.png 480w, https://invalidval.github.io/p/chapter-6-%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5/image-1_hu_8f8c8a19ef38443f.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;alt text&#34;
@@ -166,10 +176,10 @@
 		data-flex-basis=&#34;240px&#34;
 	
 &gt;
-&lt;img src=&#34;https://invalidval.github.io/p/%E7%AC%AC%E5%85%AD%E7%AB%A0-%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5/image-2.png&#34;
+&lt;img src=&#34;https://invalidval.github.io/p/chapter-6-%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5/image-2.png&#34;
 	width=&#34;864&#34;
 	height=&#34;633&#34;
-	srcset=&#34;https://invalidval.github.io/p/%E7%AC%AC%E5%85%AD%E7%AB%A0-%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5/image-2_hu_3d9ceff277e636bc.png 480w, https://invalidval.github.io/p/%E7%AC%AC%E5%85%AD%E7%AB%A0-%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5/image-2_hu_6c01bfdd81aae1be.png 1024w&#34;
+	srcset=&#34;https://invalidval.github.io/p/chapter-6-%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5/image-2_hu_a7666ac7d4b7646f.png 480w, https://invalidval.github.io/p/chapter-6-%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5/image-2_hu_f95ae26d5232792d.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;alt text&#34;
@@ -180,10 +190,10 @@
 		data-flex-basis=&#34;327px&#34;
 	
 &gt;
-&lt;img src=&#34;https://invalidval.github.io/p/%E7%AC%AC%E5%85%AD%E7%AB%A0-%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5/image-3.png&#34;
+&lt;img src=&#34;https://invalidval.github.io/p/chapter-6-%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5/image-3.png&#34;
 	width=&#34;867&#34;
 	height=&#34;662&#34;
-	srcset=&#34;https://invalidval.github.io/p/%E7%AC%AC%E5%85%AD%E7%AB%A0-%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5/image-3_hu_c1fd094bbd43be9a.png 480w, https://invalidval.github.io/p/%E7%AC%AC%E5%85%AD%E7%AB%A0-%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5/image-3_hu_2bf98965cf0ed3ff.png 1024w&#34;
+	srcset=&#34;https://invalidval.github.io/p/chapter-6-%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5/image-3_hu_c24fe1f4f78e18f9.png 480w, https://invalidval.github.io/p/chapter-6-%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5/image-3_hu_e15c351f8f389d99.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;alt text&#34;
@@ -194,10 +204,10 @@
 		data-flex-basis=&#34;314px&#34;
 	
 &gt;
-&lt;img src=&#34;https://invalidval.github.io/p/%E7%AC%AC%E5%85%AD%E7%AB%A0-%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5/image-4.png&#34;
+&lt;img src=&#34;https://invalidval.github.io/p/chapter-6-%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5/image-4.png&#34;
 	width=&#34;615&#34;
 	height=&#34;876&#34;
-	srcset=&#34;https://invalidval.github.io/p/%E7%AC%AC%E5%85%AD%E7%AB%A0-%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5/image-4_hu_8291cd54b89364aa.png 480w, https://invalidval.github.io/p/%E7%AC%AC%E5%85%AD%E7%AB%A0-%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5/image-4_hu_7234a3b607198fa3.png 1024w&#34;
+	srcset=&#34;https://invalidval.github.io/p/chapter-6-%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5/image-4_hu_cce49aa4bd56dcd7.png 480w, https://invalidval.github.io/p/chapter-6-%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5/image-4_hu_918558f199305e57.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;alt text&#34;
@@ -208,10 +218,10 @@
 		data-flex-basis=&#34;168px&#34;
 	
 &gt;
-&lt;img src=&#34;https://invalidval.github.io/p/%E7%AC%AC%E5%85%AD%E7%AB%A0-%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5/image-5.png&#34;
+&lt;img src=&#34;https://invalidval.github.io/p/chapter-6-%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5/image-5.png&#34;
 	width=&#34;435&#34;
 	height=&#34;363&#34;
-	srcset=&#34;https://invalidval.github.io/p/%E7%AC%AC%E5%85%AD%E7%AB%A0-%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5/image-5_hu_fc3ca9880037b414.png 480w, https://invalidval.github.io/p/%E7%AC%AC%E5%85%AD%E7%AB%A0-%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5/image-5_hu_a96dfb7c7f159953.png 1024w&#34;
+	srcset=&#34;https://invalidval.github.io/p/chapter-6-%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5/image-5_hu_11ec93b3b1a16d35.png 480w, https://invalidval.github.io/p/chapter-6-%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5/image-5_hu_91b386c63023b215.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;alt text&#34;
@@ -223,10 +233,10 @@
 	
 &gt;&lt;/p&gt;
 &lt;h3 id=&#34;四出生之家&#34;&gt;四出生之家
-&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://invalidval.github.io/p/%E7%AC%AC%E5%85%AD%E7%AB%A0-%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5/image-6.png&#34;
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://invalidval.github.io/p/chapter-6-%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5/image-6.png&#34;
 	width=&#34;975&#34;
 	height=&#34;927&#34;
-	srcset=&#34;https://invalidval.github.io/p/%E7%AC%AC%E5%85%AD%E7%AB%A0-%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5/image-6_hu_497f9598bcd25e7a.png 480w, https://invalidval.github.io/p/%E7%AC%AC%E5%85%AD%E7%AB%A0-%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5/image-6_hu_594d598b41e8f178.png 1024w&#34;
+	srcset=&#34;https://invalidval.github.io/p/chapter-6-%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5/image-6_hu_7e771ddf4925e5ca.png 480w, https://invalidval.github.io/p/chapter-6-%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5/image-6_hu_edca409d79a353e7.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;alt text&#34;
@@ -254,15 +264,15 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;enum&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;THINKING&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;EATING&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;HUNGRY&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;states&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;5&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;];&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;condition&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;5&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;];&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;c1&#34;&gt;// void ...
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;c1&#34;&gt;// void initialize();
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;c1&#34;&gt;// void initialize();
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;h2 id=&#34;期中计数范围&#34;&gt;（期中）计数范围
-&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://invalidval.github.io/p/%E7%AC%AC%E5%85%AD%E7%AB%A0-%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5/image-7.png&#34;
+&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://invalidval.github.io/p/chapter-6-%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5/image-7.png&#34;
 	width=&#34;968&#34;
 	height=&#34;669&#34;
-	srcset=&#34;https://invalidval.github.io/p/%E7%AC%AC%E5%85%AD%E7%AB%A0-%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5/image-7_hu_ded4ddf08a75d6a1.png 480w, https://invalidval.github.io/p/%E7%AC%AC%E5%85%AD%E7%AB%A0-%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5/image-7_hu_954a4f11dc4fa363.png 1024w&#34;
+	srcset=&#34;https://invalidval.github.io/p/chapter-6-%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5/image-7_hu_55302d5d19f27212.png 480w, https://invalidval.github.io/p/chapter-6-%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5/image-7_hu_a84c5de9f8a170e7.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;alt text&#34;

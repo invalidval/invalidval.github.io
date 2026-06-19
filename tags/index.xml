@@ -5,22 +5,62 @@
         <link>https://invalidval.github.io/tags/</link>
         <description>Recent content in Tags on zcys univ II Hugo ver</description>
         <generator>Hugo -- gohugo.io</generator>
-        <language>en</language>
-        <copyright>Example Person</copyright>
-        <lastBuildDate>Wed, 12 Nov 2025 00:00:00 +0800</lastBuildDate><atom:link href="https://invalidval.github.io/tags/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>Greedy</title>
-        <link>https://invalidval.github.io/tags/greedy/</link>
-        <pubDate>Wed, 12 Nov 2025 00:00:00 +0800</pubDate>
+        <language>en-us</language>
+        <copyright>© 2020-2027 zcys</copyright>
+        <lastBuildDate>Mon, 13 Apr 2026 00:00:00 +0800</lastBuildDate><atom:link href="https://invalidval.github.io/tags/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>CS</title>
+        <link>https://invalidval.github.io/tags/cs/</link>
+        <pubDate>Mon, 13 Apr 2026 00:00:00 +0800</pubDate>
         
-        <guid>https://invalidval.github.io/tags/greedy/</guid>
+        <guid>https://invalidval.github.io/tags/cs/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>区间和</title>
+        <link>https://invalidval.github.io/tags/%E5%8C%BA%E9%97%B4%E5%92%8C/</link>
+        <pubDate>Sat, 11 Apr 2026 00:00:00 +0800</pubDate>
+        
+        <guid>https://invalidval.github.io/tags/%E5%8C%BA%E9%97%B4%E5%92%8C/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>查询和修改</title>
+        <link>https://invalidval.github.io/tags/%E6%9F%A5%E8%AF%A2%E5%92%8C%E4%BF%AE%E6%94%B9/</link>
+        <pubDate>Sat, 11 Apr 2026 00:00:00 +0800</pubDate>
+        
+        <guid>https://invalidval.github.io/tags/%E6%9F%A5%E8%AF%A2%E5%92%8C%E4%BF%AE%E6%94%B9/</guid>
         <description></description>
         </item>
         <item>
         <title>算法</title>
         <link>https://invalidval.github.io/tags/%E7%AE%97%E6%B3%95/</link>
-        <pubDate>Wed, 12 Nov 2025 00:00:00 +0800</pubDate>
+        <pubDate>Sat, 11 Apr 2026 00:00:00 +0800</pubDate>
         
         <guid>https://invalidval.github.io/tags/%E7%AE%97%E6%B3%95/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Memory</title>
+        <link>https://invalidval.github.io/tags/memory/</link>
+        <pubDate>Sun, 16 Nov 2025 00:00:00 +0800</pubDate>
+        
+        <guid>https://invalidval.github.io/tags/memory/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>翻译</title>
+        <link>https://invalidval.github.io/tags/%E7%BF%BB%E8%AF%91/</link>
+        <pubDate>Sat, 15 Nov 2025 00:00:00 +0800</pubDate>
+        
+        <guid>https://invalidval.github.io/tags/%E7%BF%BB%E8%AF%91/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Greedy</title>
+        <link>https://invalidval.github.io/tags/greedy/</link>
+        <pubDate>Wed, 12 Nov 2025 00:00:00 +0800</pubDate>
+        
+        <guid>https://invalidval.github.io/tags/greedy/</guid>
         <description></description>
         </item>
         <item>
@@ -32,6 +72,22 @@
         <description></description>
         </item>
         <item>
+        <title>LL</title>
+        <link>https://invalidval.github.io/tags/ll/</link>
+        <pubDate>Mon, 10 Nov 2025 00:00:00 +0800</pubDate>
+        
+        <guid>https://invalidval.github.io/tags/ll/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>LR</title>
+        <link>https://invalidval.github.io/tags/lr/</link>
+        <pubDate>Mon, 10 Nov 2025 00:00:00 +0800</pubDate>
+        
+        <guid>https://invalidval.github.io/tags/lr/</guid>
+        <description></description>
+        </item>
+        <item>
         <title>DP</title>
         <link>https://invalidval.github.io/tags/dp/</link>
         <pubDate>Wed, 05 Nov 2025 00:00:00 +0800</pubDate>
@@ -40,11 +96,11 @@
         <description></description>
         </item>
         <item>
-        <title>Concepts</title>
-        <link>https://invalidval.github.io/tags/concepts/</link>
+        <title>DFA</title>
+        <link>https://invalidval.github.io/tags/dfa/</link>
         <pubDate>Tue, 04 Nov 2025 00:00:00 +0800</pubDate>
         
-        <guid>https://invalidval.github.io/tags/concepts/</guid>
+        <guid>https://invalidval.github.io/tags/dfa/</guid>
         <description></description>
         </item>
         <item>
@@ -53,6 +109,14 @@
         <pubDate>Tue, 04 Nov 2025 00:00:00 +0800</pubDate>
         
         <guid>https://invalidval.github.io/tags/semaphore/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>正则表达式</title>
+        <link>https://invalidval.github.io/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/</link>
+        <pubDate>Tue, 04 Nov 2025 00:00:00 +0800</pubDate>
+        
+        <guid>https://invalidval.github.io/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/</guid>
         <description></description>
         </item>
         <item>

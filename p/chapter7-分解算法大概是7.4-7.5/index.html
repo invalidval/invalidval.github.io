@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en-us" dir="ltr">
     <head><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Functional-Dependency Theory SQL for judging FDs Closure of a Set of Functional Dependencies The set of all functional dependencies logically implied by F is the closure of F, which is denoted as F+. It is the set of all functional dependencies that can be inferred from F using Armstrong&rsquo;s axioms.\nArmstrong&rsquo;s Axioms Armstrong&rsquo;s axioms are a set of rules used to infer all the functional dependencies in a relational database. They are sound (i.e., they only produce valid dependencies) and complete (i.e., they can produce all valid dependencies).\n">
 <title>Chapter7 分解算法(大概是7.4-7.5)</title>
 
 <link rel='canonical' href='https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/'>
 
-<link rel="stylesheet" href="/scss/style.min.daa55b48e67dc978a42506ccd9f4d2d2cdf1b07a1b561a4e034dcb834320f94a.css"><meta property='og:title' content="Chapter7 分解算法(大概是7.4-7.5)">
+<link rel="stylesheet" href="/scss/style.min.39298367ffd71577271c5d1dcc9776d7b36a9e4a7ea9e50e8211affeb981df21.css"><meta property='og:title' content="Chapter7 分解算法(大概是7.4-7.5)">
 <meta property='og:description' content="Functional-Dependency Theory SQL for judging FDs Closure of a Set of Functional Dependencies The set of all functional dependencies logically implied by F is the closure of F, which is denoted as F+. It is the set of all functional dependencies that can be inferred from F using Armstrong&rsquo;s axioms.\nArmstrong&rsquo;s Axioms Armstrong&rsquo;s axioms are a set of rules used to infer all the functional dependencies in a relational database. They are sound (i.e., they only produce valid dependencies) and complete (i.e., they can produce all valid dependencies).\n">
 <meta property='og:url' content='https://invalidval.github.io/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/'>
 <meta property='og:site_name' content='zcys univ II Hugo ver'>
@@ -57,13 +57,13 @@
                     
                     
                         
-                        <img src="/img/avatar_hu_c666be78737d2f33.png" width="300"
+                        <img src="/img/avatar_hu_42b13e7dece29f43.png" width="300"
                             height="300" class="site-logo" loading="lazy" alt="Avatar">
                     
                 
                 </a>
                 
-                    <span class="emoji">🍥</span>
+                    <span class="emoji">🐲</span>
                 
             </figure>
             
@@ -71,7 +71,7 @@
         
         <div class="site-meta">
             <h1 class="site-name"><a href="/">zcys univ II Hugo ver</a></h1>
-            <h2 class="site-description">zcys univ II Hugo ver</h2>
+            <h2 class="site-description">We won&#39;t give up, we won&#39;t forget</h2>
         </div>
     </header><ol class="menu-social">
             
@@ -469,8 +469,8 @@
     <header class="article-header">
         <div class="article-image">
             <a href="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/">
-                <img src="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/c7_hu_e1301da848b980a2.png"
-                        srcset="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/c7_hu_e1301da848b980a2.png 800w, /p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/c7_hu_35491e5daae5a06c.png 1600w"
+                <img src="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/c7_hu_641c4795d9c6c07d.png"
+                        srcset="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/c7_hu_641c4795d9c6c07d.png 800w, /p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/c7_hu_1ce76839f4e1bc79.png 1600w"
                         width="800" 
                         height="447" 
                         loading="lazy"
@@ -550,7 +550,7 @@
 </h3><p><img src="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image.png"
 	width="1170"
 	height="531"
-	srcset="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image_hu_fbbf3765274fc645.png 480w, /p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image_hu_3685a5474aacfa59.png 1024w"
+	srcset="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image_hu_e2267616503f700d.png 480w, /p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image_hu_64318e63540e65c5.png 1024w"
 	loading="lazy"
 	
 		alt="断言"
@@ -564,7 +564,7 @@
 <img src="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-1.png"
 	width="1164"
 	height="516"
-	srcset="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-1_hu_644ef2888ce87e8e.png 480w, /p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-1_hu_99d8e10ad593effd.png 1024w"
+	srcset="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-1_hu_79ad47924dc2ac9e.png 480w, /p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-1_hu_44558c7edea5be15.png 1024w"
 	loading="lazy"
 	
 		alt="元组变量"
@@ -614,7 +614,7 @@ A+，得到A+ = {A, B, C}。</li>
 <img src="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-2.png"
 	width="1772"
 	height="768"
-	srcset="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-2_hu_933f2dfe75ba76be.png 480w, /p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-2_hu_8b280a5ce04fff6b.png 1024w"
+	srcset="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-2_hu_f6d123c69ac1d337.png 480w, /p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-2_hu_591414955facae73.png 1024w"
 	loading="lazy"
 	
 		alt="属性闭包例子"
@@ -657,7 +657,7 @@ i.e. X → Y and X → Z cannot both be in Fc</li>
 </div><p><img src="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-27.png"
 	width="1296"
 	height="594"
-	srcset="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-27_hu_1497373f187648df.png 480w, /p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-27_hu_40b7989c9939b866.png 1024w"
+	srcset="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-27_hu_b142bc648f1efbcb.png 480w, /p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-27_hu_f5feb12ddc03e4dc.png 1024w"
 	loading="lazy"
 	
 		alt="计算步骤"
@@ -672,7 +672,7 @@ i.e. X → Y and X → Z cannot both be in Fc</li>
 </h3><p><img src="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-3.png"
 	width="1782"
 	height="1019"
-	srcset="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-3_hu_678d161d910204b9.png 480w, /p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-3_hu_cd9fc73393e31cc8.png 1024w"
+	srcset="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-3_hu_580c864d3a17d03.png 480w, /p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-3_hu_22f3049dc9040274.png 1024w"
 	loading="lazy"
 	
 		alt="Fc计算"
@@ -687,7 +687,7 @@ i.e. X → Y and X → Z cannot both be in Fc</li>
 </h2><p><img src="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-26.png"
 	width="1041"
 	height="633"
-	srcset="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-26_hu_f224a3501e5cb8fb.png 480w, /p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-26_hu_32c9c7326cb5b275.png 1024w"
+	srcset="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-26_hu_fb37a92581e183bd.png 480w, /p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-26_hu_60a5f40cf8572202.png 1024w"
 	loading="lazy"
 	
 		alt="三者关系"
@@ -730,7 +730,7 @@ holds on是指某个具体的关系实例满足某个函数依赖，
 <img src="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-4.png"
 	width="1809"
 	height="909"
-	srcset="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-4_hu_22e9e7391756f43f.png 480w, /p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-4_hu_efc7da62c3ccf696.png 1024w"
+	srcset="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-4_hu_a951acfcdc7f9603.png 480w, /p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-4_hu_e4b405c36b6d6118.png 1024w"
 	loading="lazy"
 	
 		alt="什么是Fi"
@@ -744,7 +744,7 @@ holds on是指某个具体的关系实例满足某个函数依赖，
 <p><img src="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-5.png"
 	width="1722"
 	height="836"
-	srcset="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-5_hu_f59f776af4162e1.png 480w, /p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-5_hu_d8c7858f2bea98b8.png 1024w"
+	srcset="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-5_hu_4505f6557cb2b0af.png 480w, /p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-5_hu_7fb42074d5a96664.png 1024w"
 	loading="lazy"
 	
 		alt="preserved例子"
@@ -758,7 +758,7 @@ holds on是指某个具体的关系实例满足某个函数依赖，
 <p><img src="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-7.png"
 	width="1812"
 	height="954"
-	srcset="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-7_hu_3f0c7a0db91ea827.png 480w, /p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-7_hu_dc30d980fc7eace4.png 1024w"
+	srcset="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-7_hu_fdcc75e97be61eff.png 480w, /p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-7_hu_3d2c1e2a15194cd4.png 1024w"
 	loading="lazy"
 	
 		alt="cnmd"
@@ -772,7 +772,7 @@ holds on是指某个具体的关系实例满足某个函数依赖，
 <p><img src="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-8.png"
 	width="1755"
 	height="981"
-	srcset="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-8_hu_5d8013d2378b395c.png 480w, /p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-8_hu_e9101c0a101b14a8.png 1024w"
+	srcset="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-8_hu_5b4730ab5619b979.png 480w, /p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-8_hu_67ef2c8809ef6fca.png 1024w"
 	loading="lazy"
 	
 		alt="不保持分解"
@@ -786,7 +786,7 @@ holds on是指某个具体的关系实例满足某个函数依赖，
 <p><img src="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-9.png"
 	width="1782"
 	height="573"
-	srcset="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-9_hu_c08fcd348858bd9c.png 480w, /p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-9_hu_c75f593ad4bfde3a.png 1024w"
+	srcset="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-9_hu_ca0a0afcabec3823.png 480w, /p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-9_hu_22251605edf79efe.png 1024w"
 	loading="lazy"
 	
 		alt="保持分解"
@@ -824,7 +824,7 @@ BCNF</p>
 <p><img src="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-20.png"
 	width="1164"
 	height="258"
-	srcset="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-20_hu_4d8ee6303023f21d.png 480w, /p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-20_hu_7b4b3d127b277b4.png 1024w"
+	srcset="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-20_hu_4b89d8459fce7601.png 480w, /p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-20_hu_7cfe218b369dcfbc.png 1024w"
 	loading="lazy"
 	
 		alt="反例"
@@ -873,7 +873,7 @@ the restriction of F to R1是{A → B}，因为B → C在R1中无效。</li>
 <p><img src="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-10.png"
 	width="1779"
 	height="666"
-	srcset="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-10_hu_89ac9b91046d1cb2.png 480w, /p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-10_hu_9543829986eb1b24.png 1024w"
+	srcset="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-10_hu_c2ecb6a587115f79.png 480w, /p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-10_hu_ed83342f77a0d173.png 1024w"
 	loading="lazy"
 	
 		alt="分解例子1"
@@ -887,7 +887,7 @@ the restriction of F to R1是{A → B}，因为B → C在R1中无效。</li>
 <p><img src="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-11.png"
 	width="1764"
 	height="777"
-	srcset="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-11_hu_fa01c86cb11d1cb.png 480w, /p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-11_hu_ee10086738b5980e.png 1024w"
+	srcset="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-11_hu_d8edb1c74090943b.png 480w, /p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-11_hu_1a44e3996102cf03.png 1024w"
 	loading="lazy"
 	
 		alt="分解例子2-1"
@@ -901,7 +901,7 @@ the restriction of F to R1是{A → B}，因为B → C在R1中无效。</li>
 <p><img src="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-14.png"
 	width="1791"
 	height="710"
-	srcset="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-14_hu_382cae119eb7c7e8.png 480w, /p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-14_hu_d6ea7c4da10825dd.png 1024w"
+	srcset="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-14_hu_63f061fbb97f9959.png 480w, /p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-14_hu_fe28c9ecc74dd96e.png 1024w"
 	loading="lazy"
 	
 		alt="分解步骤树"
@@ -915,7 +915,7 @@ the restriction of F to R1是{A → B}，因为B → C在R1中无效。</li>
 <p><img src="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-12.png"
 	width="1785"
 	height="609"
-	srcset="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-12_hu_6d3f761eb69c5f7b.png 480w, /p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-12_hu_6662cd04c3398405.png 1024w"
+	srcset="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-12_hu_4ee0b1e84627ff37.png 480w, /p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-12_hu_35cded195e18a125.png 1024w"
 	loading="lazy"
 	
 		alt="分解例子2-2"
@@ -929,7 +929,7 @@ the restriction of F to R1是{A → B}，因为B → C在R1中无效。</li>
 <p><img src="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-13.png"
 	width="1797"
 	height="990"
-	srcset="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-13_hu_b9ceb1655c31af7d.png 480w, /p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-13_hu_2a0c61b484aa2f76.png 1024w"
+	srcset="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-13_hu_aee0c715deee3a8f.png 480w, /p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-13_hu_2a3fd1bcb1a88375.png 1024w"
 	loading="lazy"
 	
 		alt="分解例子2-3"
@@ -944,7 +944,7 @@ the restriction of F to R1是{A → B}，因为B → C在R1中无效。</li>
 <img src="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-15.png"
 	width="1827"
 	height="897"
-	srcset="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-15_hu_edcf2ae7121d145b.png 480w, /p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-15_hu_7dca34e770012f47.png 1024w"
+	srcset="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-15_hu_dc0c430eb852ba90.png 480w, /p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-15_hu_e3989a3a8294d35c.png 1024w"
 	loading="lazy"
 	
 		alt="not preserved"
@@ -982,7 +982,7 @@ the restriction of F to R1是{A → B}，因为B → C在R1中无效。</li>
 <p><img src="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-21.png"
 	width="1161"
 	height="645"
-	srcset="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-21_hu_cec451a3dd56cce4.png 480w, /p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-21_hu_976fba405b689f9f.png 1024w"
+	srcset="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-21_hu_9bee182df711dcb8.png 480w, /p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-21_hu_aeaee23d710afd2b.png 1024w"
 	loading="lazy"
 	
 		alt="3NF分解算法"
@@ -1010,7 +1010,7 @@ the restriction of F to R1是{A → B}，因为B → C在R1中无效。</li>
 <p><img src="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-22.png"
 	width="1164"
 	height="663"
-	srcset="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-22_hu_67873d20e9ddc42a.png 480w, /p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-22_hu_f9404de0c4a5b738.png 1024w"
+	srcset="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-22_hu_84f5ac3be45d6754.png 480w, /p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-22_hu_89e856b74b060e32.png 1024w"
 	loading="lazy"
 	
 		alt="例"
@@ -1024,7 +1024,7 @@ the restriction of F to R1是{A → B}，因为B → C在R1中无效。</li>
 <p><img src="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-23.png"
 	width="1128"
 	height="612"
-	srcset="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-23_hu_403642a6e7d9874a.png 480w, /p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-23_hu_7a0cd73f3a5a07ed.png 1024w"
+	srcset="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-23_hu_2f57ca50373ece9b.png 480w, /p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-23_hu_3538893af5fb6495.png 1024w"
 	loading="lazy"
 	
 		alt="例1-续"
@@ -1038,7 +1038,7 @@ the restriction of F to R1是{A → B}，因为B → C在R1中无效。</li>
 <p><img src="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-24.png"
 	width="1140"
 	height="450"
-	srcset="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-24_hu_654e0d91df1835c2.png 480w, /p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-24_hu_48d68feda7f9d13.png 1024w"
+	srcset="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-24_hu_8d52b00b1281af3b.png 480w, /p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-24_hu_9e8fc2f8420213b4.png 1024w"
 	loading="lazy"
 	
 		alt="例1-续续"
@@ -1053,7 +1053,7 @@ the restriction of F to R1是{A → B}，因为B → C在R1中无效。</li>
 </h2><p><img src="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-28.png"
 	width="1454"
 	height="531"
-	srcset="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-28_hu_efc79475e51237a2.png 480w, /p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-28_hu_a2411b0ec48dd2fa.png 1024w"
+	srcset="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-28_hu_af6e8a2f3d9f2c2e.png 480w, /p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-28_hu_c9c165b004e995c4.png 1024w"
 	loading="lazy"
 	
 		alt="算法对比"
@@ -1094,7 +1094,7 @@ the restriction of F to R1是{A → B}，因为B → C在R1中无效。</li>
 <img src="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-16.png"
 	width="1806"
 	height="1002"
-	srcset="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-16_hu_f7e35a5179194bb9.png 480w, /p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-16_hu_3e633aab96018d48.png 1024w"
+	srcset="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-16_hu_6c2d8cee338c8f17.png 480w, /p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-16_hu_d47a1725f7961ae8.png 1024w"
 	loading="lazy"
 	
 		alt="例子"
@@ -1108,7 +1108,7 @@ the restriction of F to R1是{A → B}，因为B → C在R1中无效。</li>
 <p><img src="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-17.png"
 	width="1765"
 	height="1020"
-	srcset="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-17_hu_1be38c38f57ad938.png 480w, /p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-17_hu_f2a15f7d30448e2a.png 1024w"
+	srcset="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-17_hu_926c07e4fc13f20c.png 480w, /p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-17_hu_bf93876575c56e2e.png 1024w"
 	loading="lazy"
 	
 		alt="例子-2"
@@ -1125,7 +1125,7 @@ the restriction of F to R1是{A → B}，因为B → C在R1中无效。</li>
 </h2><p><img src="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-18.png"
 	width="1800"
 	height="900"
-	srcset="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-18_hu_ece034353ccd875a.png 480w, /p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-18_hu_97495aea3edc5824.png 1024w"
+	srcset="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-18_hu_6e4b733bfc3f7590.png 480w, /p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-18_hu_cdce5a96005afa5d.png 1024w"
 	loading="lazy"
 	
 		alt="1"
@@ -1139,7 +1139,7 @@ the restriction of F to R1是{A → B}，因为B → C在R1中无效。</li>
 <p><img src="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-19.png"
 	width="1782"
 	height="792"
-	srcset="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-19_hu_d2cc9b323dba4902.png 480w, /p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-19_hu_88d2609632db0c17.png 1024w"
+	srcset="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-19_hu_e542db208e3ff87e.png 480w, /p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-19_hu_c8cfa95dd9f45b22.png 1024w"
 	loading="lazy"
 	
 		alt="2"
@@ -1155,7 +1155,7 @@ the restriction of F to R1是{A → B}，因为B → C在R1中无效。</li>
 <p><img src="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-25.png"
 	width="1161"
 	height="657"
-	srcset="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-25_hu_1ee5769a9bbefc2b.png 480w, /p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-25_hu_a71aa6d19bd70b02.png 1024w"
+	srcset="/p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-25_hu_aeadf7adce4722ac.png 480w, /p/chapter7-%E5%88%86%E8%A7%A3%E7%AE%97%E6%B3%95%E5%A4%A7%E6%A6%82%E6%98%AF7.4-7.5/image-25_hu_9cc63e724711bc5e.png 1024w"
 	loading="lazy"
 	
 		alt="例"
@@ -1212,7 +1212,7 @@ the restriction of F to R1是{A → B}，因为B → C在R1中无效。</li>
         
         
             <div class="article-image">
-                <img src="/p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/c7.5468b3514b5277cab6d512ae84f1448b_hu_359eadd785e603a6.png" 
+                <img src="/p/chapter7-%E5%85%B3%E7%B3%BB%E8%A7%84%E8%8C%83%E5%8C%967.1-7.3/c7.5468b3514b5277cab6d512ae84f1448b_hu_b4723dc5d8b9b0f1.png" 
                         width="250" 
                         height="150" 
                         loading="lazy"
@@ -1348,7 +1348,7 @@ the restriction of F to R1是{A → B}，因为B → C在R1中无效。</li>
         
             2020 - 
         
-        2025 Example Person
+        2026 © 2020-2027 zcys
     </section>
     
     <section class="powerby">

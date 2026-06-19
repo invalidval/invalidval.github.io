@@ -5,28 +5,28 @@
         <link>https://invalidval.github.io/categories/</link>
         <description>Recent content in Categories on zcys univ II Hugo ver</description>
         <generator>Hugo -- gohugo.io</generator>
-        <language>en</language>
-        <copyright>Example Person</copyright>
-        <lastBuildDate>Wed, 12 Nov 2025 00:00:00 +0800</lastBuildDate><atom:link href="https://invalidval.github.io/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <language>en-us</language>
+        <copyright>© 2020-2027 zcys</copyright>
+        <lastBuildDate>Mon, 13 Apr 2026 00:00:00 +0800</lastBuildDate><atom:link href="https://invalidval.github.io/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>第五学期</title>
+        <link>https://invalidval.github.io/categories/semester-5/</link>
+        <pubDate>Mon, 13 Apr 2026 00:00:00 +0800</pubDate>
+        
+        <guid>https://invalidval.github.io/categories/semester-5/</guid>
+        <description></description>
+        </item>
+        <item>
         <title>Algorithm</title>
         <link>https://invalidval.github.io/categories/algorithm/</link>
-        <pubDate>Wed, 12 Nov 2025 00:00:00 +0800</pubDate>
+        <pubDate>Sat, 11 Apr 2026 00:00:00 +0800</pubDate>
         
         <guid>https://invalidval.github.io/categories/algorithm/</guid>
         <description>&lt;img src="https://invalidval.github.io/categories/algorithm/hutomo-abrianto-l2jk-uxb1BY-unsplash.jpg" alt="Featured image of post Algorithm" /&gt;</description>
         </item>
         <item>
-        <title>数据库</title>
-        <link>https://invalidval.github.io/categories/database/</link>
-        <pubDate>Tue, 11 Nov 2025 00:00:00 +0800</pubDate>
-        
-        <guid>https://invalidval.github.io/categories/database/</guid>
-        <description>&lt;img src="https://invalidval.github.io/categories/database/bg.jpg" alt="Featured image of post 数据库" /&gt;</description>
-        </item>
-        <item>
         <title>操作系统</title>
         <link>https://invalidval.github.io/categories/os/</link>
-        <pubDate>Tue, 04 Nov 2025 00:00:00 +0800</pubDate>
+        <pubDate>Sun, 16 Nov 2025 00:00:00 +0800</pubDate>
         
         <guid>https://invalidval.github.io/categories/os/</guid>
         <description>&lt;img src="https://invalidval.github.io/categories/os/hm.jpeg" alt="Featured image of post 操作系统" /&gt;</description>
@@ -34,10 +34,18 @@
         <item>
         <title>编译原理</title>
         <link>https://invalidval.github.io/categories/cp/</link>
-        <pubDate>Tue, 04 Nov 2025 00:00:00 +0800</pubDate>
+        <pubDate>Sat, 15 Nov 2025 00:00:00 +0800</pubDate>
         
         <guid>https://invalidval.github.io/categories/cp/</guid>
         <description>&lt;img src="https://invalidval.github.io/categories/cp/cp.gif" alt="Featured image of post 编译原理" /&gt;</description>
+        </item>
+        <item>
+        <title>数据库</title>
+        <link>https://invalidval.github.io/categories/database/</link>
+        <pubDate>Tue, 11 Nov 2025 00:00:00 +0800</pubDate>
+        
+        <guid>https://invalidval.github.io/categories/database/</guid>
+        <description>&lt;img src="https://invalidval.github.io/categories/database/OIP-C.webp" alt="Featured image of post 数据库" /&gt;</description>
         </item>
         <item>
         <title>技术杂谈</title>
